@@ -1,0 +1,6 @@
+---
+title: "Stochastic Modeling"
+author: "Bizovi Mihai"
+date: "July 19, 2017"
+output: html_document
+---
