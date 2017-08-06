@@ -9,14 +9,5 @@
     <copyright>&amp;copy; 2017 Bizovi Mihai</copyright>
     <atom:link href="/categories/" rel="self" type="application/rss+xml" />
     
-    <item>
-      <title>R</title>
-      <link>/categories/r/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>/categories/r/</guid>
-      <description></description>
-    </item>
-    
   </channel>
 </rss>

@@ -6,7 +6,7 @@ date = "2016-04-20T00:00:00"
 draft = false
 
 title = "Projects"
-subtitle = ""
+subtitle = "Explorations, learning, research and lots of fun!"
 widget = "projects"
 
 # Order that this section will appear in.

@@ -185,7 +185,7 @@ defaultContentLanguageInSubdir = false
  [[menu.main]]
    name = "Blog"
    url = "#posts"
-   weight = 6
+   weight = 3
 
    
 # [[menu.main]]
@@ -200,7 +200,7 @@ defaultContentLanguageInSubdir = false
 [[menu.main]]
   name = "Projects"
   url = "#projects"
-  weight = 7
+  weight = 2
 
 #[[menu.main]]
 #  name = "Teaching"
