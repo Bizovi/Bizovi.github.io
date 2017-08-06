@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Data Analysis &amp; Economic Cybernetics</title>
-    <link>/tags/</link>
+    <link>https://bizovi.github.io/tags/</link>
     <description>Recent content in Tags on Data Analysis &amp; Economic Cybernetics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,47 +12,47 @@
     
     <item>
       <title>Content tagged as &#39;Academic&#39;</title>
-      <link>/tags/academic/</link>
+      <link>https://bizovi.github.io/tags/academic/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/academic/</guid>
+      <guid>https://bizovi.github.io/tags/academic/</guid>
       <description>&lt;p&gt;Here is a list of all the content that has been tagged as &lt;em&gt;academic&lt;/em&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Bayes Ml</title>
-      <link>/tags/bayes-ml/</link>
+      <link>https://bizovi.github.io/tags/bayes-ml/</link>
       <pubDate>Mon, 10 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/bayes-ml/</guid>
+      <guid>https://bizovi.github.io/tags/bayes-ml/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Complexity_economics</title>
-      <link>/tags/complexity_economics/</link>
+      <link>https://bizovi.github.io/tags/complexity_economics/</link>
       <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>/tags/complexity_economics/</guid>
+      <guid>https://bizovi.github.io/tags/complexity_economics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Dlm</title>
-      <link>/tags/dlm/</link>
+      <link>https://bizovi.github.io/tags/dlm/</link>
       <pubDate>Sun, 06 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/dlm/</guid>
+      <guid>https://bizovi.github.io/tags/dlm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ts Clustering</title>
-      <link>/tags/ts-clustering/</link>
+      <link>https://bizovi.github.io/tags/ts-clustering/</link>
       <pubDate>Sun, 06 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/ts-clustering/</guid>
+      <guid>https://bizovi.github.io/tags/ts-clustering/</guid>
       <description></description>
     </item>
     
