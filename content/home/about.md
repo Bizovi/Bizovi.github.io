@@ -48,21 +48,12 @@ weight = 1
 ## An Interdisciplinary Blog
 #### on General regularities of CONTROL and DATA processing in animals, machines and society ^[D.A. Novikov on Cybernetics http://www.mtas.ru/biblio/Cyb2.pdf]
 
-Job and Hobby (Jobby): Play and the Joy of Discovery.
-Knowledge-Based Society
-Machine Learning and Bayesian Statistics taking over fields.
-Heterodox Economics and Complexity economics, for more realistic economic models.
-Inspiration from Complexity sciences
-R and Python programming
-Developing statistical models in a business environment. Learning from developers, marketers and bussiness
+Hi everybody! This blog is about things I'm passionate about. I can hardly imagine myself in a place of narrow specialization and the exploration of connections between fields brings me a lot of joy. I love writing about economics, solving business problems with statistical models and programming in R.
 
+My hobby is thinking about how can we improve economic models.Perhaps the recipe is to step outside the field, gather new tools and inspiration from Complexity Science. I started studying Machine Learning and Bayesian Analysis, because I felt Econometrics in isolation is just one of the tools we could be using. Machine Learning is taking over our everyday lives and I hope the Data Geeks will take over economics! ^[Data Geeks are taking over economics https://www.bloomberg.com/view/articles/2016-08-25/data-geeks-are-taking-over-economics]
 
-* Critical Thinking
-* Problem Solving
-* Passion
-
-### About
-  Former chess player, passionate about photography, photography and economics
+### Fun Facts
+  Quiet until you get to know me, former professional chess player, love landscape photography, wide range of music: from Regina Spektor to SOAD.
 
 `Collaborators: dr. prof. Ruxanda Gheorghe, Jumanazar Gurbanov`
 
