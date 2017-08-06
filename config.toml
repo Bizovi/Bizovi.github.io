@@ -1,5 +1,5 @@
 baseurl = "https://bizovi.github.io/"  # End your URL with a `/` trailing slash.
-title = "Data Analysis and Economic Cybernetics"
+title = "Data Analysis & Economic Cybernetics"
 copyright = "&copy; 2017 Bizovi Mihai"
 theme = "hugo-academic"
 enableEmoji = true
@@ -21,15 +21,15 @@ defaultContentLanguageInSubdir = false
 [params]
   name = "Bizovi Mihai"
   role = "Data Scientist @Adore Me"
-  organization = "Stanford University"
+  organization = "ASE Cybernetics, IMAR"
   organization_url = ""
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
   avatar = "portrait.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
-  email = "test@example.org"
-  address = "Building 1 Room 1, Stanford University, California, 90210, USA"
-  office_hours = "Monday 10:00 to 13:00 or email for appointment"
-  phone = "888 888 88 88"
-  skype = "echo123"
+  email = "bizovim@gmail.com"
+  address = "Bucharest, Romania"
+  # office_hours = "Monday 10:00 to 13:00 or email for appointment"
+  phone = ""
+  skype = "bizovi_v"
   telegram = ""
 
   # Enable Keybase in Contact section by entering your keybase.io username.
@@ -41,7 +41,7 @@ defaultContentLanguageInSubdir = false
 
   # Enable global LaTeX math rendering?
   #   If false, you can enable it locally on a per page basis.
-  math = false
+  math = true
 
   # Highlight.js options
   #   highlight
@@ -77,7 +77,7 @@ defaultContentLanguageInSubdir = false
   #   For more info on the highlighting options, see:
   #   https://gcushen.github.io/hugo-academic-demo/post/writing-markdown-latex/#highlighting-options
   highlight = true
-  highlight_languages = []
+  highlight_languages = ["r"]
   # highlight_style = "github"
   # highlight_version = "9.9.0"
 
@@ -124,24 +124,31 @@ defaultContentLanguageInSubdir = false
   #   Full list: https://jpswalsh.github.io/academicons/
 
   [[params.social]]
-    icon = "envelope"
+    icon = "linkedin"
     icon_pack = "fa"
-    link = "mailto:test@example.org"
+    link = "//linkedin.com/in/bizovi-mihai-56982abb/"
 
-  [[params.social]]
-    icon = "twitter"
-    icon_pack = "fa"
-    link = "//twitter.com/GeorgeCushen"
-
-  [[params.social]]
-    icon = "google-scholar"
-    icon_pack = "ai"
-    link = "https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ"
 
   [[params.social]]
     icon = "github"
     icon_pack = "fa"
-    link = "//github.com/gcushen"
+    link = "//github.com/bizovi"
+
+  [[params.social]]
+    icon = "researchgate"
+    icon_pack = "ai"
+    link = "//researchgate.net/profile/Bizovi_Mihai2"
+	
+  [[params.social]]
+    icon = "envelope"
+    icon_pack = "fa"
+    link = "mailto:bizovim@gmail.com"
+
+  [[params.social]]
+    icon = "facebook"
+    icon_pack = "fa"
+    link = "//facebook.com/mihai.bizovi"
+
 
 
 # Navigation Links

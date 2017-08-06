@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Demo on Data Analysis and Economic Cybernetics</title>
-    <link>https://bizovi.github.io/tags/demo/</link>
-    <description>Recent content in Demo on Data Analysis and Economic Cybernetics</description>
+    <title>Demo on Data Analysis &amp; Economic Cybernetics</title>
+    <link>/tags/demo/</link>
+    <description>Recent content in Demo on Data Analysis &amp; Economic Cybernetics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Bizovi Mihai</copyright>
@@ -12,10 +12,10 @@
     
     <item>
       <title>External Project</title>
-      <link>https://bizovi.github.io/project/example-external-project/</link>
+      <link>/project/example-external-project/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/project/example-external-project/</guid>
+      <guid>/project/example-external-project/</guid>
       <description></description>
     </item>
     

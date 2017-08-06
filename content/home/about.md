@@ -1,7 +1,7 @@
 +++
 # About/Biography widget.
 
-date = "2016-04-20T00:00:00"
+date = "2017-08-01T00:00:00"
 draft = false
 
 widget = "about"
@@ -12,31 +12,63 @@ weight = 1
 # List your academic interests.
 [interests]
   interests = [
-    "Artificial Intelligence",
-    "Computational Linguistics",
-    "Information Retrieval"
+    "Machine Learning",
+    "Bayesian Statistics",
+    "R and Python",
+    "Computational Economics", 
+    "Chaos and Complexity"
   ]
 
 # List your qualifications (such as academic degrees).
 [[education.courses]]
-  course = "PhD in Artificial Intelligence"
-  institution = "Stanford University"
-  year = 2012
+  course = "Research in Dynamic Probabilistic Modeling"
+  institution = "Institute of Mathematics of the Romanian Academy"
+  year = 2017
 
 [[education.courses]]
-  course = "MEng in Artificial Intelligence"
-  institution = "Massachusetts Institute of Technology"
-  year = 2009
+  course = "MASc in Cybernetics and Quantitative Economics"
+  institution = "ASE Bucharest"
+  year = 2017
+  
+[[education.courses]]
+  course = "Research in Economic Complexity"
+  institution = "Institute of Geodynamics of the Romanian Academy"
+  year = 2016
 
 [[education.courses]]
-  course = "BSc in Artificial Intelligence"
-  institution = "Massachusetts Institute of Technology"
-  year = 2008
+  course = "BASc in Economic Cybernetics and Statistics"
+  institution = "ASE Bucharest"
+  year = 2014
  
 +++
 
-# Biography
+## An Interdisciplinary Blog
+#### on General regularities of control and data processing in animals, machines and society
 
-Lena Smith is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+Job and Hobby (Jobby): Play and the Joy of Discovery.
+Knowledge-Based Society
+Machine Learning and Bayesian Statistics taking over fields.
+Heterodox Economics and Complexity economics, for more realistic economic models.
+Inspiration from Complexity sciences
+R and Python programming
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate. 
+* Critical Thinking
+* Problem Solving
+* Passion
+
+### About
+  Former chess player, passionate about photography, photography and economics
+
+
+
+
+
+
+
+
+
+
+
+
+
+
