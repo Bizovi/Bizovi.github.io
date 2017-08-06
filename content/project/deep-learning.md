@@ -3,17 +3,17 @@
 date = "2016-04-27"
 
 # Project title.
-title = "Deep Learning"
+title = "Time Series Clustering"
 
 # Project summary to display on homepage.
-summary = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+summary = "Dynamic time wraping and Exloration of R implementations `Bizovi Mihai and Jumanazar Gurbanov`"
 
 # Optional image to display on homepage (relative to `static/img/` folder).
 image_preview = "bubbles.jpg"
 
 # Tags: can be used for filtering projects.
-# Example: `tags = ["machine-learning", "deep-learning"]`
-tags = ["deep-learning"]
+# Example: `tags = ["data-mining", "ts-clustering"]`
+tags = ["ts-clustering"]
 
 # Optional external URL for project (replaces project detail page).
 external_link = ""

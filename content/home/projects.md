@@ -26,12 +26,12 @@ view = 1
   tag = "*"
   
 [[filter]]
-  name = "Deep Learning"
-  tag = ".deep-learning"
+  name = "TS Clustering"
+  tag = ".ts-clustering"
 
 [[filter]]
-  name = "Other"
-  tag = ".demo"
+  name = "Economics"
+  tag = ".complexity_economics"
 
 +++
 

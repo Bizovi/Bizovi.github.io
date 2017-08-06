@@ -156,35 +156,61 @@ defaultContentLanguageInSubdir = false
 #     desired widget in your `content/home/` folder.
 #   The weight parameter defines the order that the links will appear in.
 
-[[menu.main]]
-  name = "Home"
-  url = "#about"
-  weight = 1
+# [[menu.main]]
+#   name = "Home"
+#   url = "#about"
+#   weight = 1
 
-[[menu.main]]
-  name = "Publications"
-  url = "#publications_selected"
-  weight = 2
+# [[menu.main]]
+#   name = "Publications"
+#   url = "#publications_selected"
+#   weight = 2
 
-[[menu.main]]
-  name = "Posts"
-  url = "#posts"
-  weight = 3
+#  [[menu.main]]
+#   name = "Machine Learning"
+#   url = "#posts/stats"
+#   weight = 4
+#   identifier = "stats" 
+#   parent = "Blog"
 
+
+#  [[menu.main]]
+#   name = "Complexity Economics"
+#   url = "#posts/econ"
+#   weight = 5
+#   identifier = "econ" 
+#   parent = "Blog"
+
+
+ [[menu.main]]
+   name = "Blog"
+   url = "#posts"
+   weight = 6
+
+   
+# [[menu.main]]
+#   name = "Bayesian Statistics"
+#   url = "#posts/bayes"
+#   weight = 7
+#   identifier = "bayes" 
+#   parent = "Blog"
+   
+  
+   
 [[menu.main]]
   name = "Projects"
   url = "#projects"
-  weight = 4
+  weight = 7
 
-[[menu.main]]
-  name = "Teaching"
-  url = "#teaching"
-  weight = 5
+#[[menu.main]]
+#  name = "Teaching"
+#  url = "#teaching"
+#  weight = 8
 
-[[menu.main]]
-  name = "Contact"
-  url = "#contact"
-  weight = 6
+# [[menu.main]]
+#   name = "Contact"
+#   url = "#contact"
+#   weight = 8
 
 # Taxonomies.
 [taxonomies]
