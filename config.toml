@@ -1,4 +1,5 @@
 baseurl = "https://bizovi.github.io/"  # End your URL with a `/` trailing slash.
+publishDir = "../bizovi.github.io"
 title = "Data Analysis & Economic Cybernetics"
 copyright = "&copy; 2017 Bizovi Mihai"
 theme = "hugo-academic"
