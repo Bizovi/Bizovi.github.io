@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Academic</title>
-    <link>/categories/</link>
-    <description>Recent content in Categories on Academic</description>
+    <title>Categories on Data Analysis and Economic Cybernetics</title>
+    <link>https://bizovi.github.io/categories/</link>
+    <description>Recent content in Categories on Data Analysis and Economic Cybernetics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&amp;copy; 2016 Your Name</copyright>
+    <copyright>&amp;copy; 2017 Bizovi Mihai</copyright>
     <atom:link href="/categories/" rel="self" type="application/rss+xml" />
     
     <item>
       <title>R</title>
-      <link>/categories/r/</link>
+      <link>https://bizovi.github.io/categories/r/</link>
       <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
       
-      <guid>/categories/r/</guid>
+      <guid>https://bizovi.github.io/categories/r/</guid>
       <description></description>
     </item>
     

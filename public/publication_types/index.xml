@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Publication_types on Academic</title>
-    <link>/publication_types/</link>
-    <description>Recent content in Publication_types on Academic</description>
+    <title>Publication_types on Data Analysis and Economic Cybernetics</title>
+    <link>https://bizovi.github.io/publication_types/</link>
+    <description>Recent content in Publication_types on Data Analysis and Economic Cybernetics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&amp;copy; 2016 Your Name</copyright>
+    <copyright>&amp;copy; 2017 Bizovi Mihai</copyright>
     <lastBuildDate>Mon, 01 Jul 2013 00:00:00 +0000</lastBuildDate>
     <atom:link href="/publication_types/" rel="self" type="application/rss+xml" />
     
     <item>
       <title>1</title>
-      <link>/publication_types/1/</link>
+      <link>https://bizovi.github.io/publication_types/1/</link>
       <pubDate>Mon, 01 Jul 2013 00:00:00 +0000</pubDate>
       
-      <guid>/publication_types/1/</guid>
+      <guid>https://bizovi.github.io/publication_types/1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>2</title>
-      <link>/publication_types/2/</link>
+      <link>https://bizovi.github.io/publication_types/2/</link>
       <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
       
-      <guid>/publication_types/2/</guid>
+      <guid>https://bizovi.github.io/publication_types/2/</guid>
       <description></description>
     </item>
     

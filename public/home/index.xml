@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Homes on Academic</title>
-    <link>/home/</link>
-    <description>Recent content in Homes on Academic</description>
+    <title>Homes on Data Analysis and Economic Cybernetics</title>
+    <link>https://bizovi.github.io/home/</link>
+    <description>Recent content in Homes on Data Analysis and Economic Cybernetics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&amp;copy; 2016 Your Name</copyright>
+    <copyright>&amp;copy; 2017 Bizovi Mihai</copyright>
     <lastBuildDate>Wed, 20 Apr 2016 00:00:00 +0000</lastBuildDate>
     <atom:link href="/home/" rel="self" type="application/rss+xml" />
     

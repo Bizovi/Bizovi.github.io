@@ -1,12 +1,12 @@
-baseurl = "https://example.com/"  # End your URL with a `/` trailing slash.
-title = "Academic"
-copyright = "&copy; 2016 Your Name"
+baseurl = "https://bizovi.github.io/"  # End your URL with a `/` trailing slash.
+title = "Data Analysis and Economic Cybernetics"
+copyright = "&copy; 2017 Bizovi Mihai"
 theme = "hugo-academic"
 enableEmoji = true
 footnotereturnlinkcontents = "<sup>^</sup>"
 
 # Enable comments by entering your Disqus shortname
-disqusShortname = ""
+disqusShortname = "Bizovi"
 
 # Enable analytics by entering your Google Analytics tracking ID
 googleAnalytics = ""
@@ -19,8 +19,8 @@ defaultContentLanguageInSubdir = false
   hrefTargetBlank = true
 
 [params]
-  name = "Lena Smith"
-  role = "Professor of Artificial Intelligence"
+  name = "Bizovi Mihai"
+  role = "Data Scientist @Adore Me"
   organization = "Stanford University"
   organization_url = ""
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
