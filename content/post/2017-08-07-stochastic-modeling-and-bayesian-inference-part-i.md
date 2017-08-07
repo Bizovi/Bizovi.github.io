@@ -2,10 +2,6 @@
 title: Stochastic Modeling and Bayesian Inference. Part I
 author: Bizovi Mihai
 date: '2017-08-07'
-abstract: "Current challenges in economics need an interdisciplinary, multidimensional approach and different perspectives. The thesis investigates statistical modeling based on three schools of thought: Stochastic Modeling, Machine Learning and Bayesian Analysis, which has applications from economics and finance to genetics, linguistics and artificial intelligence.
-
-
-This approach is extremely general and allows us to make inferences about latent quantitites and relationships, to identify what is hidden beneath surface, to account for the uncertainty and nonlinearities of economic phenomena. The idea of learning from data, the flexibility of such models and the parsimonity principle could lead to a kind of modeling which was impossible with classical tools. The focus will be very much on models and a deep understanding of concepts on which they're built."
 slug: stochastic
 categories: ["stochastic"]
 tags: ["bayes", "ml"]
@@ -17,13 +13,20 @@ The first series of posts gives an overview of the probabilistic perspective on 
 — Richard Feynman *The pleasure of finding things out*
 
 
+### The need for stochastic modeling and Bayesian thinking
 
-## The need for stochastic modeling and Bayesian thinking
+Current challenges in economics need an interdisciplinary, multidimensional approach and different perspectives. The thesis investigates statistical modeling based on three schools of thought: Stochastic Modeling, Machine Learning and Bayesian Analysis, which has applications from economics and finance to genetics, linguistics and artificial intelligence.
+
+
+This approach is extremely general and allows us to make inferences about latent quantitites and relationships, to identify what is hidden beneath surface, to account for the uncertainty and nonlinearities of economic phenomena. The idea of learning from data, the flexibility of such models and the parsimonity principle could lead to a kind of modeling which was impossible with classical tools. The focus will be very much on models and a deep understanding of concepts on which they're built.
+
+
 
 The ugly truth is that humans are not good at prediction, neither consistent with probability theory. We are "suffering" from multiple evolutionary mechanisms, cognitive biases and even statisticians, formally trained in the language of uncertainty, aren't guarded against pitfalls that arise in practice and everyday life.
 
 The same story is in reconciliation of new evidence with prior beliefs, processing multidimensional data, ignorance of feedback loops, dynamics and nonlinearities. The reason we are building models is to better understand the world, phenomena aroud us and in the end to improve our mental representations. Predictions that are less wrong usually take into account a variety of perspectives, a proven fact in ensemble modeling.
 
+### Three perspectives
 
 Machine learning models have become an essential part of online services and is taking over new fields, bringing firms and people lots of value. The multidimensional approach is what makes all this possible. In contrast with classical stats and NHST (Null Hypothesis Significance Testing), our focus will be on generalization performance and the idea of a model. Even though these models have their roots in statistics, the field is emerging as something more.
 
