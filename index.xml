@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Analysis &amp; Economic Cybernetics on Data Analysis &amp; Economic Cybernetics</title>
-    <link>https://bizovi.github.io/</link>
+    <link>/</link>
     <description>Recent content in Data Analysis &amp; Economic Cybernetics on Data Analysis &amp; Economic Cybernetics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>Stochastic Modeling and Bayesian Inference. Part I</title>
-      <link>https://bizovi.github.io/post/stochastic/</link>
+      <link>/post/stochastic/</link>
       <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/post/stochastic/</guid>
+      <guid>/post/stochastic/</guid>
       <description>
 
 &lt;p&gt;The first series of posts gives an overview of the probabilistic perspective on Machine Learning, which is exactly what my bachelor thesis &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:Bizovi-Mihai-Sto&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:Bizovi-Mihai-Sto&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; is about.&lt;/p&gt;
@@ -53,46 +53,46 @@
     
     <item>
       <title>Probabilistic Dynamic Modeling (wip)</title>
-      <link>https://bizovi.github.io/project/probabilistic-dynamic-modeling/</link>
+      <link>/project/probabilistic-dynamic-modeling/</link>
       <pubDate>Sun, 06 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/project/probabilistic-dynamic-modeling/</guid>
+      <guid>/project/probabilistic-dynamic-modeling/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Time Series Clustering (wip)</title>
-      <link>https://bizovi.github.io/project/ts-clustering/</link>
+      <link>/project/ts-clustering/</link>
       <pubDate>Sun, 06 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/project/ts-clustering/</guid>
+      <guid>/project/ts-clustering/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Thesis: Stochastic Modeling and Bayesian Inference</title>
-      <link>https://bizovi.github.io/project/probabilistic-machine-learning/</link>
+      <link>/project/probabilistic-machine-learning/</link>
       <pubDate>Mon, 10 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/project/probabilistic-machine-learning/</guid>
+      <guid>/project/probabilistic-machine-learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>New Economic Thinking for a Knowledge-Based Society</title>
-      <link>https://bizovi.github.io/project/new-economic-thinking/</link>
+      <link>/project/new-economic-thinking/</link>
       <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/project/new-economic-thinking/</guid>
+      <guid>/project/new-economic-thinking/</guid>
       <description></description>
     </item>
     
     <item>
       <title></title>
-      <link>https://bizovi.github.io/post/2017-08-07-stochastic-modeling-and-bayesian-inference-part-i/</link>
+      <link>/post/2017-08-07-stochastic-modeling-and-bayesian-inference-part-i/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/post/2017-08-07-stochastic-modeling-and-bayesian-inference-part-i/</guid>
+      <guid>/post/2017-08-07-stochastic-modeling-and-bayesian-inference-part-i/</guid>
       <description>&lt;!DOCTYPE html&gt;
 
 &lt;html xmlns=&#34;http://www.w3.org/1999/xhtml&#34;&gt;

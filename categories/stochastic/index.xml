@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Stochastic on Data Analysis &amp; Economic Cybernetics</title>
-    <link>https://bizovi.github.io/categories/stochastic/</link>
+    <link>/categories/stochastic/</link>
     <description>Recent content in Stochastic on Data Analysis &amp; Economic Cybernetics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>Stochastic Modeling and Bayesian Inference. Part I</title>
-      <link>https://bizovi.github.io/post/stochastic/</link>
+      <link>/post/stochastic/</link>
       <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/post/stochastic/</guid>
+      <guid>/post/stochastic/</guid>
       <description>
 
 &lt;p&gt;The first series of posts gives an overview of the probabilistic perspective on Machine Learning, which is exactly what my bachelor thesis &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:Bizovi-Mihai-Sto&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:Bizovi-Mihai-Sto&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; is about.&lt;/p&gt;
