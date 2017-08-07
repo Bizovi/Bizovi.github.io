@@ -52,11 +52,11 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
 
-  <link rel="canonical" href="https://bizovi.github.io/project/probabilistic-machine-learning/">
+  <link rel="canonical" href="https://bizovi.github.io/post/stochastic/">
 
   
 
-  <title>Thesis: Stochastic Modeling and Bayesian Inference | Data Analysis &amp; Economic Cybernetics</title>
+  <title>Stochastic Modeling and Bayesian Inference. Part I | Data Analysis &amp; Economic Cybernetics</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
@@ -115,51 +115,87 @@
 </nav>
 
 
-<article class="article article-project" itemscope itemtype="http://schema.org/Article">
+<article class="article" itemscope itemtype="http://schema.org/Article">
 
   
 
 
   <div class="article-container">
+    <h1 itemprop="name">Stochastic Modeling and Bayesian Inference. Part I</h1>
+    
 
-    <div class="pub-title">
-      <h1 itemprop="name">Thesis: Stochastic Modeling and Bayesian Inference</h1>
-      <span class="pub-authors" itemprop="author">&nbsp;</span>
-      <span class="pull-right">
-        
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2017-08-07 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Mon, Aug 7, 2017
+    </time>
+  </span>
+
+  
+  
+  
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/categories/stochastic">stochastic</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/bayesian">bayesian</a
+    >, 
+    
+    <a href="/tags/ml">ml</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
 <div class="share-box" aria-hidden="true">
   <ul class="share">
     <li>
       <a class="facebook"
-         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fbizovi.github.io%2fproject%2fprobabilistic-machine-learning%2f"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fbizovi.github.io%2fpost%2fstochastic%2f"
          target="_blank">
         <i class="fa fa-facebook"></i>
       </a>
     </li>
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=Thesis%3a%20Stochastic%20Modeling%20and%20Bayesian%20Inference&amp;url=https%3a%2f%2fbizovi.github.io%2fproject%2fprobabilistic-machine-learning%2f"
+         href="https://twitter.com/intent/tweet?text=Stochastic%20Modeling%20and%20Bayesian%20Inference.%20Part%20I&amp;url=https%3a%2f%2fbizovi.github.io%2fpost%2fstochastic%2f"
          target="_blank">
         <i class="fa fa-twitter"></i>
       </a>
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fbizovi.github.io%2fproject%2fprobabilistic-machine-learning%2f&amp;title=Thesis%3a%20Stochastic%20Modeling%20and%20Bayesian%20Inference"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fbizovi.github.io%2fpost%2fstochastic%2f&amp;title=Stochastic%20Modeling%20and%20Bayesian%20Inference.%20Part%20I"
          target="_blank">
         <i class="fa fa-linkedin"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fbizovi.github.io%2fproject%2fprobabilistic-machine-learning%2f&amp;title=Thesis%3a%20Stochastic%20Modeling%20and%20Bayesian%20Inference"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fbizovi.github.io%2fpost%2fstochastic%2f&amp;title=Stochastic%20Modeling%20and%20Bayesian%20Inference.%20Part%20I"
          target="_blank">
         <i class="fa fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=Thesis%3a%20Stochastic%20Modeling%20and%20Bayesian%20Inference&amp;body=https%3a%2f%2fbizovi.github.io%2fproject%2fprobabilistic-machine-learning%2f">
+         href="mailto:?subject=Stochastic%20Modeling%20and%20Bayesian%20Inference.%20Part%20I&amp;body=https%3a%2f%2fbizovi.github.io%2fpost%2fstochastic%2f">
         <i class="fa fa-envelope"></i>
       </a>
     </li>
@@ -167,34 +203,90 @@
 </div>
 
 
-      </span>
-    </div>
+  
 
-    
-    <a class="btn btn-primary btn-outline" href="https://www.researchgate.net/publication/318672477_Stochastic_Modeling_and_Bayesian_Inference" target="_blank">Go to Project Site</a>
-    
+</div>
 
     <div class="article-style" itemprop="articleBody">
       
-    </div>
 
+<p>The first series of posts gives an overview of the probabilistic perspective on Machine Learning, which is exactly what my bachelor thesis <sup class="footnote-ref" id="fnref:Bizovi-Mihai-Sto"><a rel="footnote" href="#fn:Bizovi-Mihai-Sto">1</a></sup> is about.</p>
+
+<blockquote>
+<p>”I can live with doubt and uncertainty and not knowing. We absolutely must leave room for doubt or there is no progress and there is no learning. There is no learning without having to pose a question. And a question requires doubt. People search for certainty, but there is no certainty.”
+— Richard Feynman <em>The pleasure of finding things out</em></p>
+</blockquote>
+
+<h2 id="the-need-for-stochastic-modeling-and-bayesian-thinking">The need for stochastic modeling and Bayesian thinking</h2>
+
+<p>The ugly truth is that humans are not good at prediction, neither consistent with probability theory. We are &ldquo;suffering&rdquo; from multiple evolutionary mechanisms, cognitive biases and even statisticians, formally trained in the language of uncertainty, aren&rsquo;t guarded against pitfalls that arise in practice and everyday life.</p>
+
+<p>The same story is in reconciliation of new evidence with prior beliefs, processing multidimensional data, ignorance of feedback loops, dynamics and nonlinearities. The reason we are building models is to better understand the world, phenomena aroud us and in the end to improve our mental representations. Predictions that are less wrong usually take into account a variety of perspectives, a proven fact in ensemble modeling.</p>
+
+<p>Machine learning models have become an essential part of online services and is taking over new fields, bringing firms and people lots of value. The multidimensional approach is what makes all this possible. In contrast with classical stats and NHST (Null Hypothesis Significance Testing), our focus will be on generalization performance and the idea of a model. Even though these models have their roots in statistics, the field is emerging as something more.</p>
+
+<p>An important extension for which there is an acute need is dynamical models. A lot of interesting problems are multidimensional time series, which might invalidate the hypotheses behid classical data mining models. Coupled with the need of accounting for uncertainty, this brings us to the idea of introducing <strong>stochastic</strong> elements and to extend the idea of <strong>learning</strong> and <strong>generalization</strong>.</p>
+
+<p>The third perspective which brings together stochastic elements with machine learning is <em>bayesian inference</em>, as a method to update beliefs and knowledge based on data from different sources. Bayesian modeling enables us to build hierarchical models with latent structures, while encoding the uncertainty in parameters and operating with probability distributions.</p>
+
+<p>On the shoulders of these three &ldquo;giants&rdquo;, a stochastic perspective over Machine Learning emerges over the last two decades, which is flexible, general and more transparent than neural networks, works on thin data. There are several reasons the field is not yet in the mainstream: scalability and complexity of the models, in the sense of necessary knowledge and skill to start modeling. Once the software implementations, approximation methods and probabilistic programming languages will become better, the Bayesian methods will see another rise in popularity.</p>
+
+<p>The next posts will be dedicated to each of these fundamental perspectives, in which we&rsquo;ll try to get to the essence. The last ones from this series will be on supervised and usupervised probabilistic models such as Gaussian Processes and Mixture Models. An essential concept will be the ARD (Automatic Relevance Determination) and Kernels which encourage sparse solutions.</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:Bizovi-Mihai-Sto">Bizovi Mihai - Stochastic Modeling and Bayesian Inference (2017, Thesis) <a class="footnote-return" href="#fnref:Bizovi-Mihai-Sto"><sup>^</sup></a></li>
+</ol>
+</div>
+
+    </div>
   </div>
+
 </article>
 
 <div class="container">
   <nav>
   <ul class="pager">
     
-    <li class="previous"><a href="https://bizovi.github.io/project/new-economic-thinking/"><span
-      aria-hidden="true">&larr;</span> New Economic Thinking for a Knowledge-Based Society</a></li>
+    <li class="previous"><a href="https://bizovi.github.io/post/2017-08-07-stochastic-modeling-and-bayesian-inference-part-i/"><span
+      aria-hidden="true">&larr;</span> </a></li>
     
 
     
-    <li class="next"><a href="https://bizovi.github.io/project/ts-clustering/">Time Series Clustering (wip) <span
-      aria-hidden="true">&rarr;</span></a></li>
-    
   </ul>
 </nav>
+
+</div>
+
+<div class="article-container">
+  
+<section id="comments">
+  <div id="disqus_thread">
+    <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Bizovi" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</section>
+
 
 </div>
 
