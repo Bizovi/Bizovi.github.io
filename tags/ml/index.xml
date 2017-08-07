@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ml on Data Analysis &amp; Economic Cybernetics</title>
-    <link>/tags/ml/</link>
+    <link>https://bizovi.github.io/tags/ml/</link>
     <description>Recent content in Ml on Data Analysis &amp; Economic Cybernetics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>Stochastic Modeling and Bayesian Inference. Part I</title>
-      <link>/post/stochastic/</link>
+      <link>https://bizovi.github.io/post/stochastic/</link>
       <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/stochastic/</guid>
+      <guid>https://bizovi.github.io/post/stochastic/</guid>
       <description>
 
 &lt;blockquote&gt;
@@ -59,10 +59,10 @@
     
     <item>
       <title>Stochastic Modeling and Bayesian Inference. Part II</title>
-      <link>/post/stochastic-modeling-and-bayesian-inference-part-ii/</link>
+      <link>https://bizovi.github.io/post/stochastic-modeling-and-bayesian-inference-part-ii/</link>
       <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/stochastic-modeling-and-bayesian-inference-part-ii/</guid>
+      <guid>https://bizovi.github.io/post/stochastic-modeling-and-bayesian-inference-part-ii/</guid>
       <description></description>
     </item>
     

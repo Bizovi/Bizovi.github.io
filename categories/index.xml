@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Data Analysis &amp; Economic Cybernetics</title>
-    <link>/categories/</link>
+    <link>https://bizovi.github.io/categories/</link>
     <description>Recent content in Categories on Data Analysis &amp; Economic Cybernetics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -11,10 +11,10 @@
     
     <item>
       <title>Stochastic</title>
-      <link>/categories/stochastic/</link>
+      <link>https://bizovi.github.io/categories/stochastic/</link>
       <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/categories/stochastic/</guid>
+      <guid>https://bizovi.github.io/categories/stochastic/</guid>
       <description></description>
     </item>
     

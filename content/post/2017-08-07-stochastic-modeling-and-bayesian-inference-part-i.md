@@ -10,6 +10,7 @@ tags: ["bayes", "ml"]
 > ”I can live with doubt and uncertainty and not knowing. We absolutely must leave room for doubt or there is no progress and there is no learning. There is no learning without having to pose a question. And a question requires doubt. People search for certainty, but there is no certainty.”
 — Richard Feynman *The pleasure of finding things out*
 
+
 The first series of posts gives an overview of the probabilistic perspective on Machine Learning, which is exactly what my bachelor thesis ^[Bizovi Mihai - Stochastic Modeling and Bayesian Inference (2017, Thesis)] is about. 
 
 
