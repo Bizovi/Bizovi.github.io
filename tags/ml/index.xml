@@ -18,12 +18,12 @@
       <guid>/post/stochastic/</guid>
       <description>
 
-&lt;p&gt;The first series of posts gives an overview of the probabilistic perspective on Machine Learning, which is exactly what my bachelor thesis &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:Bizovi-Mihai-Sto&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:Bizovi-Mihai-Sto&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; is about.&lt;/p&gt;
-
 &lt;blockquote&gt;
 &lt;p&gt;”I can live with doubt and uncertainty and not knowing. We absolutely must leave room for doubt or there is no progress and there is no learning. There is no learning without having to pose a question. And a question requires doubt. People search for certainty, but there is no certainty.”
 — Richard Feynman &lt;em&gt;The pleasure of finding things out&lt;/em&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
+
+&lt;p&gt;The first series of posts gives an overview of the probabilistic perspective on Machine Learning, which is exactly what my bachelor thesis &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:Bizovi-Mihai-Sto&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:Bizovi-Mihai-Sto&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; is about.&lt;/p&gt;
 
 &lt;h3 id=&#34;the-need-for-stochastic-modeling-and-bayesian-thinking&#34;&gt;The need for stochastic modeling and Bayesian thinking&lt;/h3&gt;
 
