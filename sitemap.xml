@@ -14,6 +14,15 @@
     
     <url>
     
+      <loc>/post/stochastic-modeling-and-bayesian-inference-part-ii/</loc>
+      <lastmod>2017-08-07T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/project/probabilistic-dynamic-modeling/</loc>
       <lastmod>2017-08-06T00:00:00+00:00</lastmod>
     </url>
@@ -76,8 +85,8 @@
     
     <url>
     
-      <loc>/tags/bayes-ml/</loc>
-      <lastmod>2017-07-10T00:00:00+00:00</lastmod>
+      <loc>/tags/bayes/</loc>
+      <lastmod>2017-08-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -86,8 +95,8 @@
     
     <url>
     
-      <loc>/tags/bayesian/</loc>
-      <lastmod>2017-08-07T00:00:00+00:00</lastmod>
+      <loc>/tags/bayes-ml/</loc>
+      <lastmod>2017-07-10T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

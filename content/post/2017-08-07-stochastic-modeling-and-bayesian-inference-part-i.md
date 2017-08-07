@@ -8,7 +8,7 @@ abstract: "Current challenges in economics need an interdisciplinary, multidimen
 This approach is extremely general and allows us to make inferences about latent quantitites and relationships, to identify what is hidden beneath surface, to account for the uncertainty and nonlinearities of economic phenomena. The idea of learning from data, the flexibility of such models and the parsimonity principle could lead to a kind of modeling which was impossible with classical tools. The focus will be very much on models and a deep understanding of concepts on which they're built."
 slug: stochastic
 categories: ["stochastic"]
-tags: ["bayesian", "ml"]
+tags: ["bayes", "ml"]
 ---
 
 The first series of posts gives an overview of the probabilistic perspective on Machine Learning, which is exactly what my bachelor thesis ^[Bizovi Mihai - Stochastic Modeling and Bayesian Inference (2017, Thesis)] is about. 
