@@ -11,6 +11,22 @@
     <atom:link href="/categories/stochastic/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Probability Theory and Stochastic Modeling Framework. Part II</title>
+      <link>https://bizovi.github.io/post/probability/</link>
+      <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://bizovi.github.io/post/probability/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;As far as the laws of mathematics refer to reality,
+they are not certain; and as far as they are certain,
+they do not refer to reality&amp;rdquo; — Albert Einstein&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!-- Economics is moving from an approach of structural verification of theoretical models towards an empirical one, and computational, data analysis models will take over the field. --&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Stochastic Modeling and Bayesian Inference. Part I</title>
       <link>https://bizovi.github.io/post/stochastic/</link>
       <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
@@ -65,15 +81,6 @@
 &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>Stochastic Modeling and Bayesian Inference. Part II</title>
-      <link>https://bizovi.github.io/post/stochastic-modeling-and-bayesian-inference-part-ii/</link>
-      <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://bizovi.github.io/post/stochastic-modeling-and-bayesian-inference-part-ii/</guid>
-      <description></description>
     </item>
     
   </channel>

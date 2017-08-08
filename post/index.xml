@@ -11,6 +11,54 @@
     <atom:link href="/post/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Learning Resources</title>
+      <link>https://bizovi.github.io/post/learning-resources/</link>
+      <pubDate>Tue, 08 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://bizovi.github.io/post/learning-resources/</guid>
+      <description>
+
+&lt;h2 id=&#34;machine-learning&#34;&gt;Machine Learning&lt;/h2&gt;
+
+&lt;h2 id=&#34;stochastic-filtering&#34;&gt;Stochastic Filtering&lt;/h2&gt;
+
+&lt;h3 id=&#34;dynamic-linear-models&#34;&gt;Dynamic Linear Models&lt;/h3&gt;
+
+&lt;h4 id=&#34;kalman-filters&#34;&gt;Kalman Filters&lt;/h4&gt;
+
+&lt;h4 id=&#34;gaussian-processes&#34;&gt;Gaussian Processes&lt;/h4&gt;
+
+&lt;h4 id=&#34;particle-filtering&#34;&gt;Particle Filtering&lt;/h4&gt;
+
+&lt;h4 id=&#34;hamiltonian-monte-carlo&#34;&gt;Hamiltonian Monte Carlo&lt;/h4&gt;
+
+&lt;h4 id=&#34;mcmc&#34;&gt;MCMC&lt;/h4&gt;
+
+&lt;h4 id=&#34;rao-blackwellization&#34;&gt;Rao-Blackwellization&lt;/h4&gt;
+
+&lt;h4 id=&#34;em-and-ep&#34;&gt;EM and EP&lt;/h4&gt;
+
+&lt;h2 id=&#34;bayesian-statistics&#34;&gt;Bayesian Statistics&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Probability Theory and Stochastic Modeling Framework. Part II</title>
+      <link>https://bizovi.github.io/post/probability/</link>
+      <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://bizovi.github.io/post/probability/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;As far as the laws of mathematics refer to reality,
+they are not certain; and as far as they are certain,
+they do not refer to reality&amp;rdquo; — Albert Einstein&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!-- Economics is moving from an approach of structural verification of theoretical models towards an empirical one, and computational, data analysis models will take over the field. --&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Stochastic Modeling and Bayesian Inference. Part I</title>
       <link>https://bizovi.github.io/post/stochastic/</link>
       <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
@@ -65,15 +113,6 @@
 &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>Stochastic Modeling and Bayesian Inference. Part II</title>
-      <link>https://bizovi.github.io/post/stochastic-modeling-and-bayesian-inference-part-ii/</link>
-      <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://bizovi.github.io/post/stochastic-modeling-and-bayesian-inference-part-ii/</guid>
-      <description></description>
     </item>
     
   </channel>

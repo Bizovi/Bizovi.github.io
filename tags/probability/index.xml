@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Probability on Data Analysis &amp; Economic Cybernetics</title>
+    <link>https://bizovi.github.io/tags/probability/</link>
+    <description>Recent content in Probability on Data Analysis &amp; Economic Cybernetics</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Bizovi Mihai</copyright>
+    <lastBuildDate>Mon, 07 Aug 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/probability/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Probability Theory and Stochastic Modeling Framework. Part II</title>
+      <link>https://bizovi.github.io/post/probability/</link>
+      <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://bizovi.github.io/post/probability/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;As far as the laws of mathematics refer to reality,
+they are not certain; and as far as they are certain,
+they do not refer to reality&amp;rdquo; — Albert Einstein&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!-- Economics is moving from an approach of structural verification of theoretical models towards an empirical one, and computational, data analysis models will take over the field. --&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

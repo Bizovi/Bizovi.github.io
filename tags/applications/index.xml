@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Applications on Data Analysis &amp; Economic Cybernetics</title>
+    <link>https://bizovi.github.io/tags/applications/</link>
+    <description>Recent content in Applications on Data Analysis &amp; Economic Cybernetics</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Bizovi Mihai</copyright>
+    <lastBuildDate>Tue, 08 Aug 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/applications/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Learning Resources</title>
+      <link>https://bizovi.github.io/post/learning-resources/</link>
+      <pubDate>Tue, 08 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://bizovi.github.io/post/learning-resources/</guid>
+      <description>
+
+&lt;h2 id=&#34;machine-learning&#34;&gt;Machine Learning&lt;/h2&gt;
+
+&lt;h2 id=&#34;stochastic-filtering&#34;&gt;Stochastic Filtering&lt;/h2&gt;
+
+&lt;h3 id=&#34;dynamic-linear-models&#34;&gt;Dynamic Linear Models&lt;/h3&gt;
+
+&lt;h4 id=&#34;kalman-filters&#34;&gt;Kalman Filters&lt;/h4&gt;
+
+&lt;h4 id=&#34;gaussian-processes&#34;&gt;Gaussian Processes&lt;/h4&gt;
+
+&lt;h4 id=&#34;particle-filtering&#34;&gt;Particle Filtering&lt;/h4&gt;
+
+&lt;h4 id=&#34;hamiltonian-monte-carlo&#34;&gt;Hamiltonian Monte Carlo&lt;/h4&gt;
+
+&lt;h4 id=&#34;mcmc&#34;&gt;MCMC&lt;/h4&gt;
+
+&lt;h4 id=&#34;rao-blackwellization&#34;&gt;Rao-Blackwellization&lt;/h4&gt;
+
+&lt;h4 id=&#34;em-and-ep&#34;&gt;EM and EP&lt;/h4&gt;
+
+&lt;h2 id=&#34;bayesian-statistics&#34;&gt;Bayesian Statistics&lt;/h2&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
