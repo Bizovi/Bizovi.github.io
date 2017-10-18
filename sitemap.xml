@@ -5,24 +5,6 @@
     
     <url>
     
-      <loc>https://bizovi.github.io/post/learning-resources/</loc>
-      <lastmod>2017-08-08T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>https://bizovi.github.io/post/probability/</loc>
-      <lastmod>2017-08-07T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>https://bizovi.github.io/post/stochastic/</loc>
       <lastmod>2017-08-07T00:00:00+00:00</lastmod>
     </url>
@@ -86,16 +68,6 @@
     
     <url>
     
-      <loc>https://bizovi.github.io/tags/applications/</loc>
-      <lastmod>2017-08-08T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>https://bizovi.github.io/tags/bayes/</loc>
       <lastmod>2017-08-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -135,16 +107,6 @@
     
     <url>
     
-      <loc>https://bizovi.github.io/categories/courses/</loc>
-      <lastmod>2017-08-08T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>https://bizovi.github.io/</loc>
       <lastmod>2017-08-01T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -165,27 +127,7 @@
     
     <url>
     
-      <loc>https://bizovi.github.io/tags/econometrics/</loc>
-      <lastmod>2017-08-07T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>https://bizovi.github.io/tags/ml/</loc>
-      <lastmod>2017-08-07T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>https://bizovi.github.io/tags/probability/</loc>
       <lastmod>2017-08-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -236,16 +178,6 @@
     
       <loc>https://bizovi.github.io/tags/ts-clustering/</loc>
       <lastmod>2017-08-06T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>https://bizovi.github.io/tags/tutorials/</loc>
-      <lastmod>2017-08-08T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

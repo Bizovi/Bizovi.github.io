@@ -21,15 +21,6 @@
     </item>
     
     <item>
-      <title>Applications</title>
-      <link>https://bizovi.github.io/tags/applications/</link>
-      <pubDate>Tue, 08 Aug 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://bizovi.github.io/tags/applications/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Bayes</title>
       <link>https://bizovi.github.io/tags/bayes/</link>
       <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
@@ -66,15 +57,6 @@
     </item>
     
     <item>
-      <title>Econometrics</title>
-      <link>https://bizovi.github.io/tags/econometrics/</link>
-      <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://bizovi.github.io/tags/econometrics/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Ml</title>
       <link>https://bizovi.github.io/tags/ml/</link>
       <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
@@ -84,29 +66,11 @@
     </item>
     
     <item>
-      <title>Probability</title>
-      <link>https://bizovi.github.io/tags/probability/</link>
-      <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://bizovi.github.io/tags/probability/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Ts Clustering</title>
       <link>https://bizovi.github.io/tags/ts-clustering/</link>
       <pubDate>Sun, 06 Aug 2017 00:00:00 +0000</pubDate>
       
       <guid>https://bizovi.github.io/tags/ts-clustering/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tutorials</title>
-      <link>https://bizovi.github.io/tags/tutorials/</link>
-      <pubDate>Tue, 08 Aug 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://bizovi.github.io/tags/tutorials/</guid>
       <description></description>
     </item>
     
