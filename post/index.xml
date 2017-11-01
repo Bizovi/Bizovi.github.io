@@ -23,20 +23,20 @@
 &lt;p&gt;Because of the fast-growing open-source community and the ecosystem of R packages, a lot of cutting-edge research is made freely available. Some of these extensions changed in a fundamental way how we analyze data in R. Even though its flexibility allows to have a lot of solutions to the same problem, we should keep in mind the pitfalls of flexible languages and be rigurous in the way we write our code and do the analysis.&lt;/p&gt;
 &lt;div id=&#34;towards-reproducible-research-in-r&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Towards Reproducible Research in R&lt;/h2&gt;
-&lt;p&gt;The crisis of reproducibility is a hot topic right now in different fields. There are many great meta-studies on this topic, but my goal is very modest modest here: to suggest simple techniques that will help improve the reproducibility and transparency of the research. By making the source code freely available and reproducible we reduce the “research debt”, making the progress a lot faster by involving people that have the curiosity to reproduce and improve on exsiting research.&lt;/p&gt;
+&lt;p&gt;The replication crisis&lt;a href=&#34;#fn2&#34; class=&#34;footnoteRef&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt; is a hot topic right now in different fields. There are many great meta-studies on this topic, but my goal is very modest modest here: to suggest simple techniques that will help improve the reproducibility and transparency of the research. By making the source code freely available and reproducible we reduce the “research debt”&lt;a href=&#34;#fn3&#34; class=&#34;footnoteRef&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt;, making the progress a lot faster by involving people that have the curiosity to reproduce and improve on exsiting research.&lt;/p&gt;
 &lt;p&gt;It has three main components and R does have nice solutions:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Code reproducibility and versioning&lt;/li&gt;
 &lt;li&gt;Data and Analysis&lt;/li&gt;
 &lt;li&gt;But it works on my machine: Keeping the environment consistent&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;First, we can use &lt;code&gt;Rmarkdown&lt;/code&gt; to combine the content, code and outputs rendered in a single pdf document or html page, which can be easily published on the web using a static page generator like Hugo/Jekyll. Second, using a code versioning tool like Git is a no-brainer, even if you’re working alone. It has nice integrations with RStudio and it will save the future you a lot of time.&lt;/p&gt;
-&lt;p&gt;What cannot be solved by packages alone, should be obtained as a result of a rigurous statistical methodology, combined with a quality, clean code. It requires a lot of discipline amid seemingly endless possibilities of R.&lt;/p&gt;
-&lt;p&gt;The third key element to reproducibility is also very challenging. The hot solution right now is using &lt;code&gt;Docker Containers&lt;/code&gt;, which are lightweight, immutable and disposable, providing necessary libraries, binaries and OS components to run the analysis. They should be viewed more like a process, than a virtual machine which is started from an image (remember .iso). It saves a lot of time and effort trying to install all the packages manually, dealing with versioning issues and so on. Imagine some of the harder to install setups for Bayesian Analysis, involving STAN or JAGS are taken care of by somebody else, so you can focus on really important things like improving the method, the quality, robustness and generality of the code.&lt;/p&gt;
+&lt;p&gt;First, we can use &lt;code&gt;Rmarkdown&lt;/code&gt;&lt;a href=&#34;#fn4&#34; class=&#34;footnoteRef&#34; id=&#34;fnref4&#34;&gt;&lt;sup&gt;4&lt;/sup&gt;&lt;/a&gt; to combine the content, code and outputs rendered in a single pdf document or html page, which can be easily published on the web using a static page generator like Hugo/Jekyll. Second, using a code versioning tool like Git&lt;a href=&#34;#fn5&#34; class=&#34;footnoteRef&#34; id=&#34;fnref5&#34;&gt;&lt;sup&gt;5&lt;/sup&gt;&lt;/a&gt; is a no-brainer, even if you’re working alone. It has nice integrations with RStudio and it will save the future you a lot of time.&lt;/p&gt;
+&lt;p&gt;What cannot be solved by packages alone, should be obtained as a result of a rigurous statistical methodology&lt;a href=&#34;#fn6&#34; class=&#34;footnoteRef&#34; id=&#34;fnref6&#34;&gt;&lt;sup&gt;6&lt;/sup&gt;&lt;/a&gt;, combined with a quality, clean code. It requires a lot of discipline amid seemingly endless possibilities of R.&lt;/p&gt;
+&lt;p&gt;The third key element to reproducibility is also very challenging. The hot solution right now is using &lt;code&gt;Docker Containers&lt;/code&gt;&lt;a href=&#34;#fn7&#34; class=&#34;footnoteRef&#34; id=&#34;fnref7&#34;&gt;&lt;sup&gt;7&lt;/sup&gt;&lt;/a&gt;, which are lightweight, immutable and disposable, providing necessary libraries, binaries and OS components to run the analysis. They should be viewed more like a process, than a virtual machine which is started from an image (remember .iso). It saves a lot of time and effort trying to install all the packages manually, dealing with versioning issues and so on. Imagine some of the harder to install setups for Bayesian Analysis, involving STAN or JAGS are taken care of by somebody else, so you can focus on really important things like improving the method, the quality, robustness and generality of the code.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;tidy-data-analysis-and-visualization&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Tidy Data Analysis and Visualization&lt;/h2&gt;
-&lt;p&gt;There is an emerging way of data analysis in R which old-school users might mistakenly ignore: the &lt;code&gt;tidy&lt;/code&gt; way. It had such an impact on the community, that it made R cool again. It’s not without a flaw, especially when talking about production environments and writing packages from scratch, but that’s why we have the right tool for the right job principle. If you can do an analysis using this ecosystem and principles much easier and in a readable, intuitive way.&lt;/p&gt;
+&lt;p&gt;There is an emerging way of data analysis in R which old-school users might mistakenly ignore: the &lt;code&gt;tidy&lt;/code&gt; way.&lt;a href=&#34;#fn8&#34; class=&#34;footnoteRef&#34; id=&#34;fnref8&#34;&gt;&lt;sup&gt;8&lt;/sup&gt;&lt;/a&gt; It had such an impact on the community, that it made R cool again. It’s not without a flaw, especially when talking about production environments and writing packages from scratch, but that’s why we have the right tool for the right job principle. If you can do an analysis using this ecosystem and principles much easier and in a readable, intuitive way.&lt;/p&gt;
 &lt;p&gt;For R novices, a simple advice is that everything you see is an object and everything that does something is a function. The second thing is that the power of R lies in vectorisation, done behind the scenes by extremely fast libraries. Of course there are cases when you might use a for loop and it will be a good solution, but for the most purposes it isn’t, so pay a close attention to the functions in &lt;code&gt;*apply&lt;/code&gt; family.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;a-tutorial-on-metropolitan-area-housing&#34; class=&#34;section level2&#34;&gt;
@@ -91,7 +91,11 @@ df %&amp;gt;%
   theme_minimal() + 
   labs(title = &amp;quot;Hyperbolic Absolute Risk Aversion function&amp;quot;, 
        subtitle = glue(&amp;quot;with hyperparameters a = {a}, b = {b}&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-11-01-r-tutorial-behavioral-economics_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt; &lt;!--  
+&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-11-01-r-tutorial-behavioral-economics_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a-tutorial-on-analysis-of-returns-and-investment-decisions&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;A tutorial on Analysis of Returns and Investment Decisions&lt;/h2&gt;
+&lt;!--  
 ## How to grow as an R programmer
 
 * Learn the basics and the particular way of doing things in R
@@ -107,12 +111,19 @@ df %&amp;gt;%
 * Reading RJournal
 * Alocate time to go though vignettes of interest to your field of study
 * Design an architecture of packages for a given application
---&gt;&lt;/p&gt;
+--&gt;
 &lt;/div&gt;
 &lt;div class=&#34;footnotes&#34;&gt;
 &lt;hr /&gt;
 &lt;ol&gt;
 &lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Especially with all the hype surrounding Deep Learning and Python, frameworks like Tensorflow&lt;a href=&#34;#fnref1&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Replication_crisis&#34; class=&#34;uri&#34;&gt;https://en.wikipedia.org/wiki/Replication_crisis&lt;/a&gt;&lt;a href=&#34;#fnref2&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn3&#34;&gt;&lt;p&gt;&lt;a href=&#34;https://distill.pub/&#34; class=&#34;uri&#34;&gt;https://distill.pub/&lt;/a&gt;&lt;a href=&#34;#fnref3&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn4&#34;&gt;&lt;p&gt;On using Rmarkdown &lt;a href=&#34;https://www.youtube.com/watch?v=DNS7i2m4sB0&#34; class=&#34;uri&#34;&gt;https://www.youtube.com/watch?v=DNS7i2m4sB0&lt;/a&gt;&lt;a href=&#34;#fnref4&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn5&#34;&gt;&lt;p&gt;Rstudio github integration: &lt;a href=&#34;http://www.datasurg.net/2015/07/13/rstudio-and-github/&#34; class=&#34;uri&#34;&gt;http://www.datasurg.net/2015/07/13/rstudio-and-github/&lt;/a&gt;&lt;a href=&#34;#fnref5&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn6&#34;&gt;&lt;p&gt;Columbia University stats course: &lt;a href=&#34;https://courses.edx.org/courses/course-v1:ColumbiaX+DS101X+1T2016/course/&#34; class=&#34;uri&#34;&gt;https://courses.edx.org/courses/course-v1:ColumbiaX+DS101X+1T2016/course/&lt;/a&gt;&lt;a href=&#34;#fnref6&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn7&#34;&gt;&lt;p&gt;An intro to Docker: &lt;a href=&#34;https://www.youtube.com/watch?v=NBrQbkZ3Lzw&amp;amp;t=2177s&#34; class=&#34;uri&#34;&gt;https://www.youtube.com/watch?v=NBrQbkZ3Lzw&amp;amp;t=2177s&lt;/a&gt;&lt;a href=&#34;#fnref7&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn8&#34;&gt;&lt;p&gt;A playlist on the tidyverse &lt;a href=&#34;https://www.youtube.com/watch?v=K-ss_ag2k9E&amp;amp;list=PLNtpLD4WiWbw9Cgcg6IU75u-44TrrN3A4&#34; class=&#34;uri&#34;&gt;https://www.youtube.com/watch?v=K-ss_ag2k9E&amp;amp;list=PLNtpLD4WiWbw9Cgcg6IU75u-44TrrN3A4&lt;/a&gt;&lt;a href=&#34;#fnref8&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
 </description>

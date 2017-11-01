@@ -15,7 +15,7 @@ output:
   
 ## Towards Reproducible Research in R
   
-  The crisis of reproducibility is a hot topic right now in different fields. There are many great meta-studies on this topic, but my goal is very modest modest here: to suggest simple techniques that will help improve the reproducibility and transparency of the research. By making the source code freely available and reproducible we reduce the "research debt", making the progress a lot faster by involving people that have the curiosity to reproduce and improve on exsiting research. 
+  The replication crisis^[https://en.wikipedia.org/wiki/Replication_crisis] is a hot topic right now in different fields. There are many great meta-studies on this topic, but my goal is very modest modest here: to suggest simple techniques that will help improve the reproducibility and transparency of the research. By making the source code freely available and reproducible we reduce the "research debt"^[https://distill.pub/], making the progress a lot faster by involving people that have the curiosity to reproduce and improve on exsiting research. 
   
 It has three main components and R does have nice solutions:
 
@@ -23,16 +23,16 @@ It has three main components and R does have nice solutions:
   * Data and Analysis
   * But it works on my machine: Keeping the environment consistent
   
-  First, we can use `Rmarkdown` to combine the content, code and outputs rendered in a single pdf document or html page, which can be easily published on the web using a static page generator like Hugo/Jekyll. Second, using a code versioning tool like Git is a no-brainer, even if you're working alone. It has nice integrations with RStudio and it will save the future you a lot of time. 
+  First, we can use `Rmarkdown`^[On using Rmarkdown https://www.youtube.com/watch?v=DNS7i2m4sB0] to combine the content, code and outputs rendered in a single pdf document or html page, which can be easily published on the web using a static page generator like Hugo/Jekyll. Second, using a code versioning tool like Git^[Rstudio github integration: http://www.datasurg.net/2015/07/13/rstudio-and-github/] is a no-brainer, even if you're working alone. It has nice integrations with RStudio and it will save the future you a lot of time. 
 
-  What cannot be solved by packages alone, should be obtained as a result of a rigurous statistical methodology, combined with a quality, clean code. It requires a lot of discipline amid seemingly endless possibilities of R. 
+  What cannot be solved by packages alone, should be obtained as a result of a rigurous statistical methodology^[Columbia University stats course: https://courses.edx.org/courses/course-v1:ColumbiaX+DS101X+1T2016/course/], combined with a quality, clean code. It requires a lot of discipline amid seemingly endless possibilities of R. 
   
-  The third key element to reproducibility is also very challenging. The hot solution right now is using `Docker Containers`, which are lightweight, immutable and disposable, providing necessary libraries, binaries and OS components to run the analysis. They should be viewed more like a process, than a virtual machine which is started from an image (remember .iso). It saves a lot of time and effort trying to install all the packages manually, dealing with versioning issues and so on. Imagine some of the harder to install setups for Bayesian Analysis, involving STAN or JAGS are taken care of by somebody else, so you can focus on really important things like improving the method, the quality, robustness and generality of the code.
+  The third key element to reproducibility is also very challenging. The hot solution right now is using `Docker Containers`^[An intro to Docker: https://www.youtube.com/watch?v=NBrQbkZ3Lzw&t=2177s], which are lightweight, immutable and disposable, providing necessary libraries, binaries and OS components to run the analysis. They should be viewed more like a process, than a virtual machine which is started from an image (remember .iso). It saves a lot of time and effort trying to install all the packages manually, dealing with versioning issues and so on. Imagine some of the harder to install setups for Bayesian Analysis, involving STAN or JAGS are taken care of by somebody else, so you can focus on really important things like improving the method, the quality, robustness and generality of the code.
 
 
 ## Tidy Data Analysis and Visualization
 
-  There is an emerging way of data analysis in R which old-school users might mistakenly ignore: the `tidy` way. It had such an impact on the community, that it made R cool again. It's not without a flaw, especially when talking about production environments and writing packages from scratch, but that's why we have the right tool for the right job principle. If you can do an analysis using this ecosystem and principles much easier and in a readable, intuitive way.
+  There is an emerging way of data analysis in R which old-school users might mistakenly ignore: the `tidy` way.^[A playlist on the tidyverse https://www.youtube.com/watch?v=K-ss_ag2k9E&list=PLNtpLD4WiWbw9Cgcg6IU75u-44TrrN3A4] It had such an impact on the community, that it made R cool again. It's not without a flaw, especially when talking about production environments and writing packages from scratch, but that's why we have the right tool for the right job principle. If you can do an analysis using this ecosystem and principles much easier and in a readable, intuitive way.
   
   For R novices, a simple advice is that everything you see is an object and everything that does something is a function. The second thing is that the power of R lies in vectorisation, done behind the scenes by extremely fast libraries. Of course there are cases when you might use a for loop and it will be a good solution, but for the most purposes it isn't, so pay a close attention to the functions in `*apply` family. 
 
@@ -95,6 +95,9 @@ df %>%
   labs(title = "Hyperbolic Absolute Risk Aversion function", 
        subtitle = glue("with hyperparameters a = {a}, b = {b}"))
 ```
+
+## A tutorial on Analysis of Returns and Investment Decisions
+
 <!--  
 ## How to grow as an R programmer
 
