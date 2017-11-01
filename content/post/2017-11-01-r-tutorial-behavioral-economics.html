@@ -12,10 +12,10 @@ output:
 <blockquote>
 <p>Why would R be a great choice for Behavioral Economics labs?</p>
 </blockquote>
-<p>R is a flexible, and in my opinion underrated language for <em>statistical research</em><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, which means it’s specialized and really good at data analysis. It’s a nice match, as in Behavioral Economics we want to look at evidence, analyze and model it in a reproducible fashion. It took me some time to appreciate some of the unconventional methods and techniques of R, the elegance of graphics and data processing. As I believe in using <code>the right tool for the right job</code>, both in modeling and developing data products, learning R paid off.</p>
-<p>Because of the fast-growing open-source community and the ecosystem of R packages, a lot of cutting-edge research is made freely available. Some of these extensions changed in a fundamental way how we analyze data in R. Even though its flexibility allows us to have a lot of solutions to the same problem, we should keep in mind the pitfalls of flexible languages and be rigurous in the way we write our code and do the analysis.</p>
-<div id="towards-a-reproducible-research-in-r" class="section level2">
-<h2>Towards a Reproducible Research in R</h2>
+<p>R is a flexible and in my opinion underrated<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> language for <em>statistical research</em>, which means it’s specialized and really good at data analysis. It’s a nice match, as in Behavioral Economics we want to look at evidence, real choices, analyze and model it in a reproducible fashion. It took me some time to appreciate some of the unconventional methods and techniques of R, the elegance of graphics and data processing. As I believe in using <code>the right tool for the right job</code>, both in modeling and developing data products, learning R paid off.</p>
+<p>Because of the fast-growing open-source community and the ecosystem of R packages, a lot of cutting-edge research is made freely available. Some of these extensions changed in a fundamental way how we analyze data in R. Even though its flexibility allows to have a lot of solutions to the same problem, we should keep in mind the pitfalls of flexible languages and be rigurous in the way we write our code and do the analysis.</p>
+<div id="towards-reproducible-research-in-r" class="section level2">
+<h2>Towards Reproducible Research in R</h2>
 <p>The crisis of reproducibility is a hot topic right now in different fields. There are many great meta-studies on this topic, but my goal is very modest modest here: to suggest simple techniques that will help improve the reproducibility and transparency of the research. By making the source code freely available and reproducible we reduce the “research debt”, making the progress a lot faster by involving people that have the curiosity to reproduce and improve on exsiting research.</p>
 <p>It has three main components and R does have nice solutions:</p>
 <ul>
@@ -34,7 +34,57 @@ output:
 </div>
 <div id="a-tutorial-on-metropolitan-area-housing" class="section level2">
 <h2>A tutorial on Metropolitan Area Housing</h2>
-<!--  
+</div>
+<div id="plotting-theoretical-utility-and-value-functions" class="section level2">
+<h2>Plotting theoretical Utility and Value functions</h2>
+<p>Hyperbolic Absolute Risk Aversion <span class="math display">\[U(x) = \frac{1 - \gamma}{\gamma}\bigg( \frac{ax}{1-\gamma} +b   \bigg) ^ \gamma\]</span> where <span class="math inline">\(a &gt; 0\)</span> and <span class="math inline">\(\frac{ax}{1-\gamma} +b &gt; 0\)</span></p>
+<pre class="r"><code>library(tidyverse) # the ecosystem of data processing tools
+library(tidyr)     # useful for getting the data in short-long formats
+library(reshape2)  # for the function melt (long format data)
+library(glue)      # meaningful plot annotations
+library(assertive) # assertions on the code</code></pre>
+<pre class="r"><code>hara &lt;- function(x, a, b, gamma) {
+  # check that inputs to the function are good
+  # using assetthat package
+  assert_all_are_non_negative(x)
+  assert_all_are_greater_than(x = a * x / (1 - gamma) + b, y = 0)
+  assert_all_are_true(
+    c(    
+      is_positive(a), 
+      is_not_equal_to(a, 0), 
+      is_in_range(gamma, lower = 0, upper = 1)
+      )
+  )
+  
+  # return the function itself
+  return(
+    ((1 - gamma) / gamma) * (a * x / (1 - gamma) + b)^gamma
+  )
+}
+
+# check if the function returns expected values
+# hara(x = 1:20, a = 36, b = 52, gamma = 0.5)
+
+gammas &lt;- c(0.5, 0.4, 0.3, 0.25)
+a &lt;- 36
+b &lt;- 52
+
+# apply the function on using 4 different gamma parameters
+df &lt;- sapply(X = gammas, FUN = hara, x = 0:30,  a = a, b = b) %&gt;% 
+  as_tibble()
+# add the appropriate values to column names
+colnames(df) &lt;- as.character(gammas)
+
+df %&gt;% 
+  mutate(x = 1:nrow(df)) %&gt;% 
+  reshape2::melt(id.vars = &quot;x&quot;) %&gt;% # could use tidyr::gather as an alternative
+  rename(parameter = variable) %&gt;%
+  ggplot(aes(x = x, y = value, color = parameter)) + 
+  geom_line(size = 1) + 
+  theme_minimal() + 
+  labs(title = &quot;Hyperbolic Absolute Risk Aversion function&quot;, 
+       subtitle = glue(&quot;with hyperparameters a = {a}, b = {b}&quot;))</code></pre>
+<p><img src="/post/2017-11-01-r-tutorial-behavioral-economics_files/figure-html/unnamed-chunk-2-1.png" width="672" /> <!--  
 ## How to grow as an R programmer
 
 * Learn the basics and the particular way of doing things in R
@@ -50,8 +100,7 @@ output:
 * Reading RJournal
 * Alocate time to go though vignettes of interest to your field of study
 * Design an architecture of packages for a given application
-  
--->
+--></p>
 </div>
 <div class="footnotes">
 <hr />

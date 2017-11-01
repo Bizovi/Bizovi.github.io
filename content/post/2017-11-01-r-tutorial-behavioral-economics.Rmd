@@ -8,12 +8,12 @@ output:
 ---
 >  Why would R be a great choice for Behavioral Economics labs?
   
-  R is a flexible, and in my opinion underrated language for *statistical research*^[Especially with all the hype surrounding Deep Learning and Python, frameworks like Tensorflow], which means it's specialized and really good at data analysis. It's a nice match, as in Behavioral Economics we want to look at evidence, analyze and model it in a reproducible fashion. It took me some time to appreciate some of the unconventional methods and techniques of R, the elegance of graphics and data processing. As I believe in using `the right tool for the right job`, both in modeling and developing data products, learning R paid off. 
+  R is a flexible and in my opinion underrated^[Especially with all the hype surrounding Deep Learning and Python, frameworks like Tensorflow] language for *statistical research*, which means it's specialized and really good at data analysis. It's a nice match, as in Behavioral Economics we want to look at evidence, real choices, analyze and model it in a reproducible fashion. It took me some time to appreciate some of the unconventional methods and techniques of R, the elegance of graphics and data processing. As I believe in using `the right tool for the right job`, both in modeling and developing data products, learning R paid off. 
   
   
-  Because of the fast-growing open-source community and the ecosystem of R packages, a lot of cutting-edge research is made freely available. Some of these extensions changed in a fundamental way how we analyze data in R. Even though its flexibility allows us to have a lot of solutions to the same problem, we should keep in mind the pitfalls of flexible languages and be rigurous in the way we write our code and do the analysis. 
+  Because of the fast-growing open-source community and the ecosystem of R packages, a lot of cutting-edge research is made freely available. Some of these extensions changed in a fundamental way how we analyze data in R. Even though its flexibility allows to have a lot of solutions to the same problem, we should keep in mind the pitfalls of flexible languages and be rigurous in the way we write our code and do the analysis. 
   
-## Towards a Reproducible Research in R
+## Towards Reproducible Research in R
   
   The crisis of reproducibility is a hot topic right now in different fields. There are many great meta-studies on this topic, but my goal is very modest modest here: to suggest simple techniques that will help improve the reproducibility and transparency of the research. By making the source code freely available and reproducible we reduce the "research debt", making the progress a lot faster by involving people that have the curiosity to reproduce and improve on exsiting research. 
   
@@ -38,7 +38,63 @@ It has three main components and R does have nice solutions:
 
 ## A tutorial on Metropolitan Area Housing
 
+## Plotting theoretical Utility and Value functions
 
+Hyperbolic Absolute Risk Aversion
+$$U(x) = \frac{1 - \gamma}{\gamma}\bigg( \frac{ax}{1-\gamma} +b   \bigg) ^ \gamma$$
+where $a > 0$ and $\frac{ax}{1-\gamma} +b > 0$
+```{r, message = FALSE, warning=FALSE}
+library(tidyverse) # the ecosystem of data processing tools
+library(tidyr)     # useful for getting the data in short-long formats
+library(reshape2)  # for the function melt (long format data)
+library(glue)      # meaningful plot annotations
+library(assertive) # assertions on the code
+```
+
+
+```{r}
+hara <- function(x, a, b, gamma) {
+  # check that inputs to the function are good
+  # using assetthat package
+  assert_all_are_non_negative(x)
+  assert_all_are_greater_than(x = a * x / (1 - gamma) + b, y = 0)
+  assert_all_are_true(
+    c(    
+      is_positive(a), 
+      is_not_equal_to(a, 0), 
+      is_in_range(gamma, lower = 0, upper = 1)
+      )
+  )
+  
+  # return the function itself
+  return(
+    ((1 - gamma) / gamma) * (a * x / (1 - gamma) + b)^gamma
+  )
+}
+
+# check if the function returns expected values
+# hara(x = 1:20, a = 36, b = 52, gamma = 0.5)
+
+gammas <- c(0.5, 0.4, 0.3, 0.25)
+a <- 36
+b <- 52
+
+# apply the function on using 4 different gamma parameters
+df <- sapply(X = gammas, FUN = hara, x = 0:30,  a = a, b = b) %>% 
+  as_tibble()
+# add the appropriate values to column names
+colnames(df) <- as.character(gammas)
+
+df %>% 
+  mutate(x = 1:nrow(df)) %>% 
+  reshape2::melt(id.vars = "x") %>% # could use tidyr::gather as an alternative
+  rename(parameter = variable) %>%
+  ggplot(aes(x = x, y = value, color = parameter)) + 
+  geom_line(size = 1) + 
+  theme_minimal() + 
+  labs(title = "Hyperbolic Absolute Risk Aversion function", 
+       subtitle = glue("with hyperparameters a = {a}, b = {b}"))
+```
 <!--  
 ## How to grow as an R programmer
 
@@ -55,7 +111,6 @@ It has three main components and R does have nice solutions:
 * Reading RJournal
 * Alocate time to go though vignettes of interest to your field of study
 * Design an architecture of packages for a given application
-  
 -->
   
   
