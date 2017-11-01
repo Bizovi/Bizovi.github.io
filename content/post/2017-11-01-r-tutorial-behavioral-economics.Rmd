@@ -32,7 +32,7 @@ It has three main components and R does have nice solutions:
 
 ## Tidy Data Analysis and Visualization
 
-  There is an emerging way of data analysis in R which old-school users might mistakenly ignore: the `tidy` way.^[A playlist on the tidyverse https://www.youtube.com/watch?v=K-ss_ag2k9E&list=PLNtpLD4WiWbw9Cgcg6IU75u-44TrrN3A4] It had such an impact on the community, that it made R cool again. It's not without a flaw, especially when talking about production environments and writing packages from scratch, but that's why we have the right tool for the right job principle. If you can do an analysis using this ecosystem and principles much easier and in a readable, intuitive way.
+  There is an emerging way of data analysis in R which old-school users might mistakenly ignore: the `tidy` way.^[A playlist on the tidyverse https://www.youtube.com/watch?v=K-ss_ag2k9E&list=PLNtpLD4WiWbw9Cgcg6IU75u-44TrrN3A4] It had such an impact on the community, that it made R cool again. It's not without a flaw, especially when talking about production environments and writing packages from scratch, but that's why we have the right tool for the right job principle. If you can do an analysis using this ecosystem and principles much easier and in a readable, intuitive way, why not use the simpler tool.
   
   For R novices, a simple advice is that everything you see is an object and everything that does something is a function. The second thing is that the power of R lies in vectorisation, done behind the scenes by extremely fast libraries. Of course there are cases when you might use a for loop and it will be a good solution, but for the most purposes it isn't, so pay a close attention to the functions in `*apply` family. 
 
