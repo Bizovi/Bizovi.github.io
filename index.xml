@@ -11,6 +11,65 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>R tutorial for Behavioral Economics Class</title>
+      <link>https://bizovi.github.io/post/2017-11-01-r-tutorial-behavioral-economics/</link>
+      <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://bizovi.github.io/post/2017-11-01-r-tutorial-behavioral-economics/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Why would R be a great choice for Behavioral Economics labs?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;R is a flexible, and in my opinion underrated language for &lt;em&gt;statistical research&lt;/em&gt;&lt;a href=&#34;#fn1&#34; class=&#34;footnoteRef&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;, which means it’s specialized and really good at data analysis. It’s a nice match, as in Behavioral Economics we want to look at evidence, analyze and model it in a reproducible fashion. It took me some time to appreciate some of the unconventional methods and techniques of R, the elegance of graphics and data processing. As I believe in using &lt;code&gt;the right tool for the right job&lt;/code&gt;, both in modeling and developing data products, learning R paid off.&lt;/p&gt;
+&lt;p&gt;Because of the fast-growing open-source community and the ecosystem of R packages, a lot of cutting-edge research is made freely available. Some of these extensions changed in a fundamental way how we analyze data in R. Even though its flexibility allows us to have a lot of solutions to the same problem, we should keep in mind the pitfalls of flexible languages and be rigurous in the way we write our code and do the analysis.&lt;/p&gt;
+&lt;div id=&#34;towards-a-reproducible-research-in-r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Towards a Reproducible Research in R&lt;/h2&gt;
+&lt;p&gt;The crisis of reproducibility is a hot topic right now in different fields. There are many great meta-studies on this topic, but my goal is very modest modest here: to suggest simple techniques that will help improve the reproducibility and transparency of the research. By making the source code freely available and reproducible we reduce the “research debt”, making the progress a lot faster by involving people that have the curiosity to reproduce and improve on exsiting research.&lt;/p&gt;
+&lt;p&gt;It has three main components and R does have nice solutions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Code reproducibility and versioning&lt;/li&gt;
+&lt;li&gt;Data and Analysis&lt;/li&gt;
+&lt;li&gt;But it works on my machine: Keeping the environment consistent&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;First, we can use &lt;code&gt;Rmarkdown&lt;/code&gt; to combine the content, code and outputs rendered in a single pdf document or html page, which can be easily published on the web using a static page generator like Hugo/Jekyll. Second, using a code versioning tool like Git is a no-brainer, even if you’re working alone. It has nice integrations with RStudio and it will save the future you a lot of time.&lt;/p&gt;
+&lt;p&gt;What cannot be solved by packages alone, should be obtained as a result of a rigurous statistical methodology, combined with a quality, clean code. It requires a lot of discipline amid seemingly endless possibilities of R.&lt;/p&gt;
+&lt;p&gt;The third key element to reproducibility is also very challenging. The hot solution right now is using &lt;code&gt;Docker Containers&lt;/code&gt;, which are lightweight, immutable and disposable, providing necessary libraries, binaries and OS components to run the analysis. They should be viewed more like a process, than a virtual machine which is started from an image (remember .iso). It saves a lot of time and effort trying to install all the packages manually, dealing with versioning issues and so on. Imagine some of the harder to install setups for Bayesian Analysis, involving STAN or JAGS are taken care of by somebody else, so you can focus on really important things like improving the method, the quality, robustness and generality of the code.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tidy-data-analysis-and-visualization&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Tidy Data Analysis and Visualization&lt;/h2&gt;
+&lt;p&gt;There is an emerging way of data analysis in R which old-school users might mistakenly ignore: the &lt;code&gt;tidy&lt;/code&gt; way. It had such an impact on the community, that it made R cool again. It’s not without a flaw, especially when talking about production environments and writing packages from scratch, but that’s why we have the right tool for the right job principle. If you can do an analysis using this ecosystem and principles much easier and in a readable, intuitive way.&lt;/p&gt;
+&lt;p&gt;For R novices, a simple advice is that everything you see is an object and everything that does something is a function. The second thing is that the power of R lies in vectorisation, done behind the scenes by extremely fast libraries. Of course there are cases when you might use a for loop and it will be a good solution, but for the most purposes it isn’t, so pay a close attention to the functions in &lt;code&gt;*apply&lt;/code&gt; family.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a-tutorial-on-metropolitan-area-housing&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;A tutorial on Metropolitan Area Housing&lt;/h2&gt;
+&lt;!--  
+## How to grow as an R programmer
+
+* Learn the basics and the particular way of doing things in R
+* Try to apply best practices of clean code, versioning and tools used
+* Practice a lot in data cleanup, processing, visualization and modeling
+* Develop Shiny Apps
+* Develop an R package
+* Automated Testing of your code
+* Using Docker Containers
+* Implementing Machine Learning Pipelines in Production Environment
+* Taking R to the limit 
+* Use R with C++/Fortran routines, for customly developed algorithms
+* Reading RJournal
+* Alocate time to go though vignettes of interest to your field of study
+* Design an architecture of packages for a given application
+  
+--&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Especially with all the hype surrounding Deep Learning and Python, frameworks like Tensorflow&lt;a href=&#34;#fnref1&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Stochastic Modeling and Bayesian Inference. Part I</title>
       <link>https://bizovi.github.io/post/stochastic/</link>
       <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
@@ -23,29 +82,29 @@
 — Richard Feynman &lt;em&gt;The pleasure of finding things out&lt;/em&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;The first series of posts gives an overview of the probabilistic perspective on Machine Learning &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:Bizovi-Mihai-Sto&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:Bizovi-Mihai-Sto&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;, a flexible and adaptive approach which can be used in modeling complex phenomena. This allows the development of models for specific applications, in contrast with a toolkit view of Machine Learning.&lt;/p&gt;
+&lt;p&gt;The first series of posts gives an overview of the probabilistic perspective on Machine Learning &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:Bizovi-Mihai-Sto&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:Bizovi-Mihai-Sto&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;, a flexible and adaptive approach which can be used in modeling complex phenomena. This allows the development of models for specific applications, in contrast with a toolkit view of the Machine Learning.&lt;/p&gt;
 
 &lt;h3 id=&#34;the-need-for-stochastic-modeling-and-bayesian-thinking&#34;&gt;The need for stochastic modeling and Bayesian thinking&lt;/h3&gt;
 
 &lt;p&gt;Current challenges in economics need an interdisciplinary, multidimensional approach and different perspectives. In order to have more powerful models in our toolbox, we&amp;rsquo;ll investigate statistical modeling based on three schools of thought: Stochastic Modeling, Machine Learning and Bayesian Analysis, which has applications from economics and finance to genetics, linguistics and artificial intelligence.&lt;/p&gt;
 
-&lt;p&gt;This approach is extremely general and allows us to make inferences about latent quantitites and relationships, to identify what is hidden beneath appearance, to account for the uncertainty and nonlinearities of economic phenomena. The idea of learning from data, flexibility of representing uncertainty and the parsimonity principle leads to adaptive and robust modeling, able to capture non-trivial aspects of the problem. The focus will be very much on models and a deep understanding of concepts on which they&amp;rsquo;re built.&lt;/p&gt;
+&lt;p&gt;This approach is extremely general and allows us to make inferences about latent quantities and relationships, to identify what is hidden beneath appearance, to account for the uncertainty and nonlinearities of economic phenomena. The idea of learning from data, flexibility of representing uncertainty and the parsimony principle leads to adaptive and robust modeling, able to capture non-trivial aspects of the problem. The focus will be very much on models and a deep understanding of concepts on which they&amp;rsquo;re built.&lt;/p&gt;
 
 &lt;p&gt;The ugly truth is that humans are not good at prediction, neither consistent with probability theory. We are &amp;ldquo;suffering&amp;rdquo; from multiple evolutionary mechanisms, cognitive biases and even statisticians, formally trained in the language of uncertainty, aren&amp;rsquo;t guarded against pitfalls that arise in practice and everyday life.&lt;/p&gt;
 
-&lt;p&gt;The same story is in reconciliation of new evidence with prior beliefs, processing multidimensional data, ignorance of feedback loops and dynamics. The reason we are building models is to better understand the world, phenomena aroud us and in the end to improve our mental representations. Predictions that are less wrong usually take into account a variety of perspectives, a proven fact in ensemble modeling.&lt;/p&gt;
+&lt;p&gt;The same story is in reconciliation of new evidence with prior beliefs, processing multidimensional data, ignorance of feedback loops and dynamics. The reason we are building models is to better understand the world, phenomena around us and in the end to improve our mental representations. Predictions that are less wrong usually take into account a variety of perspectives, a proven fact in ensemble modeling.&lt;/p&gt;
 
 &lt;h3 id=&#34;three-perspectives&#34;&gt;Three perspectives&lt;/h3&gt;
 
 &lt;p&gt;Machine learning models have become an essential part of online services and is taking over new fields, bringing firms and people lots of value. The multidimensional approach is what makes it all this possible. In contrast with classical stats and NHST (Null Hypothesis Significance Testing), our focus will be on generalization performance and the idea of a model. Even though these models have their roots in statistics, the field can be viewed in its own right.&lt;/p&gt;
 
-&lt;p&gt;An important extension for which there is an acute need is dynamical models. A lot of interesting problems are multidimensional time series, which might invalidate the hypotheses behid classical data mining models. Coupled with the need of accounting for uncertainty, this brings us to the idea of introducing &lt;strong&gt;stochastic&lt;/strong&gt; elements and to extend the idea of &lt;strong&gt;learning&lt;/strong&gt; and &lt;strong&gt;generalization&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;An important extension for which there is an acute need is dynamical models. A lot of interesting problems are multidimensional time series, which might invalidate the hypotheses behind classical data mining models. Coupled with the need of accounting for uncertainty, this brings us to the idea of introducing &lt;strong&gt;stochastic&lt;/strong&gt; elements and to extend the idea of &lt;strong&gt;learning&lt;/strong&gt; and &lt;strong&gt;generalization&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;The third perspective which brings together stochastic elements with machine learning is &lt;em&gt;bayesian inference&lt;/em&gt;, as a method to update beliefs and knowledge based on data from different sources. Bayesian modeling enables us to build hierarchical models with latent structures, while encoding the uncertainty in parameters and operating with probability distributions. On the shoulders of these three &amp;ldquo;giants&amp;rdquo;, a stochastic perspective over Machine Learning emerges over the last two decades, which is flexible, general and more transparent than neural networks, works on thin data.&lt;/p&gt;
 
 &lt;p&gt;There are several reasons the field is not yet in the mainstream: scalability and complexity of the models, in the sense of necessary knowledge and skill to start modeling. Once the software implementations, approximation methods and probabilistic programming languages will become better, the Bayesian methods will see another rise in popularity.&lt;/p&gt;
 
-&lt;p&gt;The next posts will be dedicated to each of these fundamental perspectives, in which we&amp;rsquo;ll try to get to the essence. The last ones from this series will be on supervised and usupervised probabilistic models such as Gaussian Processes and Mixture Models. An essential concept will be the ARD (Automatic Relevance Determination) and Kernels which encourage sparse solutions.&lt;/p&gt;
+&lt;p&gt;The next posts will be dedicated to each of these fundamental perspectives, in which we&amp;rsquo;ll try to get to the essence. The last ones from this series will be on supervised and unsupervised probabilistic models such as Gaussian Processes and Mixture Models. An essential concept will be the ARD (Automatic Relevance Determination) and Kernels which encourage sparse solutions.&lt;/p&gt;
 
 &lt;h3 id=&#34;the-goal&#34;&gt;The goal&lt;/h3&gt;
 
@@ -55,7 +114,7 @@
 
 &lt;p&gt;This approach is extremely powerful, intellectually fascinating and vibrant. It is also in the spirit of economic complexity, with ideas which bridge together different branches in data analysis. The catch is, that there are enormous barriers for beginners to start developing such models. First, a qualitative jump in understanding of probability theory and stochastic processes, bayesian inference and theory of statistical learning is needed. Another barrier is how to go from understanding the models towards the implementation in actual software products.&lt;/p&gt;
 
-&lt;p&gt;So, the main goal is to find connections between the three perspectives described before, to recognize bayesian generalizations of classical machine learning models. The most important is the process of exploration and understanding, internalization of models, which will suggest new areas of study and practical opportunities, like learning STAN and improving R modeling skills.&lt;/p&gt;
+&lt;p&gt;So, the main goal is to find connections between the three perspectives described before, to recognize Bayesian generalizations of classical machine learning models. The most important is the process of exploration and understanding, internalization of models, which will suggest new areas of study and practical opportunities, like learning STAN and improving R modeling skills.&lt;/p&gt;
 &lt;div class=&#34;footnotes&#34;&gt;
 
 &lt;hr /&gt;

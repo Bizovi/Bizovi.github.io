@@ -12,8 +12,8 @@ weight = 1
 # List your academic interests.
 [interests]
   interests = [
-    "Machine Learning: GAMM, Kernels and Learning Mechanisms",
-    "Bayesian Statistics: Gaussian Processes, Bayesian Nonparametrics",
+    "Machine Learning: Theory of Statistical Learning",
+    "Bayesian Statistics and Nonparametrics",
     "R: Shiny, Markdown, LaTeX, Tidyverse",
     "Python",
     "Reproducible Research",
@@ -50,12 +50,12 @@ weight = 1
 
 Hi everybody! This blog is about things I'm passionate about. I can hardly imagine myself in a place of narrow specialization and the exploration of connections between fields brings me a lot of joy.^[... but no problem is too small if you can help to solve it (thank you, Mr. Feynman)] I love writing about economics, solving business problems with statistical models and programming in R.
 
-My hobby is thinking about how can we improve economic models, and perhaps the answer is to step outside the field, gather new tools and inspiration from Complexity Science. Machine Learning and Bayesian Models give us very general classes of models which we could use. As Machine Learning is overcoming challenges which seemed impossible before, I hope the Data Geeks will take over economics as well! ^[ [Data Geeks are taking over economics](https://www.bloomberg.com/view/articles/2016-08-25/data-geeks-are-taking-over-economics)]
+My hobby is thinking about how can we improve economic models, and perhaps the answer is to step outside the field, gather new tools and inspiration from Complexity Science. Machine Learning and Bayesian Analysis give us very general classes of models which we could use. As Machine Learning is overcoming challenges which seemed impossible before, I hope the Data Geeks will take over economics as well! ^[ [Data Geeks are taking over economics](https://www.bloomberg.com/view/articles/2016-08-25/data-geeks-are-taking-over-economics)]
 
 ### Fun Facts
   Quiet until you get to know me, former professional chess player, love landscape photography, wide range of music: from Regina Spektor to SOAD.
 
-`Collaborators: dr. prof. Ruxanda Gheorghe, Jumanazar Gurbanov`
+`Collaborators: Dr. Ruxanda Gheorghe, Dr. Iulian Cimpean, Jumanazar Gurbanov`
 
 
 

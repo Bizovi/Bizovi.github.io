@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Data Analysis &amp; Economic Cybernetics</title>
+    <link>/categories/r/</link>
+    <description>Recent content in R on Data Analysis &amp; Economic Cybernetics</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Bizovi Mihai</copyright>
+    <lastBuildDate>Thu, 19 Oct 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/categories/r/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>R tutorial for Behavioral</title>
+      <link>/post/2017-10-19-/</link>
+      <pubDate>Thu, 19 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2017-10-19-/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
