@@ -11,45 +11,34 @@
     <atom:link href="/post/" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>R tutorial for Behavioral Economics Class</title>
-      <link>https://bizovi.github.io/post/2017-11-01-r-tutorial-behavioral-economics/</link>
-      <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
+      <title>R Tutorials for Behavioral Economics Class</title>
+      <link>https://bizovi.github.io/post/2017-11-18-r-tutorial-behavioral-economics-2/</link>
+      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/post/2017-11-01-r-tutorial-behavioral-economics/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;Why would R be a great choice for Behavioral Economics labs?&lt;/p&gt;
+      <guid>https://bizovi.github.io/post/2017-11-18-r-tutorial-behavioral-economics-2/</guid>
+      <description>&lt;p&gt;In the last blog post I took a bird’s eye (personal) perspective of R programming and suggested not to be discouraged by early encounters with this seemingly weird language. The conclusion was that by following “the right tool for the right job” principle, R is a great language for statistical research and the ecosystem of packages improves the data analysis workflow and gives the modeler more tools to extract insights from data.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What is the link to Behavioral Economics? R will be used (in class) as a tool for exploring domain-specific data in order to make informed decisions, fitting different kinds of models and validating the intuition from readings like Tversky &amp;amp; Kahneman, Thaler on real data.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;R is a flexible and in my opinion underrated&lt;a href=&#34;#fn1&#34; class=&#34;footnoteRef&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; language for &lt;em&gt;statistical research&lt;/em&gt;, which means it’s specialized and really good at data analysis. It’s a nice match, as in Behavioral Economics we want to look at evidence, real choices, analyze and model it in a reproducible fashion. It took me some time to appreciate some of the unconventional methods and techniques of R, the elegance of graphics and data processing. As I believe in using &lt;code&gt;the right tool for the right job&lt;/code&gt;, both in modeling and developing data products, learning R paid off.&lt;/p&gt;
-&lt;p&gt;Because of the fast-growing open-source community and the ecosystem of R packages, a lot of cutting-edge research is made freely available. Some of these extensions changed in a fundamental way how we analyze data in R. Even though its flexibility allows to have a lot of solutions to the same problem, we should keep in mind the pitfalls of flexible languages and be rigurous in the way we write our code and do the analysis.&lt;/p&gt;
-&lt;div id=&#34;towards-reproducible-research-in-r&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Towards Reproducible Research in R&lt;/h2&gt;
-&lt;p&gt;The replication crisis&lt;a href=&#34;#fn2&#34; class=&#34;footnoteRef&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt; is a hot topic right now in different fields. There are many great meta-studies on this topic, but my goal is very modest modest here: to suggest simple techniques that will help improve the reproducibility and transparency of the research. By making the source code freely available and reproducible we reduce the “research debt”&lt;a href=&#34;#fn3&#34; class=&#34;footnoteRef&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt;, making the progress a lot faster by involving people that have the curiosity to reproduce and improve on exsiting research.&lt;/p&gt;
-&lt;p&gt;It has three main components and R does have nice solutions:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Code reproducibility and versioning&lt;/li&gt;
-&lt;li&gt;Data and Analysis&lt;/li&gt;
-&lt;li&gt;But it works on my machine: Keeping the environment consistent&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;First, we can use &lt;code&gt;Rmarkdown&lt;/code&gt;&lt;a href=&#34;#fn4&#34; class=&#34;footnoteRef&#34; id=&#34;fnref4&#34;&gt;&lt;sup&gt;4&lt;/sup&gt;&lt;/a&gt; to combine the content, code and outputs rendered in a single pdf document or html page, which can be easily published on the web using a static page generator like Hugo/Jekyll. Second, using a code versioning tool like Git&lt;a href=&#34;#fn5&#34; class=&#34;footnoteRef&#34; id=&#34;fnref5&#34;&gt;&lt;sup&gt;5&lt;/sup&gt;&lt;/a&gt; is a no-brainer, even if you’re working alone. It has nice integrations with RStudio and it will save the future you a lot of time.&lt;/p&gt;
-&lt;p&gt;What cannot be solved by packages alone, should be obtained as a result of a rigurous statistical methodology&lt;a href=&#34;#fn6&#34; class=&#34;footnoteRef&#34; id=&#34;fnref6&#34;&gt;&lt;sup&gt;6&lt;/sup&gt;&lt;/a&gt;, combined with a quality, clean code. It requires a lot of discipline amid seemingly endless possibilities of R.&lt;/p&gt;
-&lt;p&gt;The third key element to reproducibility is also very challenging. The hot solution right now is using &lt;code&gt;Docker Containers&lt;/code&gt;&lt;a href=&#34;#fn7&#34; class=&#34;footnoteRef&#34; id=&#34;fnref7&#34;&gt;&lt;sup&gt;7&lt;/sup&gt;&lt;/a&gt;, which are lightweight, immutable and disposable, providing necessary libraries, binaries and OS components to run the analysis. They should be viewed more like a process, than a virtual machine which is started from an image (remember .iso). It saves a lot of time and effort trying to install all the packages manually, dealing with versioning issues and so on. Imagine some of the harder to install setups for Bayesian Analysis, involving STAN or JAGS are taken care of by somebody else, so you can focus on really important things like improving the method, the quality, robustness and generality of the code.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;tidy-data-analysis-and-visualization&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Tidy Data Analysis and Visualization&lt;/h2&gt;
-&lt;p&gt;There is an emerging way of data analysis in R which old-school users might mistakenly ignore: the &lt;code&gt;tidy&lt;/code&gt; way.&lt;a href=&#34;#fn8&#34; class=&#34;footnoteRef&#34; id=&#34;fnref8&#34;&gt;&lt;sup&gt;8&lt;/sup&gt;&lt;/a&gt; It had such an impact on the community, that it made R cool again. It’s not without a flaw, especially when talking about production environments and writing packages from scratch, but that’s why we have the right tool for the right job principle. If you can do an analysis using this ecosystem and principles much easier and in a readable, intuitive way, why not use the simpler tool.&lt;/p&gt;
-&lt;p&gt;For R novices, a simple advice is that everything you see is an object and everything that does something is a function. The second thing is that the power of R lies in vectorisation, done behind the scenes by extremely fast libraries. Of course there are cases when you might use a for loop and it will be a good solution, but for the most purposes it isn’t, so pay a close attention to the functions in &lt;code&gt;*apply&lt;/code&gt; family.&lt;/p&gt;
-&lt;/div&gt;
 &lt;div id=&#34;a-tutorial-on-metropolitan-area-housing&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;A tutorial on Metropolitan Area Housing&lt;/h2&gt;
 &lt;/div&gt;
 &lt;div id=&#34;plotting-theoretical-utility-and-value-functions&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Plotting theoretical Utility and Value functions&lt;/h2&gt;
-&lt;p&gt;Hyperbolic Absolute Risk Aversion &lt;span class=&#34;math display&#34;&gt;\[U(x) = \frac{1 - \gamma}{\gamma}\bigg( \frac{ax}{1-\gamma} +b   \bigg) ^ \gamma\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(a &amp;gt; 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\frac{ax}{1-\gamma} +b &amp;gt; 0\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Hyperbolic Absolute Risk Aversion (Linear Risk Tolerance) is a class of utility functions, that can easily describe the particular cases of Constant Absolute Risk Aversion (CARA) and Constant Relative Risk Aversion (CRRA). &lt;span class=&#34;math display&#34;&gt;\[U(x;\gamma,a,b) = \frac{1 - \gamma}{\gamma}\bigg( \frac{ax}{1-\gamma} +b   \bigg) ^ \gamma\]&lt;/span&gt; It is designed in such a way that the risk tolerance is linear &lt;span class=&#34;math display&#34;&gt;\[\tau(x)=-\frac{U&amp;#39;(x)}{U&amp;#39;&amp;#39;(x)} = \frac{1}{1-\gamma}x + 
+\frac{b}{a}
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(a &amp;gt; 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\frac{ax}{1-\gamma} + b &amp;gt; 0\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The function tends to logarithmic if gamma tends to zero (by L’Hopital rule) and linear when goes to one. &lt;span class=&#34;math display&#34;&gt;\[U(x) \xrightarrow[\gamma \to 0]{} log(ax+b)\]&lt;/span&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse) # the ecosystem of data processing tools
 library(tidyr)     # useful for getting the data in short-long formats
 library(reshape2)  # for the function melt (long format data)
-library(glue)      # meaningful plot annotations
-library(assertive) # assertions on the code&lt;/code&gt;&lt;/pre&gt;
+library(glue)      # string formatting
+library(assertive) # assertions (active tests)
+library(ochRe)     # stunning color palettes&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The reason we’re going to overkill a simple plotting of HARA utility function is to showcase some important R concepts.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;First, we test user inputs via the &lt;code&gt;assertthat&lt;/code&gt; package, which is a first step moving from manual validation to more automated methods of code testing. This doesn’t kick in when doing an exploratory analysis, but hopefully when starting to build Packages, learning how to test code in R&lt;a href=&#34;#fn1&#34; class=&#34;footnoteRef&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; will pay off.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hara &amp;lt;- function(x, a, b, gamma) {
   # check that inputs to the function are good
   # using assetthat package
@@ -67,63 +56,100 @@ library(assertive) # assertions on the code&lt;/code&gt;&lt;/pre&gt;
   return(
     ((1 - gamma) / gamma) * (a * x / (1 - gamma) + b)^gamma
   )
-}
-
-# check if the function returns expected values
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Second, we want to run the function a number of times by varying a parameter. The first idea of would be to write a for loop, but there is a more elegant way. The apply family of functions allows to run a function on elements of objects like lists. In this particular case I used a &lt;code&gt;sapply&lt;/code&gt; function which returns a data frame with a column for values of function given a parameter.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# check if the function returns expected values
 # hara(x = 1:20, a = 36, b = 52, gamma = 0.5)
 
-gammas &amp;lt;- c(0.5, 0.4, 0.3, 0.25)
-a &amp;lt;- 36
-b &amp;lt;- 52
+gammas &amp;lt;- c(0.5, 0.4, 0.3, 0.25, 0.1)
+a &amp;lt;- 36 # the functions start to look more linear as a is small
+b &amp;lt;- 52 
 
 # apply the function on using 4 different gamma parameters
 df &amp;lt;- sapply(X = gammas, FUN = hara, x = 0:30,  a = a, b = b) %&amp;gt;% 
   as_tibble()
 # add the appropriate values to column names
-colnames(df) &amp;lt;- as.character(gammas)
-
-df %&amp;gt;% 
+colnames(df) &amp;lt;- as.character(gammas)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Third, we use the tidy way of data processing by heavily relying on the pipe operator &lt;code&gt;%&amp;gt;%&lt;/code&gt;, which passes an output of a function or an object to the next one. This makes the code much more readable and shows its power in Exploratory Data Analysis. The concept of Tidy Data&lt;a href=&#34;#fn2&#34; class=&#34;footnoteRef&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt; is inspired from relational databases and in order to use R eficiently one needs to understand the use-cases for long and wide data formats, what classifies as tidy.&lt;/p&gt;
+&lt;p&gt;The fourth point is that using &lt;code&gt;ggplot2&lt;/code&gt; as the go-to visualization tool is not harder or more advanced, but simpler! Once you understand the &lt;code&gt;grammar of graphics&lt;/code&gt;&lt;a href=&#34;#fn3&#34; class=&#34;footnoteRef&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt; you get an incredibly general tool for data visualization, in which you can do stunning graphs with very little effort once you get the data into the right format.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% 
   mutate(x = 1:nrow(df)) %&amp;gt;% 
   reshape2::melt(id.vars = &amp;quot;x&amp;quot;) %&amp;gt;% # could use tidyr::gather as an alternative
-  rename(parameter = variable) %&amp;gt;%
-  ggplot(aes(x = x, y = value, color = parameter)) + 
+  rename(gamma = variable) %&amp;gt;%
+  ggplot(aes(x = x, y = value, color = gamma)) + 
   geom_line(size = 1) + 
   theme_minimal() + 
   labs(title = &amp;quot;Hyperbolic Absolute Risk Aversion function&amp;quot;, 
-       subtitle = glue(&amp;quot;with hyperparameters a = {a}, b = {b}&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-11-01-r-tutorial-behavioral-economics_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;a-tutorial-on-analysis-of-returns-and-investment-decisions&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;A tutorial on Analysis of Returns and Investment Decisions&lt;/h2&gt;
-&lt;!--  
-## How to grow as an R programmer
-
-* Learn the basics and the particular way of doing things in R
-* Try to apply best practices of clean code, versioning and tools used
-* Practice a lot in data cleanup, processing, visualization and modeling
-* Develop Shiny Apps
-* Develop an R package
-* Automated Testing of your code
-* Using Docker Containers
-* Implementing Machine Learning Pipelines in Production Environment
-* Taking R to the limit 
-* Use R with C++/Fortran routines, for customly developed algorithms
-* Reading RJournal
-* Alocate time to go though vignettes of interest to your field of study
-* Design an architecture of packages for a given application
---&gt;
+       subtitle = glue(&amp;quot;with hyperparameters a = {a}, b = {b}&amp;quot;)) + 
+  scale_color_ochre(palette = &amp;quot;nolan_ned&amp;quot;) # if you feel fancy today&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-11-18-r-tutorial-behavioral-economics-2_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Explain what is a color palette and why is it useful&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&#34;footnotes&#34;&gt;
 &lt;hr /&gt;
 &lt;ol&gt;
-&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Especially with all the hype surrounding Deep Learning and Python, frameworks like Tensorflow&lt;a href=&#34;#fnref1&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Replication_crisis&#34; class=&#34;uri&#34;&gt;https://en.wikipedia.org/wiki/Replication_crisis&lt;/a&gt;&lt;a href=&#34;#fnref2&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li id=&#34;fn3&#34;&gt;&lt;p&gt;&lt;a href=&#34;https://distill.pub/&#34; class=&#34;uri&#34;&gt;https://distill.pub/&lt;/a&gt;&lt;a href=&#34;#fnref3&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li id=&#34;fn4&#34;&gt;&lt;p&gt;On using Rmarkdown &lt;a href=&#34;https://www.youtube.com/watch?v=DNS7i2m4sB0&#34; class=&#34;uri&#34;&gt;https://www.youtube.com/watch?v=DNS7i2m4sB0&lt;/a&gt;&lt;a href=&#34;#fnref4&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li id=&#34;fn5&#34;&gt;&lt;p&gt;Rstudio github integration: &lt;a href=&#34;http://www.datasurg.net/2015/07/13/rstudio-and-github/&#34; class=&#34;uri&#34;&gt;http://www.datasurg.net/2015/07/13/rstudio-and-github/&lt;/a&gt;&lt;a href=&#34;#fnref5&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li id=&#34;fn6&#34;&gt;&lt;p&gt;Columbia University stats course: &lt;a href=&#34;https://courses.edx.org/courses/course-v1:ColumbiaX+DS101X+1T2016/course/&#34; class=&#34;uri&#34;&gt;https://courses.edx.org/courses/course-v1:ColumbiaX+DS101X+1T2016/course/&lt;/a&gt;&lt;a href=&#34;#fnref6&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li id=&#34;fn7&#34;&gt;&lt;p&gt;An intro to Docker: &lt;a href=&#34;https://www.youtube.com/watch?v=NBrQbkZ3Lzw&amp;amp;t=2177s&#34; class=&#34;uri&#34;&gt;https://www.youtube.com/watch?v=NBrQbkZ3Lzw&amp;amp;t=2177s&lt;/a&gt;&lt;a href=&#34;#fnref7&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li id=&#34;fn8&#34;&gt;&lt;p&gt;A playlist on the tidyverse &lt;a href=&#34;https://www.youtube.com/watch?v=K-ss_ag2k9E&amp;amp;list=PLNtpLD4WiWbw9Cgcg6IU75u-44TrrN3A4&#34; class=&#34;uri&#34;&gt;https://www.youtube.com/watch?v=K-ss_ag2k9E&amp;amp;list=PLNtpLD4WiWbw9Cgcg6IU75u-44TrrN3A4&lt;/a&gt;&lt;a href=&#34;#fnref8&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Testing R Code &lt;a href=&#34;http://r-pkgs.had.co.nz/tests.html&#34; class=&#34;uri&#34;&gt;http://r-pkgs.had.co.nz/tests.html&lt;/a&gt;&lt;a href=&#34;#fnref1&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;Hadley Wickham’s R for Data Science &lt;a href=&#34;http://r4ds.had.co.nz/&#34; class=&#34;uri&#34;&gt;http://r4ds.had.co.nz/&lt;/a&gt;&lt;a href=&#34;#fnref2&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn3&#34;&gt;&lt;p&gt;Paper on the grammar of Graphics &lt;a href=&#34;http://byrneslab.net/classes/biol607/readings/wickham_layered-grammar.pdf&#34; class=&#34;uri&#34;&gt;http://byrneslab.net/classes/biol607/readings/wickham_layered-grammar.pdf&lt;/a&gt;&lt;a href=&#34;#fnref3&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>R Programming. The big picture</title>
+      <link>https://bizovi.github.io/post/2017-11-01-r-tutorial-behavioral-economics/</link>
+      <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://bizovi.github.io/post/2017-11-01-r-tutorial-behavioral-economics/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;I wish somebody showed me the real power of R earlier and explained the big picture&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This is not an usual tutorial on R, my goal being to make you aware and curious about various topics related to Data Analysis in R, which I learned the hard way during a year of nearly daily use. It is not supposed to be easy or have a particular application in mind, but rather to suggest many possibilities. Also, even though this was originally written for a Behavioral Economics class, I’ll be speaking from a Data Scientist’s perspective and often drift away and not get in too much details, preferring to provide great (external) resources for learning.&lt;/p&gt;
+&lt;div id=&#34;a-personal-encouter-with-r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;A personal encouter with R&lt;/h2&gt;
+&lt;p&gt;First, a few words on how I decided to choose R as my go-to language. Stepping back, my first encounter with scientific computing was Nathan Kutz’s brilliant course on &lt;code&gt;Mathematical Methods for Data Analysis&lt;/code&gt;, emphasizing that we’d be doing well if we were MATLAB superstars. Another motivation for using MATLAB was my passion for the field of economic complexity, which involved nonlinear differential equations and required simulation. I played around with software like Steve Keen’s &lt;code&gt;Minsky&lt;/code&gt; for System Dynamics Models, &lt;code&gt;NetLogo&lt;/code&gt; for Agent-Based Models. This was during a time when I wasn’t thrilled by the teaching of statistics and econometrics, as those (linear, gaussian) models seemed far from satisfactory for explaining complex economic phenomena.&lt;/p&gt;
+&lt;p&gt;The first course in R did not leave the impression that R was a powerful language, but rather weird and potentially useful for statistics. As time passed I shifted completely from Economic Research and criticising Neoclassical Economics towards Machine Learning and Data Science. I decided to learn Python over MATLAB, as it was clear I would probably apply Machine Learning models in a business environment and not in academia. R seemed at the time as a second choice to Python, but I had the chance to discover it a little bit more, especially the &lt;code&gt;John Hopkins R Programming&lt;/code&gt; courses. This led to me finding a lot of great blogs, books and articles by following the experts in R community. The priority then was getting a great theoretical understanding of Learning Theory and Data Science landscape, which brought me back to appreciating some of the deceptively “simple” concepts and models in statistics and econometrics.&lt;/p&gt;
+&lt;p&gt;It was a matter of time, readings and practice which made me prefer &lt;code&gt;RMarkdown&lt;/code&gt; and &lt;code&gt;knitr&lt;/code&gt; over Jupyter Notebooks (IPython), and R over Python for the problems I wanted to solve at &lt;code&gt;Adore Me&lt;/code&gt;. I shifted my focus completely on understanding R and taking advantage of the features of this domain-specific language. In the end, it depends on what problems are you trying to solve. If I wanted to focus on Deep Learning research, it’s extremely probable that my language of choice would be Python. In a business setting, in order to bring value through statistical modeling, diverse perspectives are needed: from Econometrics and Machine Learning to Bayesian Statistics, Time Series Analysis and Simulation. R is perfect in that respect, while also helping in communicating the data analysis results and incentivising researchers to adhere to good practices.&lt;/p&gt;
+&lt;p&gt;During a year I learned a lot of tricks in Exploratory Data Analysis using &lt;code&gt;tidyverse&lt;/code&gt; and &lt;code&gt;ggplot2&lt;/code&gt;, automated report generation using RMarkdown and Latex, built an interactive decision-support tool using Shiny, implemented my first end-to-end machine learning project, including a package with a custom model for TV Attribution, learned the importance of code versioning, wrote my bachelor thesis and created this website in R.&lt;/p&gt;
+&lt;p&gt;Still, every time I find out new things to learn, like the tidy way of doing time series analysis using &lt;code&gt;tidyquant&lt;/code&gt;, the rlang evaluations, unit testing, paralell computation and lots of cutting-edge statistical models.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Why would R be a great choice for Behavioral Economics labs?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;R is a flexible and in my opinion underrated (Especially with all the hype surrounding Deep Learning and Python, frameworks like Tensorflow) language for &lt;em&gt;statistical research&lt;/em&gt;, which means it’s specialized and really good at data analysis. It’s a nice match, as in Behavioral Economics we want to look at evidence, real choices, analyze and model it in a reproducible fashion. It took time to appreciate some of the unconventional methods and techniques in R, the elegance of graphics and data processing. As I believe in using &lt;code&gt;the right tool for the right job&lt;/code&gt;, both in modeling and developing data products, learning R paid off.&lt;/p&gt;
+&lt;p&gt;Because of the fast-growing open-source community and the ecosystem of R packages, a lot of cutting-edge research is made freely available. Some of these extensions changed in a fundamental way how we analyze data in R. Even though its flexibility allows to have a lot of solutions to the same problem, we should keep in mind the pitfalls of flexible languages and be rigurous in the way we write our code and do the analysis.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;towards-reproducible-research-in-r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Towards Reproducible Research in R&lt;/h2&gt;
+&lt;p&gt;The replication crisis&lt;a href=&#34;#fn1&#34; class=&#34;footnoteRef&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; is a hot topic right now in different fields. There are many great meta-studies, but my goal is very modest here: to suggest simple techniques that will help improve the reproducibility and transparency of the research. By making the source code freely available and reproducible we reduce the “research debt”&lt;a href=&#34;#fn2&#34; class=&#34;footnoteRef&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;, making the progress a lot faster by involving people that have the curiosity to reproduce and improve on existing research.&lt;/p&gt;
+&lt;p&gt;It has three main components and R does have nice solutions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Code reproducibility and versioning&lt;/li&gt;
+&lt;li&gt;Data and Analysis&lt;/li&gt;
+&lt;li&gt;But it works on my machine: Keeping the environment consistent&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;First, we can use &lt;code&gt;Rmarkdown&lt;/code&gt;&lt;a href=&#34;#fn3&#34; class=&#34;footnoteRef&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt; to combine the content, code and outputs rendered in a single pdf document or html page, which can be easily published on the web using a static page generator like Hugo/Jekyll. Second, using a code versioning tool like Git&lt;a href=&#34;#fn4&#34; class=&#34;footnoteRef&#34; id=&#34;fnref4&#34;&gt;&lt;sup&gt;4&lt;/sup&gt;&lt;/a&gt; is a no-brainer, even if you’re working alone. It has nice integrations with RStudio and will save the future you a lot of time.&lt;/p&gt;
+&lt;p&gt;What cannot be solved by packages alone, should be obtained as a result of a rigorous statistical methodology&lt;a href=&#34;#fn5&#34; class=&#34;footnoteRef&#34; id=&#34;fnref5&#34;&gt;&lt;sup&gt;5&lt;/sup&gt;&lt;/a&gt;, combined with a quality, clean code. It requires a lot of discipline amid seemingly endless possibilities of R.&lt;/p&gt;
+&lt;p&gt;The third key element to reproducibility is also very challenging. The hot solution right now is using &lt;code&gt;Docker Containers&lt;/code&gt;&lt;a href=&#34;#fn6&#34; class=&#34;footnoteRef&#34; id=&#34;fnref6&#34;&gt;&lt;sup&gt;6&lt;/sup&gt;&lt;/a&gt;, which are lightweight, immutable and disposable, providing necessary libraries, binaries and OS components to run the analysis. They should be viewed more like a process, than a virtual machine which is started from an image (remember .iso). It saves a lot of time and effort trying to install all the packages manually, dealing with versioning issues and so on. Imagine some of the harder to install setups for Bayesian Analysis, involving STAN or JAGS are taken care of by somebody else, so you can focus on really important things like improving the method, the quality, robustness and generality of the code.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tidy-data-analysis-and-visualization&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Tidy Data Analysis and Visualization&lt;/h2&gt;
+&lt;p&gt;There is an emerging way of data analysis in R which old-school users might mistakenly ignore: the &lt;code&gt;tidy&lt;/code&gt; way.&lt;a href=&#34;#fn7&#34; class=&#34;footnoteRef&#34; id=&#34;fnref7&#34;&gt;&lt;sup&gt;7&lt;/sup&gt;&lt;/a&gt; It had such an impact on the community, that it made R cool again. It’s not without a flaw, especially when talking about production environments and writing packages from scratch, but that’s why we have the right tool for the right job principle. If you can do an analysis using this ecosystem and principles much easier and in a readable, intuitive way, why not use the simpler tool.&lt;/p&gt;
+&lt;p&gt;For R novices, a simple advice is that everything you see is an object and everything that does something is a function. The second thing is that the power of R lies in vectorisation, done behind the scenes by extremely fast libraries. Of course there are cases when you might use a for loop and it will be a good solution, but for the most purposes it isn’t, so pay a close attention to the functions in &lt;code&gt;*apply&lt;/code&gt; family.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a-tutorial-on-analysis-of-returns-and-investment-decisions&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;A tutorial on Analysis of Returns and Investment Decisions&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Replication_crisis&#34; class=&#34;uri&#34;&gt;https://en.wikipedia.org/wiki/Replication_crisis&lt;/a&gt;&lt;a href=&#34;#fnref1&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;&lt;a href=&#34;https://distill.pub/&#34; class=&#34;uri&#34;&gt;https://distill.pub/&lt;/a&gt;&lt;a href=&#34;#fnref2&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn3&#34;&gt;&lt;p&gt;On using Rmarkdown &lt;a href=&#34;https://www.youtube.com/watch?v=DNS7i2m4sB0&#34; class=&#34;uri&#34;&gt;https://www.youtube.com/watch?v=DNS7i2m4sB0&lt;/a&gt;&lt;a href=&#34;#fnref3&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn4&#34;&gt;&lt;p&gt;Rstudio github integration: &lt;a href=&#34;http://www.datasurg.net/2015/07/13/rstudio-and-github/&#34; class=&#34;uri&#34;&gt;http://www.datasurg.net/2015/07/13/rstudio-and-github/&lt;/a&gt;&lt;a href=&#34;#fnref4&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn5&#34;&gt;&lt;p&gt;Columbia University stats course: &lt;a href=&#34;https://courses.edx.org/courses/course-v1:ColumbiaX+DS101X+1T2016/course/&#34; class=&#34;uri&#34;&gt;https://courses.edx.org/courses/course-v1:ColumbiaX+DS101X+1T2016/course/&lt;/a&gt;&lt;a href=&#34;#fnref5&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn6&#34;&gt;&lt;p&gt;An intro to Docker: &lt;a href=&#34;https://www.youtube.com/watch?v=NBrQbkZ3Lzw&amp;amp;t=2177s&#34; class=&#34;uri&#34;&gt;https://www.youtube.com/watch?v=NBrQbkZ3Lzw&amp;amp;t=2177s&lt;/a&gt;&lt;a href=&#34;#fnref6&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn7&#34;&gt;&lt;p&gt;A playlist on the tidyverse &lt;a href=&#34;https://www.youtube.com/watch?v=K-ss_ag2k9E&amp;amp;list=PLNtpLD4WiWbw9Cgcg6IU75u-44TrrN3A4&#34; class=&#34;uri&#34;&gt;https://www.youtube.com/watch?v=K-ss_ag2k9E&amp;amp;list=PLNtpLD4WiWbw9Cgcg6IU75u-44TrrN3A4&lt;/a&gt;&lt;a href=&#34;#fnref7&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
 </description>
