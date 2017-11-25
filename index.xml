@@ -138,7 +138,7 @@ country.labels &amp;lt;- c(&amp;quot;New Zeeland&amp;quot;, &amp;quot;Norway&amp
                      &amp;quot;China&amp;quot;, &amp;quot;Rwanda&amp;quot;, &amp;quot;South Africa&amp;quot;, &amp;quot;Greece&amp;quot;, 
                      &amp;quot;Iraq&amp;quot;, &amp;quot;Congo&amp;quot;, &amp;quot;Afghanistan&amp;quot;, 
                      &amp;quot;Venezuela&amp;quot;, &amp;quot;Russia&amp;quot;, &amp;quot;India&amp;quot;, &amp;quot;Bhutan&amp;quot;, 
-                     &amp;quot;Cape Verde&amp;quot;, &amp;quot;Argentina&amp;quot;
+                     &amp;quot;Cape Verde&amp;quot;, &amp;quot;Argentina&amp;quot;, &amp;quot;Romania&amp;quot;, &amp;quot;Moldova&amp;quot;
                     )
 # for colors the trick is to use a named color vector
 # fancy colors, close to the ones chosen by The Economist
@@ -209,7 +209,7 @@ p&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggsave(filename = &amp;quot;data/economist.png&amp;quot;, plot = p, width=8, height=5)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: Removed 4 rows containing non-finite values (stat_smooth).&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: Removed 4 rows containing missing values (geom_point).&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: Removed 148 rows containing missing values (geom_text_repel).&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 146 rows containing missing values (geom_text_repel).&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&#34;footnotes&#34;&gt;
 &lt;hr /&gt;

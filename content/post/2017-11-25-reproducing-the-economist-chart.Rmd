@@ -107,7 +107,7 @@ country.labels <- c("New Zeeland", "Norway", "Singapore",
                      "China", "Rwanda", "South Africa", "Greece", 
                      "Iraq", "Congo", "Afghanistan", 
                      "Venezuela", "Russia", "India", "Bhutan", 
-                     "Cape Verde", "Argentina"
+                     "Cape Verde", "Argentina", "Romania", "Moldova"
                     )
 # for colors the trick is to use a named color vector
 # fancy colors, close to the ones chosen by The Economist
