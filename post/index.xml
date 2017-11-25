@@ -11,6 +11,217 @@
     <atom:link href="/post/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Reproducing The Economist Chart</title>
+      <link>https://bizovi.github.io/post/2017-11-25-reproducing-the-economist-chart/</link>
+      <pubDate>Sat, 25 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://bizovi.github.io/post/2017-11-25-reproducing-the-economist-chart/</guid>
+      <description>&lt;p&gt;While searching for solutions to fine-tune ggplot2 visualizations, I stumbled upon&lt;a href=&#34;#fn1&#34; class=&#34;footnoteRef&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; a nice challenge: to reproduce &lt;code&gt;The Economist&lt;/code&gt;’s plot showing the correlation between &lt;em&gt;Corruption Perception Index&lt;/em&gt; and the &lt;em&gt;Human Development Index&lt;/em&gt;&lt;a href=&#34;#fn2&#34; class=&#34;footnoteRef&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(knitr)
+knitr::include_graphics(path = &amp;quot;data/economist.png&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;data/economist.png&#34; width=&#34;1200&#34; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The conclusion from this exercise is that even a simple task like reproducing a chart involves various analysis and modeling decisions. The only way to reduce the amount of mistakes is to make the analysis reproducible.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Following the data trails, there are two sources of data:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human Development Index in a .csv file from &lt;a href=&#34;http://hdr.undp.org/en/data&#34;&gt;&lt;code&gt;UN Human Development Report&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Corruprion perception Index in a spreadsheet &lt;a href=&#34;https://www.transparency.org/cpi2015&#34;&gt;&lt;code&gt;from Transparency International&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note, that for any serious analysis we need to take into account the methodology of how these indicators are calculated and in the spreadsheet there are some details related to that. The first thing to notice by looking at the data is that the names of countries do not match, which is to be expected since the souces are different. Also, there are countries for which the CPI is not available.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)  # data processing and visualization tools
+library(readxl)     # tidy reading of spreadsheets
+library(ggrepel)    # repel text
+library(data.table) # isn&amp;#39;t really needed, but hope you will discover this amazing package&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;data-preprocessing&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Data Preprocessing&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# skip the first row as it only contains text
+hdi &amp;lt;- fread(&amp;quot;data/Human development index (HDI).csv&amp;quot;, skip = 1) %&amp;gt;% 
+  select(Country, `2015`)  %&amp;gt;% 
+  rename(HDI_2015 = `2015`) %&amp;gt;% 
+  mutate(HDI_2015 = as.numeric(HDI_2015)) %&amp;gt;% 
+  # next line deletes the space before all countries, 
+  # which would mess up the joining
+  mutate(Country = substr(Country, 2, nchar(Country))) %&amp;gt;% 
+  as_tibble()
+hdi %&amp;gt;% head()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 2
+##               Country HDI_2015
+##                 &amp;lt;chr&amp;gt;    &amp;lt;dbl&amp;gt;
+## 1         Afghanistan    0.479
+## 2             Albania    0.764
+## 3             Algeria    0.745
+## 4             Andorra    0.858
+## 5              Angola    0.533
+## 6 Antigua and Barbuda    0.786&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It is probable The Economist used Region Mappings from UN in the following table.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cpi &amp;lt;- read_excel(&amp;quot;data/CPI_2015_FullDataSet.xlsx&amp;quot;, sheet = 1) %&amp;gt;% 
+  rename(Country  = `Country/Territory`, 
+         CPI_2015 = `CPI 2015 Score`) %&amp;gt;% 
+  select(Country, Region, CPI_2015)
+head(cpi)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 3
+##       Country Region CPI_2015
+##         &amp;lt;chr&amp;gt;  &amp;lt;chr&amp;gt;    &amp;lt;dbl&amp;gt;
+## 1     Denmark  WE/EU       91
+## 2 New Zealand     AP       91
+## 3     Finland  WE/EU       90
+## 4      Sweden  WE/EU       89
+## 5      Norway  WE/EU       88
+## 6 Switzerland  WE/EU       86&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Notice that the HDI dataset has data for 188 countries availabele, but CPI is available only for 168. If you try to join the data you will get an unpleasant surprise: some names do not match and we have to fix that.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;not.matching &amp;lt;- cpi  %&amp;gt;% left_join(hdi, by = &amp;quot;Country&amp;quot;) %&amp;gt;% 
+  filter(is.na(HDI_2015))
+
+# identify corresponding places hdi dataset
+idx &amp;lt;- c(74, NA, 29, 90, 168, 21, NA, 112, 46, 185,
+         166, 139, 79, 93, 39, 40, 164, 184, NA, NA)
+match &amp;lt;- data.frame(
+  country = as.character(not.matching$Country),
+  idx_hdi = idx
+) %&amp;gt;% na.omit
+
+hdi[match$idx_hdi, ]$Country &amp;lt;- as.character(match$country)
+
+data &amp;lt;- cpi %&amp;gt;% left_join(hdi, by = &amp;quot;Country&amp;quot;)
+head(data)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 4
+##       Country Region CPI_2015 HDI_2015
+##         &amp;lt;chr&amp;gt;  &amp;lt;chr&amp;gt;    &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;
+## 1     Denmark  WE/EU       91    0.925
+## 2 New Zealand     AP       91    0.915
+## 3     Finland  WE/EU       90    0.895
+## 4      Sweden  WE/EU       89    0.913
+## 5      Norway  WE/EU       88    0.949
+## 6 Switzerland  WE/EU       86    0.939&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In order to have full names for regions, there are three options:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;To leave as-is and fix in the plot&lt;/li&gt;
+&lt;li&gt;Second, to rename the factors&lt;/li&gt;
+&lt;li&gt;Third, add a new column using a mapping table with a left_join&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# data$Region %&amp;gt;% unique()
+mapping &amp;lt;- data.frame(
+  Region      = c(&amp;quot;WE/EU&amp;quot;, &amp;quot;AP&amp;quot;, &amp;quot;AME&amp;quot;, &amp;quot;MENA&amp;quot;, &amp;quot;SSA&amp;quot;, &amp;quot;ECA&amp;quot;), 
+  Region_Name = c(&amp;quot;OECD&amp;quot;, &amp;quot;Asia &amp;amp; Oceania&amp;quot;, &amp;quot;Americas&amp;quot;, 
+                  &amp;quot;Middle East &amp;amp; North Africa&amp;quot;, &amp;quot;Sub-Saharan Africa&amp;quot;, 
+                  &amp;quot;Eastern &amp;amp; Central Europe&amp;quot;)
+)
+
+data &amp;lt;- data %&amp;gt;% left_join(mapping, by = &amp;quot;Region&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Column `Region` joining character vector and factor, coercing into
+## character vector&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data %&amp;gt;% head()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 5
+##       Country Region CPI_2015 HDI_2015    Region_Name
+##         &amp;lt;chr&amp;gt;  &amp;lt;chr&amp;gt;    &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;         &amp;lt;fctr&amp;gt;
+## 1     Denmark  WE/EU       91    0.925           OECD
+## 2 New Zealand     AP       91    0.915 Asia &amp;amp; Oceania
+## 3     Finland  WE/EU       90    0.895           OECD
+## 4      Sweden  WE/EU       89    0.913           OECD
+## 5      Norway  WE/EU       88    0.949           OECD
+## 6 Switzerland  WE/EU       86    0.939           OECD&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;building-the-plot&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Building the Plot&lt;/h2&gt;
+&lt;p&gt;The regression line used to fit the data looks like a logarithmic one, which is the model most probaly also used by the economist&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data &amp;lt;- data %&amp;gt;% 
+  mutate(CPI_2015 = CPI_2015 / 10)
+
+# choose country labels to display (could be according to some smart criteria)
+# like the top and bottom countries for each Region
+# here is just an arbitrary set
+
+country.labels &amp;lt;- c(&amp;quot;New Zeeland&amp;quot;, &amp;quot;Norway&amp;quot;, &amp;quot;Singapore&amp;quot;, 
+                     &amp;quot;Japan&amp;quot;, &amp;quot;Germany&amp;quot;, &amp;quot;Britain&amp;quot;, &amp;quot;Barbados&amp;quot;, 
+                     &amp;quot;United States&amp;quot;, &amp;quot;France&amp;quot;, &amp;quot;Spain&amp;quot;, &amp;quot;Italy&amp;quot;, 
+                     &amp;quot;China&amp;quot;, &amp;quot;Rwanda&amp;quot;, &amp;quot;South Africa&amp;quot;, &amp;quot;Greece&amp;quot;, 
+                     &amp;quot;Iraq&amp;quot;, &amp;quot;Congo&amp;quot;, &amp;quot;Afghanistan&amp;quot;, 
+                     &amp;quot;Venezuela&amp;quot;, &amp;quot;Russia&amp;quot;, &amp;quot;India&amp;quot;, &amp;quot;Bhutan&amp;quot;, 
+                     &amp;quot;Cape Verde&amp;quot;, &amp;quot;Argentina&amp;quot;
+                    )
+# for colors the trick is to use a named color vector
+# fancy colors, close to the ones chosen by The Economist
+clr &amp;lt;- c(&amp;quot;#006D6F&amp;quot;, &amp;quot;lightskyblue1&amp;quot;, &amp;quot;steelblue2&amp;quot;, 
+         &amp;quot;indianred1&amp;quot;, &amp;quot;brown&amp;quot;, &amp;quot;seagreen&amp;quot;, &amp;quot;tomato&amp;quot;)
+names(clr) &amp;lt;- c(as.character(mapping$Region_Name), &amp;quot;regression&amp;quot;)
+
+p &amp;lt;- data %&amp;gt;% ggplot(aes(x = CPI_2015, y = HDI_2015)) + 
+  stat_smooth(
+    method = &amp;quot;lm&amp;quot;, se = FALSE, 
+    formula = y ~ log(x),         # the linear model
+    size = 1.1,  colour = &amp;quot;tomato&amp;quot;, # regression line colors
+    aes(fill = &amp;quot;R=52%&amp;quot;)
+    )  + 
+  geom_point(
+    aes(color = Region_Name), 
+    # 21 is the only shape allowing both fill and color
+    size = 3, shape = 21, fill = &amp;quot;white&amp;quot;, 
+    stroke = 1.6 # thikness of point margin
+             ) + 
+  geom_text_repel(aes(label = 
+      ifelse(Country %in% country.labels, Country, NA)), 
+      color = &amp;quot;grey20&amp;quot;,
+      segment.color = &amp;quot;grey80&amp;quot;,
+      # very important in order not to overlap with points
+      point.padding = unit(0.025, &amp;#39;npc&amp;#39;), 
+      force = 1, 
+      nudge_y = 0.03, 
+      nudge_x = -0.015) + 
+  scale_color_manual(
+    values = clr, 
+    breaks = c(&amp;quot;OECD&amp;quot;, &amp;quot;Americas&amp;quot;, &amp;quot;Asia &amp;amp; Oceania&amp;quot;, 
+               &amp;quot;Middle East &amp;amp; North Africa&amp;quot;, 
+               &amp;quot;Eastern &amp;amp; Central Europe&amp;quot;,
+               &amp;quot;Sub-Saharan Africa&amp;quot;, &amp;quot;Rsq=52%&amp;quot;),
+    labels = c(&amp;quot;OECD&amp;quot;, &amp;quot;Americas&amp;quot;, &amp;quot;Asia &amp;amp; \n Oceania&amp;quot;,
+                &amp;quot;Central &amp;amp; \n Eastern Europe&amp;quot;,
+                &amp;quot;Middle East &amp;amp; \n North Africa&amp;quot;,
+                &amp;quot;Sub-Saharan \n Africa&amp;quot;, &amp;quot;Rsq=52%&amp;quot;)
+               ) +
+  theme_minimal() +
+  theme(
+    legend.position    = &amp;quot;top&amp;quot;, 
+    panel.grid.major.x = element_blank(), 
+    panel.grid.minor.x = element_blank(), 
+    panel.grid.minor.y = element_blank(),
+    panel.grid.major.y = element_line(color = &amp;#39;grey85&amp;#39;, size = 1), 
+    axis.ticks.x = element_line(), 
+    plot.title = element_text(size = 16, face = &amp;quot;bold&amp;quot;), 
+    text = element_text(family = &amp;quot;sans&amp;quot;), 
+    # more space in legend
+    legend.key.size = unit(1.8, &amp;quot;lines&amp;quot;), 
+    legend.spacing.x = unit(-0.5, &amp;quot;cm&amp;quot;)
+    ) + 
+  guides(colour = guide_legend(nrow  = 1, title = &amp;quot;&amp;quot;),
+         fill   = guide_legend(title = &amp;quot;&amp;quot;)) +
+  labs(x = expression(italic(&amp;quot;Corruption Perceptions Index, 2015 (10=least corrupt)&amp;quot;)), 
+       y = expression(italic(&amp;quot;Human Development Index, 2015 (1=best)&amp;quot;)), 
+       title = &amp;quot;Corruption and human development&amp;quot;, 
+       caption = &amp;quot;Sources: Transparency International; UN Human Development Report&amp;quot;) + 
+  expand_limits(y = 0.3) + 
+  expand_limits(x = 1) + 
+  scale_x_continuous(breaks = seq(1, 10, 1)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 10)) + 
+  coord_cartesian(ylim = c(0.28, 1), xlim = c(1, 10))
+p&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-11-25-reproducing-the-economist-chart_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggsave(filename = &amp;quot;data/economist.png&amp;quot;, plot = p, width=8, height=5)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 4 rows containing non-finite values (stat_smooth).&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 4 rows containing missing values (geom_point).&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 148 rows containing missing values (geom_text_repel).&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;&lt;a href=&#34;http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html&#34; class=&#34;uri&#34;&gt;http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html&lt;/a&gt;&lt;a href=&#34;#fnref1&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;&lt;a href=&#34;https://www.economist.com/blogs/dailychart/2011/12/corruption-and-development&#34; class=&#34;uri&#34;&gt;https://www.economist.com/blogs/dailychart/2011/12/corruption-and-development&lt;/a&gt;&lt;a href=&#34;#fnref2&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>R Tutorials for Behavioral Economics Class</title>
       <link>https://bizovi.github.io/post/2017-11-18-r-tutorial-behavioral-economics-2/</link>
       <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
@@ -22,6 +233,50 @@
 &lt;/blockquote&gt;
 &lt;div id=&#34;a-tutorial-on-metropolitan-area-housing&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;A tutorial on Metropolitan Area Housing&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse) # the ecosystem of data processing tools
+library(tidyr)     # useful for getting the data in short-long formats
+library(reshape2)  # for the function melt (long format data)
+library(glue)      # string formatting
+library(assertive) # assertions (active tests)
+library(ochRe)     # stunning color palettes
+library(readxl)    # read from excel spreadsheets&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data &amp;lt;- read_excel(&amp;quot;data/landdata-msas-2016q1.xls&amp;quot;, skip = 1)
+data &amp;lt;- data %&amp;gt;% 
+  mutate(MSA = as.factor(MSA), 
+         Date = zoo::as.yearqtr(Date, format = &amp;quot;%YQ%q&amp;quot;)
+         ) %&amp;gt;%
+  dplyr::rename(home_value = `Home Value`, 
+                structure_cost = `Structure Cost`, 
+                land_value = `Land Value`, 
+                land_share = `Land Share (Pct)`, 
+                home_pi = `Home Price Index`, 
+                land_pi = `Land Price Index`
+                )
+data %&amp;gt;% head()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 8
+##       MSA          Date home_value structure_cost land_value land_share
+##    &amp;lt;fctr&amp;gt; &amp;lt;S3: yearqtr&amp;gt;      &amp;lt;dbl&amp;gt;          &amp;lt;dbl&amp;gt;      &amp;lt;dbl&amp;gt;      &amp;lt;dbl&amp;gt;
+## 1 ATLANTA       1984 Q4   92856.39       67112.34   25744.05  0.2772459
+## 2 ATLANTA       1985 Q1   93044.12       67826.46   25217.66  0.2710291
+## 3 ATLANTA       1985 Q2   93269.26       68444.29   24824.97  0.2661646
+## 4 ATLANTA       1985 Q3   97490.47       69026.93   28463.55  0.2919623
+## 5 ATLANTA       1985 Q4   98809.50       69562.32   29247.18  0.2959956
+## 6 ATLANTA       1986 Q1   99846.67       70078.32   29768.36  0.2981407
+## # ... with 2 more variables: home_pi &amp;lt;dbl&amp;gt;, land_pi &amp;lt;dbl&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ny &amp;lt;- data %&amp;gt;% dplyr::filter(MSA == &amp;quot;NEWYORK&amp;quot;) 
+ny %&amp;gt;% 
+  tidyr::gather(key = variable, value = value, -c(MSA, Date)) %&amp;gt;% 
+  dplyr::select(-MSA) %&amp;gt;% 
+  ggplot(aes(x = value, fill = variable)) + 
+  geom_histogram(alpha = 0.5) + 
+  facet_wrap(~ variable, scale = &amp;quot;free&amp;quot;) + 
+  theme_bw() + 
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) + 
+  labs(y = &amp;quot;Frequency&amp;quot;, title = &amp;quot;Distributions of the variables for NY&amp;quot;) + 
+  theme(legend.position = &amp;quot;none&amp;quot;) + 
+  scale_fill_ochre(palette = &amp;quot;nolan_ned&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-11-18-r-tutorial-behavioral-economics-2_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;plotting-theoretical-utility-and-value-functions&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Plotting theoretical Utility and Value functions&lt;/h2&gt;
@@ -29,12 +284,6 @@
 \frac{b}{a}
 \]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(a &amp;gt; 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\frac{ax}{1-\gamma} + b &amp;gt; 0\)&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;The function tends to logarithmic if gamma tends to zero (by L’Hopital rule) and linear when goes to one. &lt;span class=&#34;math display&#34;&gt;\[U(x) \xrightarrow[\gamma \to 0]{} log(ax+b)\]&lt;/span&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse) # the ecosystem of data processing tools
-library(tidyr)     # useful for getting the data in short-long formats
-library(reshape2)  # for the function melt (long format data)
-library(glue)      # string formatting
-library(assertive) # assertions (active tests)
-library(ochRe)     # stunning color palettes&lt;/code&gt;&lt;/pre&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The reason we’re going to overkill a simple plotting of HARA utility function is to showcase some important R concepts.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -82,8 +331,104 @@ colnames(df) &amp;lt;- as.character(gammas)&lt;/code&gt;&lt;/pre&gt;
   labs(title = &amp;quot;Hyperbolic Absolute Risk Aversion function&amp;quot;, 
        subtitle = glue(&amp;quot;with hyperparameters a = {a}, b = {b}&amp;quot;)) + 
   scale_color_ochre(palette = &amp;quot;nolan_ned&amp;quot;) # if you feel fancy today&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-11-18-r-tutorial-behavioral-economics-2_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-11-18-r-tutorial-behavioral-economics-2_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Explain what is a color palette and why is it useful&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a-tutorial-on-analysis-of-returns-and-investment-decisions&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;A tutorial on Analysis of Returns and Investment Decisions&lt;/h2&gt;
+&lt;!--
+
+```r
+library(tidyquant) # tidy data analysis and financial data interfacing
+```
+
+
+```r
+# get stock prices for seven years using the Yahoo Finance API
+stocks &lt;- c(&#34;ORCL&#34;, &#34;FSLR&#34;, &#34;AMZN&#34;, &#34;GOOG&#34;, &#34;GE&#34;) %&gt;% tq_get(
+  get  = &#34;stock.prices&#34;, 
+  from = &#34;2010-01-01&#34;, 
+  to   = &#34;2017-10-30&#34;
+)
+
+# calculate the monthly returns
+monthly.returns &lt;- stocks %&gt;% 
+  group_by(symbol) %&gt;% 
+  tq_transmute(
+    select     = adjusted, # column to calculate returns from 
+    mutate_fun = periodReturn, # function from quantmod
+    period     = &#34;monthly&#34;,    # alternatively, &#34;weekly&#34; or daily
+    col_rename = &#34;return&#34;)
+
+# need to compare against a general price index
+baseline &lt;- &#34;SPX&#34; %&gt;%
+    tq_get(
+      get  = &#34;stock.prices&#34;,
+      from = &#34;2010-01-01&#34;,
+      to   = &#34;2017-10-30&#34;) 
+
+
+monthly.baseline &lt;- baseline %&gt;%
+    tq_transmute(
+      select     = adjusted, 
+      mutate_fun = periodReturn, 
+      period     = &#34;monthly&#34;, 
+      col_rename = &#34;base.returns&#34;)
+```
+
+```
+## Warning in to_period(xx, period = on.opts[[period]], ...): missing values
+## removed from data
+```
+
+
+```r
+# In order to perserve some information when averaging at monthly level, it would be great to represent the uncecrtainty
+
+custom_stat_fun &lt;- function(x, na.rm = TRUE, ...) {
+    # ...   = additional arguments
+    c(mean    = mean(x, na.rm = na.rm),
+      stdev   = sd(x, na.rm = na.rm),
+      quantile(x, na.rm = na.rm, ...)) 
+}
+
+# quantiles
+pr &lt;- c(0, 0.025, 0.25, 0.5, 0.75, 0.975, 1)
+
+# Applying the custom function by week
+monthly_returns &lt;- stocks %&gt;%
+  group_by(symbol) %&gt;%
+    tq_transmute(
+        select = close,
+        mutate_fun = apply.monthly, 
+        FUN = custom_stat_fun,
+        na.rm = TRUE,
+        probs = pr
+    )
+
+monthly_returns %&gt;%
+    ggplot(aes(x = date, y = `50%`, color = symbol)) +
+    geom_ribbon(aes(ymin = `25%`, ymax = `75%`), 
+                color = NA, fill = palette_light()[[1]], alpha = 0.3) +
+    geom_point() +
+    geom_vline(xintercept = as.Date(c(&#34;2011-09-01&#34;, &#34;2012-07-01&#34;, 
+                                      &#34;2013-07-01&#34;, &#34;2014-02-01&#34;, 
+                                      &#34;2015-01-01&#34;, &#34;2016-02-01&#34;)), 
+               lty = 2, color = &#34;grey40&#34;) + 
+    geom_ma(n = 5, size = 1, color = &#34;steelblue2&#34;, lty = 1) + 
+    facet_wrap(~ symbol, ncol = 2, scale = &#34;free_y&#34;) +
+    labs(title = &#34;Standard and Poor&#39;s Average Monthly Price&#34;, x = &#34;&#34;,
+         subtitle = &#34;Volatility shown as 1st and 3rd quantiles&#34;,
+         y = &#34;Price (k$)&#34;) +
+  #  expand_limits(y = 50) + 
+    scale_color_ochre(palette = &#34;lorikeet&#34;) +
+    theme_bw() + 
+  theme(legend.position = &#34;none&#34;)
+```
+
+&lt;img src=&#34;https://bizovi.github.io/post/2017-11-18-r-tutorial-behavioral-economics-2_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;
+
+--&gt;
 &lt;/div&gt;
 &lt;div class=&#34;footnotes&#34;&gt;
 &lt;hr /&gt;
@@ -136,9 +481,6 @@ colnames(df) &amp;lt;- as.character(gammas)&lt;/code&gt;&lt;/pre&gt;
 &lt;h2&gt;Tidy Data Analysis and Visualization&lt;/h2&gt;
 &lt;p&gt;There is an emerging way of data analysis in R which old-school users might mistakenly ignore: the &lt;code&gt;tidy&lt;/code&gt; way.&lt;a href=&#34;#fn7&#34; class=&#34;footnoteRef&#34; id=&#34;fnref7&#34;&gt;&lt;sup&gt;7&lt;/sup&gt;&lt;/a&gt; It had such an impact on the community, that it made R cool again. It’s not without a flaw, especially when talking about production environments and writing packages from scratch, but that’s why we have the right tool for the right job principle. If you can do an analysis using this ecosystem and principles much easier and in a readable, intuitive way, why not use the simpler tool.&lt;/p&gt;
 &lt;p&gt;For R novices, a simple advice is that everything you see is an object and everything that does something is a function. The second thing is that the power of R lies in vectorisation, done behind the scenes by extremely fast libraries. Of course there are cases when you might use a for loop and it will be a good solution, but for the most purposes it isn’t, so pay a close attention to the functions in &lt;code&gt;*apply&lt;/code&gt; family.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;a-tutorial-on-analysis-of-returns-and-investment-decisions&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;A tutorial on Analysis of Returns and Investment Decisions&lt;/h2&gt;
 &lt;/div&gt;
 &lt;div class=&#34;footnotes&#34;&gt;
 &lt;hr /&gt;

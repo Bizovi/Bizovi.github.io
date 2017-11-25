@@ -13,6 +13,50 @@ output: html_document
 </blockquote>
 <div id="a-tutorial-on-metropolitan-area-housing" class="section level2">
 <h2>A tutorial on Metropolitan Area Housing</h2>
+<pre class="r"><code>library(tidyverse) # the ecosystem of data processing tools
+library(tidyr)     # useful for getting the data in short-long formats
+library(reshape2)  # for the function melt (long format data)
+library(glue)      # string formatting
+library(assertive) # assertions (active tests)
+library(ochRe)     # stunning color palettes
+library(readxl)    # read from excel spreadsheets</code></pre>
+<pre class="r"><code>data &lt;- read_excel(&quot;data/landdata-msas-2016q1.xls&quot;, skip = 1)
+data &lt;- data %&gt;% 
+  mutate(MSA = as.factor(MSA), 
+         Date = zoo::as.yearqtr(Date, format = &quot;%YQ%q&quot;)
+         ) %&gt;%
+  dplyr::rename(home_value = `Home Value`, 
+                structure_cost = `Structure Cost`, 
+                land_value = `Land Value`, 
+                land_share = `Land Share (Pct)`, 
+                home_pi = `Home Price Index`, 
+                land_pi = `Land Price Index`
+                )
+data %&gt;% head()</code></pre>
+<pre><code>## # A tibble: 6 x 8
+##       MSA          Date home_value structure_cost land_value land_share
+##    &lt;fctr&gt; &lt;S3: yearqtr&gt;      &lt;dbl&gt;          &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+## 1 ATLANTA       1984 Q4   92856.39       67112.34   25744.05  0.2772459
+## 2 ATLANTA       1985 Q1   93044.12       67826.46   25217.66  0.2710291
+## 3 ATLANTA       1985 Q2   93269.26       68444.29   24824.97  0.2661646
+## 4 ATLANTA       1985 Q3   97490.47       69026.93   28463.55  0.2919623
+## 5 ATLANTA       1985 Q4   98809.50       69562.32   29247.18  0.2959956
+## 6 ATLANTA       1986 Q1   99846.67       70078.32   29768.36  0.2981407
+## # ... with 2 more variables: home_pi &lt;dbl&gt;, land_pi &lt;dbl&gt;</code></pre>
+<pre class="r"><code>ny &lt;- data %&gt;% dplyr::filter(MSA == &quot;NEWYORK&quot;) 
+ny %&gt;% 
+  tidyr::gather(key = variable, value = value, -c(MSA, Date)) %&gt;% 
+  dplyr::select(-MSA) %&gt;% 
+  ggplot(aes(x = value, fill = variable)) + 
+  geom_histogram(alpha = 0.5) + 
+  facet_wrap(~ variable, scale = &quot;free&quot;) + 
+  theme_bw() + 
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) + 
+  labs(y = &quot;Frequency&quot;, title = &quot;Distributions of the variables for NY&quot;) + 
+  theme(legend.position = &quot;none&quot;) + 
+  scale_fill_ochre(palette = &quot;nolan_ned&quot;)</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="/post/2017-11-18-r-tutorial-behavioral-economics-2_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 <div id="plotting-theoretical-utility-and-value-functions" class="section level2">
 <h2>Plotting theoretical Utility and Value functions</h2>
@@ -20,12 +64,6 @@ output: html_document
 \frac{b}{a}
 \]</span> where <span class="math inline">\(a &gt; 0\)</span> and <span class="math inline">\(\frac{ax}{1-\gamma} + b &gt; 0\)</span></p>
 <p>The function tends to logarithmic if gamma tends to zero (by L’Hopital rule) and linear when goes to one. <span class="math display">\[U(x) \xrightarrow[\gamma \to 0]{} log(ax+b)\]</span></p>
-<pre class="r"><code>library(tidyverse) # the ecosystem of data processing tools
-library(tidyr)     # useful for getting the data in short-long formats
-library(reshape2)  # for the function melt (long format data)
-library(glue)      # string formatting
-library(assertive) # assertions (active tests)
-library(ochRe)     # stunning color palettes</code></pre>
 <blockquote>
 <p>The reason we’re going to overkill a simple plotting of HARA utility function is to showcase some important R concepts.</p>
 </blockquote>
@@ -73,8 +111,104 @@ colnames(df) &lt;- as.character(gammas)</code></pre>
   labs(title = &quot;Hyperbolic Absolute Risk Aversion function&quot;, 
        subtitle = glue(&quot;with hyperparameters a = {a}, b = {b}&quot;)) + 
   scale_color_ochre(palette = &quot;nolan_ned&quot;) # if you feel fancy today</code></pre>
-<p><img src="/post/2017-11-18-r-tutorial-behavioral-economics-2_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="/post/2017-11-18-r-tutorial-behavioral-economics-2_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <pre class="r"><code>## Explain what is a color palette and why is it useful</code></pre>
+</div>
+<div id="a-tutorial-on-analysis-of-returns-and-investment-decisions" class="section level2">
+<h2>A tutorial on Analysis of Returns and Investment Decisions</h2>
+<!--
+
+```r
+library(tidyquant) # tidy data analysis and financial data interfacing
+```
+
+
+```r
+# get stock prices for seven years using the Yahoo Finance API
+stocks <- c("ORCL", "FSLR", "AMZN", "GOOG", "GE") %>% tq_get(
+  get  = "stock.prices", 
+  from = "2010-01-01", 
+  to   = "2017-10-30"
+)
+
+# calculate the monthly returns
+monthly.returns <- stocks %>% 
+  group_by(symbol) %>% 
+  tq_transmute(
+    select     = adjusted, # column to calculate returns from 
+    mutate_fun = periodReturn, # function from quantmod
+    period     = "monthly",    # alternatively, "weekly" or daily
+    col_rename = "return")
+
+# need to compare against a general price index
+baseline <- "SPX" %>%
+    tq_get(
+      get  = "stock.prices",
+      from = "2010-01-01",
+      to   = "2017-10-30") 
+
+
+monthly.baseline <- baseline %>%
+    tq_transmute(
+      select     = adjusted, 
+      mutate_fun = periodReturn, 
+      period     = "monthly", 
+      col_rename = "base.returns")
+```
+
+```
+## Warning in to_period(xx, period = on.opts[[period]], ...): missing values
+## removed from data
+```
+
+
+```r
+# In order to perserve some information when averaging at monthly level, it would be great to represent the uncecrtainty
+
+custom_stat_fun <- function(x, na.rm = TRUE, ...) {
+    # ...   = additional arguments
+    c(mean    = mean(x, na.rm = na.rm),
+      stdev   = sd(x, na.rm = na.rm),
+      quantile(x, na.rm = na.rm, ...)) 
+}
+
+# quantiles
+pr <- c(0, 0.025, 0.25, 0.5, 0.75, 0.975, 1)
+
+# Applying the custom function by week
+monthly_returns <- stocks %>%
+  group_by(symbol) %>%
+    tq_transmute(
+        select = close,
+        mutate_fun = apply.monthly, 
+        FUN = custom_stat_fun,
+        na.rm = TRUE,
+        probs = pr
+    )
+
+monthly_returns %>%
+    ggplot(aes(x = date, y = `50%`, color = symbol)) +
+    geom_ribbon(aes(ymin = `25%`, ymax = `75%`), 
+                color = NA, fill = palette_light()[[1]], alpha = 0.3) +
+    geom_point() +
+    geom_vline(xintercept = as.Date(c("2011-09-01", "2012-07-01", 
+                                      "2013-07-01", "2014-02-01", 
+                                      "2015-01-01", "2016-02-01")), 
+               lty = 2, color = "grey40") + 
+    geom_ma(n = 5, size = 1, color = "steelblue2", lty = 1) + 
+    facet_wrap(~ symbol, ncol = 2, scale = "free_y") +
+    labs(title = "Standard and Poor's Average Monthly Price", x = "",
+         subtitle = "Volatility shown as 1st and 3rd quantiles",
+         y = "Price (k$)") +
+  #  expand_limits(y = 50) + 
+    scale_color_ochre(palette = "lorikeet") +
+    theme_bw() + 
+  theme(legend.position = "none")
+```
+
+<img src="/post/2017-11-18-r-tutorial-behavioral-economics-2_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+
+-->
 </div>
 <div class="footnotes">
 <hr />

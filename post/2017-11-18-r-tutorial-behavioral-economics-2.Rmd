@@ -9,10 +9,49 @@ In the last blog post I took a bird's eye (personal) perspective of R programmin
 
 > What is the link to Behavioral Economics? R will be used (in class) as a tool for exploring domain-specific data in order to make informed decisions, fitting different kinds of models and validating the intuition from readings like Tversky & Kahneman, Thaler on real data.
 
-
-
-
 ## A tutorial on Metropolitan Area Housing
+
+```{r, message = FALSE, warning=FALSE}
+library(tidyverse) # the ecosystem of data processing tools
+library(tidyr)     # useful for getting the data in short-long formats
+library(reshape2)  # for the function melt (long format data)
+library(glue)      # string formatting
+library(assertive) # assertions (active tests)
+library(ochRe)     # stunning color palettes
+library(readxl)    # read from excel spreadsheets
+```
+
+```{r}
+data <- read_excel("data/landdata-msas-2016q1.xls", skip = 1)
+data <- data %>% 
+  mutate(MSA = as.factor(MSA), 
+         Date = zoo::as.yearqtr(Date, format = "%YQ%q")
+         ) %>%
+  dplyr::rename(home_value = `Home Value`, 
+                structure_cost = `Structure Cost`, 
+                land_value = `Land Value`, 
+                land_share = `Land Share (Pct)`, 
+                home_pi = `Home Price Index`, 
+                land_pi = `Land Price Index`
+                )
+data %>% head()
+```
+
+```{r fig.widht = 9}
+ny <- data %>% dplyr::filter(MSA == "NEWYORK") 
+ny %>% 
+  tidyr::gather(key = variable, value = value, -c(MSA, Date)) %>% 
+  dplyr::select(-MSA) %>% 
+  ggplot(aes(x = value, fill = variable)) + 
+  geom_histogram(alpha = 0.5) + 
+  facet_wrap(~ variable, scale = "free") + 
+  theme_bw() + 
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) + 
+  labs(y = "Frequency", title = "Distributions of the variables for NY") + 
+  theme(legend.position = "none") + 
+  scale_fill_ochre(palette = "nolan_ned")
+```
+
 
 ## Plotting theoretical Utility and Value functions
 
@@ -27,14 +66,6 @@ where $a > 0$ and $\frac{ax}{1-\gamma} + b > 0$
 The function tends to logarithmic if gamma tends to zero (by L'Hopital rule) and linear when goes to one.
 $$U(x) \xrightarrow[\gamma \to 0]{} log(ax+b)$$
 
-```{r, message = FALSE, warning=FALSE}
-library(tidyverse) # the ecosystem of data processing tools
-library(tidyr)     # useful for getting the data in short-long formats
-library(reshape2)  # for the function melt (long format data)
-library(glue)      # string formatting
-library(assertive) # assertions (active tests)
-library(ochRe)     # stunning color palettes
-```
 > The reason we're going to overkill a simple plotting of HARA utility function is to showcase some important R concepts.
 
 First, we test user inputs via the `assertthat` package, which is a first step moving from manual validation to more automated methods of code testing. This doesn't kick in when doing an exploratory analysis, but hopefully when starting to build Packages, learning how to test code in R^[Testing R Code http://r-pkgs.had.co.nz/tests.html] will pay off. 
@@ -96,3 +127,101 @@ df %>%
 
 ## Explain what is a color palette and why is it useful
 ```
+
+
+## A tutorial on Analysis of Returns and Investment Decisions
+
+<!--
+```{r message=FALSE, warning=FALSE}
+library(tidyquant) # tidy data analysis and financial data interfacing
+```
+
+```{r}
+# get stock prices for seven years using the Yahoo Finance API
+stocks <- c("ORCL", "FSLR", "AMZN", "GOOG", "GE") %>% tq_get(
+  get  = "stock.prices", 
+  from = "2010-01-01", 
+  to   = "2017-10-30"
+)
+
+# calculate the monthly returns
+monthly.returns <- stocks %>% 
+  group_by(symbol) %>% 
+  tq_transmute(
+    select     = adjusted, # column to calculate returns from 
+    mutate_fun = periodReturn, # function from quantmod
+    period     = "monthly",    # alternatively, "weekly" or daily
+    col_rename = "return")
+
+# need to compare against a general price index
+baseline <- "SPX" %>%
+    tq_get(
+      get  = "stock.prices",
+      from = "2010-01-01",
+      to   = "2017-10-30") 
+
+
+monthly.baseline <- baseline %>%
+    tq_transmute(
+      select     = adjusted, 
+      mutate_fun = periodReturn, 
+      period     = "monthly", 
+      col_rename = "base.returns")
+
+```
+
+```{r}
+# In order to perserve some information when averaging at monthly level, it would be great to represent the uncecrtainty
+
+custom_stat_fun <- function(x, na.rm = TRUE, ...) {
+    # ...   = additional arguments
+    c(mean    = mean(x, na.rm = na.rm),
+      stdev   = sd(x, na.rm = na.rm),
+      quantile(x, na.rm = na.rm, ...)) 
+}
+
+# quantiles
+pr <- c(0, 0.025, 0.25, 0.5, 0.75, 0.975, 1)
+
+# Applying the custom function by week
+monthly_returns <- stocks %>%
+  group_by(symbol) %>%
+    tq_transmute(
+        select = close,
+        mutate_fun = apply.monthly, 
+        FUN = custom_stat_fun,
+        na.rm = TRUE,
+        probs = pr
+    )
+
+monthly_returns %>%
+    ggplot(aes(x = date, y = `50%`, color = symbol)) +
+    geom_ribbon(aes(ymin = `25%`, ymax = `75%`), 
+                color = NA, fill = palette_light()[[1]], alpha = 0.3) +
+    geom_point() +
+    geom_vline(xintercept = as.Date(c("2011-09-01", "2012-07-01", 
+                                      "2013-07-01", "2014-02-01", 
+                                      "2015-01-01", "2016-02-01")), 
+               lty = 2, color = "grey40") + 
+    geom_ma(n = 5, size = 1, color = "steelblue2", lty = 1) + 
+    facet_wrap(~ symbol, ncol = 2, scale = "free_y") +
+    labs(title = "Standard and Poor's Average Monthly Price", x = "",
+         subtitle = "Volatility shown as 1st and 3rd quantiles",
+         y = "Price (k$)") +
+  #  expand_limits(y = 50) + 
+    scale_color_ochre(palette = "lorikeet") +
+    theme_bw() + 
+  theme(legend.position = "none")
+```
+
+-->
+
+
+
+
+
+
+
+
+
+  

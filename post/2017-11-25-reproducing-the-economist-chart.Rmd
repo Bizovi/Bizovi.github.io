@@ -1,0 +1,185 @@
+---
+title: "Reproducing The Economist Chart"
+author: "Bizovi Mihai"
+date: "2017-11-25"
+output: html_document
+---
+
+While searching for solutions to fine-tune ggplot2 visualizations, I stumbled upon^[http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html] a nice challenge: to reproduce `The Economist`'s plot showing the correlation between *Corruption Perception Index* and the *Human Development Index*^[https://www.economist.com/blogs/dailychart/2011/12/corruption-and-development]. 
+
+```{r message=FALSE, warning=FALSE}
+library(knitr)
+knitr::include_graphics(path = "data/economist.png")
+```
+
+
+> The conclusion from this exercise is that even a simple task like reproducing a chart involves various analysis and modeling decisions. The only way to reduce the amount of mistakes is to make the analysis reproducible. 
+
+Following the data trails, there are two sources of data: 
+
+* Human Development Index in a .csv file from [`UN Human Development Report`](http://hdr.undp.org/en/data)
+* Corruprion perception Index in a spreadsheet [`from Transparency International`](https://www.transparency.org/cpi2015)
+
+Note, that for any serious analysis we need to take into account the methodology of how these indicators are calculated and in the spreadsheet there are some details related to that. The first thing to notice by looking at the data is that the names of countries do not match, which is to be expected since the souces are different. Also, there are countries for which the CPI is not available.  
+
+```{r load_libraries, message=FALSE, warning=FALSE}
+library(tidyverse)  # data processing and visualization tools
+library(readxl)     # tidy reading of spreadsheets
+library(ggrepel)    # repel text
+library(data.table) # isn't really needed, but hope you will discover this amazing package
+```
+
+## Data Preprocessing
+```{r}
+# skip the first row as it only contains text
+hdi <- fread("data/Human development index (HDI).csv", skip = 1) %>% 
+  select(Country, `2015`)  %>% 
+  rename(HDI_2015 = `2015`) %>% 
+  mutate(HDI_2015 = as.numeric(HDI_2015)) %>% 
+  # next line deletes the space before all countries, 
+  # which would mess up the joining
+  mutate(Country = substr(Country, 2, nchar(Country))) %>% 
+  as_tibble()
+hdi %>% head()
+```
+It is probable The Economist used Region Mappings from UN in the following table. 
+```{r}
+cpi <- read_excel("data/CPI_2015_FullDataSet.xlsx", sheet = 1) %>% 
+  rename(Country  = `Country/Territory`, 
+         CPI_2015 = `CPI 2015 Score`) %>% 
+  select(Country, Region, CPI_2015)
+head(cpi)
+```
+
+Notice that the HDI dataset has data for `r nrow(hdi)` countries availabele, but CPI is available only for `r nrow(cpi)`. If you try to join the data you will get an unpleasant surprise: some names do not match and we have to fix that. 
+
+```{r}
+not.matching <- cpi  %>% left_join(hdi, by = "Country") %>% 
+  filter(is.na(HDI_2015))
+
+# identify corresponding places hdi dataset
+idx <- c(74, NA, 29, 90, 168, 21, NA, 112, 46, 185,
+         166, 139, 79, 93, 39, 40, 164, 184, NA, NA)
+match <- data.frame(
+  country = as.character(not.matching$Country),
+  idx_hdi = idx
+) %>% na.omit
+
+hdi[match$idx_hdi, ]$Country <- as.character(match$country)
+
+data <- cpi %>% left_join(hdi, by = "Country")
+head(data)
+```
+
+In order to have full names for regions, there are three options: 
+
+* To leave as-is and fix in the plot
+* Second, to rename the factors
+* Third, add a new column using a mapping table with a left_join
+
+```{r}
+# data$Region %>% unique()
+mapping <- data.frame(
+  Region      = c("WE/EU", "AP", "AME", "MENA", "SSA", "ECA"), 
+  Region_Name = c("OECD", "Asia & Oceania", "Americas", 
+                  "Middle East & North Africa", "Sub-Saharan Africa", 
+                  "Eastern & Central Europe")
+)
+
+data <- data %>% left_join(mapping, by = "Region")
+data %>% head()
+```
+
+## Building the Plot
+
+The regression line used to fit the data looks like a logarithmic one, which is the model most probaly also used by the economist
+```{r fig.width=8, fig.height=5, warning=FALSE, message=FALSE}
+data <- data %>% 
+  mutate(CPI_2015 = CPI_2015 / 10)
+
+# choose country labels to display (could be according to some smart criteria)
+# like the top and bottom countries for each Region
+# here is just an arbitrary set
+
+country.labels <- c("New Zeeland", "Norway", "Singapore", 
+                     "Japan", "Germany", "Britain", "Barbados", 
+                     "United States", "France", "Spain", "Italy", 
+                     "China", "Rwanda", "South Africa", "Greece", 
+                     "Iraq", "Congo", "Afghanistan", 
+                     "Venezuela", "Russia", "India", "Bhutan", 
+                     "Cape Verde", "Argentina"
+                    )
+# for colors the trick is to use a named color vector
+# fancy colors, close to the ones chosen by The Economist
+clr <- c("#006D6F", "lightskyblue1", "steelblue2", 
+         "indianred1", "brown", "seagreen", "tomato")
+names(clr) <- c(as.character(mapping$Region_Name), "regression")
+
+p <- data %>% ggplot(aes(x = CPI_2015, y = HDI_2015)) + 
+  stat_smooth(
+    method = "lm", se = FALSE, 
+    formula = y ~ log(x),         # the linear model
+    size = 1.1,  colour = "tomato", # regression line colors
+    aes(fill = "R=52%")
+    )  + 
+  geom_point(
+    aes(color = Region_Name), 
+    # 21 is the only shape allowing both fill and color
+    size = 3, shape = 21, fill = "white", 
+    stroke = 1.6 # thikness of point margin
+             ) + 
+  geom_text_repel(aes(label = 
+      ifelse(Country %in% country.labels, Country, NA)), 
+      color = "grey20",
+      segment.color = "grey80",
+      # very important in order not to overlap with points
+      point.padding = unit(0.025, 'npc'), 
+      force = 1, 
+      nudge_y = 0.03, 
+      nudge_x = -0.015) + 
+  scale_color_manual(
+    values = clr, 
+    breaks = c("OECD", "Americas", "Asia & Oceania", 
+               "Middle East & North Africa", 
+               "Eastern & Central Europe",
+               "Sub-Saharan Africa", "Rsq=52%"),
+    labels = c("OECD", "Americas", "Asia & \n Oceania",
+                "Central & \n Eastern Europe",
+                "Middle East & \n North Africa",
+                "Sub-Saharan \n Africa", "Rsq=52%")
+               ) +
+  theme_minimal() +
+  theme(
+    legend.position    = "top", 
+    panel.grid.major.x = element_blank(), 
+    panel.grid.minor.x = element_blank(), 
+    panel.grid.minor.y = element_blank(),
+    panel.grid.major.y = element_line(color = 'grey85', size = 1), 
+    axis.ticks.x = element_line(), 
+    plot.title = element_text(size = 16, face = "bold"), 
+    text = element_text(family = "sans"), 
+    # more space in legend
+    legend.key.size = unit(1.8, "lines"), 
+    legend.spacing.x = unit(-0.5, "cm")
+    ) + 
+  guides(colour = guide_legend(nrow  = 1, title = ""),
+         fill   = guide_legend(title = "")) +
+  labs(x = expression(italic("Corruption Perceptions Index, 2015 (10=least corrupt)")), 
+       y = expression(italic("Human Development Index, 2015 (1=best)")), 
+       title = "Corruption and human development", 
+       caption = "Sources: Transparency International; UN Human Development Report") + 
+  expand_limits(y = 0.3) + 
+  expand_limits(x = 1) + 
+  scale_x_continuous(breaks = seq(1, 10, 1)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 10)) + 
+  coord_cartesian(ylim = c(0.28, 1), xlim = c(1, 10))
+p
+```
+
+```{r}
+ggsave(filename = "data/economist.png", plot = p, width=8, height=5)
+```
+
+
+
+

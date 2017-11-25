@@ -58,8 +58,6 @@ It has three main components and R does have nice solutions:
   For R novices, a simple advice is that everything you see is an object and everything that does something is a function. The second thing is that the power of R lies in vectorisation, done behind the scenes by extremely fast libraries. Of course there are cases when you might use a for loop and it will be a good solution, but for the most purposes it isn't, so pay a close attention to the functions in `*apply` family. 
 
 
-## A tutorial on Analysis of Returns and Investment Decisions
-  
   
   
   
