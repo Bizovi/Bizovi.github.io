@@ -144,8 +144,8 @@ p <- data %>% ggplot(aes(x = CPI_2015, y = HDI_2015)) +
                "Eastern & Central Europe",
                "Sub-Saharan Africa", "Rsq=52%"),
     labels = c("OECD", "Americas", "Asia & \n Oceania",
-                "Central & \n Eastern Europe",
                 "Middle East & \n North Africa",
+                "Central & \n Eastern Europe",
                 "Sub-Saharan \n Africa", "Rsq=52%")
                ) +
   theme_minimal() +

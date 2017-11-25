@@ -7,7 +7,7 @@ output: html_document
 
 While searching for solutions to fine-tune ggplot2 visualizations, I stumbled upon^[http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html] a nice challenge: to reproduce `The Economist`'s plot showing the correlation between *Corruption Perception Index* and the *Human Development Index*^[https://www.economist.com/blogs/dailychart/2011/12/corruption-and-development]. 
 
-```{r message=FALSE, warning=FALSE}
+```{r echo=TRUE, message=FALSE, warning=FALSE}
 library(knitr)
 knitr::include_graphics(path = "data/economist.png")
 ```
@@ -144,8 +144,8 @@ p <- data %>% ggplot(aes(x = CPI_2015, y = HDI_2015)) +
                "Eastern & Central Europe",
                "Sub-Saharan Africa", "Rsq=52%"),
     labels = c("OECD", "Americas", "Asia & \n Oceania",
-                "Central & \n Eastern Europe",
                 "Middle East & \n North Africa",
+                "Central & \n Eastern Europe",
                 "Sub-Saharan \n Africa", "Rsq=52%")
                ) +
   theme_minimal() +

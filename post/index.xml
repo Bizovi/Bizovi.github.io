@@ -175,8 +175,8 @@ p &amp;lt;- data %&amp;gt;% ggplot(aes(x = CPI_2015, y = HDI_2015)) +
                &amp;quot;Eastern &amp;amp; Central Europe&amp;quot;,
                &amp;quot;Sub-Saharan Africa&amp;quot;, &amp;quot;Rsq=52%&amp;quot;),
     labels = c(&amp;quot;OECD&amp;quot;, &amp;quot;Americas&amp;quot;, &amp;quot;Asia &amp;amp; \n Oceania&amp;quot;,
-                &amp;quot;Central &amp;amp; \n Eastern Europe&amp;quot;,
                 &amp;quot;Middle East &amp;amp; \n North Africa&amp;quot;,
+                &amp;quot;Central &amp;amp; \n Eastern Europe&amp;quot;,
                 &amp;quot;Sub-Saharan \n Africa&amp;quot;, &amp;quot;Rsq=52%&amp;quot;)
                ) +
   theme_minimal() +
