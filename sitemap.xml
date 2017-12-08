@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>https://bizovi.github.io/post/alpha_zero/</loc>
+      <lastmod>2017-12-07T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://bizovi.github.io/post/2017-11-25-reproducing-the-economist-chart/</loc>
       <lastmod>2017-11-25T00:00:00+00:00</lastmod>
     </url>
@@ -124,6 +133,16 @@
     
     <url>
     
+      <loc>https://bizovi.github.io/tags/chess/</loc>
+      <lastmod>2017-12-07T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://bizovi.github.io/tags/complexity_economics/</loc>
       <lastmod>2016-05-03T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -144,6 +163,16 @@
     
     <url>
     
+      <loc>https://bizovi.github.io/tags/deep-learning/</loc>
+      <lastmod>2017-12-07T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://bizovi.github.io/tags/dlm/</loc>
       <lastmod>2017-08-06T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -156,6 +185,16 @@
     
       <loc>https://bizovi.github.io/tags/ml/</loc>
       <lastmod>2017-08-07T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://bizovi.github.io/categories/ml/</loc>
+      <lastmod>2017-12-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
