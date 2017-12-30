@@ -1,0 +1,892 @@
+---
+title: "Tiny Steps in Prospect Theory and Investment Decisions Part I"
+author: "Bizovi Mihai"
+date: "2017-12-28"
+output: html_document
+---
+
+> This is an assignment for the Behavioral Economics class at Quantitative Economics Masters taught by prof. dr. Anamaria Aldea. The subject is refreshing in the sense that it brings back the real world into the classroom with a `show me the evidence / data` attitude. 
+
+
+ Nonetheless, this is *hard to deliver* as experimental data is scarce and classroom experiments involving a small sample of people with neoclassical training are hardly representative. So what does it mean for me (as a data scientist)?
+
+[Skip to the Data Analysis part if you feel like doing so](#id1)   
+ 
+`Long term goals:`
+
+1. All my life I was trained in decision making, at first in chess *"I don't believe in psychology, I believe in good moves - Fisher"*, then in Probability Theory and Bayesian Analysis, Game Theory, Statistical Modeling. There are more types of pitfalls in decision making, though. Recognizing the use of heuristics, our evolutionary heritage, biases and understanding the human dimension is an essential part of taking good decisions.  
+2. I believe that adding ideas from evolution^[to be fair, I've been watching a lot of Behavioral Human Biology from Robert Sapolsky lately] and complexity science will be essential for a new generation of economic models. These new approaches should be more experimental by their nature, so behavioral economics fits in not only as a patch to neoclassicals, but as a way of doing things. 
+3. All models have assumptions, and this requires awareness and critical thinking. I will try to raise questions that are usually not mentioned. 
+
+
+> `Assignment goal:` Analyze rigorously and in a reproducible fashion  a few stocks from different perspectives: as a statistician looking for regularities in data, as an investor building a portfolio and behavioral economist trying to make sense of former's decisions using prospect theory. Contrasting the prior assumptions and preferences with evidence gained from the data is key.
+
+### Ecosystem of R packages for Financial Data Analysis
+
+The domain particularities of finance motivate the use of certain methods, models and terminology, which might intimidate any newcomer. The same is true for the way data is analyzed and models are built, so we have to accept we've got ourselfs into a bizzare world. The good news is that stats and probability, time series analysis become our best friends, once we relate the model coefficients to all of their terms. Now, what about the data and R? Financial data analysis is R brigs a series of challenges: 
+
+* It's mostly time series and the packages involving time series objects are hardly consistent. This means we have to double-check for errors
+* Calendars, Calendars, Calendars: any programmer's nightmare
+* Time series data types constrain the flexibility of the analysis
+* You want a clean code, but have to slice and dice the time series to uncover something interesting, which is resulting in ugly functions, `for` loops, combinations of `*apply`'s, i.e. cringy code and even uglier visualizations
+* Have to understand clearly what is under the hood of financial calculations and the jargon used
+* Implementations of Models like GARCH are numerically unstable, so you should be paranoid about it
+* How to do a rigorous analysis automatically and reproducibly?
+
+*Tradeoffs I'm making*: 
+
+1. Quality of code, visualizations and outputs over quantity
+2. Writing more code for custom visualizations over using base R ones, in order to have more control
+3. Writing less code by working the `tidy` way and using coertions between ts and data.frame types. 
+4. Spending more time understanding models and their assumptions. What functions in R packages do behind the scenes? How do we validate the model (backtesting, cross-validation, test sample)?
+5. Saving lots of time by pulling the data automatically
+
+
+The team at `business-science.io` did an amazing job of bringing together a suite of `zoo`, `lubridate`, `PerformanceAnalytics` and various data services like `yahoo` finance, `quandl` under the umbrella of tidy data analysis. What this means, is that we'll work with tables more often than time series objects, which should make the analysis more generalizeable. Second, it will reduce the frustration from losing time series signatures. The most important thing is the automatic data pulls from APIs and enforcing consistency by building wrappers on different packages.
+
+
+```{r message=FALSE, warning=FALSE}
+library(tidyquant) # suite of tidy financial data analysis
+library(purrr)     # consistent alternative to r-base *apply
+library(timekit)   # working with time series signatures
+library(tidyr)     # gather and spread
+library(quantmod)  # explicilty load it
+library(PerformanceAnalytics) # explicitly load it
+
+library(ochRe)     # nice color palettes
+library(ggthemes)  # nice themes for ggplot
+library(knitr)     # table formatting
+library(ggrepel)   # repel text
+```
+
+
+## Part I. Explicitly expressing Prior Beliefs^[Bayesian thinking helps not to get embarassed by the quizzes of Kahneman and Thaler]
+
+So, I need to choose some stocks from which to build the portfolio, but I've been living in a cave for the past two years since I've ditched Perry Mehrling's Economics of Money and Banking, Financial Times for Learning Theory and other gruesome pieces of mathematics. The only way to make the following analysis anything near acceptable is by stating `prior beliefs` and then observe what happens as I gather more evidence.
+
+
+> Diversification, Diversification, Diversification
+
+I don't know much about stock markets, but one thing seems clear: more diversification is better. Diversify by industry, geography, size and other dimensions, then find useful correlations in the data, compare individual evolutions to the baseline market performance. Having these prerequisites will help build a robust portfolio.  
+
+> Long term investment over excessive noise
+
+When looking at the data, I usually try not to forget about longer-term forces and trends. In this case I would also build my strategy for the long-term, as there is too much noise in day-to-day news with its chaotic behavior and rare events. 
+
+
+It would be nice (and really, really tempting) to put some machine learning and nonlinear time series models to good use, but it seems that the signal to noise ratio is very low, and the statistical methods have serious methodological issues/flaws here. 
+On the other hand, understanding business cycles, overheating, bubbles, i.e. the economic aspect of things seems a more plausible goal.
+
+
+> Personal beliefs and interests would definitely influence the choices. Will try to specify the degree of belief for certain cases
+
+1. I kind of believe that if you're a small player, chances are that you're not gonna gain anything from trading. Not so sure about a well-build portfolio, but my (pessimistic) expectation would be around the average index. 
+
+2. I believe the future is in "green" energy and that it can be cost-efficient. Now name at least one big firm besides Elon Musk's projects that specializes on it. Ooh ... *[fires up mighty search engine]*
+Low Energy Nuclear Reactions seemed promising, not many news since 2014, is something big happening besides the scenes?
+
+  + Idea to look up Nickel stocks, as it's essential for LENR and cheap
+  + People seem to underestimate the importance of nuclear energy
+  
+3. Not a huge fan of fossil fuels, but we have to take the emotion out of the equation^[See David MacKay's Brilliant work: "Without the Hot Air"] and be realistic about things. It's not going anywhere and alternative energy sources can only do so much due to physical and geographical limitations. Nuclear: it's slow, expensive, risky financilly, but we can't do without it and it's definitely much, much safer than coal. 
+
+4. Bullish on Science and Technology, which is obvious given my background, not so enthusiastic about Pharma.
+
+  + Bitcoin? That's a bubble, but won't risk to put money against it yet!
+  + Google, Amazon, (maybe Facebook) look like solid and safe bets with their infrastructure and drive for innovation
+  + Firms like the former Snapchat are overvalued
+  + Apple: sitting on a pile of cash and going into financial markets, not so sure about innovation anymore
+  + Netflix: waiting for a streaming war with Disney (would want them to survive)
+  + Any Deep Learning, cognitive applications of Data Science, write me in! 
+  + Tesla? Exciting, Bold, very risky
+  + SAS, SAP and Consulting Firms: might buy some stocks if looks profitable, but not excited at all about them 
+  
+5. I would have to think really hard if financial markets represent the real economy and aren't incetivizing parasitic behavior. Cautious about Shadow Banking, very carefully thinking about financial instruments. 
+
+  + Deutsche Bank: watch it fall. How can I bet against it?
+
+6. Food and Beverages, Horeca, Militiatry Contractors, Heavy and Light Industry, Constrcution, Real Estate, Logistics and Transportation, Commerce, Retail.
+
+> Notice as these heterogeneous industries fall in one bucket and little attention is paid to them. Most probably this is an instance of `availability bias`, i.e. strongly conditioned on my interests. Also note that we `think in terms of categories`^[Really, watch dr. Sapolsky, it will change your life] / buckets and not continuums. To be a really good Investor I might have to throw that away in order to see the big picture and build a really diversified portfolio
+
+7. With respect to geography: OECD and Japan look sluggish, China risky, Africa and Americas too unknown, Australia looks like an interesting prospect, also people underestimate Russia. 
+  + Alibaba comes to mind as a tech giant, and I'm bullish about it because of its AI research
+  + Even though Japan's economy is stagnating for a long time, I would bet on some of its seven enourmous consortiums.
+  + From Europe, Germany is my Choice as a manufacturing and technology superpower
+  + Other regions? Feed me data, until then can't say much. 
+
+8. Small and ambitious versus too big to fail? Am I willing to accept some loss on small and ambitious projects such that a few might pay off big time (a la Taleb Nassim)? Won't go there without a serious theoretical justifiation. 
+
+> Curiosities about modeling
+
+Another prior that would affect the decisions, is my skepticism in old, orthodox financial models like CAPM with its efficient market hypotheses and restrictive assumptions. On a more practical/ data note, you're basically estimating a correlation matrix from historical data and then running a quadratic optimization algorithm. Unfortunately, this correlation matrix might be unstable for various reasons. Moreover, what if we want to capture cross time-series intertemporal correlations (i.e. a `Sparse Correlation Matrix that changes in time`)^[Look up Emily B. Fox, Mike West's ideas on Bayesian Time Series]. Alternatively stated, what happens when we simplify the problem via a static $\hat \Sigma$?
+Let's go back to the Markowitz, as another pitfall is the strategy/portfolio is static, so few questions arise: 
+
+* What is the time horizon for which you won't touch your portfolio? This implies how often the model is re-fit. 
+* How do we (rigorously) validate the model?
+* What does behavioral economics has to say about Efficient Market Hypothesis?
+* How much historical data is relevant?
+* Do we even try to account for business cycles/seasonality? What about forecasts and expectations?
+* What are the transactional costs (if we would decide our portfolio turned out to be terrible) and where it should kick in during modeling this?
+* Being heavily influenced by heterodox economists like Minsky: how can this help or hurt me?
+* Do we reason about Animal Spirits, Bubbles, Systematic Distorsions (Biases), fractal markets and chaos outside the modeling process?
+
+For the purposes of the assignment we're assuming a given monetary amount and that it's invested fully in a few assets. In reality you might want to throw a share of bonds/t-bills, given what you want to achieve.  
+By constraint, I will choose firms from the US, but keep in mind that's not the perfect case according to the prior beliefs. Also, all of this assumes we or our organization have access to it. 
+
+<a id="id1"></a>
+
+A list of corporations from the top of my head: `Google`, `Amazon`, `Tesla`, `Netflix`, `Johnson & Johnson` (because it's a standard dataset in R for time series forecasting and has something to do with healthcare)
+*[ok, I tried not to be biased about tech, but nothing else comes to mind]*
+
+## Part II. Gathering Evidence and Data Analysis
+
+> Let's fire up *Financial Times*, *Wiki* and look for interesting stocks which would fit into prior beliefs. But more importantly, what's happening?
+
+Financial times mentiones the progress in Artificial Intelligence with Alpha Go (see my previous [article](https://bizovi.github.io/post/alpha_zero/)), the enormous rise in solar and wind, bitcoin entering bubble territory. It's better to see than hear: look up the amazing graphics from [FT](https://www.ft.com/content/7020a6e4-e4e3-11e7-8b99-0191e45377ec). The S&P Index grew steadily from the beginning of the year. A brief look at the list of [S&P companies](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies) didn't suggest something extremely interesting, so let's stick to these five initially chosen and first see what kind of important events happened with them.
+
+Amazon acquired Whole Foods and refused to support youtube in one of their recent products. Google's Deep Mind acquisition is paying off. Netflix will very soon have to compete with Disney in the streaming wars. Nothing huge on Tesla at the first glance, and it also looks very uneventful for J&J. Now it's finally time to look at the data.
+
+
+### Data Retrieval
+
+So, we're hitting the switch from the layman to statistician and start exploring the data, formulating hypotheses and checking them. A good thing to do is to set up our expectations and (naive) hypotheses before seeing any data. 
+
+1. I expect Google and Amazon to follow the market trend
+2. I expect Netflix to go through a period of higher volatility (given stuff with K.Spacey and Disney)
+3. No Idea about JNJ
+4. Expect Tesla to grow but be more risky than first two
+
+> Predictions are hard, just buy an Index Fund and let it sit, don't look at it too often. *[Honestly that's what I would do. Just give me something diversified]*
+
+```{r eval = FALSE}
+# we might want to download the S&P 500 stocks list
+sp_list <- tq_get("SP500", get = "stock.index")
+# save a local copy of stock prices
+stock_list <- c("GOOGL", "AMZN", "NFLX", "JNJ", "TSLA")
+data   <- tq_get(stock_list, get = "stock.prices")
+ratios <- tq_get(stock_list, get = "key.ratios")
+
+# load the index as the baseline
+# baseline <- tq_get("SP500", get = "stock.prices")
+
+saveRDS(data, file = "data/stocks.RDS")
+saveRDS(sp_list, file = "data/sp_list.RDS")
+saveRDS(ratios, file = "data/ratios.RDS")
+```
+
+Let's see what kind of options (as low hanging fruit) do we have in terms of automatic data pulls, `tq_exchange_options()` shows that we can pull data from these three exchanges: "AMEX", "NASDAQ", "NYSE".
+```{r}
+# We can retreive the following indices and their componence
+tq_index_options()
+# With the following data being available on firms
+tq_get_options()
+```
+
+
+```{r, warning=FALSE, message=FALSE, fig.cap="A brief look suggests Google and Amazon are clear Outliers"}
+# note that Tesla isn't a part of S&P500
+# so maybe consider taking baseline S&P and NASDAQ
+stock_list <- c("GOOGL", "AMZN", "NFLX", "JNJ", "TSLA")
+
+sp_list <- readRDS("data/sp_list.RDS")
+data    <- readRDS("data/stocks.RDS") 
+head(data)
+
+sp_list %>% 
+  mutate(choice = ifelse(symbol %in% stock_list, "in", "other")) %>%
+  ggplot(aes(x = weight, y = shares_held)) + 
+  # coloring by sector won't show any patern
+  geom_point(aes(color = choice, size = choice)) + 
+  geom_text(aes(label = ifelse(symbol %in% stock_list, symbol, "")), 
+            vjust = 1.5) +  
+  geom_smooth(method = "loess", se = FALSE, color = "indianred2") + 
+  theme_minimal() + 
+  scale_x_log10() + 
+  scale_y_log10() + 
+  labs(x = "Asset Weight in Index Fund", y = "Shares Held", 
+       title = "Log Relationship between Weight in S&P and Shares Held") + 
+  scale_color_manual(values = c("indianred2", "grey")) + 
+  scale_size_manual(values = c(3, 1.4)) + 
+  theme(legend.position = "none") 
+```
+
+```{r}
+ratios <- readRDS("data/ratios.RDS")
+ratios %>% 
+  filter(section == "Growth") %>% 
+  unnest() %>% head(8)
+```
+
+
+```{r}
+# adding group and category woul allow an even more refined view 
+# with 89 KPIs
+ratios %>% unnest() %>% 
+  select(section, sub.section) %>% 
+  unique()
+```
+
+> Before Jumping to analysis of returns and volatilities, it's useful to spend some time on price evolutions
+
+Let's see why do we prefer to work with tables, as package `quantmod` allows very quick visualizations with a few lines of code. The issue is that we want to analyze multiple stocks at the same time, and `purrr` or `*apply` is essential here and is easier on tables. Now, quantmod is quite extensible, but if some modeling is involved, I would prefer to do it myself. 
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+# beware that quantmod creates an object in the environment
+# which is far from optimal
+for (stock in 1:length(stock_list)) {
+  quantmod::getSymbols(stock_list[stock], from = "2007-01-01", to = "2017-12-25")
+}
+```
+
+```{r message=FALSE, warning=FALSE, eval=FALSE}
+# beware that quantmod creates an object in the environment
+# which is far from optimal
+
+for (stock in 1:length(stock_list)) {
+  quantmod::getSymbols(stock_list[stock], from = "2007-01-01", to = "2017-12-25")
+}
+```
+
+```{r, warning=FALSE, message=FALSE, fig.height=7, fig.cap="The Chart involves quite a bit of descriptive statistics, so let's review what exactly do they mean"}
+TSLA %>% 
+  chartSeries( 
+    # Add Bollinger Bands, Volume, Moving Average Convergence/Divergence
+    TA = 'addBBands();
+          addBBands(draw="p");
+          addVo();
+          addMACD();
+          addDPO()', 
+    subset = '2017-01::2018',
+    theme  = chartTheme("white.mono"),                    
+    name = "Tesla Stock Prices Evolution", 
+    minor.ticks = FALSE, 
+    up.col = "seagreen3", 
+    dn.col = "indianred2",
+    colov.vol = c("indianred2", "seagreen2")
+  )  
+```
+
+```{r}
+plot_evolution <- function(x) {
+  title <- substitute(x) %>% deparse()
+  x %>% 
+  chartSeries( 
+    # Add Bollinger Bands, Volume, Moving Average Convergence/Divergence
+    TA = 'addBBands();
+          addBBands(draw="p");
+          addMACD();', 
+    subset = '2017-01::2018',
+    theme  = chartTheme("white.mono"),                    
+    name = paste(title, "Stock Prices Evolution"), 
+    minor.ticks = FALSE, 
+    up.col = "seagreen3", 
+    dn.col = "indianred2",
+    colov.vol = c("indianred2", "seagreen2")
+  )  
+}
+
+# similarly for others
+# plot_evolution(GOOGL) 
+```
+
+```{r echo = FALSE, fig.height=5, message=FALSE, warning=FALSE}
+plot_evolution(GOOGL)
+plot_evolution(AMZN) 
+plot_evolution(JNJ)
+plot_evolution(NFLX)
+```
+
+
+Now we kind of have a problem, because we would want to support our decisions based on expectations/ projections in the future. There are a few very known pitfalls when you form your strategy based on past performance, like selling the winners and keeping the losers, which is clearly **suboptimal** and works only in particular cases, conditioned on our beliefs about future evolution.
+
+The assumptions we make about the future evolution of stocks is key in making good decisions, but this is again very tricky. I will be careful to avoid the `false belief in reversion to the mean`, or at least be critical about it. This means that we need reasonable projections. Moreover, when we build the portfolios (e.g with Markowitz), we implicitly assume (wipe under the carpet) that the future will be *evolving* the same way as in the past. *Do portfolio managers feed the model with forecasts?*
+
+
+```{r, fig.height=5, fig.cap="Long-Term trends are somewhat expected, since it's recovery after the crisis"}
+# take the monthy average for the long-term view
+# tq_transmute_fun_options()
+data %>% 
+  filter(date > as.Date("2014-01-01")) %>%
+  group_by(symbol) %>%
+  tq_transmute(select     = adjusted, 
+    mutate_fun = apply.weekly,
+    FUN        = mean, 
+    col_rename = "avg_price") %>%
+  select(symbol, date, avg_price) %>% 
+  ggplot(aes(x = date, y = avg_price, color = symbol)) + 
+  geom_point(alpha = 0.3) + 
+  geom_ma(n = 15, size = 1, lty = 1) +
+  geom_ma(n = 40, size = 1, lty = 1, color = "indianred") +
+  facet_wrap(~ symbol, ncol = 2, scales = "free_y") +
+  theme_minimal() + 
+  scale_color_ochre(palette = "nolan_ned") + 
+  theme(legend.position = "none") + 
+  labs(x = "", y = "Average Weekly Price", 
+       title = "Long-Term Trends of Price Evolution", 
+       subtitle = "Moving average of 15 and 40 weeks")
+```
+```{r, fig.cap="Notice the divergence of Tesla and Netflix in mid-October"}
+data %>% 
+  filter(date > as.Date("2017-01-01")) %>%
+  group_by(symbol) %>%
+  select(symbol, date, adjusted) %>% 
+  ggplot(aes(x = date, y = adjusted, color = symbol)) + 
+  geom_vline(xintercept = as.Date("2017-10-15"), 
+             color = "grey40", lty = 2) +
+  geom_point(alpha = 0.1) + 
+  geom_ma(n = 15, size = 1, lty = 1) +
+  geom_ma(n = 45, size = 1, lty = 1, color = "indianred") +
+  facet_wrap(~ symbol, ncol = 2, scales = "free_y") +
+  theme_minimal() + 
+  scale_color_ochre(palette = "nolan_ned") + 
+  theme(legend.position = "none") + 
+  labs(x = "", y = "Price", 
+       title = "Stock Prices for the Last Year", 
+       subtitle = "Moving average of 15 and 45 days")
+```
+
+
+$$r_t=log(\frac{P_{t+1}}{P_t}) \sim N(\mu_0, \sigma)$$
+As the theory suggests, we take the log for mathematical convenience and distributional properties. When $exp(r_t)$, it gives a skewed distribution biased on the positive side, which is similar to what we see over long periods. Now, I am inclined to agree with this [answer](https://www.quora.com/Why-do-people-use-log-returns-of-stock-prices-for-auto-regression), which states that `lognormality` asssumption is the root of most econometrics evil in finance. 
+
+```{r, fig.cap="Note that boxplots aren't the appropriate representation for such data"}
+# tq_mutate_fun_options()
+data.return <- data %>% 
+  select(symbol, date, adjusted) %>% 
+  group_by(symbol) %>%
+  tq_mutate(
+    select     = adjusted, 
+    mutate_fun = dailyReturn,
+    type       = "log",
+    col_rename = "returns")
+
+qtl <- data.return %>% 
+  group_by(symbol) %>% 
+  summarise(q1 = quantile(returns, c(0.025)), 
+            q9 = quantile(returns, c(0.975)))
+
+data.return %>% 
+  ggplot(aes(x = returns)) + 
+  geom_histogram(fill = "grey60", bins = 40) + 
+  geom_rug(color = "grey") + 
+  geom_vline(xintercept = 0, lty = 2, color = "indianred") + 
+  geom_vline(data = qtl, aes(xintercept = q1), color = "grey20", lty = 2) +
+  geom_vline(data = qtl, aes(xintercept = q9), color = "grey20", lty = 2) + 
+  facet_wrap(~symbol, ncol = 3, scales = "free") + 
+  theme_minimal() + 
+  labs(x = "Log Returns", title = "Distribution of Daily Log-Returns", 
+       subtitle = "Interval contains 95% of Observations")
+```
+
+Because of the very large sample size, I think most formal tests of normality would be useless in this particular case. See the [discussion](https://stats.stackexchange.com/questions/2492/is-normality-testing-essentially-useless).
+
+```{r fig.width=5, fig.height=5, fig.cap = "Correlations between log returns for 2017"}
+library(corrplot)
+data.return %>%
+  filter(date > as.Date("2017-01-01")) %>%
+  select(date, symbol, returns) %>% 
+  tidyr::spread(key = symbol, value = returns) %>% 
+  select(-date) %>%  
+  cor() %>% corrplot(
+    type = "lower",
+    addCoef.col = "black",
+    diag = FALSE)
+```
+
+```{r}
+data.return %>% 
+  filter(date > as.Date("2014-01-01")) %>% 
+  mutate(month = as.factor(lubridate::month(date)), 
+         year  = as.factor(lubridate::year(date))) %>% 
+  group_by(symbol, year, month) %>% 
+  summarise(avg_price = mean(adjusted)) %>% 
+  group_by(symbol, year) %>% 
+  mutate(price_norm = avg_price / sum(avg_price)) %>%
+  mutate(group = paste(symbol, year)) %>%
+  ggplot(aes(x = month, y = price_norm, color = symbol)) + 
+  geom_point(alpha = 0.5) + 
+  geom_line(aes(group = group), alpha = 0.5) + 
+  theme_minimal() + 
+  scale_color_ochre(palette = "nolan_ned") + 
+  ylim(0.03, 0.14) + 
+  labs(y     = "Normalized Monthly Price (share of year)", 
+       title = "Seasonality of Average Prices", 
+       subtitle = "Notice how prices tend to increase throughout the year")  
+```
+
+Let's now look at more advanced measures, such as drawdown plots, code taken from this cool [blog](https://timelyportfolio.blogspot.ro/2011/08/drawdown-visualization.html). 
+
+```{r}
+# get the baseline (Index Fund)
+getSymbols("SP500", src = "FRED")
+
+SP.roc <- merge(GOOGL[, 6], SP500) %>% 
+  ROC(n = 1, type = "discrete")
+
+drawdowns <- table.Drawdowns(SP.roc[, 1])
+drawdowns.dates <- cbind(format(drawdowns$From), format(drawdowns$To))
+drawdowns.dates[is.na(drawdowns.dates)] <- format(index(SP.roc)[NROW(SP.roc)])
+# from matrix to list
+drawdowns.dates <- lapply(seq_len(nrow(drawdowns.dates)), function(i) drawdowns.dates[i,])   
+
+charts.PerformanceSummary(SP.roc, 
+ ylog       = TRUE,
+ period.areas = drawdowns.dates,
+ period.color = "grey90",
+ colorset   = c("indianred2","steelblue","seagreen4"),
+ legend.loc = "topleft",
+ main       = "S&P500 and Google Performance"
+ )
+```
+
+OK, So you get the mechanism with which to draw these charts. Notice that we control for which asset to draw the stripes.
+
+```{r echo=FALSE, fig.cap = "Index was removed for clarity and is slightly below J&J in terms of cumulative returns"}
+SP2.roc <- merge(AMZN[, 6], SP500) %>% 
+ ROC(n = 1, type = "discrete")
+
+drawdowns2 <- table.Drawdowns(SP2.roc[, 1])
+drawdowns.dates2 <- cbind(format(drawdowns2$From),format(drawdowns2$To))
+drawdowns.dates2[is.na(drawdowns.dates2)] <- format(index(SP2.roc)[NROW(SP2.roc)])
+drawdowns.dates2 <- lapply(seq_len(nrow(drawdowns.dates2)), function(i) drawdowns.dates2[i,])  
+
+charts.PerformanceSummary(SP2.roc, 
+ ylog       = TRUE,
+ period.areas = drawdowns.dates2,
+ period.color = "grey90",
+ colorset   = c("grey40", "seagreen4"),
+ legend.loc = "topleft",
+ main       = "S&P500 and Amazon Performance" )
+```
+
+```{r, echo=FALSE}
+SP2.roc <- merge(JNJ[, 6], SP500) %>% 
+ ROC(n = 1, type = "discrete")
+
+drawdowns2 <- table.Drawdowns(SP2.roc[, 1])
+drawdowns.dates2 <- cbind(format(drawdowns2$From),format(drawdowns2$To))
+drawdowns.dates2[is.na(drawdowns.dates2)] <- format(index(SP2.roc)[NROW(SP2.roc)])
+drawdowns.dates2 <- lapply(seq_len(nrow(drawdowns.dates2)), function(i) drawdowns.dates2[i,])  
+
+charts.PerformanceSummary(SP2.roc, 
+ ylog       = TRUE,
+ period.areas = drawdowns.dates2,
+ period.color = "grey90",
+ colorset   = c("indianred", "grey40"),
+ legend.loc = "topleft",
+ main       = "S&P500 and J&J Performance" )
+
+```
+```{r, echo=FALSE}
+SP2.roc <- merge(NFLX[, 6], SP500) %>% 
+ ROC(n = 1, type = "discrete")
+
+drawdowns2 <- table.Drawdowns(SP2.roc[, 1])
+drawdowns.dates2 <- cbind(format(drawdowns2$From),format(drawdowns2$To))
+drawdowns.dates2[is.na(drawdowns.dates2)] <- format(index(SP2.roc)[NROW(SP2.roc)])
+drawdowns.dates2 <- lapply(seq_len(nrow(drawdowns.dates2)), function(i) drawdowns.dates2[i,])  
+
+charts.PerformanceSummary(SP2.roc, 
+ ylog       = TRUE,
+ period.areas = drawdowns.dates2,
+ period.color = "grey90",
+ colorset   = c("indianred", "grey40"),
+ legend.loc = "topleft",
+ main       = "S&P500 and Netflix Performance" )
+```
+
+```{r, echo=FALSE}
+SP2.roc <- merge(TSLA[, 6], SP500) %>% 
+ ROC(n = 1, type = "discrete")
+
+drawdowns2 <- table.Drawdowns(SP2.roc[, 1])
+drawdowns.dates2 <- cbind(format(drawdowns2$From),format(drawdowns2$To))
+drawdowns.dates2[is.na(drawdowns.dates2)] <- format(index(SP2.roc)[NROW(SP2.roc)])
+drawdowns.dates2 <- lapply(seq_len(nrow(drawdowns.dates2)), function(i) drawdowns.dates2[i,])  
+
+charts.PerformanceSummary(SP2.roc, 
+ ylog       = TRUE,
+ period.areas = drawdowns.dates2,
+ period.color = "grey90",
+ colorset   = c("grey40", "indianred"),
+ legend.loc = "topleft",
+ main       = "S&P500 and Tesla Performance" )
+```
+
+> What would be interesting, is to look at rolling correlations with respect to the baseline (S&P Index). 
+
+There's an interesting (but more philosophically inclined) discussion in Taleb Nassim's `Fooled by Randomness`, whether standard deviation is the appropriate measure of uncertainty in the context of Normality assumptions. 
+
+```{r}
+data.return %>% 
+  ggplot(aes(x = date, y = returns)) + 
+  geom_line(color = "grey") + 
+  geom_hline(color = "indianred", yintercept = 0, lty = 2) + 
+  facet_wrap(ncol = 2, scale = "free_y", ~ symbol) +
+  theme_minimal() + 
+  labs(x = "", title = "Evolution and Volatility Regimes of Log-Returns")
+```
+
+```{r eval=FALSE, fig.width = 5, fig.height=3}
+# you can check for autocorrelation, but won't find anything interesting
+acf_est <- data.return %>% 
+  select(symbol, returns) %>% 
+  group_by(symbol) %>% 
+  split(f = .$symbol) %>% 
+  lapply(FUN = function(x) x$returns %>% acf) 
+```
+
+```{r}
+pr <- c(0.025, 0.25, 0.5, 0.75, 0.975)
+daily.qtl <- data.return %>% 
+  group_by(symbol) %>%
+  summarise(quantiles = list(sprintf("%1.0f%%", pr*100)),
+    value = list(quantile(returns, pr)), 
+    mean = mean(returns), 
+    sd   = sd(returns)) %>% 
+  unnest() %>% 
+  tidyr::spread(key = quantiles, value = value)
+
+lapply(daily.qtl, function(x) {
+  if (is.numeric(x)) round(x, 4) else x}) %>% data.frame() %>% 
+  knitr::kable()
+
+```
+
+Now, it would be interesting to see how this performance does with respect to all other stocks in S&P.
+```{r, eval = FALSE}
+# downloading all history for 500 stocks takes around 3 minutes
+sp_all <- tq_get(sp_list$symbol, get = "stock.prices")
+saveRDS(sp_all, "data/sp_all.RDS")
+
+sp_all <- readRDS("data/sp_all.RDS")
+
+# Step1. Calculate returns
+sp_sample <- sp_all %>% group_by(symbol) %>% summarise(n = n()) %>% 
+  arrange(n) %>% 
+  sample_n(20) %>% 
+  .$symbol
+
+sp_returns <- sp_all %>% 
+  group_by(symbol) %>% 
+  dplyr::do(
+    mutate(., return = log(adjusted / lag(adjusted)))
+  ) %>% na.omit() %>% 
+  group_by(symbol) %>% 
+  summarise(
+    avg_return = mean(return, na.rm = TRUE), 
+    sd         = sd(return, na.rm = TRUE)
+  )
+
+sp_returns_2014 <- sp_all %>% 
+  filter(date > as.Date("2014-01-01")) %>% 
+  group_by(symbol) %>% 
+  dplyr::do(
+    mutate(., return = log(adjusted / lag(adjusted)))
+  ) %>% na.omit() %>% 
+  group_by(symbol) %>% 
+  summarise(
+    avg_return = mean(return, na.rm = TRUE), 
+    sd         = sd(return, na.rm = TRUE)
+  )
+
+saveRDS(sp_returns, "data/sp_returns.RDS")
+saveRDS(sp_returns_2014, "data/sp_returns_2014.RDS")
+```
+
+```{r}
+sp_returns <- readRDS("data/sp_returns.RDS")
+sp_returns_2014 <- readRDS("data/sp_returns_2014.RDS")
+sp_returns %>% head()
+```
+
+```{r, fig.cap="As Expected, Tesla and Netflix are high risk, high return, Amazon on the wave, Google Solid and if before we didn't know anything about J&J, now it's clear it's low risk-low return"}
+daily.qtl %>% 
+  ggplot(aes(x = sd, y = mean)) +
+  geom_point(data = sp_returns, aes(x = sd, y = avg_return), 
+             alpha = 0.4, color = "grey") + 
+  geom_point(data = sp_returns_2014, aes(x = sd, y = avg_return), 
+             alpha = 0.2, color = "indianred2") + 
+  geom_point(size = 4, color = "steelblue") +
+  geom_text(aes(label = symbol), vjust = 1.5, size = 3.5) +
+  theme_minimal() + 
+  xlim(0.007, 0.045) + 
+  ylim(-0.00025, 0.0015) + 
+  labs(x = "Volatility", y = "Returns", 
+       title = "Chosen Assets (2007:2017) compared to other S&P", 
+       subtitle = "Red points are estimated using data from 2014. Grey: 2007")
+```
+
+So, we ended up having a high-risk, high reward portfolio due to my preferences. As we'll see from the questionnaire, Tesla and Netflix fall out from the top3 choices, and we end up with something more balanced.
+
+
+## Part III. Questionnaire
+
+> By now you're pretty familiar with my prior beliefs and assumptions, but let's look at other respondents. Two friends were asked to state their preference on a scale from 1 to 10 regarding the stocks and assign a probability of investing in them, if being given $1000. Then they were shown the data: returns, evolutions and descriptive statistics and asked if (and how) would they update the probabilities.
+
+
+#### `E. B.`: 
+
+```{r}
+rsp_eb <- tibble(
+  id      = rep("EB", 5),
+  symbol  = c("GOOGL", "AMZN", "NFLX", "JNJ", "TSLA"),
+  score   = c(7, 9, 7, 5, 8), 
+  prob    = c(0.8, 0.8, 0.5, 0.1, 0.5),
+  prob_up = c(0.8, 0.9, 0.4, 0.7, 0.4)
+)
+
+rsp_eb %>% knitr::kable()
+```
+
+> Amazon, because I'm a fan and they have a mix of technology and business. Google, in order not to miss put. Didn't hear about J&J, need to do some research. Netflix is interesting, but doesn't seem something long-term. Tesla looked like it was going down.
+
+After getting familiar with the data:
+
+> Hmm, Tesla is going down and Netflix Stagnates. The choice of Amazon is reinforced, maybe J&J rises a little bit. The trends and price evolution influenced me more than the returns.
+
+
+
+#### `M. C.`:
+
+> Google, because it's solid company investing in interesting stuff and are leading in technology: AI, ML, web services. Solid overall. I give it a high propability because I know its price is largest among tech, higher than Facebook and Apple, so I don't see how it can be lower in the near future. If not for profit, at least for safe perserving of money, I would invest in their stocks. 
+
+> Amazon is solid, extended from eCommerce to AWS and other interesting services, it's expandin its area of services, which is cool. Netflix is delivering one service simply and clearly and does it well, but the stuff with net neutrality could largely limit its efficiency. 
+
+> I know that J&J have more daughter companies thatn cosmetics stuff, which is solid. They have a network of firms which is pretty successful overall. Tesla is pushing for alternative energy and is doing good progress, which is cool. They could enter the market of net providers if net neutrality repel kicks in, which could largely extend i. 
+
+After getting familiar with the data: 
+
+> Google stays same, I would add a little bit to amazon, because it looks like the return is kind of big for an acceptable risk region. I would decrease J&J because it looks too stationary, and I don't like such sluggish dynamic. Decrease Tesla because the risk looks large and Netflix stays about the same because of the political implications. 
+
+
+```{r}
+rsp_mc <- tibble(
+  id      = rep("MC", 5),
+  symbol  = c("GOOGL", "AMZN", "NFLX", "JNJ", "TSLA"), 
+  score   = c(8.5, 7, 7.5, 6, 8),
+  prob    = c(0.85, 0.75, 0.4, 0.70, 0.85),
+  prob_up = c(0.85, 0.80, 0.4, 0.55, 0.75)
+)
+rsp_mc %>% knitr::kable() 
+```
+
+```{r}
+# there is not much point to do a scatterplot here
+# but we can visualize how beliefs were updated with data
+rbind(rsp_eb, rsp_mc) %>% 
+  tidyr::gather(key = prob, value = value, -c(id:score)) %>%
+  mutate(group = paste(symbol, id)) %>%
+  ggplot(aes(x = prob, y = value, color = id, group = group)) + 
+  geom_point(size = 3) +
+  geom_text_repel(aes(label = symbol), size = 3) + 
+  geom_line() +
+  theme_minimal() + 
+  scale_color_manual(values = c("indianred2", "steelblue")) +
+  labs(x = "", y = "Probability", 
+       title = "Updated Probabilities after seeing the data", 
+       subtitle = "Notice the different preferences in the case of J&J") 
+```
+
+If we would have to chose portfolios of three assets, `Google`, `Amazon` and `J&J` would be at the top.
+
+> By now, you're most probably tired from reading, so let's stop and continue next time by constructing portfolios by simulation using the questinnaire results and connecting it to `Prospect Theory`.
+
+<!--
+
+## Part IV. Portfolio Construction
+
+1. at least 100 portfolios with 2 most prefered stocks
+2. at least 100 portfolios with 3 most prefered stocks
+
+generate probabilities (weights) of investment in a stock in intervals answered (normalizing befor that) => grenerate the portfolios within those ranges w.r.t. a chosen distribution uniform/normal/etc.
+
+1. Expected return of all types of portfolios => Order them
+2. Graphical representation of returns of portfolios. Comment the most profitable one. Compare returns of these two types of portfolios
+3. Calculate the risk of both types of portfolios => What is the most risky portfolio
+4. Sharpe ratio (CV and interpret)
+
+
+Visualize efficiency fronteer
+
+
+## Part V. Prospect Theory Insights
+
+
+## Conclusion
+
+-->
+
+<!--
+ 
+TIME HORIZON MATTERS !! (regarding mean reversion)
+Appropriately to look at 1y / 2y returns (probable time horizons making certain choices)
+
+
+People biased against realizing losses.
+
+False belief in mean reversion  (And heuristic built of that)?! Not every process have mean reversion behavior. => Suboptimal Behavior
+Gambler's fallacy (negative autocorrelation that's not there: thant's not how any of these works) -> not understanding conditional probability e.g P(red | 9 reds) close to 0.5, it's not total probability
+
+
+
+Mean reverting behavior? Difficult to predict future returns based on past returns => Well, I'll just do smth, go ride with the market. 
+
+Stochastic Processes knocking at the door.
+
+If the stock went down last year -> expect to 
+went well -> expect to level off in the future
+What matters is what you're gonna behave in the future
+// Does it matter what the stock did in the past? (EMH - No?)
+
+> All this stuff is suggesting a technical analysis
+
+Mental accounting: Paper gains an realize gains
+Realized losses -> biases and behavior
+
+Note that we did not hold any of these stocks, for the endownment effect to hold(). 
+Willingness to pay/willingness to accept => lack of consistency
+
+Foregone gains are different from losses, adn foregone losses very different from gains -> Implications
+
+bias against realizing losses (LOSS AVERSION!!)
+
+> Pay more to avoid a loss than to have a gain
+
+Value Function
+
+> What is the rational thing to do?
+
+Imagine we hold the stocks for some time (which is not the case at the beginning, but an useful exercise)
+Heuristics that do not make sense: => Uncover implicit assumptions besides theses
+* Do we sell the losers and keep the winners ? 
+* Sell winners and keep losers?
+* What is the thing to do?
+
+Disposition effect: holding what we believe on past behavior losing stocks.
+
+Expected future behavior => That's Key (I am where I am and can't change that => What's going to happen in future) => need projections!!! 
+
+
+So what about mean reversion. 
+// EMH: Informationally efficient (price encodes all relevant information) // Prices are always correct
+    -- not entirely correct all the time (irrational exuberance, bubbles)
+
+-- weak form EMH, stock prices are unpredictable based on past returns
+Would'nt be really valuable
+  -- Technical analysis: cycles and ts
+  -- Fundamental analysis: underlying company and its factors
+  => Random walk with drift y-1 + epsilon (random walk down Wall Street)
+
+Asset manager vs monkey with a dart board if EMH holds on average. Most portfolio managers outperformed by index funds ??? what? => Animals picking stocks :))
+
+> Buuut we have lots of data available. Earlier research supported random walks pretty well. Then started challenging to some degree as time goes on (minor, particular ways). Not as broad ... 
+
+
+> Momentum: opposite of mean reversion. What we see in data, actions, beliefs: in some days, short holding periods particular time intervals does well: what the hell? Transaction costs would eat up your returns. Followed up by sharp reversals. There are structural (why) explanations. 
+
+Over 3-7 years there is some evidence of mean reversion (if we look at extreme winners and extreme losers). That's quite particular. 
+
+Clean test for the disposition effect: Get data of people's behavior in stock market
+Individual accounts from a brokerage firm. Terrance Odean "Are investors reluctant to realize their losses", precusors to e-trade. for every day what do they hold. (musta bought, musta sold) => Very granular info. >
+// they might not have been able to short it (challenging logistically -> not whol lot happening on individual level). Portfolio managers limited to long positions. 
+
+> People categorize their positions as win/lose. What is their reference point (at which they bought at)?
+well, you might have acclimated, not sure how that happens. 
+A stock might be a winner for one/loser for other!! (not overall, categorize for each individual)
+
+Given that point, joint test of disposition effect/ did we guess the refrence point of individual. 
+Second might not be a problem. See if research is asking the right questions. 
+
+> Methodology: DESIGN DECISIONS!!
+
+Q: is the disposition effect present. 
+Design Choices for each investors (#win sold > #losers sold) => disposition effect? NOT REALLY. 
+problem: market grew very much -> have to adjust for it (looking at what you did not sell !!) 
+What they used in the paper: Is the price higher than what you bought at?
+What counts as winner (depending on how sophisticated the traders were, do they take into account the opportunity cost)
+Upward trend => More winners than losers. 
+// ratio: number of winners could've sold / nr of winners could've sold -> statistic. => TEST
+
+realized gains / (realized gains + paper gains)
+vs as evidence ??
+realized losses / (realized losses + paper losses)
+
+1) when calculating risks or losses: risk-free rate?
+2) not taking into account how large is the gain/loss it
+3) not weighting by the number of *shares* (counting all by a unit) => abstracted away from.
+Inference of reference point. 
+
+
+
+Downside of observational data: confoundiiing (e.g. LOGISTICS CONSIDERATION, tax-motivated saling: file tax returns (K gains -> Tax / Losses -> Deduction) // ONLY WHEN REALIZED paper vs realized gains and losses!! -> more incetives), environment not controlled!
+
+Doesn't do an economic win/loss: robustness checks!
+
+Market index vs 5-7 individual time series for stock prices
+
+```{r message=FALSE, warning=FALSE}
+
+```
+If you look at most of the analyses, it's pretty much an exploratory data analysis, descriptive statistics combined with domain knowledge and interpretation. One step further are statistical models based on financial theory. If we go further, it's from puppies to other kind of beasts (machine learning, stochastic filtering and the most gruesome maths you've seen in a while). 
+
+
+
+### Daily returns
+
+* histograms and boxplots 
+  -- yoy (monthly) seasonality
+* summary reports
+* Correlation(s) 
+* Drawdowns and relative performance (of each stock vs corresponding market)
+* Skewness, Kurtosis, Smirnov-Kolmogorov tests
+
+
+
+
+
+
+
+
+### For each portfolio type, identify the utility function of portfolios
+
+Choose alpha with respect to the decident type
+-- graphically represent it and visualize
+-- how do those fronteers differ
+
+### Transform Portfolios in prospects to see if decident perception is different from yours
+
+* Decisional weights associated with probabilities. Visualize (Interpretation in Course)
+As gamma grows, it becomes biased. Choose gamma according to the answers of the questionnaire
+* Calclulate the Value function associated to the prospects, 
+Use Kahneman & Tversky (1992) with a, b, lambda at the course. 
+
+Determine prospects with maximum value and compare with maximum rentability portfolio in each case. 
+
+
+Graohically represent obtained values for each type of prospects. 
+
+
+### Final Conclusions
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
