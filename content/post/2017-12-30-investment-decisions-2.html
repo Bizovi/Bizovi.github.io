@@ -280,7 +280,7 @@ df &lt;- sapply(X = alphas, FUN = U, x = seq(0, 30, by = 0.1)) %&gt;%
 <pre class="r"><code># add the appropriate values to column names
 colnames(df) &lt;- as.character(alphas)
 df %&gt;% 
-  mutate(x = 1:nrow(df)) %&gt;% 
+  mutate(x = seq(0, 30, by = 0.1)) %&gt;% 
   reshape2::melt(id.vars = &quot;x&quot;) %&gt;% # could use tidyr::gather as an alternative
   rename(alpha = variable) %&gt;%
   ggplot(aes(x = x, y = value, color = alpha)) + 
@@ -299,14 +299,14 @@ df %&gt;%
 gammas &lt;- c(0.5, 0.45, 0.55, 0.4, 0.6)
 
 # apply the function on using 4 different gamma parameters
-df &lt;- sapply(X = gammas, FUN = weight, p = seq(0, 1, by = 0.005)) %&gt;% 
+df &lt;- sapply(X = gammas, FUN = weight, p = seq(from = 0, to = 1, by = 0.005)) %&gt;% 
   as_tibble()</code></pre>
 <pre><code>## Warning in as_tibble(.): The `tidyquant::as_tibble()` function is
 ## deprecated. Please use `timetk::tk_tbl()` instead.</code></pre>
 <pre class="r"><code># add the appropriate values to column names
 colnames(df) &lt;- as.character(gammas)
 df %&gt;% 
-  mutate(x = 1:nrow(df)) %&gt;% 
+  mutate(x = seq(from = 0, to = 1, by = 0.005)) %&gt;% 
   reshape2::melt(id.vars = &quot;x&quot;) %&gt;% # could use tidyr::gather as an alternative
   rename(gamma = variable) %&gt;%
   ggplot(aes(x = x, y = value, color = gamma)) + 

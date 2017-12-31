@@ -237,7 +237,7 @@ df <- sapply(X = alphas, FUN = U, x = seq(0, 30, by = 0.1)) %>%
 # add the appropriate values to column names
 colnames(df) <- as.character(alphas)
 df %>% 
-  mutate(x = 1:nrow(df)) %>% 
+  mutate(x = seq(0, 30, by = 0.1)) %>% 
   reshape2::melt(id.vars = "x") %>% # could use tidyr::gather as an alternative
   rename(alpha = variable) %>%
   ggplot(aes(x = x, y = value, color = alpha)) + 
@@ -261,12 +261,12 @@ weight <- function(p, gamma) p^gamma / ((p^gamma + (1 - p)^gamma)^(1/gamma))
 gammas <- c(0.5, 0.45, 0.55, 0.4, 0.6)
 
 # apply the function on using 4 different gamma parameters
-df <- sapply(X = gammas, FUN = weight, p = seq(0, 1, by = 0.005)) %>% 
+df <- sapply(X = gammas, FUN = weight, p = seq(from = 0, to = 1, by = 0.005)) %>% 
   as_tibble()
 # add the appropriate values to column names
 colnames(df) <- as.character(gammas)
 df %>% 
-  mutate(x = 1:nrow(df)) %>% 
+  mutate(x = seq(from = 0, to = 1, by = 0.005)) %>% 
   reshape2::melt(id.vars = "x") %>% # could use tidyr::gather as an alternative
   rename(gamma = variable) %>%
   ggplot(aes(x = x, y = value, color = gamma)) + 

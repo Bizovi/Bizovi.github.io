@@ -288,7 +288,7 @@ df &amp;lt;- sapply(X = alphas, FUN = U, x = seq(0, 30, by = 0.1)) %&amp;gt;%
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# add the appropriate values to column names
 colnames(df) &amp;lt;- as.character(alphas)
 df %&amp;gt;% 
-  mutate(x = 1:nrow(df)) %&amp;gt;% 
+  mutate(x = seq(0, 30, by = 0.1)) %&amp;gt;% 
   reshape2::melt(id.vars = &amp;quot;x&amp;quot;) %&amp;gt;% # could use tidyr::gather as an alternative
   rename(alpha = variable) %&amp;gt;%
   ggplot(aes(x = x, y = value, color = alpha)) + 
@@ -307,14 +307,14 @@ df %&amp;gt;%
 gammas &amp;lt;- c(0.5, 0.45, 0.55, 0.4, 0.6)
 
 # apply the function on using 4 different gamma parameters
-df &amp;lt;- sapply(X = gammas, FUN = weight, p = seq(0, 1, by = 0.005)) %&amp;gt;% 
+df &amp;lt;- sapply(X = gammas, FUN = weight, p = seq(from = 0, to = 1, by = 0.005)) %&amp;gt;% 
   as_tibble()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning in as_tibble(.): The `tidyquant::as_tibble()` function is
 ## deprecated. Please use `timetk::tk_tbl()` instead.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# add the appropriate values to column names
 colnames(df) &amp;lt;- as.character(gammas)
 df %&amp;gt;% 
-  mutate(x = 1:nrow(df)) %&amp;gt;% 
+  mutate(x = seq(from = 0, to = 1, by = 0.005)) %&amp;gt;% 
   reshape2::melt(id.vars = &amp;quot;x&amp;quot;) %&amp;gt;% # could use tidyr::gather as an alternative
   rename(gamma = variable) %&amp;gt;%
   ggplot(aes(x = x, y = value, color = gamma)) + 
