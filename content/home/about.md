@@ -45,8 +45,8 @@ weight = 1
  
 +++
 
-## An Interdisciplinary Blog
-#### on General regularities of CONTROL and DATA processing in animals, machines and society ^[ [D.A. Novikov on Cybernetics](http://www.mtas.ru/biblio/Cyb2.pdf)]
+## An Interdisciplinary Blog 
+#### on General regularities of CONTROL and DATA processing in animals, machines and society ^[ [D.A. Novikov on Cybernetics](http://www.mtas.ru/biblio/Cyb2.pdf)].
 
 Hi everybody! This blog is about things I'm passionate about. I can hardly imagine myself in a place of narrow specialization and the exploration of connections between fields brings me a lot of joy.^[... but no problem is too small if you can help to solve it (thank you, Mr. Feynman)] I love writing about economics, solving business problems with statistical models and programming in R.
 

@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>https://bizovi.github.io/post/2017-12-30-investment-decisions-2/</loc>
+      <lastmod>2017-12-30T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://bizovi.github.io/post/2017-12-28-investment-decisions/</loc>
       <lastmod>2017-12-28T00:00:00+00:00</lastmod>
     </url>
@@ -133,6 +142,16 @@
     
     <url>
     
+      <loc>https://bizovi.github.io/tags/behavioral-economics/</loc>
+      <lastmod>2017-12-30T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://bizovi.github.io/categories/</loc>
       <priority>0</priority>
     </url>
@@ -164,6 +183,16 @@
     
       <loc>https://bizovi.github.io/</loc>
       <lastmod>2017-08-01T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://bizovi.github.io/tags/data-visualization/</loc>
+      <lastmod>2017-11-25T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -212,6 +241,16 @@
     
     <url>
     
+      <loc>https://bizovi.github.io/tags/programming/</loc>
+      <lastmod>2017-11-01T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://bizovi.github.io/project/</loc>
       <lastmod>2017-08-06T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -223,6 +262,16 @@
     <url>
     
       <loc>https://bizovi.github.io/publication_types/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://bizovi.github.io/tags/r/</loc>
+      <lastmod>2017-12-30T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

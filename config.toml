@@ -157,10 +157,7 @@ defaultContentLanguageInSubdir = false
 #     desired widget in your `content/home/` folder.
 #   The weight parameter defines the order that the links will appear in.
 
-# [[menu.main]]
-#   name = "Home"
-#   url = "#about"
-#   weight = 1
+
 
 # [[menu.main]]
 #   name = "Publications"
@@ -185,7 +182,7 @@ defaultContentLanguageInSubdir = false
 
  [[menu.main]]
    name = "Blog"
-   url = "#posts"
+   url = "post"
    weight = 3
 
    
@@ -203,6 +200,11 @@ defaultContentLanguageInSubdir = false
   url = "#projects"
   weight = 2
 
+#[[menu.main]]
+#  name = "Talks"
+#  url = "#about"
+#  weight = 1
+  
 #[[menu.main]]
 #  name = "Teaching"
 #  url = "#teaching"

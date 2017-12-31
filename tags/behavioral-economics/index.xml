@@ -1,0 +1,1656 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Behavioral Economics on Data Analysis &amp; Economic Cybernetics</title>
+    <link>https://bizovi.github.io/tags/behavioral-economics/</link>
+    <description>Recent content in Behavioral Economics on Data Analysis &amp; Economic Cybernetics</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Bizovi Mihai</copyright>
+    <lastBuildDate>Sat, 30 Dec 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/behavioral-economics/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Tiny Steps in Prospect Theory and Investment Decisions Part II</title>
+      <link>https://bizovi.github.io/post/2017-12-30-investment-decisions-2/</link>
+      <pubDate>Sat, 30 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://bizovi.github.io/post/2017-12-30-investment-decisions-2/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Last &lt;a href=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions/&#34;&gt;time&lt;/a&gt; we went through a rigorous process of eliciting prior beliefs about 5 stocks, exploratory data analysis and quite advanced descriptive stats. The last part of the assignment has the goal of &lt;code&gt;drawing connections to the behavioral economics principles&lt;/code&gt;. A lesson learned for now, is that there are many pitfalls even in most innocently looking questions.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div id=&#34;part-iv.-portfolio-construction-by-simulation&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Part IV. Portfolio Construction by Simulation&lt;/h2&gt;
+&lt;p&gt;Before we dig in, I would like to suggest the following reading &lt;a href=&#34;https://evonomics.com/please-not-another-bias-the-problem-with-behavioral-economics/&#34;&gt;&lt;code&gt;&amp;quot;Please no, not another bias&amp;quot; by Jason Collin&lt;/code&gt;&lt;/a&gt;. The whole site makes an argument that the missing piece from both Behavioral and Neoclassical economics is Evolution, and I am very tempted by this idea. In contrast, I don’t find it very useful to reason about deviations from the (economic) rationality, as it suggests some kind of patch/ covering of edge cases of classical models, thus making a very subtle assumption about rationality. It’s appealing to me in the same way as &lt;code&gt;Anwar Shaikh&lt;/code&gt;’s&lt;a href=&#34;#fn1&#34; class=&#34;footnoteRef&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; argument of real competition and turbulent dynamics versus the perfect and imperfect competition.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyquant) # financial data analysis
+library(quantmod)  # financial modeling
+library(PerformanceAnalytics)
+library(tidyr)     # spread and gather
+
+library(GGally)    # ggplot pairwise scatters
+library(knitr)     # tables and utilities
+library(ochRe)     # fancy color palettes&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Look up how the last time we extracted the data via different options
+returns &amp;lt;- readRDS(&amp;quot;data/stocks.RDS&amp;quot;) %&amp;gt;% 
+  select(symbol, date, adjusted) %&amp;gt;% 
+  group_by(symbol) %&amp;gt;%
+  tq_mutate(
+    select     = adjusted, 
+    mutate_fun = dailyReturn,
+    type       = &amp;quot;log&amp;quot;,
+    col_rename = &amp;quot;returns&amp;quot;)
+
+returns_wide &amp;lt;- returns %&amp;gt;% 
+  select(-adjusted) %&amp;gt;% 
+  tidyr::spread(key = symbol, value = returns) %&amp;gt;%
+  na.omit()
+
+getSymbols(&amp;quot;SP500&amp;quot;, src = &amp;quot;FRED&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;SP500&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sp_return &amp;lt;- dailyReturn(SP500, type = &amp;quot;log&amp;quot;)
+
+returns_wide &amp;lt;- sp_return %&amp;gt;% as_data_frame() %&amp;gt;% 
+  rownames_to_column(&amp;quot;date&amp;quot;) %&amp;gt;% 
+  mutate(date = as.Date(date)) %&amp;gt;% 
+  right_join(returns_wide, by = &amp;quot;date&amp;quot;)
+head(returns)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 4
+## # Groups:   symbol [1]
+##   symbol       date adjusted      returns
+##    &amp;lt;chr&amp;gt;     &amp;lt;date&amp;gt;    &amp;lt;dbl&amp;gt;        &amp;lt;dbl&amp;gt;
+## 1  GOOGL 2007-01-03 234.0290  0.000000000
+## 2  GOOGL 2007-01-04 241.8719  0.032962998
+## 3  GOOGL 2007-01-05 243.8388  0.008099372
+## 4  GOOGL 2007-01-08 242.0320 -0.007437438
+## 5  GOOGL 2007-01-09 242.9930  0.003962555
+## 6  GOOGL 2007-01-10 244.9750  0.008123447&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Recall the prior and updated probabilities of our decidents from the previous post and let’s keep the three “winners” and pick reasonable ranges for probabilities for the two cases:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rsp_eb &amp;lt;- tibble(
+  id      = rep(&amp;quot;EB&amp;quot;, 5),
+  symbol  = c(&amp;quot;GOOGL&amp;quot;, &amp;quot;AMZN&amp;quot;, &amp;quot;NFLX&amp;quot;, &amp;quot;JNJ&amp;quot;, &amp;quot;TSLA&amp;quot;),
+  score   = c(7, 9, 7, 5, 8), 
+  prob    = c(0.8, 0.8, 0.5, 0.1, 0.5),
+  prob_up = c(0.8, 0.9, 0.4, 0.7, 0.4)
+)
+
+rsp_mc &amp;lt;- tibble(
+  id      = rep(&amp;quot;MC&amp;quot;, 5),
+  symbol  = c(&amp;quot;GOOGL&amp;quot;, &amp;quot;AMZN&amp;quot;, &amp;quot;NFLX&amp;quot;, &amp;quot;JNJ&amp;quot;, &amp;quot;TSLA&amp;quot;), 
+  score   = c(8.5, 7, 7.5, 6, 8),
+  prob    = c(0.85, 0.75, 0.4, 0.70, 0.85),
+  prob_up = c(0.85, 0.80, 0.4, 0.55, 0.75)
+)
+
+rbind(rsp_eb, rsp_mc) %&amp;gt;% 
+  filter(symbol %in% c(&amp;quot;GOOGL&amp;quot;, &amp;quot;AMZN&amp;quot;, &amp;quot;JNJ&amp;quot;)) %&amp;gt;% 
+  arrange(symbol) %&amp;gt;%
+  knitr::kable()&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;id&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;symbol&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;score&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;prob&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;prob_up&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;EB&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;AMZN&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;9.0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.80&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.90&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;MC&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;AMZN&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.75&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.80&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;EB&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;GOOGL&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.80&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.80&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;MC&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;GOOGL&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;8.5&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.85&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.85&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;EB&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;JNJ&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;5.0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.10&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.70&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;MC&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;JNJ&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;6.0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.70&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.55&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Based on respondents’ decisions in Part III and prior, updated probabilities of including the assets in portfolio, choose a reasonable interval and generate random numbers according to a distribution&lt;a href=&#34;#fn2&#34; class=&#34;footnoteRef&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;. Then for each case (prior, updated), generate portfolios using the top two and three assets: &lt;code&gt;Google&lt;/code&gt;, &lt;code&gt;Amazon&lt;/code&gt;, &lt;code&gt;Johnson&amp;amp;Johnson&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Since we’re running a toy example and not using the matrix form and optimization, the following code won’t be the most pretty one. So what do we expect to see? By combining Google With Amazon we will definitely get more return at the same level of risk. If we were to assign probabilities the full range, that would return the efficiency fronteer. Given that we constrain the range centered at respondents probabilities, it would represent different ranges of possible portfolios. Also, given that the updated changes in probability are not very big, I don’t expect a large difference between prior probability portfolios and updated ones.&lt;/p&gt;
+&lt;p&gt;Note that the Sharpe ratio is basically the coefficient of variation from stats (applied on returns), so we could summarize the whole exercise in the 2d plane of risks and returns. Here are go-to formulas:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\mathbf{E}R_{1,2}=p\mu_1 + (1-p)\mu_2\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(p \sim Unif([a, b])\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\mathbf{V}R_{1,2} = p^2\sigma_1^2+(1-p)^2\sigma_2^2 + 2p(1-p)\sigma_{1,2}\]&lt;/span&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(1337)
+# Since don&amp;#39;t really have motivation for a distribution
+# Let&amp;#39;s pick the points uniformly, as we have no idea 
+# which combination will strike
+p    &amp;lt;- runif(n = 100, min = 0.01, max = 0.99) # to draw the  fronteer
+pa   &amp;lt;- runif(n = 100, min = 0.001, max = 0.99)
+pg   &amp;lt;- runif(n = 100, min = 0.001, max = 0.99)
+pj   &amp;lt;- runif(n = 100, min = 0.001, max = 0.99)
+
+pp_a &amp;lt;- runif(n = 100, min = 0.70, max = 0.85) 
+pu_a &amp;lt;- runif(n = 100, min = 0.80, max = 0.90)
+pp_g &amp;lt;- runif(n = 100, min = 0.80, max = 0.85)
+pu_g &amp;lt;- runif(n = 100, min = 0.80, max = 0.85)
+pp_j &amp;lt;- runif(n = 100, min = 0.10, max = 0.70)
+pu_j &amp;lt;- runif(n = 100, min = 0.55, max = 0.70)
+
+pp_a_norm &amp;lt;- pp_a / (pp_a + pp_g) 
+pp_g_norm &amp;lt;- 1 - pp_a_norm
+
+pu_a_norm &amp;lt;- pu_a / (pu_a + pu_g)
+pu_g_norm &amp;lt;- 1 - pu_a_norm
+
+pa &amp;lt;- pa / (pa + pg + pj)
+pg &amp;lt;- pg / (pa + pg + pj) 
+pj &amp;lt;- 1 - pa - pg
+
+pa_norm &amp;lt;- pp_a / (pp_a + pp_g + pp_j)
+pg_norm &amp;lt;- pp_g / (pp_g + pp_g + pp_j)
+pj_norm &amp;lt;- pp_j / (pp_j + pp_g + pp_j)
+
+ua_norm &amp;lt;- pu_a / (pu_a + pu_g + pu_j)
+ug_norm &amp;lt;- pu_g / (pu_g + pu_g + pu_j)
+uj_norm &amp;lt;- pu_j / (pu_j + pu_g + pu_j)
+
+# here our task is simpler as we don&amp;#39;t need quantiles
+qtl &amp;lt;- returns %&amp;gt;% 
+  filter(symbol %in% c(&amp;quot;GOOGL&amp;quot;, &amp;quot;AMZN&amp;quot;, &amp;quot;JNJ&amp;quot;)) %&amp;gt;% 
+  group_by(symbol) %&amp;gt;%
+  summarise( mean = mean(returns), sd = sd(returns)) 
+qtl &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 3
+##   symbol         mean         sd
+##    &amp;lt;chr&amp;gt;        &amp;lt;dbl&amp;gt;      &amp;lt;dbl&amp;gt;
+## 1   AMZN 0.0012364835 0.02478095
+## 2  GOOGL 0.0005443464 0.01804940
+## 3    JNJ 0.0003913731 0.01007799&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;Case of portfolios built from two assets&lt;/code&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Note that this is just for the demonstration purposes
+# this is useless on larger portfolios
+
+cov_ag &amp;lt;- cov(returns_wide[, c(&amp;quot;AMZN&amp;quot;, &amp;quot;GOOGL&amp;quot;, &amp;quot;JNJ&amp;quot;)])
+#            AMZN     GOOGL       JNJ
+# AMZN  1.0000000 0.5242281 0.3236181
+# GOOGL 0.5242281 1.0000000 0.3673752
+# JNJ   0.3236181 0.3673752 1.0000000
+
+c_ag &amp;lt;- cov_ag[1, 2]
+c_aj &amp;lt;- cov_ag[1, 3]
+c_gj &amp;lt;- cov_ag[2, 3]
+s_g  &amp;lt;- qtl$sd[2]
+s_a  &amp;lt;- qtl$sd[1]
+s_j  &amp;lt;- qtl$sd[3]
+m_g  &amp;lt;- qtl$mean[2]
+m_a  &amp;lt;- qtl$mean[1]
+m_j  &amp;lt;- qtl$mean[3]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# here we have our hundred portfolios
+# first calulate expected returns
+
+front &amp;lt;- tibble(
+  front_m = p * m_g + (1 - p)*m_a,
+  front_s = sqrt(p^2*s_g^2 + (1-p)^2*s_a^2 + 2*p*(1-p)*c_ag)
+)
+
+prior &amp;lt;- tibble(
+  mean = pp_a_norm * m_a + (pp_g_norm) * m_g,
+  sd   = sqrt(pp_a_norm^2*s_a^2 + pp_g_norm^2*s_g^2 + 2*pp_a_norm*pp_g_norm*c_ag)
+)
+
+# expecting to shift towards amazon by a bit along fronteer
+updated &amp;lt;- tibble(
+  mean = pu_a_norm*m_a +  pu_g_norm*m_g, 
+  sd   = sqrt(pu_a_norm^2*s_a^2 + pu_g_norm^2*s_g^2 + 2*pu_a_norm*pu_g_norm*c_ag)
+)
+
+front3 &amp;lt;- tibble(
+  front_m = pa*m_a + pg*m_g + pj*m_j, 
+  front_s = sqrt(pa^2*s_a^2 + pg^2*s_g^2 + pj^2*s_j^2 + 
+                   2*pa*pg*c_ag + 2*pa*pj*c_aj + 2*pg*pj*c_gj)
+) 
+
+prior3 &amp;lt;- tibble(
+  mean = pa_norm*m_a + pg_norm*m_g + pj_norm*m_j,
+  sd   = sqrt(pa_norm^2*s_a^2 + pg_norm^2*s_g^2 + pj_norm^2*s_j^2 + 
+                   2*pa_norm*pg_norm*c_ag + 2*pa_norm*pj_norm*c_aj + 
+                2*pg_norm*pj_norm*c_gj)
+)
+
+updated3 &amp;lt;- tibble(
+  mean = ua_norm*m_a + ug_norm*m_g + uj_norm*m_j,
+  sd   = sqrt(ua_norm^2*s_a^2 + ug_norm^2*s_g^2 + uj_norm^2*s_j^2 + 
+                   2*ua_norm*ug_norm*c_ag + 2*ua_norm*uj_norm*c_aj + 
+                2*ug_norm*uj_norm*c_gj)
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;front %&amp;gt;% 
+  ggplot() + 
+  geom_point(aes(x = front_s, y = front_m), 
+             color = &amp;quot;steelblue&amp;quot;, alpha = 0.3) +
+  geom_point(data = qtl, aes(x = sd, y = mean), 
+             size = 4, color = &amp;quot;indianred2&amp;quot;) + 
+  geom_point(data = prior, aes(x = sd, y = mean), 
+             color = &amp;quot;indianred&amp;quot;, size = 2) + 
+  geom_point(data = updated, aes(x = sd, y = mean), 
+             color = &amp;quot;gold&amp;quot;, size = 2, alpha = 0.1) + 
+  geom_point(data = front3, aes(x = front_s, y = front_m), 
+             color = &amp;quot;grey60&amp;quot;) +
+  geom_point(data = prior3, aes(x = sd, y = mean), 
+             color = &amp;quot;indianred&amp;quot;) +
+  geom_point(data = updated3, aes(x = sd, y = mean), 
+             color = &amp;quot;gold&amp;quot;) +
+  geom_text(data = qtl, aes(label = symbol, x = sd, y = mean), vjust = 1.5) +
+  theme_minimal() + 
+  labs(title    = &amp;quot;Portfolios for 2 and 3 assets&amp;quot;, x = &amp;quot;risk&amp;quot;, y = &amp;quot;return&amp;quot;, 
+       subtitle = &amp;quot;Prior portfolio range in [Red], Updated in [Gold]&amp;quot;) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-30-investment-decisions-2_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Notice that with three assets, we can achieve an even higher level of returns, staying at the same level of volatility. Also, the interval shrinks after we see the data, which is delighting to see. However, the choice of probabilities leads to a slightly suboptimal choice, i.e it can be moved up to the fronteer without sacrificind in risk.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-v.-prospect-theory&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Part V. Prospect Theory&lt;/h2&gt;
+&lt;p&gt;If we would fit a classical utility function that has constant returns on scale, we could estimate it econometrically. Note however that there is no concept of &lt;code&gt;reference point&lt;/code&gt; or &lt;code&gt;probability weighting&lt;/code&gt; or &lt;code&gt;asymmetric Value function&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[U(x)=\frac{1}{\alpha}x^\alpha\]&lt;/span&gt; If you want a micro example of how to write functions with assertions, check out the following &lt;a href=&#34;https://bizovi.github.io/post/2017-11-18-r-tutorial-behavioral-economics-2/&#34;&gt;post&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;U &amp;lt;- function(x, alpha) x^alpha / alpha
+alphas &amp;lt;- c(0.5, 0.3, 0.25, 0.18, 0.1)
+
+# apply the function on using 4 different gamma parameters
+df &amp;lt;- sapply(X = alphas, FUN = U, x = seq(0, 30, by = 0.1)) %&amp;gt;% 
+  as_tibble()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning in as_tibble(.): The `tidyquant::as_tibble()` function is
+## deprecated. Please use `timetk::tk_tbl()` instead.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# add the appropriate values to column names
+colnames(df) &amp;lt;- as.character(alphas)
+df %&amp;gt;% 
+  mutate(x = 1:nrow(df)) %&amp;gt;% 
+  reshape2::melt(id.vars = &amp;quot;x&amp;quot;) %&amp;gt;% # could use tidyr::gather as an alternative
+  rename(alpha = variable) %&amp;gt;%
+  ggplot(aes(x = x, y = value, color = alpha)) + 
+  geom_line(size = 1) + 
+  theme_minimal() + 
+  labs(title = &amp;quot;A typical power Utility function&amp;quot;) + 
+  scale_color_ochre(palette = &amp;quot;nolan_ned&amp;quot;) # if you feel fancy today&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-30-investment-decisions-2_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The fitting of such an utility function seems reasonable for the 3-Asset case.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The question is actually, on &lt;em&gt;what&lt;/em&gt; do we (appropriately) fit the probability weighting and value functions? To use simulated portfolios or choose the parameters by judgement? Will have to read more about this and come back with sharper understanding in order to fit these appropriately.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Need a value function for the previously generated portfolios, but before that transform probabilities in decisional weights.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\pi(p) =\frac{p^\gamma}{(p^\gamma + (1- p)^\gamma)^{\frac{1}{\gamma}}} \]&lt;/span&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;weight &amp;lt;- function(p, gamma) p^gamma / ((p^gamma + (1 - p)^gamma)^(1/gamma))
+gammas &amp;lt;- c(0.5, 0.45, 0.55, 0.4, 0.6)
+
+# apply the function on using 4 different gamma parameters
+df &amp;lt;- sapply(X = gammas, FUN = weight, p = seq(0, 1, by = 0.005)) %&amp;gt;% 
+  as_tibble()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning in as_tibble(.): The `tidyquant::as_tibble()` function is
+## deprecated. Please use `timetk::tk_tbl()` instead.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# add the appropriate values to column names
+colnames(df) &amp;lt;- as.character(gammas)
+df %&amp;gt;% 
+  mutate(x = 1:nrow(df)) %&amp;gt;% 
+  reshape2::melt(id.vars = &amp;quot;x&amp;quot;) %&amp;gt;% # could use tidyr::gather as an alternative
+  rename(gamma = variable) %&amp;gt;%
+  ggplot(aes(x = x, y = value, color = gamma)) + 
+  geom_line(size = 1) + 
+  theme_minimal() + 
+  labs(title = &amp;quot;Weighting probability function&amp;quot;, x = &amp;quot;probability&amp;quot;, 
+       y = &amp;quot;decision weight&amp;quot;) + 
+  scale_color_ochre(palette = &amp;quot;nolan_ned&amp;quot;) # if you feel fancy today&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-30-investment-decisions-2_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+V(x)=
+\begin{cases}
+x^\alpha, ~~ x \ge 0\\
+-\lambda(-x)^b, ~x &amp;lt; 0
+\end{cases}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Next Time: Find/Simulate a dataset, mathematically understand the models and their limitations, estimate on appropriate data, statistically validate the results.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conclusion&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;The analysis I did is limited, both in practical sense and uncovering the power of behavioral economics. In practice, we want to look at more realistic portfolios and efficiently compute, optimize those. The low-dimensional approach described here doesn’t scale to larger problems. Second, there is a list of modeling decisions that have to be made which are key when taking such decisions. In practice, every point emphasized here is even more challenging: starting from data collection, exploratory analysis and ending with modeling, interpretation. At the end of the day, people are developing cutting-edge models, and even then decisions are not much easier.&lt;/p&gt;
+&lt;p&gt;Why doesn’t this uncover as much of the power of Behavioral Economics? We just need to ask a different set of questions. That, in turn will motivate the use of a more appropriate data, like actual investor decisions. Understanding it will make us better decision-makers.&lt;/p&gt;
+&lt;p&gt;On such data, it is hard to formulate and validate hypotheses regarding people’s beliefs in &lt;code&gt;momentum&lt;/code&gt;, &lt;code&gt;reversion to the mean&lt;/code&gt; and identify during what time spans is it valid or even practically exploitable? So, the question isn’t only if markets do really exhibit some deviation, but how our judgements about these properties/patterns affect our decisions and how often are we right about it. Also, if we want to estimate parameters of Value Function and Probability Weighting function we need a rigorous design in order to gather data and fit the statistical models.&lt;/p&gt;
+&lt;p&gt;We need other kind of data and thought experiments in order to reason about fundamental issues like the bias against realizing losses (leading to disposition effects), heuristics and subptimal behaviors. The fact that given how you approach finance you can drift into gruesome mathematics or study of behavior, shows that we cannot assign these things into categories.&lt;/p&gt;
+&lt;p&gt;Speaking in finance’s jargon, I chose the &lt;code&gt;techical analysis way&lt;/code&gt;: looking at trends and past evolution, correlations to predict the future, but there is another perspective of &lt;code&gt;fundamental analysis&lt;/code&gt;. I do believe simple models are very useful and should be the starting point, but I’m still not satified with the answers I’m getting from any single perspective on economics. Recently I saw a few very down-to-earth, but amazing lectures by R.Schiller, and a thought that isn’t leaving my head is in the spirit of &lt;a href=&#34;https://evonomics.com/please-not-another-bias-the-problem-with-behavioral-economics/&#34;&gt;&lt;code&gt;Please no, not another bias&lt;/code&gt;&lt;/a&gt;. We all agree by now that behavior is important, but what part of it can be used for innovative policies? It’s not about exploitation anymore: it’s not reasonable for businesses in the long-term to trick people, finance is also moving in the direction of more integrity.&lt;/p&gt;
+&lt;p&gt;When we ask what is the rational thing to do, this is an extremely tricky question and even considering the enormous quantity of research, it’s not settled and very much an open question for me.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What’s next? Continue studying behavior and decisions. Writing this helped me realize I’m interested in other kinds of questions about finance, especially new types of modeling, rather than going the same paths of chekcing EMH in any of its forms &amp;amp; random walking down Wall Street.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!--
+Over 3-7 years there is some evidence of mean reversion (if we look at extreme winners and extreme losers). That&#39;s quite particular. 
+
+Clean test for the disposition effect: Get data of people&#39;s behavior in stock market
+Individual accounts from a brokerage firm. Terrance Odean &#34;Are investors reluctant to realize their losses&#34;, precusors to e-trade. for every day what do they hold. (musta bought, musta sold) =&gt; Very granular info. &gt;
+// they might not have been able to short it (challenging logistically -&gt; not whol lot happening on individual level). Portfolio managers limited to long positions. 
+
+&gt; People categorize their positions as win/lose. What is their reference point (at which they bought at)?
+well, you might have acclimated, not sure how that happens. 
+A stock might be a winner for one/loser for other!! (not overall, categorize for each individual)
+
+Given that point, joint test of disposition effect/ did we guess the refrence point of individual. 
+Second might not be a problem. See if research is asking the right questions. 
+
+&gt; Methodology: DESIGN DECISIONS!!
+
+Q: is the disposition effect present. 
+Design Choices for each investors (#win sold &gt; #losers sold) =&gt; disposition effect? NOT REALLY. 
+problem: market grew very much -&gt; have to adjust for it (looking at what you did not sell !!) 
+What they used in the paper: Is the price higher than what you bought at?
+What counts as winner (depending on how sophisticated the traders were, do they take into account the opportunity cost)
+Upward trend =&gt; More winners than losers. 
+// ratio: number of winners could&#39;ve sold / nr of winners could&#39;ve sold -&gt; statistic. =&gt; TEST
+
+realized gains / (realized gains + paper gains)
+vs as evidence ??
+realized losses / (realized losses + paper losses)
+
+1) when calculating risks or losses: risk-free rate?
+2) not taking into account how large is the gain/loss it
+3) not weighting by the number of *shares* (counting all by a unit) =&gt; abstracted away from.
+Inference of reference point. 
+
+
+
+Downside of observational data: confoundiiing (e.g. LOGISTICS CONSIDERATION, tax-motivated saling: file tax returns (K gains -&gt; Tax / Losses -&gt; Deduction) // ONLY WHEN REALIZED paper vs realized gains and losses!! -&gt; more incetives), environment not controlled!
+--&gt;
+&lt;/div&gt;
+&lt;div id=&#34;appendix&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Appendix&lt;/h2&gt;
+&lt;div id=&#34;bollinger-bands-convergence-divergence-ma-drawdown-plots&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Bollinger Bands, Convergence-Divergence MA, Drawdown Plots&lt;/h4&gt;
+&lt;p&gt;After reading Part I, it can be a little bit unclear how to interpret these descriptive statistics. Bollinger bands are meant to represent a smooth evolution via a Moving Average and upper/lower bounds in order to describe the uncertainty in that evolution. Of course, some assumptions are made by doing so, and it’s just an exploratory tool and cannot replace rigorous statistical analysis (and it is expected to have mixed results). Their ubiquitous use shows that a simple technique can still be useful and get us one more level beyond raw data. &lt;span class=&#34;math display&#34;&gt;\[MA - k\sigma \le MA \le MA + k\sigma\]&lt;/span&gt; Now let’s see that the Moving Average Convergence-Divergence isn’t a scary thing. You basically have a two moving averages of different windows and their divergence represented as a barplot over time. By construction is is supposed to oscilate, thus uncovering some momentum, bearish opportunities, etc. Like any similar signal processing procedure, it can and will return false positives. Mathematically it’s the velocity &lt;span class=&#34;math inline&#34;&gt;\(\dot y = \frac{dy}{dt}\)&lt;/span&gt; that goes through two low pass filters and is then rescaled. The divergence series is basically the acceleration.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Drawdown&lt;/code&gt; measures the decline in the historical peak of a series, in our case cumulative returns. &lt;a href=&#34;https://en.wikipedia.org/wiki/Drawdown_(economics)&#34;&gt;Formally&lt;/a&gt;,&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[D(T)=\max\big\{0; \max_{0 \le t \le T} X(t) - X(T) \big\}\]&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;beta&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Beta&lt;/h4&gt;
+&lt;p&gt;A basic beta analysis, i.e. a regression of stock returns (y) on Index Fund (x) returns for &lt;span class=&#34;math inline&#34;&gt;\(i = 1, ..., 5\)&lt;/span&gt;, would tell us pretty much the same story as previous analysis, so nothing fundamentally new here. I’ll leave the code in case of curiosity. &lt;span class=&#34;math display&#34;&gt;\[ y^{(i)} = \alpha^{(i)} +  \beta^{(i)} x + \epsilon\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Some rules of thumb regarding the interpretation. This should be followed by a sensitivity analysis on the time frame. &lt;span class=&#34;math display&#34;&gt;\[ \begin{cases}
+         0 \le \beta^{(i)} \le 1, ~ less ~~volatile\\
+         \beta^{(i)} &amp;gt; 1, ~~more~~ volatile\\
+         \beta^{(i)} &amp;gt; 2.5, ~~much~~more~~ volatile 
+         \end{cases}
+ \]&lt;/span&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lowerFn &amp;lt;- function(data, mapping, method = &amp;quot;lm&amp;quot;, ...) {
+  p &amp;lt;- ggplot(data = data, mapping = mapping) +
+    geom_point(colour = &amp;quot;grey30&amp;quot;, alpha = 0.1) +
+    geom_smooth(method = method, color = &amp;quot;indianred&amp;quot;, ...)
+  p
+}
+
+returns_wide %&amp;gt;% 
+  select(-date) %&amp;gt;% 
+    ggpairs(
+      title = &amp;quot;Pairwise scatterplots of Returns&amp;quot;,
+      lower = list(continuous = wrap(lowerFn, method = &amp;quot;lm&amp;quot;)),
+      diag = list(continuous = wrap(&amp;quot;barDiag&amp;quot;, fill = &amp;quot;lightblue&amp;quot;, color = &amp;quot;grey&amp;quot;))
+    ) +
+  theme_minimal() + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-30-investment-decisions-2_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Just from a glance, it’s quite clear which stocks are more correlated with S&amp;amp;P returns. Let’s run the model and extract the coefficients.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# excuse the following ugly piece of code, shoud&amp;#39;ve done a *apply
+rbind(
+  c(&amp;quot;AMZN&amp;quot;,  lm(AMZN  ~ daily.returns,  data = returns_wide)$coefficients),
+  c(&amp;quot;GOOGL&amp;quot;, lm(GOOGL ~ daily.returns,  data = returns_wide)$coefficients),
+  c(&amp;quot;JNJ&amp;quot;,   lm(JNJ   ~ daily.returns,  data = returns_wide)$coefficients),
+  c(&amp;quot;NFLX&amp;quot;,  lm(NFLX  ~ daily.returns,  data = returns_wide)$coefficients),
+  c(&amp;quot;TSLA&amp;quot;,  lm(TSLA  ~ daily.returns,  data = returns_wide)$coefficients)
+) %&amp;gt;% as_tibble() %&amp;gt;%  
+  rename(symbol = V1, alpha = `(Intercept)`, beta = daily.returns) %&amp;gt;% 
+  mutate(alpha = round(as.numeric(as.character(alpha)), 5), 
+         beta = round(as.numeric(as.character(beta)),   5))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning in as_tibble(.): The `tidyquant::as_tibble()` function is
+## deprecated. Please use `timetk::tk_tbl()` instead.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 5 x 3
+##   symbol   alpha    beta
+##   &amp;lt;fctr&amp;gt;   &amp;lt;dbl&amp;gt;   &amp;lt;dbl&amp;gt;
+## 1   AMZN 0.00068 1.12306
+## 2  GOOGL 0.00031 0.99065
+## 3    JNJ 0.00027 0.63542
+## 4   NFLX 0.00078 1.05262
+## 5   TSLA 0.00075 1.25939&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We could also run a few CAPM regressions, but I would prefer to focus on simulating the portfolios.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Look up Capitalism: Competition, Conflict, Crises&lt;a href=&#34;#fnref1&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;Using a grid would be a bad idea in optimization&lt;a href=&#34;#fnref2&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Tiny Steps in Prospect Theory and Investment Decisions Part I</title>
+      <link>https://bizovi.github.io/post/2017-12-28-investment-decisions/</link>
+      <pubDate>Thu, 28 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://bizovi.github.io/post/2017-12-28-investment-decisions/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;This is an assignment for the Behavioral Economics class at Quantitative Economics Masters taught by prof. dr. Anamaria Aldea. The subject is refreshing in the sense that it brings back the real world into the classroom with a &lt;code&gt;show me the evidence / data&lt;/code&gt; attitude.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Nonetheless, this is &lt;em&gt;hard to deliver&lt;/em&gt; as experimental data is scarce and classroom experiments involving a small sample of people with neoclassical training are hardly representative. So what does it mean for me (as a data scientist)?&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;#id1&#34;&gt;Skip to the Data Analysis part if you feel like doing so&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Long term goals:&lt;/code&gt;&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;All my life I was trained in decision making, at first in chess &lt;em&gt;“I don’t believe in psychology, I believe in good moves - Fisher”&lt;/em&gt;, then in Probability Theory and Bayesian Analysis, Game Theory, Statistical Modeling. There are more types of pitfalls in decision making, though. Recognizing the use of heuristics, our evolutionary heritage, biases and understanding the human dimension is an essential part of taking good decisions.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;I believe that adding ideas from evolution&lt;a href=&#34;#fn1&#34; class=&#34;footnoteRef&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; and complexity science will be essential for a new generation of economic models. These new approaches should be more experimental by their nature, so behavioral economics fits in not only as a patch to neoclassicals, but as a way of doing things.&lt;/li&gt;
+&lt;li&gt;All models have assumptions, and this requires awareness and critical thinking. I will try to raise questions that are usually not mentioned.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;Assignment goal:&lt;/code&gt; Analyze rigorously and in a reproducible fashion a few stocks from different perspectives: as a statistician looking for regularities in data, as an investor building a portfolio and behavioral economist trying to make sense of former’s decisions using prospect theory. Contrasting the prior assumptions and preferences with evidence gained from the data is key.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div id=&#34;ecosystem-of-r-packages-for-financial-data-analysis&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Ecosystem of R packages for Financial Data Analysis&lt;/h3&gt;
+&lt;p&gt;The domain particularities of finance motivate the use of certain methods, models and terminology, which might intimidate any newcomer. The same is true for the way data is analyzed and models are built, so we have to accept we’ve got ourselfs into a bizzare world. The good news is that stats and probability, time series analysis become our best friends, once we relate the model coefficients to all of their terms. Now, what about the data and R? Financial data analysis is R brigs a series of challenges:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It’s mostly time series and the packages involving time series objects are hardly consistent. This means we have to double-check for errors&lt;/li&gt;
+&lt;li&gt;Calendars, Calendars, Calendars: any programmer’s nightmare&lt;/li&gt;
+&lt;li&gt;Time series data types constrain the flexibility of the analysis&lt;/li&gt;
+&lt;li&gt;You want a clean code, but have to slice and dice the time series to uncover something interesting, which is resulting in ugly functions, &lt;code&gt;for&lt;/code&gt; loops, combinations of &lt;code&gt;*apply&lt;/code&gt;’s, i.e. cringy code and even uglier visualizations&lt;/li&gt;
+&lt;li&gt;Have to understand clearly what is under the hood of financial calculations and the jargon used&lt;/li&gt;
+&lt;li&gt;Implementations of Models like GARCH are numerically unstable, so you should be paranoid about it&lt;/li&gt;
+&lt;li&gt;How to do a rigorous analysis automatically and reproducibly?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;Tradeoffs I’m making&lt;/em&gt;:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Quality of code, visualizations and outputs over quantity&lt;/li&gt;
+&lt;li&gt;Writing more code for custom visualizations over using base R ones, in order to have more control&lt;/li&gt;
+&lt;li&gt;Writing less code by working the &lt;code&gt;tidy&lt;/code&gt; way and using coertions between ts and data.frame types.&lt;/li&gt;
+&lt;li&gt;Spending more time understanding models and their assumptions. What functions in R packages do behind the scenes? How do we validate the model (backtesting, cross-validation, test sample)?&lt;/li&gt;
+&lt;li&gt;Saving lots of time by pulling the data automatically&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The team at &lt;code&gt;business-science.io&lt;/code&gt; did an amazing job of bringing together a suite of &lt;code&gt;zoo&lt;/code&gt;, &lt;code&gt;lubridate&lt;/code&gt;, &lt;code&gt;PerformanceAnalytics&lt;/code&gt; and various data services like &lt;code&gt;yahoo&lt;/code&gt; finance, &lt;code&gt;quandl&lt;/code&gt; under the umbrella of tidy data analysis. What this means, is that we’ll work with tables more often than time series objects, which should make the analysis more generalizeable. Second, it will reduce the frustration from losing time series signatures. The most important thing is the automatic data pulls from APIs and enforcing consistency by building wrappers on different packages.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyquant) # suite of tidy financial data analysis
+library(purrr)     # consistent alternative to r-base *apply
+library(timekit)   # working with time series signatures
+library(tidyr)     # gather and spread
+library(quantmod)  # explicilty load it
+library(PerformanceAnalytics) # explicitly load it
+
+library(ochRe)     # nice color palettes
+library(ggthemes)  # nice themes for ggplot
+library(knitr)     # table formatting
+library(ggrepel)   # repel text&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-i.-explicitly-expressing-prior-beliefs&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Part I. Explicitly expressing Prior Beliefs&lt;a href=&#34;#fn2&#34; class=&#34;footnoteRef&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;So, I need to choose some stocks from which to build the portfolio, but I’ve been living in a cave for the past two years since I’ve ditched Perry Mehrling’s Economics of Money and Banking, Financial Times for Learning Theory and other gruesome pieces of mathematics. The only way to make the following analysis anything near acceptable is by stating &lt;code&gt;prior beliefs&lt;/code&gt; and then observe what happens as I gather more evidence.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Diversification, Diversification, Diversification&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I don’t know much about stock markets, but one thing seems clear: more diversification is better. Diversify by industry, geography, size and other dimensions, then find useful correlations in the data, compare individual evolutions to the baseline market performance. Having these prerequisites will help build a robust portfolio.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Long term investment over excessive noise&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;When looking at the data, I usually try not to forget about longer-term forces and trends. In this case I would also build my strategy for the long-term, as there is too much noise in day-to-day news with its chaotic behavior and rare events.&lt;/p&gt;
+&lt;p&gt;It would be nice (and really, really tempting) to put some machine learning and nonlinear time series models to good use, but it seems that the signal to noise ratio is very low, and the statistical methods have serious methodological issues/flaws here. On the other hand, understanding business cycles, overheating, bubbles, i.e. the economic aspect of things seems a more plausible goal.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Personal beliefs and interests would definitely influence the choices. Will try to specify the degree of belief for certain cases&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;I kind of believe that if you’re a small player, chances are that you’re not gonna gain anything from trading. Not so sure about a well-build portfolio, but my (pessimistic) expectation would be around the average index.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;I believe the future is in “green” energy and that it can be cost-efficient. Now name at least one big firm besides Elon Musk’s projects that specializes on it. Ooh … &lt;em&gt;[fires up mighty search engine]&lt;/em&gt; Low Energy Nuclear Reactions seemed promising, not many news since 2014, is something big happening besides the scenes?&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Idea to look up Nickel stocks, as it’s essential for LENR and cheap&lt;/li&gt;
+&lt;li&gt;People seem to underestimate the importance of nuclear energy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Not a huge fan of fossil fuels, but we have to take the emotion out of the equation&lt;a href=&#34;#fn3&#34; class=&#34;footnoteRef&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt; and be realistic about things. It’s not going anywhere and alternative energy sources can only do so much due to physical and geographical limitations. Nuclear: it’s slow, expensive, risky financilly, but we can’t do without it and it’s definitely much, much safer than coal.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Bullish on Science and Technology, which is obvious given my background, not so enthusiastic about Pharma.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Bitcoin? That’s a bubble, but won’t risk to put money against it yet!&lt;/li&gt;
+&lt;li&gt;Google, Amazon, (maybe Facebook) look like solid and safe bets with their infrastructure and drive for innovation&lt;/li&gt;
+&lt;li&gt;Firms like the former Snapchat are overvalued&lt;/li&gt;
+&lt;li&gt;Apple: sitting on a pile of cash and going into financial markets, not so sure about innovation anymore&lt;/li&gt;
+&lt;li&gt;Netflix: waiting for a streaming war with Disney (would want them to survive)&lt;/li&gt;
+&lt;li&gt;Any Deep Learning, cognitive applications of Data Science, write me in!&lt;/li&gt;
+&lt;li&gt;Tesla? Exciting, Bold, very risky&lt;/li&gt;
+&lt;li&gt;SAS, SAP and Consulting Firms: might buy some stocks if looks profitable, but not excited at all about them&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;5&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;I would have to think really hard if financial markets represent the real economy and aren’t incetivizing parasitic behavior. Cautious about Shadow Banking, very carefully thinking about financial instruments.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Deutsche Bank: watch it fall. How can I bet against it?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;6&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Food and Beverages, Horeca, Militiatry Contractors, Heavy and Light Industry, Constrcution, Real Estate, Logistics and Transportation, Commerce, Retail.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Notice as these heterogeneous industries fall in one bucket and little attention is paid to them. Most probably this is an instance of &lt;code&gt;availability bias&lt;/code&gt;, i.e. strongly conditioned on my interests. Also note that we &lt;code&gt;think in terms of categories&lt;/code&gt;&lt;a href=&#34;#fn4&#34; class=&#34;footnoteRef&#34; id=&#34;fnref4&#34;&gt;&lt;sup&gt;4&lt;/sup&gt;&lt;/a&gt; / buckets and not continuums. To be a really good Investor I might have to throw that away in order to see the big picture and build a really diversified portfolio&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;7&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;With respect to geography: OECD and Japan look sluggish, China risky, Africa and Americas too unknown, Australia looks like an interesting prospect, also people underestimate Russia.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Alibaba comes to mind as a tech giant, and I’m bullish about it because of its AI research&lt;/li&gt;
+&lt;li&gt;Even though Japan’s economy is stagnating for a long time, I would bet on some of its seven enourmous consortiums.&lt;/li&gt;
+&lt;li&gt;From Europe, Germany is my Choice as a manufacturing and technology superpower&lt;/li&gt;
+&lt;li&gt;Other regions? Feed me data, until then can’t say much.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;8&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Small and ambitious versus too big to fail? Am I willing to accept some loss on small and ambitious projects such that a few might pay off big time (a la Taleb Nassim)? Won’t go there without a serious theoretical justifiation.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Curiosities about modeling&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Another prior that would affect the decisions, is my skepticism in old, orthodox financial models like CAPM with its efficient market hypotheses and restrictive assumptions. On a more practical/ data note, you’re basically estimating a correlation matrix from historical data and then running a quadratic optimization algorithm. Unfortunately, this correlation matrix might be unstable for various reasons. Moreover, what if we want to capture cross time-series intertemporal correlations (i.e. a &lt;code&gt;Sparse Correlation Matrix that changes in time&lt;/code&gt;)&lt;a href=&#34;#fn5&#34; class=&#34;footnoteRef&#34; id=&#34;fnref5&#34;&gt;&lt;sup&gt;5&lt;/sup&gt;&lt;/a&gt;. Alternatively stated, what happens when we simplify the problem via a static &lt;span class=&#34;math inline&#34;&gt;\(\hat \Sigma\)&lt;/span&gt;? Let’s go back to the Markowitz, as another pitfall is the strategy/portfolio is static, so few questions arise:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;What is the time horizon for which you won’t touch your portfolio? This implies how often the model is re-fit.&lt;/li&gt;
+&lt;li&gt;How do we (rigorously) validate the model?&lt;/li&gt;
+&lt;li&gt;What does behavioral economics has to say about Efficient Market Hypothesis?&lt;/li&gt;
+&lt;li&gt;How much historical data is relevant?&lt;/li&gt;
+&lt;li&gt;Do we even try to account for business cycles/seasonality? What about forecasts and expectations?&lt;/li&gt;
+&lt;li&gt;What are the transactional costs (if we would decide our portfolio turned out to be terrible) and where it should kick in during modeling this?&lt;/li&gt;
+&lt;li&gt;Being heavily influenced by heterodox economists like Minsky: how can this help or hurt me?&lt;/li&gt;
+&lt;li&gt;Do we reason about Animal Spirits, Bubbles, Systematic Distorsions (Biases), fractal markets and chaos outside the modeling process?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For the purposes of the assignment we’re assuming a given monetary amount and that it’s invested fully in a few assets. In reality you might want to throw a share of bonds/t-bills, given what you want to achieve.&lt;br /&gt;
+By constraint, I will choose firms from the US, but keep in mind that’s not the perfect case according to the prior beliefs. Also, all of this assumes we or our organization have access to it.&lt;/p&gt;
+&lt;p&gt;&lt;a id=&#34;id1&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;A list of corporations from the top of my head: &lt;code&gt;Google&lt;/code&gt;, &lt;code&gt;Amazon&lt;/code&gt;, &lt;code&gt;Tesla&lt;/code&gt;, &lt;code&gt;Netflix&lt;/code&gt;, &lt;code&gt;Johnson &amp;amp; Johnson&lt;/code&gt; (because it’s a standard dataset in R for time series forecasting and has something to do with healthcare) &lt;em&gt;[ok, I tried not to be biased about tech, but nothing else comes to mind]&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-ii.-gathering-evidence-and-data-analysis&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Part II. Gathering Evidence and Data Analysis&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Let’s fire up &lt;em&gt;Financial Times&lt;/em&gt;, &lt;em&gt;Wiki&lt;/em&gt; and look for interesting stocks which would fit into prior beliefs. But more importantly, what’s happening?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Financial times mentiones the progress in Artificial Intelligence with Alpha Go (see my previous &lt;a href=&#34;https://bizovi.github.io/post/alpha_zero/&#34;&gt;article&lt;/a&gt;), the enormous rise in solar and wind, bitcoin entering bubble territory. It’s better to see than hear: look up the amazing graphics from &lt;a href=&#34;https://www.ft.com/content/7020a6e4-e4e3-11e7-8b99-0191e45377ec&#34;&gt;FT&lt;/a&gt;. The S&amp;amp;P Index grew steadily from the beginning of the year. A brief look at the list of &lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_S%26P_500_companies&#34;&gt;S&amp;amp;P companies&lt;/a&gt; didn’t suggest something extremely interesting, so let’s stick to these five initially chosen and first see what kind of important events happened with them.&lt;/p&gt;
+&lt;p&gt;Amazon acquired Whole Foods and refused to support youtube in one of their recent products. Google’s Deep Mind acquisition is paying off. Netflix will very soon have to compete with Disney in the streaming wars. Nothing huge on Tesla at the first glance, and it also looks very uneventful for J&amp;amp;J. Now it’s finally time to look at the data.&lt;/p&gt;
+&lt;div id=&#34;data-retrieval&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Data Retrieval&lt;/h3&gt;
+&lt;p&gt;So, we’re hitting the switch from the layman to statistician and start exploring the data, formulating hypotheses and checking them. A good thing to do is to set up our expectations and (naive) hypotheses before seeing any data.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;I expect Google and Amazon to follow the market trend&lt;/li&gt;
+&lt;li&gt;I expect Netflix to go through a period of higher volatility (given stuff with K.Spacey and Disney)&lt;/li&gt;
+&lt;li&gt;No Idea about JNJ&lt;/li&gt;
+&lt;li&gt;Expect Tesla to grow but be more risky than first two&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Predictions are hard, just buy an Index Fund and let it sit, don’t look at it too often. &lt;em&gt;[Honestly that’s what I would do. Just give me something diversified]&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# we might want to download the S&amp;amp;P 500 stocks list
+sp_list &amp;lt;- tq_get(&amp;quot;SP500&amp;quot;, get = &amp;quot;stock.index&amp;quot;)
+# save a local copy of stock prices
+stock_list &amp;lt;- c(&amp;quot;GOOGL&amp;quot;, &amp;quot;AMZN&amp;quot;, &amp;quot;NFLX&amp;quot;, &amp;quot;JNJ&amp;quot;, &amp;quot;TSLA&amp;quot;)
+data   &amp;lt;- tq_get(stock_list, get = &amp;quot;stock.prices&amp;quot;)
+ratios &amp;lt;- tq_get(stock_list, get = &amp;quot;key.ratios&amp;quot;)
+
+# load the index as the baseline
+# baseline &amp;lt;- tq_get(&amp;quot;SP500&amp;quot;, get = &amp;quot;stock.prices&amp;quot;)
+
+saveRDS(data, file = &amp;quot;data/stocks.RDS&amp;quot;)
+saveRDS(sp_list, file = &amp;quot;data/sp_list.RDS&amp;quot;)
+saveRDS(ratios, file = &amp;quot;data/ratios.RDS&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let’s see what kind of options (as low hanging fruit) do we have in terms of automatic data pulls, &lt;code&gt;tq_exchange_options()&lt;/code&gt; shows that we can pull data from these three exchanges: “AMEX”, “NASDAQ”, “NYSE”.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# We can retreive the following indices and their componence
+tq_index_options()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;RUSSELL1000&amp;quot; &amp;quot;RUSSELL2000&amp;quot; &amp;quot;RUSSELL3000&amp;quot; &amp;quot;DOW&amp;quot;         &amp;quot;DOWGLOBAL&amp;quot;  
+## [6] &amp;quot;SP400&amp;quot;       &amp;quot;SP500&amp;quot;       &amp;quot;SP600&amp;quot;       &amp;quot;SP1000&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# With the following data being available on firms
+tq_get_options()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;stock.prices&amp;quot;       &amp;quot;stock.prices.japan&amp;quot; &amp;quot;financials&amp;quot;        
+##  [4] &amp;quot;key.stats&amp;quot;          &amp;quot;key.ratios&amp;quot;         &amp;quot;dividends&amp;quot;         
+##  [7] &amp;quot;splits&amp;quot;             &amp;quot;economic.data&amp;quot;      &amp;quot;exchange.rates&amp;quot;    
+## [10] &amp;quot;metal.prices&amp;quot;       &amp;quot;quandl&amp;quot;             &amp;quot;quandl.datatable&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# note that Tesla isn&amp;#39;t a part of S&amp;amp;P500
+# so maybe consider taking baseline S&amp;amp;P and NASDAQ
+stock_list &amp;lt;- c(&amp;quot;GOOGL&amp;quot;, &amp;quot;AMZN&amp;quot;, &amp;quot;NFLX&amp;quot;, &amp;quot;JNJ&amp;quot;, &amp;quot;TSLA&amp;quot;)
+
+sp_list &amp;lt;- readRDS(&amp;quot;data/sp_list.RDS&amp;quot;)
+data    &amp;lt;- readRDS(&amp;quot;data/stocks.RDS&amp;quot;) 
+head(data)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 8
+##   symbol       date    open    high     low    close   volume adjusted
+##    &amp;lt;chr&amp;gt;     &amp;lt;date&amp;gt;   &amp;lt;dbl&amp;gt;   &amp;lt;dbl&amp;gt;   &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;
+## 1  GOOGL 2007-01-03 233.233 238.569 230.786 234.0290 15397500 234.0290
+## 2  GOOGL 2007-01-04 234.735 242.217 234.409 241.8719 15759400 241.8719
+## 3  GOOGL 2007-01-05 241.491 243.994 239.294 243.8388 13730400 243.8388
+## 4  GOOGL 2007-01-08 244.089 245.180 241.341 242.0320  9499200 242.0320
+## 5  GOOGL 2007-01-09 242.968 244.369 240.841 242.9930 10752000 242.9930
+## 6  GOOGL 2007-01-10 242.457 247.022 241.261 244.9750 11925000 244.9750&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sp_list %&amp;gt;% 
+  mutate(choice = ifelse(symbol %in% stock_list, &amp;quot;in&amp;quot;, &amp;quot;other&amp;quot;)) %&amp;gt;%
+  ggplot(aes(x = weight, y = shares_held)) + 
+  # coloring by sector won&amp;#39;t show any patern
+  geom_point(aes(color = choice, size = choice)) + 
+  geom_text(aes(label = ifelse(symbol %in% stock_list, symbol, &amp;quot;&amp;quot;)), 
+            vjust = 1.5) +  
+  geom_smooth(method = &amp;quot;loess&amp;quot;, se = FALSE, color = &amp;quot;indianred2&amp;quot;) + 
+  theme_minimal() + 
+  scale_x_log10() + 
+  scale_y_log10() + 
+  labs(x = &amp;quot;Asset Weight in Index Fund&amp;quot;, y = &amp;quot;Shares Held&amp;quot;, 
+       title = &amp;quot;Log Relationship between Weight in S&amp;amp;P and Shares Held&amp;quot;) + 
+  scale_color_manual(values = c(&amp;quot;indianred2&amp;quot;, &amp;quot;grey&amp;quot;)) + 
+  scale_size_manual(values = c(3, 1.4)) + 
+  theme(legend.position = &amp;quot;none&amp;quot;) &lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-4&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-4-1.png&#34; alt=&#34;A brief look suggests Google and Amazon are clear Outliers&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1: A brief look suggests Google and Amazon are clear Outliers
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ratios &amp;lt;- readRDS(&amp;quot;data/ratios.RDS&amp;quot;)
+ratios %&amp;gt;% 
+  filter(section == &amp;quot;Growth&amp;quot;) %&amp;gt;% 
+  unnest() %&amp;gt;% head(8)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 8 x 7
+##   symbol section sub.section group       category       date value
+##    &amp;lt;chr&amp;gt;   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt;          &amp;lt;chr&amp;gt;     &amp;lt;date&amp;gt; &amp;lt;dbl&amp;gt;
+## 1  GOOGL  Growth   Revenue %    33 Year over Year 2007-12-01 56.47
+## 2  GOOGL  Growth   Revenue %    33 Year over Year 2008-12-01 31.35
+## 3  GOOGL  Growth   Revenue %    33 Year over Year 2009-12-01  8.51
+## 4  GOOGL  Growth   Revenue %    33 Year over Year 2010-12-01 23.98
+## 5  GOOGL  Growth   Revenue %    33 Year over Year 2011-12-01 29.28
+## 6  GOOGL  Growth   Revenue %    33 Year over Year 2012-12-01 32.37
+## 7  GOOGL  Growth   Revenue %    33 Year over Year 2013-12-01 19.23
+## 8  GOOGL  Growth   Revenue %    33 Year over Year 2014-12-01 10.32&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# adding group and category woul allow an even more refined view 
+# with 89 KPIs
+ratios %&amp;gt;% unnest() %&amp;gt;% 
+  select(section, sub.section) %&amp;gt;% 
+  unique()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 12 x 2
+##              section                sub.section
+##                &amp;lt;chr&amp;gt;                      &amp;lt;chr&amp;gt;
+##  1        Financials                 Financials
+##  2     Profitability          Margin of Sales %
+##  3     Profitability              Profitability
+##  4            Growth                  Revenue %
+##  5            Growth         Operating Income %
+##  6            Growth               Net Income %
+##  7            Growth                      EPS %
+##  8         Cash Flow           Cash Flow Ratios
+##  9  Financial Health Balance Sheet Items (in %)
+## 10  Financial Health  Liquidty/Financial Health
+## 11 Efficiency Ratios                 Efficiency
+## 12  Valuation Ratios           Valuation Ratios&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Before Jumping to analysis of returns and volatilities, it’s useful to spend some time on price evolutions&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Let’s see why do we prefer to work with tables, as package &lt;code&gt;quantmod&lt;/code&gt; allows very quick visualizations with a few lines of code. The issue is that we want to analyze multiple stocks at the same time, and &lt;code&gt;purrr&lt;/code&gt; or &lt;code&gt;*apply&lt;/code&gt; is essential here and is easier on tables. Now, quantmod is quite extensible, but if some modeling is involved, I would prefer to do it myself.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# beware that quantmod creates an object in the environment
+# which is far from optimal
+
+for (stock in 1:length(stock_list)) {
+  quantmod::getSymbols(stock_list[stock], from = &amp;quot;2007-01-01&amp;quot;, to = &amp;quot;2017-12-25&amp;quot;)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;TSLA %&amp;gt;% 
+  chartSeries( 
+    # Add Bollinger Bands, Volume, Moving Average Convergence/Divergence
+    TA = &amp;#39;addBBands();
+          addBBands(draw=&amp;quot;p&amp;quot;);
+          addVo();
+          addMACD();
+          addDPO()&amp;#39;, 
+    subset = &amp;#39;2017-01::2018&amp;#39;,
+    theme  = chartTheme(&amp;quot;white.mono&amp;quot;),                    
+    name = &amp;quot;Tesla Stock Prices Evolution&amp;quot;, 
+    minor.ticks = FALSE, 
+    up.col = &amp;quot;seagreen3&amp;quot;, 
+    dn.col = &amp;quot;indianred2&amp;quot;,
+    colov.vol = c(&amp;quot;indianred2&amp;quot;, &amp;quot;seagreen2&amp;quot;)
+  )  &lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-9&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-9-1.png&#34; alt=&#34;The Chart involves quite a bit of descriptive statistics, so let&#39;s review what exactly do they mean&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 2: The Chart involves quite a bit of descriptive statistics, so let’s review what exactly do they mean
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot_evolution &amp;lt;- function(x) {
+  title &amp;lt;- substitute(x) %&amp;gt;% deparse()
+  x %&amp;gt;% 
+  chartSeries( 
+    # Add Bollinger Bands, Volume, Moving Average Convergence/Divergence
+    TA = &amp;#39;addBBands();
+          addBBands(draw=&amp;quot;p&amp;quot;);
+          addMACD();&amp;#39;, 
+    subset = &amp;#39;2017-01::2018&amp;#39;,
+    theme  = chartTheme(&amp;quot;white.mono&amp;quot;),                    
+    name = paste(title, &amp;quot;Stock Prices Evolution&amp;quot;), 
+    minor.ticks = FALSE, 
+    up.col = &amp;quot;seagreen3&amp;quot;, 
+    dn.col = &amp;quot;indianred2&amp;quot;,
+    colov.vol = c(&amp;quot;indianred2&amp;quot;, &amp;quot;seagreen2&amp;quot;)
+  )  
+}
+
+# similarly for others
+# plot_evolution(GOOGL) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-11-2.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-11-3.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-11-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Now we kind of have a problem, because we would want to support our decisions based on expectations/ projections in the future. There are a few very known pitfalls when you form your strategy based on past performance, like selling the winners and keeping the losers, which is clearly &lt;strong&gt;suboptimal&lt;/strong&gt; and works only in particular cases, conditioned on our beliefs about future evolution.&lt;/p&gt;
+&lt;p&gt;The assumptions we make about the future evolution of stocks is key in making good decisions, but this is again very tricky. I will be careful to avoid the &lt;code&gt;false belief in reversion to the mean&lt;/code&gt;, or at least be critical about it. This means that we need reasonable projections. Moreover, when we build the portfolios (e.g with Markowitz), we implicitly assume (wipe under the carpet) that the future will be &lt;em&gt;evolving&lt;/em&gt; the same way as in the past. &lt;em&gt;Do portfolio managers feed the model with forecasts?&lt;/em&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# take the monthy average for the long-term view
+# tq_transmute_fun_options()
+data %&amp;gt;% 
+  filter(date &amp;gt; as.Date(&amp;quot;2014-01-01&amp;quot;)) %&amp;gt;%
+  group_by(symbol) %&amp;gt;%
+  tq_transmute(select     = adjusted, 
+    mutate_fun = apply.weekly,
+    FUN        = mean, 
+    col_rename = &amp;quot;avg_price&amp;quot;) %&amp;gt;%
+  select(symbol, date, avg_price) %&amp;gt;% 
+  ggplot(aes(x = date, y = avg_price, color = symbol)) + 
+  geom_point(alpha = 0.3) + 
+  geom_ma(n = 15, size = 1, lty = 1) +
+  geom_ma(n = 40, size = 1, lty = 1, color = &amp;quot;indianred&amp;quot;) +
+  facet_wrap(~ symbol, ncol = 2, scales = &amp;quot;free_y&amp;quot;) +
+  theme_minimal() + 
+  scale_color_ochre(palette = &amp;quot;nolan_ned&amp;quot;) + 
+  theme(legend.position = &amp;quot;none&amp;quot;) + 
+  labs(x = &amp;quot;&amp;quot;, y = &amp;quot;Average Weekly Price&amp;quot;, 
+       title = &amp;quot;Long-Term Trends of Price Evolution&amp;quot;, 
+       subtitle = &amp;quot;Moving average of 15 and 40 weeks&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-12&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-12-1.png&#34; alt=&#34;Long-Term trends are somewhat expected, since it&#39;s recovery after the crisis&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3: Long-Term trends are somewhat expected, since it’s recovery after the crisis
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data %&amp;gt;% 
+  filter(date &amp;gt; as.Date(&amp;quot;2017-01-01&amp;quot;)) %&amp;gt;%
+  group_by(symbol) %&amp;gt;%
+  select(symbol, date, adjusted) %&amp;gt;% 
+  ggplot(aes(x = date, y = adjusted, color = symbol)) + 
+  geom_vline(xintercept = as.Date(&amp;quot;2017-10-15&amp;quot;), 
+             color = &amp;quot;grey40&amp;quot;, lty = 2) +
+  geom_point(alpha = 0.1) + 
+  geom_ma(n = 15, size = 1, lty = 1) +
+  geom_ma(n = 45, size = 1, lty = 1, color = &amp;quot;indianred&amp;quot;) +
+  facet_wrap(~ symbol, ncol = 2, scales = &amp;quot;free_y&amp;quot;) +
+  theme_minimal() + 
+  scale_color_ochre(palette = &amp;quot;nolan_ned&amp;quot;) + 
+  theme(legend.position = &amp;quot;none&amp;quot;) + 
+  labs(x = &amp;quot;&amp;quot;, y = &amp;quot;Price&amp;quot;, 
+       title = &amp;quot;Stock Prices for the Last Year&amp;quot;, 
+       subtitle = &amp;quot;Moving average of 15 and 45 days&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-13&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-13-1.png&#34; alt=&#34;Notice the divergence of Tesla and Netflix in mid-October&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 4: Notice the divergence of Tesla and Netflix in mid-October
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[r_t=log(\frac{P_{t+1}}{P_t}) \sim N(\mu_0, \sigma)\]&lt;/span&gt; As the theory suggests, we take the log for mathematical convenience and distributional properties. When &lt;span class=&#34;math inline&#34;&gt;\(exp(r_t)\)&lt;/span&gt;, it gives a skewed distribution biased on the positive side, which is similar to what we see over long periods. Now, I am inclined to agree with this &lt;a href=&#34;https://www.quora.com/Why-do-people-use-log-returns-of-stock-prices-for-auto-regression&#34;&gt;answer&lt;/a&gt;, which states that &lt;code&gt;lognormality&lt;/code&gt; asssumption is the root of most econometrics evil in finance.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# tq_mutate_fun_options()
+data.return &amp;lt;- data %&amp;gt;% 
+  select(symbol, date, adjusted) %&amp;gt;% 
+  group_by(symbol) %&amp;gt;%
+  tq_mutate(
+    select     = adjusted, 
+    mutate_fun = dailyReturn,
+    type       = &amp;quot;log&amp;quot;,
+    col_rename = &amp;quot;returns&amp;quot;)
+
+qtl &amp;lt;- data.return %&amp;gt;% 
+  group_by(symbol) %&amp;gt;% 
+  summarise(q1 = quantile(returns, c(0.025)), 
+            q9 = quantile(returns, c(0.975)))
+
+data.return %&amp;gt;% 
+  ggplot(aes(x = returns)) + 
+  geom_histogram(fill = &amp;quot;grey60&amp;quot;, bins = 40) + 
+  geom_rug(color = &amp;quot;grey&amp;quot;) + 
+  geom_vline(xintercept = 0, lty = 2, color = &amp;quot;indianred&amp;quot;) + 
+  geom_vline(data = qtl, aes(xintercept = q1), color = &amp;quot;grey20&amp;quot;, lty = 2) +
+  geom_vline(data = qtl, aes(xintercept = q9), color = &amp;quot;grey20&amp;quot;, lty = 2) + 
+  facet_wrap(~symbol, ncol = 3, scales = &amp;quot;free&amp;quot;) + 
+  theme_minimal() + 
+  labs(x = &amp;quot;Log Returns&amp;quot;, title = &amp;quot;Distribution of Daily Log-Returns&amp;quot;, 
+       subtitle = &amp;quot;Interval contains 95% of Observations&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-14&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-14-1.png&#34; alt=&#34;Note that boxplots aren&#39;t the appropriate representation for such data&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 5: Note that boxplots aren’t the appropriate representation for such data
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Because of the very large sample size, I think most formal tests of normality would be useless in this particular case. See the &lt;a href=&#34;https://stats.stackexchange.com/questions/2492/is-normality-testing-essentially-useless&#34;&gt;discussion&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(corrplot)
+data.return %&amp;gt;%
+  filter(date &amp;gt; as.Date(&amp;quot;2017-01-01&amp;quot;)) %&amp;gt;%
+  select(date, symbol, returns) %&amp;gt;% 
+  tidyr::spread(key = symbol, value = returns) %&amp;gt;% 
+  select(-date) %&amp;gt;%  
+  cor() %&amp;gt;% corrplot(
+    type = &amp;quot;lower&amp;quot;,
+    addCoef.col = &amp;quot;black&amp;quot;,
+    diag = FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-15&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-15-1.png&#34; alt=&#34;Correlations between log returns for 2017&#34; width=&#34;480&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 6: Correlations between log returns for 2017
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data.return %&amp;gt;% 
+  filter(date &amp;gt; as.Date(&amp;quot;2014-01-01&amp;quot;)) %&amp;gt;% 
+  mutate(month = as.factor(lubridate::month(date)), 
+         year  = as.factor(lubridate::year(date))) %&amp;gt;% 
+  group_by(symbol, year, month) %&amp;gt;% 
+  summarise(avg_price = mean(adjusted)) %&amp;gt;% 
+  group_by(symbol, year) %&amp;gt;% 
+  mutate(price_norm = avg_price / sum(avg_price)) %&amp;gt;%
+  mutate(group = paste(symbol, year)) %&amp;gt;%
+  ggplot(aes(x = month, y = price_norm, color = symbol)) + 
+  geom_point(alpha = 0.5) + 
+  geom_line(aes(group = group), alpha = 0.5) + 
+  theme_minimal() + 
+  scale_color_ochre(palette = &amp;quot;nolan_ned&amp;quot;) + 
+  ylim(0.03, 0.14) + 
+  labs(y     = &amp;quot;Normalized Monthly Price (share of year)&amp;quot;, 
+       title = &amp;quot;Seasonality of Average Prices&amp;quot;, 
+       subtitle = &amp;quot;Notice how prices tend to increase throughout the year&amp;quot;)  &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Let’s now look at more advanced measures, such as drawdown plots, code taken from this cool &lt;a href=&#34;https://timelyportfolio.blogspot.ro/2011/08/drawdown-visualization.html&#34;&gt;blog&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# get the baseline (Index Fund)
+getSymbols(&amp;quot;SP500&amp;quot;, src = &amp;quot;FRED&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;SP500&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;SP.roc &amp;lt;- merge(GOOGL[, 6], SP500) %&amp;gt;% 
+  ROC(n = 1, type = &amp;quot;discrete&amp;quot;)
+
+drawdowns &amp;lt;- table.Drawdowns(SP.roc[, 1])
+drawdowns.dates &amp;lt;- cbind(format(drawdowns$From), format(drawdowns$To))
+drawdowns.dates[is.na(drawdowns.dates)] &amp;lt;- format(index(SP.roc)[NROW(SP.roc)])
+# from matrix to list
+drawdowns.dates &amp;lt;- lapply(seq_len(nrow(drawdowns.dates)), function(i) drawdowns.dates[i,])   
+
+charts.PerformanceSummary(SP.roc, 
+ ylog       = TRUE,
+ period.areas = drawdowns.dates,
+ period.color = &amp;quot;grey90&amp;quot;,
+ colorset   = c(&amp;quot;indianred2&amp;quot;,&amp;quot;steelblue&amp;quot;,&amp;quot;seagreen4&amp;quot;),
+ legend.loc = &amp;quot;topleft&amp;quot;,
+ main       = &amp;quot;S&amp;amp;P500 and Google Performance&amp;quot;
+ )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;OK, So you get the mechanism with which to draw these charts. Notice that we control for which asset to draw the stripes.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-18&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-18-1.png&#34; alt=&#34;Index was removed for clarity and is slightly below J&amp;amp;J in terms of cumulative returns&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 7: Index was removed for clarity and is slightly below J&amp;amp;J in terms of cumulative returns
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; /&gt; &lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-21-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What would be interesting, is to look at rolling correlations with respect to the baseline (S&amp;amp;P Index).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;There’s an interesting (but more philosophically inclined) discussion in Taleb Nassim’s &lt;code&gt;Fooled by Randomness&lt;/code&gt;, whether standard deviation is the appropriate measure of uncertainty in the context of Normality assumptions.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data.return %&amp;gt;% 
+  ggplot(aes(x = date, y = returns)) + 
+  geom_line(color = &amp;quot;grey&amp;quot;) + 
+  geom_hline(color = &amp;quot;indianred&amp;quot;, yintercept = 0, lty = 2) + 
+  facet_wrap(ncol = 2, scale = &amp;quot;free_y&amp;quot;, ~ symbol) +
+  theme_minimal() + 
+  labs(x = &amp;quot;&amp;quot;, title = &amp;quot;Evolution and Volatility Regimes of Log-Returns&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-22-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# you can check for autocorrelation, but won&amp;#39;t find anything interesting
+acf_est &amp;lt;- data.return %&amp;gt;% 
+  select(symbol, returns) %&amp;gt;% 
+  group_by(symbol) %&amp;gt;% 
+  split(f = .$symbol) %&amp;gt;% 
+  lapply(FUN = function(x) x$returns %&amp;gt;% acf) &lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pr &amp;lt;- c(0.025, 0.25, 0.5, 0.75, 0.975)
+daily.qtl &amp;lt;- data.return %&amp;gt;% 
+  group_by(symbol) %&amp;gt;%
+  summarise(quantiles = list(sprintf(&amp;quot;%1.0f%%&amp;quot;, pr*100)),
+    value = list(quantile(returns, pr)), 
+    mean = mean(returns), 
+    sd   = sd(returns)) %&amp;gt;% 
+  unnest() %&amp;gt;% 
+  tidyr::spread(key = quantiles, value = value)
+
+lapply(daily.qtl, function(x) {
+  if (is.numeric(x)) round(x, 4) else x}) %&amp;gt;% data.frame() %&amp;gt;% 
+  knitr::kable()&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;symbol&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;mean&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;sd&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;X2.&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;X25.&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;X50.&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;X75.&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;X98.&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;AMZN&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0012&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0248&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-0.0446&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-0.0098&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;5e-04&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0124&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0496&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;GOOGL&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0005&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0180&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-0.0366&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-0.0073&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;5e-04&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0089&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0330&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;JNJ&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0004&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0101&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-0.0201&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-0.0042&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3e-04&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0055&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0196&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;NFLX&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0014&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0342&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-0.0588&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-0.0131&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3e-04&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0164&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0657&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;TSLA&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0014&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0318&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-0.0604&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-0.0141&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;9e-04&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0177&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0618&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Now, it would be interesting to see how this performance does with respect to all other stocks in S&amp;amp;P.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# downloading all history for 500 stocks takes around 3 minutes
+sp_all &amp;lt;- tq_get(sp_list$symbol, get = &amp;quot;stock.prices&amp;quot;)
+saveRDS(sp_all, &amp;quot;data/sp_all.RDS&amp;quot;)
+
+sp_all &amp;lt;- readRDS(&amp;quot;data/sp_all.RDS&amp;quot;)
+
+# Step1. Calculate returns
+sp_sample &amp;lt;- sp_all %&amp;gt;% group_by(symbol) %&amp;gt;% summarise(n = n()) %&amp;gt;% 
+  arrange(n) %&amp;gt;% 
+  sample_n(20) %&amp;gt;% 
+  .$symbol
+
+sp_returns &amp;lt;- sp_all %&amp;gt;% 
+  group_by(symbol) %&amp;gt;% 
+  dplyr::do(
+    mutate(., return = log(adjusted / lag(adjusted)))
+  ) %&amp;gt;% na.omit() %&amp;gt;% 
+  group_by(symbol) %&amp;gt;% 
+  summarise(
+    avg_return = mean(return, na.rm = TRUE), 
+    sd         = sd(return, na.rm = TRUE)
+  )
+
+sp_returns_2014 &amp;lt;- sp_all %&amp;gt;% 
+  filter(date &amp;gt; as.Date(&amp;quot;2014-01-01&amp;quot;)) %&amp;gt;% 
+  group_by(symbol) %&amp;gt;% 
+  dplyr::do(
+    mutate(., return = log(adjusted / lag(adjusted)))
+  ) %&amp;gt;% na.omit() %&amp;gt;% 
+  group_by(symbol) %&amp;gt;% 
+  summarise(
+    avg_return = mean(return, na.rm = TRUE), 
+    sd         = sd(return, na.rm = TRUE)
+  )
+
+saveRDS(sp_returns, &amp;quot;data/sp_returns.RDS&amp;quot;)
+saveRDS(sp_returns_2014, &amp;quot;data/sp_returns_2014.RDS&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sp_returns &amp;lt;- readRDS(&amp;quot;data/sp_returns.RDS&amp;quot;)
+sp_returns_2014 &amp;lt;- readRDS(&amp;quot;data/sp_returns_2014.RDS&amp;quot;)
+sp_returns %&amp;gt;% head()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 3
+##   symbol    avg_return         sd
+##    &amp;lt;chr&amp;gt;         &amp;lt;dbl&amp;gt;      &amp;lt;dbl&amp;gt;
+## 1      A  3.836921e-04 0.02018601
+## 2    AAL -1.646356e-05 0.04454935
+## 3    AAP  3.865070e-04 0.02075724
+## 4   AAPL  9.964116e-04 0.02009505
+## 5   ABBV  9.459367e-04 0.01617369
+## 6    ABC  5.603568e-04 0.01534278&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;daily.qtl %&amp;gt;% 
+  ggplot(aes(x = sd, y = mean)) +
+  geom_point(data = sp_returns, aes(x = sd, y = avg_return), 
+             alpha = 0.4, color = &amp;quot;grey&amp;quot;) + 
+  geom_point(data = sp_returns_2014, aes(x = sd, y = avg_return), 
+             alpha = 0.2, color = &amp;quot;indianred2&amp;quot;) + 
+  geom_point(size = 4, color = &amp;quot;steelblue&amp;quot;) +
+  geom_text(aes(label = symbol), vjust = 1.5, size = 3.5) +
+  theme_minimal() + 
+  xlim(0.007, 0.045) + 
+  ylim(-0.00025, 0.0015) + 
+  labs(x = &amp;quot;Volatility&amp;quot;, y = &amp;quot;Returns&amp;quot;, 
+       title = &amp;quot;Chosen Assets (2007:2017) compared to other S&amp;amp;P&amp;quot;, 
+       subtitle = &amp;quot;Red points are estimated using data from 2014. Grey: 2007&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 13 rows containing missing values (geom_point).&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 43 rows containing missing values (geom_point).&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-27&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-27-1.png&#34; alt=&#34;As Expected, Tesla and Netflix are high risk, high return, Amazon on the wave, Google Solid and if before we didn&#39;t know anything about J&amp;amp;J, now it&#39;s clear it&#39;s low risk-low return&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 8: As Expected, Tesla and Netflix are high risk, high return, Amazon on the wave, Google Solid and if before we didn’t know anything about J&amp;amp;J, now it’s clear it’s low risk-low return
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;So, we ended up having a high-risk, high reward portfolio due to my preferences. As we’ll see from the questionnaire, Tesla and Netflix fall out from the top3 choices, and we end up with something more balanced.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-iii.-questionnaire&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Part III. Questionnaire&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;By now you’re pretty familiar with my prior beliefs and assumptions, but let’s look at other respondents. Two friends were asked to state their preference on a scale from 1 to 10 regarding the stocks and assign a probability of investing in them, if being given $1000. Then they were shown the data: returns, evolutions and descriptive statistics and asked if (and how) would they update the probabilities.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div id=&#34;e.-b.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;code&gt;E. B.&lt;/code&gt;:&lt;/h4&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rsp_eb &amp;lt;- tibble(
+  id      = rep(&amp;quot;EB&amp;quot;, 5),
+  symbol  = c(&amp;quot;GOOGL&amp;quot;, &amp;quot;AMZN&amp;quot;, &amp;quot;NFLX&amp;quot;, &amp;quot;JNJ&amp;quot;, &amp;quot;TSLA&amp;quot;),
+  score   = c(7, 9, 7, 5, 8), 
+  prob    = c(0.8, 0.8, 0.5, 0.1, 0.5),
+  prob_up = c(0.8, 0.9, 0.4, 0.7, 0.4)
+)
+
+rsp_eb %&amp;gt;% knitr::kable()&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;id&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;symbol&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;score&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;prob&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;prob_up&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;EB&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;GOOGL&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.8&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;EB&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;AMZN&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;9&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.8&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;EB&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NFLX&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.5&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;EB&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;JNJ&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;5&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.7&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;EB&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;TSLA&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;8&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.5&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Amazon, because I’m a fan and they have a mix of technology and business. Google, in order not to miss put. Didn’t hear about J&amp;amp;J, need to do some research. Netflix is interesting, but doesn’t seem something long-term. Tesla looked like it was going down.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;After getting familiar with the data:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Hmm, Tesla is going down and Netflix Stagnates. The choice of Amazon is reinforced, maybe J&amp;amp;J rises a little bit. The trends and price evolution influenced me more than the returns.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div id=&#34;m.-c.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;code&gt;M. C.&lt;/code&gt;:&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Google, because it’s solid company investing in interesting stuff and are leading in technology: AI, ML, web services. Solid overall. I give it a high propability because I know its price is largest among tech, higher than Facebook and Apple, so I don’t see how it can be lower in the near future. If not for profit, at least for safe perserving of money, I would invest in their stocks.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Amazon is solid, extended from eCommerce to AWS and other interesting services, it’s expandin its area of services, which is cool. Netflix is delivering one service simply and clearly and does it well, but the stuff with net neutrality could largely limit its efficiency.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I know that J&amp;amp;J have more daughter companies thatn cosmetics stuff, which is solid. They have a network of firms which is pretty successful overall. Tesla is pushing for alternative energy and is doing good progress, which is cool. They could enter the market of net providers if net neutrality repel kicks in, which could largely extend i.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;After getting familiar with the data:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Google stays same, I would add a little bit to amazon, because it looks like the return is kind of big for an acceptable risk region. I would decrease J&amp;amp;J because it looks too stationary, and I don’t like such sluggish dynamic. Decrease Tesla because the risk looks large and Netflix stays about the same because of the political implications.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rsp_mc &amp;lt;- tibble(
+  id      = rep(&amp;quot;MC&amp;quot;, 5),
+  symbol  = c(&amp;quot;GOOGL&amp;quot;, &amp;quot;AMZN&amp;quot;, &amp;quot;NFLX&amp;quot;, &amp;quot;JNJ&amp;quot;, &amp;quot;TSLA&amp;quot;), 
+  score   = c(8.5, 7, 7.5, 6, 8),
+  prob    = c(0.85, 0.75, 0.4, 0.70, 0.85),
+  prob_up = c(0.85, 0.80, 0.4, 0.55, 0.75)
+)
+rsp_mc %&amp;gt;% knitr::kable() &lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;id&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;symbol&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;score&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;prob&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;prob_up&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;MC&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;GOOGL&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;8.5&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.85&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.85&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;MC&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;AMZN&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.75&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.80&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;MC&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NFLX&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.5&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.40&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.40&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;MC&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;JNJ&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;6.0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.70&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.55&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;MC&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;TSLA&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;8.0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.85&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.75&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# there is not much point to do a scatterplot here
+# but we can visualize how beliefs were updated with data
+rbind(rsp_eb, rsp_mc) %&amp;gt;% 
+  tidyr::gather(key = prob, value = value, -c(id:score)) %&amp;gt;%
+  mutate(group = paste(symbol, id)) %&amp;gt;%
+  ggplot(aes(x = prob, y = value, color = id, group = group)) + 
+  geom_point(size = 3) +
+  geom_text_repel(aes(label = symbol), size = 3) + 
+  geom_line() +
+  theme_minimal() + 
+  scale_color_manual(values = c(&amp;quot;indianred2&amp;quot;, &amp;quot;steelblue&amp;quot;)) +
+  labs(x = &amp;quot;&amp;quot;, y = &amp;quot;Probability&amp;quot;, 
+       title = &amp;quot;Updated Probabilities after seeing the data&amp;quot;, 
+       subtitle = &amp;quot;Notice the different preferences in the case of J&amp;amp;J&amp;quot;) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-30-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;If we would have to chose portfolios of three assets, &lt;code&gt;Google&lt;/code&gt;, &lt;code&gt;Amazon&lt;/code&gt; and &lt;code&gt;J&amp;amp;J&lt;/code&gt; would be at the top.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;By now, you’re most probably tired from reading, so let’s stop and continue next time by constructing portfolios by simulation using the questinnaire results and connecting it to &lt;code&gt;Prospect Theory&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!--
+
+## Part IV. Portfolio Construction
+
+1. at least 100 portfolios with 2 most prefered stocks
+2. at least 100 portfolios with 3 most prefered stocks
+
+generate probabilities (weights) of investment in a stock in intervals answered (normalizing befor that) =&gt; grenerate the portfolios within those ranges w.r.t. a chosen distribution uniform/normal/etc.
+
+1. Expected return of all types of portfolios =&gt; Order them
+2. Graphical representation of returns of portfolios. Comment the most profitable one. Compare returns of these two types of portfolios
+3. Calculate the risk of both types of portfolios =&gt; What is the most risky portfolio
+4. Sharpe ratio (CV and interpret)
+
+
+Visualize efficiency fronteer
+
+
+## Part V. Prospect Theory Insights
+
+
+## Conclusion
+
+--&gt;
+&lt;!--
+ 
+TIME HORIZON MATTERS !! (regarding mean reversion)
+Appropriately to look at 1y / 2y returns (probable time horizons making certain choices)
+
+
+People biased against realizing losses.
+
+False belief in mean reversion  (And heuristic built of that)?! Not every process have mean reversion behavior. =&gt; Suboptimal Behavior
+Gambler&#39;s fallacy (negative autocorrelation that&#39;s not there: thant&#39;s not how any of these works) -&gt; not understanding conditional probability e.g P(red | 9 reds) close to 0.5, it&#39;s not total probability
+
+
+
+Mean reverting behavior? Difficult to predict future returns based on past returns =&gt; Well, I&#39;ll just do smth, go ride with the market. 
+
+Stochastic Processes knocking at the door.
+
+If the stock went down last year -&gt; expect to 
+went well -&gt; expect to level off in the future
+What matters is what you&#39;re gonna behave in the future
+// Does it matter what the stock did in the past? (EMH - No?)
+
+&gt; All this stuff is suggesting a technical analysis
+
+Mental accounting: Paper gains an realize gains
+Realized losses -&gt; biases and behavior
+
+Note that we did not hold any of these stocks, for the endownment effect to hold(). 
+Willingness to pay/willingness to accept =&gt; lack of consistency
+
+Foregone gains are different from losses, adn foregone losses very different from gains -&gt; Implications
+
+bias against realizing losses (LOSS AVERSION!!)
+
+&gt; Pay more to avoid a loss than to have a gain
+
+Value Function
+
+&gt; What is the rational thing to do?
+
+Imagine we hold the stocks for some time (which is not the case at the beginning, but an useful exercise)
+Heuristics that do not make sense: =&gt; Uncover implicit assumptions besides theses
+* Do we sell the losers and keep the winners ? 
+* Sell winners and keep losers?
+* What is the thing to do?
+
+Disposition effect: holding what we believe on past behavior losing stocks.
+
+Expected future behavior =&gt; That&#39;s Key (I am where I am and can&#39;t change that =&gt; What&#39;s going to happen in future) =&gt; need projections!!! 
+
+
+So what about mean reversion. 
+// EMH: Informationally efficient (price encodes all relevant information) // Prices are always correct
+    -- not entirely correct all the time (irrational exuberance, bubbles)
+
+-- weak form EMH, stock prices are unpredictable based on past returns
+Would&#39;nt be really valuable
+  -- Technical analysis: cycles and ts
+  -- Fundamental analysis: underlying company and its factors
+  =&gt; Random walk with drift y-1 + epsilon (random walk down Wall Street)
+
+Asset manager vs monkey with a dart board if EMH holds on average. Most portfolio managers outperformed by index funds ??? what? =&gt; Animals picking stocks :))
+
+&gt; Buuut we have lots of data available. Earlier research supported random walks pretty well. Then started challenging to some degree as time goes on (minor, particular ways). Not as broad ... 
+
+
+&gt; Momentum: opposite of mean reversion. What we see in data, actions, beliefs: in some days, short holding periods particular time intervals does well: what the hell? Transaction costs would eat up your returns. Followed up by sharp reversals. There are structural (why) explanations. 
+
+Over 3-7 years there is some evidence of mean reversion (if we look at extreme winners and extreme losers). That&#39;s quite particular. 
+
+Clean test for the disposition effect: Get data of people&#39;s behavior in stock market
+Individual accounts from a brokerage firm. Terrance Odean &#34;Are investors reluctant to realize their losses&#34;, precusors to e-trade. for every day what do they hold. (musta bought, musta sold) =&gt; Very granular info. &gt;
+// they might not have been able to short it (challenging logistically -&gt; not whol lot happening on individual level). Portfolio managers limited to long positions. 
+
+&gt; People categorize their positions as win/lose. What is their reference point (at which they bought at)?
+well, you might have acclimated, not sure how that happens. 
+A stock might be a winner for one/loser for other!! (not overall, categorize for each individual)
+
+Given that point, joint test of disposition effect/ did we guess the refrence point of individual. 
+Second might not be a problem. See if research is asking the right questions. 
+
+&gt; Methodology: DESIGN DECISIONS!!
+
+Q: is the disposition effect present. 
+Design Choices for each investors (#win sold &gt; #losers sold) =&gt; disposition effect? NOT REALLY. 
+problem: market grew very much -&gt; have to adjust for it (looking at what you did not sell !!) 
+What they used in the paper: Is the price higher than what you bought at?
+What counts as winner (depending on how sophisticated the traders were, do they take into account the opportunity cost)
+Upward trend =&gt; More winners than losers. 
+// ratio: number of winners could&#39;ve sold / nr of winners could&#39;ve sold -&gt; statistic. =&gt; TEST
+
+realized gains / (realized gains + paper gains)
+vs as evidence ??
+realized losses / (realized losses + paper losses)
+
+1) when calculating risks or losses: risk-free rate?
+2) not taking into account how large is the gain/loss it
+3) not weighting by the number of *shares* (counting all by a unit) =&gt; abstracted away from.
+Inference of reference point. 
+
+
+
+Downside of observational data: confoundiiing (e.g. LOGISTICS CONSIDERATION, tax-motivated saling: file tax returns (K gains -&gt; Tax / Losses -&gt; Deduction) // ONLY WHEN REALIZED paper vs realized gains and losses!! -&gt; more incetives), environment not controlled!
+
+Doesn&#39;t do an economic win/loss: robustness checks!
+
+Market index vs 5-7 individual time series for stock prices
+
+
+If you look at most of the analyses, it&#39;s pretty much an exploratory data analysis, descriptive statistics combined with domain knowledge and interpretation. One step further are statistical models based on financial theory. If we go further, it&#39;s from puppies to other kind of beasts (machine learning, stochastic filtering and the most gruesome maths you&#39;ve seen in a while). 
+
+
+
+### Daily returns
+
+* histograms and boxplots 
+  -- yoy (monthly) seasonality
+* summary reports
+* Correlation(s) 
+* Drawdowns and relative performance (of each stock vs corresponding market)
+* Skewness, Kurtosis, Smirnov-Kolmogorov tests
+
+
+
+
+
+
+
+
+### For each portfolio type, identify the utility function of portfolios
+
+Choose alpha with respect to the decident type
+-- graphically represent it and visualize
+-- how do those fronteers differ
+
+### Transform Portfolios in prospects to see if decident perception is different from yours
+
+* Decisional weights associated with probabilities. Visualize (Interpretation in Course)
+As gamma grows, it becomes biased. Choose gamma according to the answers of the questionnaire
+* Calclulate the Value function associated to the prospects, 
+Use Kahneman &amp; Tversky (1992) with a, b, lambda at the course. 
+
+Determine prospects with maximum value and compare with maximum rentability portfolio in each case. 
+
+
+Graohically represent obtained values for each type of prospects. 
+
+
+### Final Conclusions
+
+--&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;to be fair, I’ve been watching a lot of Behavioral Human Biology from Robert Sapolsky lately&lt;a href=&#34;#fnref1&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;Bayesian thinking helps not to get embarassed by the quizzes of Kahneman and Thaler&lt;a href=&#34;#fnref2&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn3&#34;&gt;&lt;p&gt;See David MacKay’s Brilliant work: “Without the Hot Air”&lt;a href=&#34;#fnref3&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn4&#34;&gt;&lt;p&gt;Really, watch dr. Sapolsky, it will change your life&lt;a href=&#34;#fnref4&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn5&#34;&gt;&lt;p&gt;Look up Emily B. Fox, Mike West’s ideas on Bayesian Time Series&lt;a href=&#34;#fnref5&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>R Tutorials for Behavioral Economics Class</title>
+      <link>https://bizovi.github.io/post/2017-11-18-r-tutorial-behavioral-economics-2/</link>
+      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://bizovi.github.io/post/2017-11-18-r-tutorial-behavioral-economics-2/</guid>
+      <description>&lt;p&gt;In the last blog post I took a bird’s eye (personal) perspective of R programming and suggested not to be discouraged by early encounters with this seemingly weird language. The conclusion was that by following “the right tool for the right job” principle, R is a great language for statistical research and the ecosystem of packages improves the data analysis workflow and gives the modeler more tools to extract insights from data.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What is the link to Behavioral Economics? R will be used (in class) as a tool for exploring domain-specific data in order to make informed decisions, fitting different kinds of models and validating the intuition from readings like Tversky &amp;amp; Kahneman, Thaler on real data.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div id=&#34;a-tutorial-on-metropolitan-area-housing&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;A tutorial on Metropolitan Area Housing&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse) # the ecosystem of data processing tools
+library(tidyr)     # useful for getting the data in short-long formats
+library(reshape2)  # for the function melt (long format data)
+library(glue)      # string formatting
+library(assertive) # assertions (active tests)
+library(ochRe)     # stunning color palettes
+library(readxl)    # read from excel spreadsheets&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data &amp;lt;- read_excel(&amp;quot;data/landdata-msas-2016q1.xls&amp;quot;, skip = 1)
+data &amp;lt;- data %&amp;gt;% 
+  mutate(MSA = as.factor(MSA), 
+         Date = zoo::as.yearqtr(Date, format = &amp;quot;%YQ%q&amp;quot;)
+         ) %&amp;gt;%
+  dplyr::rename(home_value = `Home Value`, 
+                structure_cost = `Structure Cost`, 
+                land_value = `Land Value`, 
+                land_share = `Land Share (Pct)`, 
+                home_pi = `Home Price Index`, 
+                land_pi = `Land Price Index`
+                )
+data %&amp;gt;% head()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 8
+##       MSA          Date home_value structure_cost land_value land_share
+##    &amp;lt;fctr&amp;gt; &amp;lt;S3: yearqtr&amp;gt;      &amp;lt;dbl&amp;gt;          &amp;lt;dbl&amp;gt;      &amp;lt;dbl&amp;gt;      &amp;lt;dbl&amp;gt;
+## 1 ATLANTA       1984 Q4   92856.39       67112.34   25744.05  0.2772459
+## 2 ATLANTA       1985 Q1   93044.12       67826.46   25217.66  0.2710291
+## 3 ATLANTA       1985 Q2   93269.26       68444.29   24824.97  0.2661646
+## 4 ATLANTA       1985 Q3   97490.47       69026.93   28463.55  0.2919623
+## 5 ATLANTA       1985 Q4   98809.50       69562.32   29247.18  0.2959956
+## 6 ATLANTA       1986 Q1   99846.67       70078.32   29768.36  0.2981407
+## # ... with 2 more variables: home_pi &amp;lt;dbl&amp;gt;, land_pi &amp;lt;dbl&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ny &amp;lt;- data %&amp;gt;% dplyr::filter(MSA == &amp;quot;NEWYORK&amp;quot;) 
+ny %&amp;gt;% 
+  tidyr::gather(key = variable, value = value, -c(MSA, Date)) %&amp;gt;% 
+  dplyr::select(-MSA) %&amp;gt;% 
+  ggplot(aes(x = value, fill = variable)) + 
+  geom_histogram(alpha = 0.5) + 
+  facet_wrap(~ variable, scale = &amp;quot;free&amp;quot;) + 
+  theme_bw() + 
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) + 
+  labs(y = &amp;quot;Frequency&amp;quot;, title = &amp;quot;Distributions of the variables for NY&amp;quot;) + 
+  theme(legend.position = &amp;quot;none&amp;quot;) + 
+  scale_fill_ochre(palette = &amp;quot;nolan_ned&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-11-18-r-tutorial-behavioral-economics-2_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;plotting-theoretical-utility-and-value-functions&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Plotting theoretical Utility and Value functions&lt;/h2&gt;
+&lt;p&gt;Hyperbolic Absolute Risk Aversion (Linear Risk Tolerance) is a class of utility functions, that can easily describe the particular cases of Constant Absolute Risk Aversion (CARA) and Constant Relative Risk Aversion (CRRA). &lt;span class=&#34;math display&#34;&gt;\[U(x;\gamma,a,b) = \frac{1 - \gamma}{\gamma}\bigg( \frac{ax}{1-\gamma} +b   \bigg) ^ \gamma\]&lt;/span&gt; It is designed in such a way that the risk tolerance is linear &lt;span class=&#34;math display&#34;&gt;\[\tau(x)=-\frac{U&amp;#39;(x)}{U&amp;#39;&amp;#39;(x)} = \frac{1}{1-\gamma}x + 
+\frac{b}{a}
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(a &amp;gt; 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\frac{ax}{1-\gamma} + b &amp;gt; 0\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The function tends to logarithmic if gamma tends to zero (by L’Hopital rule) and linear when goes to one. &lt;span class=&#34;math display&#34;&gt;\[U(x) \xrightarrow[\gamma \to 0]{} log(ax+b)\]&lt;/span&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The reason we’re going to overkill a simple plotting of HARA utility function is to showcase some important R concepts.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;First, we test user inputs via the &lt;code&gt;assertthat&lt;/code&gt; package, which is a first step moving from manual validation to more automated methods of code testing. This doesn’t kick in when doing an exploratory analysis, but hopefully when starting to build Packages, learning how to test code in R&lt;a href=&#34;#fn1&#34; class=&#34;footnoteRef&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; will pay off.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hara &amp;lt;- function(x, a, b, gamma) {
+  # check that inputs to the function are good
+  # using assetthat package
+  assert_all_are_non_negative(x)
+  assert_all_are_greater_than(x = a * x / (1 - gamma) + b, y = 0)
+  assert_all_are_true(
+    c(    
+      is_positive(a), 
+      is_not_equal_to(a, 0), 
+      is_in_range(gamma, lower = 0, upper = 1)
+      )
+  )
+  
+  # return the function itself
+  return(
+    ((1 - gamma) / gamma) * (a * x / (1 - gamma) + b)^gamma
+  )
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Second, we want to run the function a number of times by varying a parameter. The first idea of would be to write a for loop, but there is a more elegant way. The apply family of functions allows to run a function on elements of objects like lists. In this particular case I used a &lt;code&gt;sapply&lt;/code&gt; function which returns a data frame with a column for values of function given a parameter.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# check if the function returns expected values
+# hara(x = 1:20, a = 36, b = 52, gamma = 0.5)
+
+gammas &amp;lt;- c(0.5, 0.4, 0.3, 0.25, 0.1)
+a &amp;lt;- 36 # the functions start to look more linear as a is small
+b &amp;lt;- 52 
+
+# apply the function on using 4 different gamma parameters
+df &amp;lt;- sapply(X = gammas, FUN = hara, x = 0:30,  a = a, b = b) %&amp;gt;% 
+  as_tibble()
+# add the appropriate values to column names
+colnames(df) &amp;lt;- as.character(gammas)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Third, we use the tidy way of data processing by heavily relying on the pipe operator &lt;code&gt;%&amp;gt;%&lt;/code&gt;, which passes an output of a function or an object to the next one. This makes the code much more readable and shows its power in Exploratory Data Analysis. The concept of Tidy Data&lt;a href=&#34;#fn2&#34; class=&#34;footnoteRef&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt; is inspired from relational databases and in order to use R eficiently one needs to understand the use-cases for long and wide data formats, what classifies as tidy.&lt;/p&gt;
+&lt;p&gt;The fourth point is that using &lt;code&gt;ggplot2&lt;/code&gt; as the go-to visualization tool is not harder or more advanced, but simpler! Once you understand the &lt;code&gt;grammar of graphics&lt;/code&gt;&lt;a href=&#34;#fn3&#34; class=&#34;footnoteRef&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt; you get an incredibly general tool for data visualization, in which you can do stunning graphs with very little effort once you get the data into the right format.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% 
+  mutate(x = 1:nrow(df)) %&amp;gt;% 
+  reshape2::melt(id.vars = &amp;quot;x&amp;quot;) %&amp;gt;% # could use tidyr::gather as an alternative
+  rename(gamma = variable) %&amp;gt;%
+  ggplot(aes(x = x, y = value, color = gamma)) + 
+  geom_line(size = 1) + 
+  theme_minimal() + 
+  labs(title = &amp;quot;Hyperbolic Absolute Risk Aversion function&amp;quot;, 
+       subtitle = glue(&amp;quot;with hyperparameters a = {a}, b = {b}&amp;quot;)) + 
+  scale_color_ochre(palette = &amp;quot;nolan_ned&amp;quot;) # if you feel fancy today&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-11-18-r-tutorial-behavioral-economics-2_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Explain what is a color palette and why is it useful&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a-tutorial-on-analysis-of-returns-and-investment-decisions&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;A tutorial on Analysis of Returns and Investment Decisions&lt;/h2&gt;
+&lt;!--
+
+```r
+library(tidyquant) # tidy data analysis and financial data interfacing
+```
+
+
+```r
+# get stock prices for seven years using the Yahoo Finance API
+stocks &lt;- c(&#34;ORCL&#34;, &#34;FSLR&#34;, &#34;AMZN&#34;, &#34;GOOG&#34;, &#34;GE&#34;) %&gt;% tq_get(
+  get  = &#34;stock.prices&#34;, 
+  from = &#34;2010-01-01&#34;, 
+  to   = &#34;2017-10-30&#34;
+)
+
+# calculate the monthly returns
+monthly.returns &lt;- stocks %&gt;% 
+  group_by(symbol) %&gt;% 
+  tq_transmute(
+    select     = adjusted, # column to calculate returns from 
+    mutate_fun = periodReturn, # function from quantmod
+    period     = &#34;monthly&#34;,    # alternatively, &#34;weekly&#34; or daily
+    col_rename = &#34;return&#34;)
+
+# need to compare against a general price index
+baseline &lt;- &#34;SPX&#34; %&gt;%
+    tq_get(
+      get  = &#34;stock.prices&#34;,
+      from = &#34;2010-01-01&#34;,
+      to   = &#34;2017-10-30&#34;) 
+
+
+monthly.baseline &lt;- baseline %&gt;%
+    tq_transmute(
+      select     = adjusted, 
+      mutate_fun = periodReturn, 
+      period     = &#34;monthly&#34;, 
+      col_rename = &#34;base.returns&#34;)
+```
+
+```
+## Warning in to_period(xx, period = on.opts[[period]], ...): missing values
+## removed from data
+```
+
+
+```r
+# In order to perserve some information when averaging at monthly level, it would be great to represent the uncecrtainty
+
+custom_stat_fun &lt;- function(x, na.rm = TRUE, ...) {
+    # ...   = additional arguments
+    c(mean    = mean(x, na.rm = na.rm),
+      stdev   = sd(x, na.rm = na.rm),
+      quantile(x, na.rm = na.rm, ...)) 
+}
+
+# quantiles
+pr &lt;- c(0, 0.025, 0.25, 0.5, 0.75, 0.975, 1)
+
+# Applying the custom function by week
+monthly_returns &lt;- stocks %&gt;%
+  group_by(symbol) %&gt;%
+    tq_transmute(
+        select = close,
+        mutate_fun = apply.monthly, 
+        FUN = custom_stat_fun,
+        na.rm = TRUE,
+        probs = pr
+    )
+
+monthly_returns %&gt;%
+    ggplot(aes(x = date, y = `50%`, color = symbol)) +
+    geom_ribbon(aes(ymin = `25%`, ymax = `75%`), 
+                color = NA, fill = palette_light()[[1]], alpha = 0.3) +
+    geom_point() +
+    geom_vline(xintercept = as.Date(c(&#34;2011-09-01&#34;, &#34;2012-07-01&#34;, 
+                                      &#34;2013-07-01&#34;, &#34;2014-02-01&#34;, 
+                                      &#34;2015-01-01&#34;, &#34;2016-02-01&#34;)), 
+               lty = 2, color = &#34;grey40&#34;) + 
+    geom_ma(n = 5, size = 1, color = &#34;steelblue2&#34;, lty = 1) + 
+    facet_wrap(~ symbol, ncol = 2, scale = &#34;free_y&#34;) +
+    labs(title = &#34;Standard and Poor&#39;s Average Monthly Price&#34;, x = &#34;&#34;,
+         subtitle = &#34;Volatility shown as 1st and 3rd quantiles&#34;,
+         y = &#34;Price (k$)&#34;) +
+  #  expand_limits(y = 50) + 
+    scale_color_ochre(palette = &#34;lorikeet&#34;) +
+    theme_bw() + 
+  theme(legend.position = &#34;none&#34;)
+```
+
+&lt;img src=&#34;https://bizovi.github.io/post/2017-11-18-r-tutorial-behavioral-economics-2_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;
+
+--&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Testing R Code &lt;a href=&#34;http://r-pkgs.had.co.nz/tests.html&#34; class=&#34;uri&#34;&gt;http://r-pkgs.had.co.nz/tests.html&lt;/a&gt;&lt;a href=&#34;#fnref1&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;Hadley Wickham’s R for Data Science &lt;a href=&#34;http://r4ds.had.co.nz/&#34; class=&#34;uri&#34;&gt;http://r4ds.had.co.nz/&lt;/a&gt;&lt;a href=&#34;#fnref2&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn3&#34;&gt;&lt;p&gt;Paper on the grammar of Graphics &lt;a href=&#34;http://byrneslab.net/classes/biol607/readings/wickham_layered-grammar.pdf&#34; class=&#34;uri&#34;&gt;http://byrneslab.net/classes/biol607/readings/wickham_layered-grammar.pdf&lt;/a&gt;&lt;a href=&#34;#fnref3&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

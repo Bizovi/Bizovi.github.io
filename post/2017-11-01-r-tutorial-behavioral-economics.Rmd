@@ -5,10 +5,11 @@ date: "2017-11-01"
 output: 
   html_document:
     toc: true
+tags: ["R", "programming"]
 ---
 
 > I wish somebody showed me the real power of R earlier and explained the big picture 
-
+ 
 This is not an usual tutorial on R, my goal being to make you aware and curious about various topics related to Data Analysis in R, which I learned the hard way during a year of nearly daily use. It is not supposed to be easy or have a particular application in mind, but rather to suggest many possibilities. Also, even though this was originally written for a Behavioral Economics class, I'll be speaking from a Data Scientist's perspective and often drift away and not get in too much details, preferring to provide great (external) resources for learning. 
 
 ## A personal encouter with R

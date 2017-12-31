@@ -3,6 +3,7 @@ title: "Reproducing The Economist Chart"
 author: "Bizovi Mihai"
 date: "2017-11-25"
 output: html_document
+tags: ["R", "data-visualization"]
 ---
 
 While searching for solutions to fine-tune ggplot2 visualizations, I stumbled upon^[http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html] a nice challenge: to reproduce `The Economist`'s plot showing the correlation between *Corruption Perception Index* and the *Human Development Index*^[https://www.economist.com/blogs/dailychart/2011/12/corruption-and-development]. 
