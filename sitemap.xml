@@ -5,6 +5,24 @@
     
     <url>
     
+      <loc>https://bizovi.github.io/post/2018-01-15-fama/</loc>
+      <lastmod>2018-01-15T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://bizovi.github.io/talk/cybernetics/</loc>
+      <lastmod>2018-01-12T10:20:05+02:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://bizovi.github.io/post/2017-12-30-investment-decisions-2/</loc>
       <lastmod>2017-12-30T00:00:00+00:00</lastmod>
     </url>
@@ -143,7 +161,7 @@
     <url>
     
       <loc>https://bizovi.github.io/tags/behavioral-economics/</loc>
-      <lastmod>2017-12-30T00:00:00+00:00</lastmod>
+      <lastmod>2018-01-15T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -271,7 +289,7 @@
     <url>
     
       <loc>https://bizovi.github.io/tags/r/</loc>
-      <lastmod>2017-12-30T00:00:00+00:00</lastmod>
+      <lastmod>2018-01-15T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -292,6 +310,16 @@
     
       <loc>https://bizovi.github.io/tags/</loc>
       <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://bizovi.github.io/talk/</loc>
+      <lastmod>2018-01-12T10:20:05+02:00</lastmod>
       <priority>0</priority>
     </url>
     

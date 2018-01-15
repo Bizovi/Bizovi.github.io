@@ -11,6 +11,244 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>CAPM and Eugene Fama&#39;s devastating critique</title>
+      <link>https://bizovi.github.io/post/2018-01-15-fama/</link>
+      <pubDate>Mon, 15 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://bizovi.github.io/post/2018-01-15-fama/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;I was impressed by the down-to-earth &lt;a href=&#34;https://www.youtube.com/watch?v=bM9bYOBuKF4&#34;&gt;debate&lt;/a&gt; between Eugene Fama and Richard Thaler. Their discussion was very insightful in order to make sense of what’s going on with Efficient Market Hypothesis, CAPM, Fama and French 3 Factor Model, Markowitz and where is the field moving. This will be my last blog post on economics for a while, so expect lots of Machine Learning and Statistics topics next. This is a continuation that is supposed to add some missing pieces to the analysis done in the &lt;a href=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions/&#34;&gt;partI&lt;/a&gt; and &lt;a href=&#34;https://bizovi.github.io/post/2017-12-30-investment-decisions-2/&#34;&gt;partII&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;My first impression is that the microfoundation, theory-based CAPM is just an invalid model from a variety of perspectives, there is too much evidence against it&lt;a href=&#34;#fn1&#34; class=&#34;footnoteRef&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;. On the other line of analysis, the empirical approach by Fama relies on the EMH, which he admitted is almost untestable. This means that the focus is on asset pricing models that work in real world and that the data should show us the way. For &lt;code&gt;E.F.&lt;/code&gt;, rigorous statistical testing of the hypotheses is of the foremost importance. His objection to the notion of a bubble can be understood as “show me the statistical procedure/test”, as it is easy to say in retrospective that something was a bubble. Usually, I might disagree with the theory that CAPM is build on, but here I can rely on one of the fathers of modern finance and the whole body of evidence to disregard it. &lt;code&gt;R.T.&lt;/code&gt; separated the EMH in an useful way by asking two questions, which could help avoid lots of confusion:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Can you beat the market?&lt;/li&gt;
+&lt;li&gt;Are the prices right?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;From other videos of E.Fama, it is clear that he is frustrated by the behaviorists cherrypicking anomalies without regard to the psychological theory and in order to invalidate a theory you should come with your own, so, “what’s your theory”? From a practical point of view, the points they were debating do not make a huge difference. &lt;code&gt;R.T.&lt;/code&gt; argues we can have a pretty good guess if something is a bubble in order to intervene very gently, even though there might not be a formal test for it.&lt;/p&gt;
+&lt;p&gt;I considered going through the Chicago’s Booth &lt;a href=&#34;https://www.youtube.com/playlist?list=PLAXSVuGaw0KxTEN_cy-RCuEzzRdnF_xtx&#34;&gt;Asset Pricing (PartI)&lt;/a&gt; and &lt;a href=&#34;https://www.youtube.com/playlist?list=PLAXSVuGaw0KxVUym8IRkObSbUPEFaSbPt&#34;&gt;Asset Pricing (PartII)&lt;/a&gt; course in order to understand all these issues deeply, but the outlook of saying in the end &lt;code&gt;&amp;quot;just go buy an index fund&amp;quot;&lt;/code&gt; looks grim. After all it is worth it, because when we build an empirical model, we might implicitly make some huge assumptions about expectations or predictability. So, in order not to make stupid mistakes it’s better to know the theory well. I’ll throw in another red pill related to the &lt;a href=&#34;https://paulromer.net/wp-content/uploads/2016/09/WP-Trouble.pdf&#34;&gt;state of macroeconomics&lt;/a&gt;, which should do justice to Eugene saying that Finance is the most successful part of economics.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Another thing which became clear, is that the previous questions I was raising and doubts I had are totally founded. It should’t be something new for the people in the field, but it’s certaily useful for a newcomer&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div id=&#34;analysing-portfolio-models-without-reading-fama-is-useless&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Analysing portfolio models without reading Fama is useless&lt;/h2&gt;
+&lt;p&gt;Before digging into the data, I would like to go through the Fama and French 2004 &lt;a href=&#34;http://pubs.aeaweb.org/doi/pdfplus/10.1257/0895330042162430&#34;&gt;paper&lt;/a&gt;. As a lot of things in economics, this powerful and intuitive theoretical model does not hold against empirical evidence. Last &lt;a href=&#34;https://bizovi.github.io/post/2017-12-30-investment-decisions-2/&#34;&gt;time&lt;/a&gt;, we built portfolios using ideas from Markowitz (in a toy form) at time &lt;span class=&#34;math inline&#34;&gt;\(t - 1\)&lt;/span&gt; resulting in a stochastic return at time &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;, where we as investors care about the mean and return (implicitly assuming risk aversion). If taken one step further, we’d have to solve one of the dual problems of maximizing expected returns given variance or minimizing variance given returns.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2018-01-15-fama_files/figure-html/meanvar.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;In order to “tell the CAPM story” we should add to the usual picture the risk-free rate, which could bring additional investment opportunities, the efficient fronteer becoming a straight line. Formally:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+R_p = wR_f + (1 - w)R_{rp}
+\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[ 
+\mathbb{E}(R_p)=wR_f + (1-w)\mathbb{E}(R_{rp})
+\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[
+\mathbb{V}(R_p) = (1-w)\mathbb{V}(R_{rp})
+\]&lt;/span&gt; Basically what we care about, is that the efficient portfolio will be a linear combination of the risk-free asset and a risky portfolio, tangent to the risky efficiency fronteer.&lt;/p&gt;
+&lt;p&gt;Now, in order to have a testable relationship between return and risk, CAPM adds two more assumptions to the Markowitz model. Let’s take the quote from Fama, as it’s quite the pill to swallow:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;The first assumption is complete agreement: given market clearing asset prices at &lt;span class=&#34;math inline&#34;&gt;\(t-1\)&lt;/span&gt;, investors agree on the joint distribution of asset returns from &lt;span class=&#34;math inline&#34;&gt;\(t-1\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;. And this distribution is the true one-that is, it is the distribution from which the returns we use to test the model are drawn. The second assumption is that there is borrowing and lending at a risk-free rate, which is the same for all investors and does not depend on the amount borrowed or lent.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In the end, it implies that the market portfolio &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; must be on the minimum variance fronteer, so the minimum variance portfolio should hold for the market portfolio (then all investors should see the same opportunity set?). For &lt;span class=&#34;math inline&#34;&gt;\(i = 1, ..., N\)&lt;/span&gt; risky assets &lt;span class=&#34;math display&#34;&gt;\[
+\mathbb{E}(R_i)=\mathbb{E}(R_{ZM}) + \beta_{iM}[\mathbb{E}(R_M)- \mathbb{E}(R_{ZM})]
+\]&lt;/span&gt; This expression is easily recognizable if we replace &lt;span class=&#34;math inline&#34;&gt;\(\mathbb{E}(R_{ZM})\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(R_f\)&lt;/span&gt;, which is the security market line and it tells the story of the linear relationship between &lt;code&gt;beta&lt;/code&gt; (non-diversifiable, systematic risk) and asset returns, conceptually holding for negative values of beta. All the interpretations are extremely tricky and even more, we swipe under the carpet the assumptions of quadratic utility functions (or probability distribution with two moments).&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\beta_{iM}=\frac{cov(R_i, R_M)}{\mathbb{V}(R_M)}
+\]&lt;/span&gt; As beta is basically a regression coefficient, it shows how does a return of the asset vary as a result of variation in market return given all other factors stay constant. Fama gives an even more insightful interpretation: the risk of market portfolio &lt;span class=&#34;math inline&#34;&gt;\(\mathbb{V}(R_M)\)&lt;/span&gt; is a weighted average of covariance risks of assets in Market, i.e. proportional to the contribution to portfolio risk.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\mathbb{V}(R_m)=Cov(R_M, R_M)=Cov \bigg(\sum_{i=1}^N x_{iM}R_i, R_M \bigg) \\ = \sum_{i=1}^N x_{iM}Cov(R_i, R_M )
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Last step is to get rid of &lt;span class=&#34;math inline&#34;&gt;\(\mathbb{E}(R_{ZM})\)&lt;/span&gt;. If we assume &lt;code&gt;unrestricted risk-free borrowing and lending&lt;/code&gt;, that asset doesn’t contribute to market risk (variance), so it can be replaced by the risk free rate. Fisher Black shows we don’t have to make this assumption, but the alternative is not much more realistic.&lt;/p&gt;
+&lt;p&gt;Fama and French go on to describe different approaches for testing the empirical validity of CAPM and find multiple problems with it. Nonetheless, it’s a stepping stone to the more relevant models. I am losing my interest quickly here, but at least I know what I don’t know right now and might come back at it some day.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;One thing is clear, that the exercise that will be done below misses the larger point of all this (theoretical) struggle to find the “perfect portfolio”. It seems like all of this is pointless unless you go back and read all foundational papers by Fama, Black, Merton, Fisher and the following most cited empirical tests of theoretical models.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div id=&#34;toy-example-of-capm&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Toy Example of CAPM&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;See the previous blog &lt;a href=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions/&#34;&gt;posts&lt;/a&gt; for a justification of why the following stocks were chosen and a visualization, exploratory data analysis. We’ll also throw in a “risk-free” asset and the S&amp;amp;P price index.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyquant)
+library(timekit)
+library(ochRe)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The question on how much data to estimate the CAPM is very tricky, and basically should be calibrated for, in order for the estimations to be reliable. I stumbled upon an amazing answer on &lt;a href=&#34;https://www.quora.com/How-many-years-historical-returns-should-be-used-to-calculate-the-beta-of-a-company&#34;&gt;Quora&lt;/a&gt; by S. Hakala, so here is a brief summary: it depends. There are issues of adjusting for changes in the company or industry over time, financial leverage and to accurately reflect the state of it at the current moment. Financial crisis will distort betas, but also looking only at the recovery, removing outliers is also important. There seems so much more to it than the recommended rule of thumb of three years. If you just estimate betas without asking all those questions, the estimates can be very unreliable, which was indeed shown decade after decade by Fama and French.&lt;/p&gt;
+&lt;p&gt;We’ll do the most naive thing here, following the workflow from &lt;a href=&#34;https://cran.r-project.org/web/packages/tidyquant/vignettes/TQ05-performance-analysis-with-tidyquant.html&#34;&gt;tiqyquant&lt;/a&gt;. The right thing to do though, is to seriously think about all of the above questions and the problem becomes really hard. Also, the time period for calculating returns, is not at all given or restricted to daily returns.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;risky.list &amp;lt;- c(&amp;quot;GOOGL&amp;quot;, &amp;quot;AMZN&amp;quot;, &amp;quot;NFLX&amp;quot;, &amp;quot;JNJ&amp;quot;, &amp;quot;TSLA&amp;quot;)
+Ra &amp;lt;- risky.list %&amp;gt;% 
+  tq_get(
+    get  = &amp;quot;stock.prices&amp;quot;, 
+    from = &amp;quot;2015-01-01&amp;quot;, 
+    to   = &amp;quot;2017-12-31&amp;quot;
+  ) %&amp;gt;% 
+  group_by(symbol) %&amp;gt;% 
+  tq_transmute(
+    select     = adjusted,
+    mutate_fun = periodReturn,
+    period     = &amp;quot;daily&amp;quot;, 
+    col_rename = &amp;quot;Ra&amp;quot;
+  )
+Ra&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3,775 x 3
+## # Groups:   symbol [5]
+##    symbol       date           Ra
+##     &amp;lt;chr&amp;gt;     &amp;lt;date&amp;gt;        &amp;lt;dbl&amp;gt;
+##  1  GOOGL 2015-01-02  0.000000000
+##  2  GOOGL 2015-01-05 -0.019053850
+##  3  GOOGL 2015-01-06 -0.024679487
+##  4  GOOGL 2015-01-07 -0.002940986
+##  5  GOOGL 2015-01-08  0.003484133
+##  6  GOOGL 2015-01-09 -0.012211246
+##  7  GOOGL 2015-01-12 -0.007309480
+##  8  GOOGL 2015-01-13  0.009536052
+##  9  GOOGL 2015-01-14  0.008230381
+## 10  GOOGL 2015-01-15 -0.003794958
+## # ... with 3,765 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;SP &amp;lt;- getSymbols(&amp;quot;SP500&amp;quot;, src = &amp;quot;FRED&amp;quot;, env = NULL)
+Rb &amp;lt;- SP %&amp;gt;% na.omit() %&amp;gt;% tk_tbl(rename_index = &amp;quot;date&amp;quot;) %&amp;gt;% 
+  rename(Rb = SP500) %&amp;gt;% 
+  filter(date &amp;gt; as.Date(&amp;quot;2015-01-01&amp;quot;) &amp;amp; 
+           date &amp;lt; as.Date(&amp;quot;2017-12-31&amp;quot;)) %&amp;gt;% 
+  tq_transmute(
+    select     = Rb,
+    mutate_fun = periodReturn, 
+    period     = &amp;quot;daily&amp;quot;, 
+    col_rename = &amp;quot;Rb&amp;quot;
+  )
+# check the number of days
+# nrow(Rb); nrow(Ra[Ra$symbol == &amp;quot;GOOGL&amp;quot;,])
+Rb&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 755 x 2
+##          date           Rb
+##        &amp;lt;date&amp;gt;        &amp;lt;dbl&amp;gt;
+##  1 2015-01-02  0.000000000
+##  2 2015-01-05 -0.018278107
+##  3 2015-01-06 -0.008893486
+##  4 2015-01-07  0.011629823
+##  5 2015-01-08  0.017888346
+##  6 2015-01-09 -0.008403891
+##  7 2015-01-12 -0.008093662
+##  8 2015-01-13 -0.002578565
+##  9 2015-01-14 -0.005813063
+## 10 2015-01-15 -0.009247888
+## # ... with 745 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data &amp;lt;- left_join(Ra, Rb, by = &amp;quot;date&amp;quot;)
+data&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3,775 x 4
+## # Groups:   symbol [?]
+##    symbol       date           Ra           Rb
+##     &amp;lt;chr&amp;gt;     &amp;lt;date&amp;gt;        &amp;lt;dbl&amp;gt;        &amp;lt;dbl&amp;gt;
+##  1  GOOGL 2015-01-02  0.000000000  0.000000000
+##  2  GOOGL 2015-01-05 -0.019053850 -0.018278107
+##  3  GOOGL 2015-01-06 -0.024679487 -0.008893486
+##  4  GOOGL 2015-01-07 -0.002940986  0.011629823
+##  5  GOOGL 2015-01-08  0.003484133  0.017888346
+##  6  GOOGL 2015-01-09 -0.012211246 -0.008403891
+##  7  GOOGL 2015-01-12 -0.007309480 -0.008093662
+##  8  GOOGL 2015-01-13  0.009536052 -0.002578565
+##  9  GOOGL 2015-01-14  0.008230381 -0.005813063
+## 10  GOOGL 2015-01-15 -0.003794958 -0.009247888
+## # ... with 3,765 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It is useful to observe how the estimations are sensitive to the time interval compared to the last estimation which had more data. The &lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt; are decent, but nothing too thrilling. All the KPIs below have some interpretation, and people came up with rules involving Taynor ratios and so on.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# tq_performance_fun_options()
+capm &amp;lt;- data %&amp;gt;% tq_performance(
+  Ra = Ra, 
+  Rb = Rb, 
+  performance_fun = table.CAPM
+)
+capm  &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 5 x 13
+## # Groups:   symbol [5]
+##   symbol ActivePremium  Alpha AnnualizedAlpha   Beta `Beta-` `Beta+`
+##    &amp;lt;chr&amp;gt;         &amp;lt;dbl&amp;gt;  &amp;lt;dbl&amp;gt;           &amp;lt;dbl&amp;gt;  &amp;lt;dbl&amp;gt;   &amp;lt;dbl&amp;gt;   &amp;lt;dbl&amp;gt;
+## 1  GOOGL        0.1668 0.0006          0.1674 1.0415  1.0237  1.0681
+## 2   AMZN        0.4689 0.0015          0.4583 1.1323  1.1661  1.0771
+## 3   NFLX        0.4771 0.0016          0.5022 1.3698  1.6434  1.0343
+## 4    JNJ        0.0413 0.0003          0.0705 0.6958  0.6639  0.8136
+## 5   TSLA        0.0328 0.0003          0.0781 1.1883  1.4545  0.9449
+## # ... with 6 more variables: Correlation &amp;lt;dbl&amp;gt;,
+## #   `Correlationp-value` &amp;lt;dbl&amp;gt;, InformationRatio &amp;lt;dbl&amp;gt;, `R-squared` &amp;lt;dbl&amp;gt;,
+## #   TrackingError &amp;lt;dbl&amp;gt;, TreynorRatio &amp;lt;dbl&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# for single assets
+data %&amp;gt;% tq_performance(
+  Ra = Ra, 
+  Rb = NULL, 
+  performance_fun = SharpeRatio, 
+  Rf = 0.01 / 12, 
+  p = 0.95)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 5 x 4
+## # Groups:   symbol [5]
+##   symbol `ESSharpe(Rf=0.1%,p=95%)` `StdDevSharpe(Rf=0.1%,p=95%)`
+##    &amp;lt;chr&amp;gt;                     &amp;lt;dbl&amp;gt;                         &amp;lt;dbl&amp;gt;
+## 1  GOOGL               0.033305503                   0.012430554
+## 2   AMZN               0.099488946                   0.060601819
+## 3   NFLX               0.056259544                   0.048889087
+## 4    JNJ              -0.018435266                  -0.034349641
+## 5   TSLA              -0.001536649                  -0.003683382
+## # ... with 1 more variables: `VaRSharpe(Rf=0.1%,p=95%)` &amp;lt;dbl&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# for portfolios
+w &amp;lt;- tibble(
+  symbols = c(&amp;quot;GOOGL&amp;quot;, &amp;quot;AMZN&amp;quot;, &amp;quot;NFLX&amp;quot;, &amp;quot;JNJ&amp;quot;, &amp;quot;TSLA&amp;quot;),
+  weights = c(0.4, 0.25, 0.25, 0.05, 0.05)
+  )
+p1 &amp;lt;- Ra %&amp;gt;% tq_portfolio(
+  assets_col = symbol, 
+  returns_col = Ra, 
+  weights    = w, 
+  col_rename = &amp;quot;Ra&amp;quot;
+)
+# mean(p1$Ra); sd(p1$Ra)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;From a brief look at the scatterplots, a removal of outliers might help get more robust estimates.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data %&amp;gt;% 
+  ggplot(aes(x = Rb, y = Ra, color = symbol)) + 
+  geom_point(alpha = 0.2) + 
+  geom_hline(yintercept = c(0.06, -0.07), lty = 2, color = &amp;quot;grey40&amp;quot;) +
+  geom_smooth(method = &amp;quot;lm&amp;quot;, se = FALSE) + 
+  facet_wrap(~symbol, ncol = 3) +
+  scale_color_ochre(palette = &amp;quot;tasmania&amp;quot;) +
+  theme_minimal() + 
+  labs(x = &amp;quot;Baseline SP500 Return&amp;quot;, y = &amp;quot;Asset Return&amp;quot;, 
+       title = &amp;quot;Relationship between asset return and market&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2018-01-15-fama_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Assess the validity of the model using t-tests, Ramsey test for linearity, homoskedasticity test, Autocorrelation of first and higher order (Durbin-Watson statistic), Kolmogorov-Smirnov Normality test, Chow test. I always wondered about the carelessness these tests are taught, as tests are also models and might fail in unexpected ways, are based on assumptions. As a practitioner of statistics it would be nice not to abuse them myself.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Evaluate the performance of CAPM on hold-out dataset&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div id=&#34;soft-event-analysis&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Soft Event Analysis&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What happened at the global level? Market Level?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Extensive descriptive statistics for a pair of market index and a stock (for daily returns)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Cohraine and Larsen, other two giants of finance argue that there’s a whole world beyond analysing returns: Volumes and Prices themselves.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ACF, PACF, ARMA, ARCH-GARCH and model selection&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div id=&#34;concluding-remarks&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Concluding remarks&lt;/h2&gt;
+&lt;p&gt;In conclusion, it’s impossible to rigorously study and build models of portfolios without knowing the assumptions. After carefully listening to these giants of finance, “technical analysis” presented in the last two posts seems like woodoo. If you show me a great performance by someone using technical anaysis, how much can be attributed to chance (when you take into account the sample size)? Suddenly, Taleb Nassim’s “Fooled by Randomness” presses the right pain points, even if you don’t like it.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Fama, Eugene F; French, Kenneth R (Summer 2004). “The Capital Asset Pricing Model: Theory and Evidence”&lt;a href=&#34;#fnref1&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Data Science and Machine Learning for complex problems</title>
+      <link>https://bizovi.github.io/talk/cybernetics/</link>
+      <pubDate>Fri, 12 Jan 2018 10:20:05 +0200</pubDate>
+      
+      <guid>https://bizovi.github.io/talk/cybernetics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Tiny Steps in Prospect Theory and Investment Decisions Part II</title>
       <link>https://bizovi.github.io/post/2017-12-30-investment-decisions-2/</link>
       <pubDate>Sat, 30 Dec 2017 00:00:00 +0000</pubDate>
