@@ -2,49 +2,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on Data Analysis &amp; Economic Cybernetics</title>
-    <link>/project/</link>
+    <link>https://bizovi.github.io/project/</link>
     <description>Recent content in Projects on Data Analysis &amp; Economic Cybernetics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Bizovi Mihai</copyright>
     <lastBuildDate>Sun, 06 Aug 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://bizovi.github.io/project/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Probabilistic Dynamic Modeling (wip)</title>
-      <link>/project/probabilistic-dynamic-modeling/</link>
+      <link>https://bizovi.github.io/project/probabilistic-dynamic-modeling/</link>
       <pubDate>Sun, 06 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/project/probabilistic-dynamic-modeling/</guid>
+      <guid>https://bizovi.github.io/project/probabilistic-dynamic-modeling/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Time Series Clustering (wip)</title>
-      <link>/project/ts-clustering/</link>
+      <link>https://bizovi.github.io/project/ts-clustering/</link>
       <pubDate>Sun, 06 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/project/ts-clustering/</guid>
+      <guid>https://bizovi.github.io/project/ts-clustering/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Thesis: Stochastic Modeling and Bayesian Inference</title>
-      <link>/project/probabilistic-machine-learning/</link>
+      <link>https://bizovi.github.io/project/probabilistic-machine-learning/</link>
       <pubDate>Mon, 10 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>/project/probabilistic-machine-learning/</guid>
+      <guid>https://bizovi.github.io/project/probabilistic-machine-learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>New Economic Thinking for a Knowledge-Based Society</title>
-      <link>/project/new-economic-thinking/</link>
+      <link>https://bizovi.github.io/project/new-economic-thinking/</link>
       <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>/project/new-economic-thinking/</guid>
+      <guid>https://bizovi.github.io/project/new-economic-thinking/</guid>
       <description></description>
     </item>
     

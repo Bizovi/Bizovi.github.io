@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Chess on Data Analysis &amp; Economic Cybernetics</title>
-    <link>/tags/chess/</link>
+    <link>https://bizovi.github.io/tags/chess/</link>
     <description>Recent content in Chess on Data Analysis &amp; Economic Cybernetics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Bizovi Mihai</copyright>
     <lastBuildDate>Thu, 07 Dec 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/chess/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://bizovi.github.io/tags/chess/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>On Google&#39;s Alpha Zero beating the best chess engine</title>
-      <link>/post/alpha_zero/</link>
+      <link>https://bizovi.github.io/post/alpha_zero/</link>
       <pubDate>Thu, 07 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/alpha_zero/</guid>
+      <guid>https://bizovi.github.io/post/alpha_zero/</guid>
       <description>Chess has taught me how to better deal with Dynamic Complexity1, even though I did not realize this at the time. What I saw in these games by Alpha Zero was a Deep Reinforcement Learning algorithm that captured the essence of chess. It&amp;rsquo;s not the fact that Stockfish got crushed, it&amp;rsquo;s the fashion which brought so much fascination and excitement. [Thinking] What if I could put those rusty chess skills to good use again?</description>
     </item>
     
