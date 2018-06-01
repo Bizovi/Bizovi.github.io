@@ -48,14 +48,14 @@ returns_wide &lt;- sp_return %&gt;% as_data_frame() %&gt;%
 head(returns)</code></pre>
 <pre><code>## # A tibble: 6 x 4
 ## # Groups:   symbol [1]
-##   symbol       date adjusted      returns
-##    &lt;chr&gt;     &lt;date&gt;    &lt;dbl&gt;        &lt;dbl&gt;
-## 1  GOOGL 2007-01-03 234.0290  0.000000000
-## 2  GOOGL 2007-01-04 241.8719  0.032962998
-## 3  GOOGL 2007-01-05 243.8388  0.008099372
-## 4  GOOGL 2007-01-08 242.0320 -0.007437438
-## 5  GOOGL 2007-01-09 242.9930  0.003962555
-## 6  GOOGL 2007-01-10 244.9750  0.008123447</code></pre>
+##   symbol date       adjusted  returns
+##   &lt;chr&gt;  &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;
+## 1 GOOGL  2007-01-03     234.  0.     
+## 2 GOOGL  2007-01-04     242.  0.0330 
+## 3 GOOGL  2007-01-05     244.  0.00810
+## 4 GOOGL  2007-01-08     242. -0.00744
+## 5 GOOGL  2007-01-09     243.  0.00396
+## 6 GOOGL  2007-01-10     245.  0.00812</code></pre>
 <p>Recall the prior and updated probabilities of our decidents from the previous post and let’s keep the three “winners” and pick reasonable ranges for probabilities for the two cases:</p>
 <pre class="r"><code>rsp_eb &lt;- tibble(
   id      = rep(&quot;EB&quot;, 5),
@@ -180,11 +180,11 @@ qtl &lt;- returns %&gt;%
   summarise( mean = mean(returns), sd = sd(returns)) 
 qtl </code></pre>
 <pre><code>## # A tibble: 3 x 3
-##   symbol         mean         sd
-##    &lt;chr&gt;        &lt;dbl&gt;      &lt;dbl&gt;
-## 1   AMZN 0.0012364835 0.02478095
-## 2  GOOGL 0.0005443464 0.01804940
-## 3    JNJ 0.0003913731 0.01007799</code></pre>
+##   symbol     mean     sd
+##   &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;
+## 1 AMZN   0.00124  0.0248
+## 2 GOOGL  0.000544 0.0180
+## 3 JNJ    0.000391 0.0101</code></pre>
 <p><code>Case of portfolios built from two assets</code></p>
 <pre class="r"><code># Note that this is just for the demonstration purposes
 # this is useless on larger portfolios
@@ -274,10 +274,8 @@ alphas &lt;- c(0.5, 0.3, 0.25, 0.18, 0.1)
 
 # apply the function on using 4 different gamma parameters
 df &lt;- sapply(X = alphas, FUN = U, x = seq(0, 30, by = 0.1)) %&gt;% 
-  as_tibble()</code></pre>
-<pre><code>## Warning in as_tibble(.): The `tidyquant::as_tibble()` function is
-## deprecated. Please use `timetk::tk_tbl()` instead.</code></pre>
-<pre class="r"><code># add the appropriate values to column names
+  as_tibble()
+# add the appropriate values to column names
 colnames(df) &lt;- as.character(alphas)
 df %&gt;% 
   mutate(x = seq(0, 30, by = 0.1)) %&gt;% 
@@ -300,10 +298,8 @@ gammas &lt;- c(0.5, 0.45, 0.55, 0.4, 0.6)
 
 # apply the function on using 4 different gamma parameters
 df &lt;- sapply(X = gammas, FUN = weight, p = seq(from = 0, to = 1, by = 0.005)) %&gt;% 
-  as_tibble()</code></pre>
-<pre><code>## Warning in as_tibble(.): The `tidyquant::as_tibble()` function is
-## deprecated. Please use `timetk::tk_tbl()` instead.</code></pre>
-<pre class="r"><code># add the appropriate values to column names
+  as_tibble()
+# add the appropriate values to column names
 colnames(df) &lt;- as.character(gammas)
 df %&gt;% 
   mutate(x = seq(from = 0, to = 1, by = 0.005)) %&gt;% 
@@ -422,16 +418,14 @@ rbind(
   rename(symbol = V1, alpha = `(Intercept)`, beta = daily.returns) %&gt;% 
   mutate(alpha = round(as.numeric(as.character(alpha)), 5), 
          beta = round(as.numeric(as.character(beta)),   5))</code></pre>
-<pre><code>## Warning in as_tibble(.): The `tidyquant::as_tibble()` function is
-## deprecated. Please use `timetk::tk_tbl()` instead.</code></pre>
 <pre><code>## # A tibble: 5 x 3
-##   symbol   alpha    beta
-##   &lt;fctr&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-## 1   AMZN 0.00068 1.12306
-## 2  GOOGL 0.00031 0.99065
-## 3    JNJ 0.00027 0.63542
-## 4   NFLX 0.00078 1.05262
-## 5   TSLA 0.00075 1.25939</code></pre>
+##   symbol    alpha  beta
+##   &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt;
+## 1 AMZN   0.000680 1.12 
+## 2 GOOGL  0.000310 0.991
+## 3 JNJ    0.000270 0.635
+## 4 NFLX   0.000780 1.05 
+## 5 TSLA   0.000750 1.26</code></pre>
 <p>We could also run a few CAPM regressions, but I would prefer to focus on simulating the portfolios.</p>
 </div>
 </div>

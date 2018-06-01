@@ -2,13 +2,43 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Homes on Data Analysis &amp; Economic Cybernetics</title>
-    <link>https://bizovi.github.io/home/</link>
+    <link>/home/</link>
     <description>Recent content in Homes on Data Analysis &amp; Economic Cybernetics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Bizovi Mihai</copyright>
     <lastBuildDate>Tue, 01 Aug 2017 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/home/" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="/home/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>/home/about/</link>
+      <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/home/about/</guid>
+      <description>An Interdisciplinary Blog on General regularities of CONTROL and DATA processing in animals, machines and society 1. Hi everybody! This blog is about things I&amp;rsquo;m passionate about. I can hardly imagine myself in a place of narrow specialization and the exploration of connections between fields brings me a lot of joy.2 I love writing about economics, solving business problems with statistical models and programming in R.
+My hobby is thinking about how can we improve economic models, and perhaps the answer is to step outside the field, gather new tools and inspiration from Complexity Science.</description>
+    </item>
+    
+    <item>
+      <title>Recent Posts</title>
+      <link>/home/posts/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/home/posts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>/home/projects/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/home/projects/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

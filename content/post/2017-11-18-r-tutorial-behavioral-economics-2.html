@@ -35,15 +35,15 @@ data &lt;- data %&gt;%
                 )
 data %&gt;% head()</code></pre>
 <pre><code>## # A tibble: 6 x 8
-##       MSA          Date home_value structure_cost land_value land_share
-##    &lt;fctr&gt; &lt;S3: yearqtr&gt;      &lt;dbl&gt;          &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
-## 1 ATLANTA       1984 Q4   92856.39       67112.34   25744.05  0.2772459
-## 2 ATLANTA       1985 Q1   93044.12       67826.46   25217.66  0.2710291
-## 3 ATLANTA       1985 Q2   93269.26       68444.29   24824.97  0.2661646
-## 4 ATLANTA       1985 Q3   97490.47       69026.93   28463.55  0.2919623
-## 5 ATLANTA       1985 Q4   98809.50       69562.32   29247.18  0.2959956
-## 6 ATLANTA       1986 Q1   99846.67       70078.32   29768.36  0.2981407
-## # ... with 2 more variables: home_pi &lt;dbl&gt;, land_pi &lt;dbl&gt;</code></pre>
+##   MSA    Date      home_value structure_cost land_value land_share home_pi
+##   &lt;fct&gt;  &lt;S3: yea&gt;      &lt;dbl&gt;          &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt;
+## 1 ATLAN~ 1984 Q4       92856.         67112.     25744.      0.277   0.538
+## 2 ATLAN~ 1985 Q1       93044.         67826.     25218.      0.271   0.540
+## 3 ATLAN~ 1985 Q2       93269.         68444.     24825.      0.266   0.541
+## 4 ATLAN~ 1985 Q3       97490.         69027.     28464.      0.292   0.565
+## 5 ATLAN~ 1985 Q4       98809.         69562.     29247.      0.296   0.573
+## 6 ATLAN~ 1986 Q1       99847.         70078.     29768.      0.298   0.579
+## # ... with 1 more variable: land_pi &lt;dbl&gt;</code></pre>
 <pre class="r"><code>ny &lt;- data %&gt;% dplyr::filter(MSA == &quot;NEWYORK&quot;) 
 ny %&gt;% 
   tidyr::gather(key = variable, value = value, -c(MSA, Date)) %&gt;% 

@@ -24,7 +24,7 @@ tags: ["R", "behavioral-economics"]
 <div id="analysing-portfolio-models-without-reading-fama-is-useless" class="section level2">
 <h2>Analysing portfolio models without reading Fama is useless</h2>
 <p>Before digging into the data, I would like to go through the Fama and French 2004 <a href="http://pubs.aeaweb.org/doi/pdfplus/10.1257/0895330042162430">paper</a>. As a lot of things in economics, this powerful and intuitive theoretical model does not hold against empirical evidence. Last <a href="https://bizovi.github.io/post/2017-12-30-investment-decisions-2/">time</a>, we built portfolios using ideas from Markowitz (in a toy form) at time <span class="math inline">\(t - 1\)</span> resulting in a stochastic return at time <span class="math inline">\(t\)</span>, where we as investors care about the mean and return (implicitly assuming risk aversion). If taken one step further, we’d have to solve one of the dual problems of maximizing expected returns given variance or minimizing variance given returns.</p>
-<p><img src="/post/2018-01-15-fama_files/figure-html/meanvar.png" width="672" /></p>
+<p><img src="/post/2018-01-15-fama_files/figure-html/meanvar.png" /><!-- --></p>
 <p>In order to “tell the CAPM story” we should add to the usual picture the risk-free rate, which could bring additional investment opportunities, the efficient fronteer becoming a straight line. Formally:</p>
 <p><span class="math display">\[
 R_p = wR_f + (1 - w)R_{rp}
@@ -79,18 +79,18 @@ Ra &lt;- risky.list %&gt;%
 Ra</code></pre>
 <pre><code>## # A tibble: 3,775 x 3
 ## # Groups:   symbol [5]
-##    symbol       date           Ra
-##     &lt;chr&gt;     &lt;date&gt;        &lt;dbl&gt;
-##  1  GOOGL 2015-01-02  0.000000000
-##  2  GOOGL 2015-01-05 -0.019053850
-##  3  GOOGL 2015-01-06 -0.024679487
-##  4  GOOGL 2015-01-07 -0.002940986
-##  5  GOOGL 2015-01-08  0.003484133
-##  6  GOOGL 2015-01-09 -0.012211246
-##  7  GOOGL 2015-01-12 -0.007309480
-##  8  GOOGL 2015-01-13  0.009536052
-##  9  GOOGL 2015-01-14  0.008230381
-## 10  GOOGL 2015-01-15 -0.003794958
+##    symbol date             Ra
+##    &lt;chr&gt;  &lt;date&gt;        &lt;dbl&gt;
+##  1 GOOGL  2015-01-02  0.     
+##  2 GOOGL  2015-01-05 -0.0191 
+##  3 GOOGL  2015-01-06 -0.0247 
+##  4 GOOGL  2015-01-07 -0.00294
+##  5 GOOGL  2015-01-08  0.00348
+##  6 GOOGL  2015-01-09 -0.0122 
+##  7 GOOGL  2015-01-12 -0.00731
+##  8 GOOGL  2015-01-13  0.00954
+##  9 GOOGL  2015-01-14  0.00823
+## 10 GOOGL  2015-01-15 -0.00379
 ## # ... with 3,765 more rows</code></pre>
 <pre class="r"><code>SP &lt;- getSymbols(&quot;SP500&quot;, src = &quot;FRED&quot;, env = NULL)
 Rb &lt;- SP %&gt;% na.omit() %&gt;% tk_tbl(rename_index = &quot;date&quot;) %&gt;% 
@@ -107,35 +107,35 @@ Rb &lt;- SP %&gt;% na.omit() %&gt;% tk_tbl(rename_index = &quot;date&quot;) %&gt
 # nrow(Rb); nrow(Ra[Ra$symbol == &quot;GOOGL&quot;,])
 Rb</code></pre>
 <pre><code>## # A tibble: 755 x 2
-##          date           Rb
-##        &lt;date&gt;        &lt;dbl&gt;
-##  1 2015-01-02  0.000000000
-##  2 2015-01-05 -0.018278107
-##  3 2015-01-06 -0.008893486
-##  4 2015-01-07  0.011629823
-##  5 2015-01-08  0.017888346
-##  6 2015-01-09 -0.008403891
-##  7 2015-01-12 -0.008093662
-##  8 2015-01-13 -0.002578565
-##  9 2015-01-14 -0.005813063
-## 10 2015-01-15 -0.009247888
+##    date             Rb
+##    &lt;date&gt;        &lt;dbl&gt;
+##  1 2015-01-02  0.     
+##  2 2015-01-05 -0.0183 
+##  3 2015-01-06 -0.00889
+##  4 2015-01-07  0.0116 
+##  5 2015-01-08  0.0179 
+##  6 2015-01-09 -0.00840
+##  7 2015-01-12 -0.00809
+##  8 2015-01-13 -0.00258
+##  9 2015-01-14 -0.00581
+## 10 2015-01-15 -0.00925
 ## # ... with 745 more rows</code></pre>
 <pre class="r"><code>data &lt;- left_join(Ra, Rb, by = &quot;date&quot;)
 data</code></pre>
 <pre><code>## # A tibble: 3,775 x 4
 ## # Groups:   symbol [?]
-##    symbol       date           Ra           Rb
-##     &lt;chr&gt;     &lt;date&gt;        &lt;dbl&gt;        &lt;dbl&gt;
-##  1  GOOGL 2015-01-02  0.000000000  0.000000000
-##  2  GOOGL 2015-01-05 -0.019053850 -0.018278107
-##  3  GOOGL 2015-01-06 -0.024679487 -0.008893486
-##  4  GOOGL 2015-01-07 -0.002940986  0.011629823
-##  5  GOOGL 2015-01-08  0.003484133  0.017888346
-##  6  GOOGL 2015-01-09 -0.012211246 -0.008403891
-##  7  GOOGL 2015-01-12 -0.007309480 -0.008093662
-##  8  GOOGL 2015-01-13  0.009536052 -0.002578565
-##  9  GOOGL 2015-01-14  0.008230381 -0.005813063
-## 10  GOOGL 2015-01-15 -0.003794958 -0.009247888
+##    symbol date             Ra       Rb
+##    &lt;chr&gt;  &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;
+##  1 GOOGL  2015-01-02  0.       0.     
+##  2 GOOGL  2015-01-05 -0.0191  -0.0183 
+##  3 GOOGL  2015-01-06 -0.0247  -0.00889
+##  4 GOOGL  2015-01-07 -0.00294  0.0116 
+##  5 GOOGL  2015-01-08  0.00348  0.0179 
+##  6 GOOGL  2015-01-09 -0.0122  -0.00840
+##  7 GOOGL  2015-01-12 -0.00731 -0.00809
+##  8 GOOGL  2015-01-13  0.00954 -0.00258
+##  9 GOOGL  2015-01-14  0.00823 -0.00581
+## 10 GOOGL  2015-01-15 -0.00379 -0.00925
 ## # ... with 3,765 more rows</code></pre>
 <p>It is useful to observe how the estimations are sensitive to the time interval compared to the last estimation which had more data. The <span class="math inline">\(R^2\)</span> are decent, but nothing too thrilling. All the KPIs below have some interpretation, and people came up with rules involving Taynor ratios and so on.</p>
 <pre class="r"><code># tq_performance_fun_options()
@@ -147,13 +147,13 @@ capm &lt;- data %&gt;% tq_performance(
 capm  </code></pre>
 <pre><code>## # A tibble: 5 x 13
 ## # Groups:   symbol [5]
-##   symbol ActivePremium  Alpha AnnualizedAlpha   Beta `Beta-` `Beta+`
-##    &lt;chr&gt;         &lt;dbl&gt;  &lt;dbl&gt;           &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-## 1  GOOGL        0.1668 0.0006          0.1674 1.0415  1.0237  1.0681
-## 2   AMZN        0.4689 0.0015          0.4583 1.1323  1.1661  1.0771
-## 3   NFLX        0.4771 0.0016          0.5022 1.3698  1.6434  1.0343
-## 4    JNJ        0.0413 0.0003          0.0705 0.6958  0.6639  0.8136
-## 5   TSLA        0.0328 0.0003          0.0781 1.1883  1.4545  0.9449
+##   symbol ActivePremium    Alpha AnnualizedAlpha  Beta `Beta-` `Beta+`
+##   &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;           &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1 GOOGL         0.167  0.000600          0.167  1.04    1.02    1.07 
+## 2 AMZN          0.469  0.00150           0.458  1.13    1.17    1.08 
+## 3 NFLX          0.477  0.00160           0.502  1.37    1.64    1.03 
+## 4 JNJ           0.0413 0.000300          0.0705 0.696   0.664   0.814
+## 5 TSLA          0.0328 0.000300          0.0781 1.19    1.45    0.945
 ## # ... with 6 more variables: Correlation &lt;dbl&gt;,
 ## #   `Correlationp-value` &lt;dbl&gt;, InformationRatio &lt;dbl&gt;, `R-squared` &lt;dbl&gt;,
 ## #   TrackingError &lt;dbl&gt;, TreynorRatio &lt;dbl&gt;</code></pre>
@@ -166,14 +166,13 @@ data %&gt;% tq_performance(
   p = 0.95)</code></pre>
 <pre><code>## # A tibble: 5 x 4
 ## # Groups:   symbol [5]
-##   symbol `ESSharpe(Rf=0.1%,p=95%)` `StdDevSharpe(Rf=0.1%,p=95%)`
-##    &lt;chr&gt;                     &lt;dbl&gt;                         &lt;dbl&gt;
-## 1  GOOGL               0.033305503                   0.012430554
-## 2   AMZN               0.099488946                   0.060601819
-## 3   NFLX               0.056259544                   0.048889087
-## 4    JNJ              -0.018435266                  -0.034349641
-## 5   TSLA              -0.001536649                  -0.003683382
-## # ... with 1 more variables: `VaRSharpe(Rf=0.1%,p=95%)` &lt;dbl&gt;</code></pre>
+##   symbol `ESSharpe(Rf=0.1%,p=95%)` `StdDevSharpe(Rf=0.~ `VaRSharpe(Rf=0.1~
+##   &lt;chr&gt;                      &lt;dbl&gt;                &lt;dbl&gt;              &lt;dbl&gt;
+## 1 GOOGL                    0.0333               0.0124             0.0333 
+## 2 AMZN                     0.0995               0.0606             0.0995 
+## 3 NFLX                     0.0563               0.0489             0.0563 
+## 4 JNJ                     -0.0184              -0.0343            -0.0242 
+## 5 TSLA                    -0.00154             -0.00368           -0.00228</code></pre>
 <pre class="r"><code># for portfolios
 w &lt;- tibble(
   symbols = c(&quot;GOOGL&quot;, &quot;AMZN&quot;, &quot;NFLX&quot;, &quot;JNJ&quot;, &quot;TSLA&quot;),

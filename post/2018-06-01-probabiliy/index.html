@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.37.1" />
+  <meta name="author" content="Bizovi Mihai">
+  <meta name="description" content="Data Scientist @Adore Me">
+
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/highlight.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css" integrity="sha512-GGGNUPDhnG8LEAEDsjqYIQns+Gu8RBs4j5XGlxl7UfRaZBhCCm5jenJkeJL8uPuOXGqgl8/H1gjlWQDRjd3cUQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
+  <link rel="stylesheet" href="/css/hugo-academic.css">
+  
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-104200881-1', 'auto');
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Data Analysis &amp; Economic Cybernetics">
+  <link rel="feed" href="/index.xml" type="application/rss+xml" title="Data Analysis &amp; Economic Cybernetics">
+
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+
+  <link rel="canonical" href="/post/2018-06-01-probabiliy/">
+
+  
+
+  <title>Understanding Caratheodori Extension Theorem | Data Analysis &amp; Economic Cybernetics</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Data Analysis &amp; Economic Cybernetics</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/post">
+            
+            <span>Blog</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Understanding Caratheodori Extension Theorem</h1>
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2018-06-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Fri, Jun 1, 2018
+    </time>
+  </span>
+
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/r">R</a
+    >, 
+    
+    <a href="/tags/probability">probability</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2fpost%2f2018-06-01-probabiliy%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Understanding%20Caratheodori%20Extension%20Theorem&amp;url=%2fpost%2f2018-06-01-probabiliy%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2f2018-06-01-probabiliy%2f&amp;title=Understanding%20Caratheodori%20Extension%20Theorem"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2f2018-06-01-probabiliy%2f&amp;title=Understanding%20Caratheodori%20Extension%20Theorem"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Understanding%20Caratheodori%20Extension%20Theorem&amp;body=%2fpost%2f2018-06-01-probabiliy%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    <div class="article-style" itemprop="articleBody">
+      <blockquote>
+<p>In order to build adequate models of economic and other complex phenomena, we have to take into account their inherent <em>stochastic nature</em>.</p>
+</blockquote>
+<p>Data is just the appearance, an external manifestation of some <code>latent processes</code> (seen as random mechanisms). Even though we won’t know the exact outcome for sure, we can model general regularities and relationships as a result of the large scale of phenomena. For more ideas see <span class="citation">(Ruxanda <a href="#ref-Ruxanda2011">2011</a>)</span></p>
+<p>The reason we need probability theory is that it’s a formal language of uncertainty. Even though you can go a long way as a practitioner with standard tools in probability theory, deeply understanding its <strong>measure-theoretic</strong> foundations could open up a whole new world to the researcher. It’s easy to take the results from statistics and probability for granted, but it’s useful to be aware what hides beneath the surface.</p>
+<p>As an economist and modeler, the goal of this project is to step-by-step explain the <code>Caratheodori Extension Theorem</code> in order to understand the language, gain some intuition and insight about it. The value of studying it comes not from the theorem itself, but from the process of discovery and understanding a proof forces you to go through. <span class="citation">(Landim <a href="#ref-Landim2016">2016</a>)</span> If you’re a mathematician and for some reason reading this, you might ask:</p>
+<blockquote>
+<p>“Are you insane going into it without any knowledge of real analysis”?</p>
+</blockquote>
+<p>The answer is that I want to learn the language, and not to achieve excellence in Measure Theory. Also, I can hardly take things for granted and need a justification of why things (in probability) are done exactly this way. <span class="citation">(Rhosental <a href="#ref-Rosenthal2006">2006</a>)</span> We’ll develop a plan of attack and a network of ideas and concepts that need to be understood in order to tackle the problem, hoping that resourcefulness and intuitions will compensate for the lack of rigor.</p>
+<div id="motivation-for-measure-theory-in-a-practice-oriented-world" class="section level2">
+<h2>Motivation for measure theory in a practice-oriented world</h2>
+<p>The field of Data Mining moved a long way, becoming accessible and bringing value for individuals and industries. A lot of Machine Learning and Statistical models are available with a few lines of code. If it should be obvious why we need probability theory, it’s not so with measure theory.</p>
+<blockquote>
+<p>See the Andrew Gelan (a giant of Bayesian statistics) and Cosma Shalizi (an expert in Data Mining) disagreement on the <a href="http://andrewgelman.com/2008/01/14/what_to_learn_i/">subject</a></p>
+</blockquote>
+<p>I’ll give an analogy: even though the models can be easily applied in a high-level language like R or Python, understanding the Learning Theory can bring you on another level, closer to excellence. In the case of measure theory, some argue that there are alternative things to study which can bring more value, and they’re not wrong, but for an ambitious field like Bayesian Nonparametrics, it’s hard to make even little progress because of the understanding barrier. This is why I like to think of it as a language <span class="citation">(Lawrence <a href="#ref-Lawrence2012">2012</a>)</span> extremely useful in the fields of stochastic processes and learning theory. So, the truth is somewhere in between and key to learning these subjects is a personally optimal balance of theoretical understanding, practice on real data problems and simulation exercises.</p>
+<p>Studying measure theory might look like a gruesome process to do on your own, but it makes sense posing a reverse question: what do I need to know to understand all these awesome papers where there is a urge to ask: <strong>“The probability over what?”</strong></p>
+<blockquote>
+<p>A personal experience was in an attempt to study nonlinear state-space models, where there are some exciting papers on Bayesian Nonparametrics and Stochastic Filtering. Reading and working through papers felt like missing a good part of the story, because of some lacking fundamentals. It’s extremely important to recognize what you don’t know. That’s right, I want to be able to formulate meaningful statements about distributions of more abstract objects, like functions, graphs, etc and to reason about stochastic processes.</p>
+</blockquote>
+<p>For example, having a great understanding of probability helps to define in a clear and rigorous way difficult concepts used in statistics and econometrics (which might look deceptively simple at first) as p-values, confidence intervals, power, hypothesis testing and helps avoiding a lot of confusion. Let’s take the idea of power of the test in its simplest form (for a one-sided Z test), which a lot of practitioners struggle to define when asked.</p>
+<blockquote>
+<p>The mathematical formulation uncovers some of the assumptions we’re making and suggests the interpretation. Notice how <span class="math display">\[\frac{\mu_a - \mu_0}{\sigma}\]</span> is a proxy for a “unit free” effect size.</p>
+</blockquote>
+<ul>
+<li><span class="math inline">\(\beta\)</span> Type II error: Failure to reject <span class="math inline">\(H_0\)</span> when it’s false</li>
+<li><span class="math inline">\(\alpha\)</span> Type I error: Falsely rejecting a true <span class="math inline">\(H_0\)</span></li>
+<li><span class="math inline">\(1 - \beta\)</span> is the power</li>
+<li><span class="math inline">\(\mu_0\)</span> the null hypothesis</li>
+<li><span class="math inline">\(\mu_a\)</span> the alternative hypothesis</li>
+</ul>
+<p>The response of the power being the probability of rejecting a null hypothesis when it’s false might not suggests that there is much going on.</p>
+<span class="math display">\[\begin{align*}
+    1- \beta &amp;= \mathbb{P} \bigg( \frac{\bar{X} - \mu_0}{\sigma / \sqrt{n}} &gt; 
+    \mathbf{Z}_{1-\alpha}  \bigg\lvert \mu = \mu_a  \bigg) \\
+    ~ &amp;= \mathbb{P} \bigg( \frac{\bar{X} - \mu_a + \mu_a - \mu_0}{\sigma / \sqrt{n}} &gt; 
+    \mathbf{Z}_{1-\alpha}  \bigg\lvert \mu = \mu_a  \bigg) \\
+    ~ &amp;= \mathbb{P} \bigg( \frac{\bar{X} - \mu_a}{\sigma / \sqrt{n}} &gt; 
+    \mathbf{Z}_{1-\alpha} - \frac{\mu_a - \mu_0}{\sigma / \sqrt{n}} \bigg\lvert \mu = \mu_a  \bigg) \\
+    ~ &amp;= \mathbb{P} \bigg( \mathbf{Z} &gt; 
+    \mathbf{Z}_{1-\alpha} - \frac{\mu_a - \mu_0}{\sigma / \sqrt{n}} \bigg\lvert \mu = \mu_a  \bigg)
+\end{align*}\]</span>
+<p>But there is a lot going on, the power depending on the effect size, assumed level for the type I error and the sample size. The distribution of the term <span class="math display">\[\mathbf{Z} = \frac{\bar{X} - \mu_a}{\sigma / \sqrt{n}}\]</span> is actually the one under the alternative hypothesis. Note that power calculations done post-hoc are usually a terrible idea.</p>
+<p>Also, it’s almost impossible to sense the dangers of interpretations of <strong>p-values</strong>, types of errors and <strong>confidence intervals</strong> without trying to understand the mathematics behind statistical testing. Tests are also models, little <strong>“Golemns of the Prague”</strong> and they might fail in unexpected ways when the assumptions do not hold. <span class="citation">(McElreath <a href="#ref-McElreath">2015</a>)</span></p>
+<p>As it’s often the case in mathematics, things have a deep justification behind them and even though you can successfully apply the models in practice, understanding is what separates a great modeler. Often, a breakthrough comes in the form of something that nobody have thought before.</p>
+<blockquote>
+<p>I think we’ll appreciate the input from mathematicians more in an applied field like Data Mining, as it will help figure out why deep neural networks work so well. Same is true for <em>Extreme Gradient Boosting</em> and other things that just seem to work. It took me some time trying to solve real world problems, in order to appreciate the usefulness of deeply understanding different ideas in mathematics.</p>
+</blockquote>
+<p>This is why, in the path to mastery of machine learning, certain topics appear which might change your perspective forever. One of these is Measure Theory. Is it useful in practice? Probability Theory taught in undergraduate courses might be what most people need, but it’s limited in a certain sense, imposing an <em>artificial dichotomy between discrete and continuous random variables</em> and thinking in terms of probability density functions and cumulative distribution functions.</p>
+<p>Regarding (Caratheodori), it’s not the formulation of the theorem which brings the most insight, but ideas in the proof as measurable sets and outer measures.</p>
+</div>
+<div id="measure-theory-in-machine-learning" class="section level2">
+<h2>Measure Theory in Machine Learning</h2>
+<blockquote>
+<p>Some courses will mention it, but as a side for the mathematically inclined students and not appearing anywhere later</p>
+</blockquote>
+<p>In undergraduate probability we can get away with the lack of measure-theoretic notions, as we’re working on real spaces, continuous functions and the instruments we have in these tame cases seem enough. There are also wilder cases, in which we need new tools and language to be rigorous, as otherwise we would just hope for the best (that the probability measure is defined). In some of the fields mentioned above researchers have to deal with weird stuff like distributions which have continuous and discrete elements, when a mixture of a density with point masses isn’t very helpful to work with.</p>
+<div class="figure"><span id="fig:unnamed-chunk-1"></span>
+<img src="/post/2018-06-01-probabiliy_files/figure-html/measure_theory_comics.jpg" alt="Credit to (http://brownsharpie.courtneygibbons.org)"  />
+<p class="caption">
+Figure 1: Credit to (<a href="http://brownsharpie.courtneygibbons.org" class="uri">http://brownsharpie.courtneygibbons.org</a>)
+</p>
+</div>
+<p>Evans Lawrence gives the following example of a function which is neither discrete nor continuous, for which you flip a coin and if it comes heads, draw from an uniform distribution and in case of tails a unit mass at one. If <span class="math inline">\(\chi_{[0,1]}(x) = (e^{ix} - 1)/ix\)</span> is the characteristic function of the interval from zero to one, in a way you can formulate its density, but usually it’s not the case, nor is it very helpful to think about it in such terms.</p>
+<span class="math display">\[\begin{equation}
+    p(x) = w_1 \chi_{[0,1]}(x) +  w_2\delta_1(x)
+\end{equation}\]</span>
+<p>Even though you can visualize this in two dimensions as the uniform and a spike, or as a CDF with a discontinuity, this approach just breaks down in higher dimensions or more complicated combinations of functions.</p>
+<p>Jeffrey Rosenthal begins his book <span class="citation">(Rhosental <a href="#ref-Rosenthal2006">2006</a>)</span> by a similar motivation, constructing the following random variable as a coin toss between a discrete <span class="math inline">\(X \sim Pois(\lambda)\)</span> and continuous <span class="math inline">\(Y \sim \mathcal{N}(0,1)\)</span> r.v.</p>
+
+<span class="math display">\[\begin{equation}
+    Z = \begin{cases}
+    X, p = 0.5 \\
+    Y, p = 0.5
+    \end{cases}
+\end{equation}\]</span>
+<p>He then challenges the readers to come up with the expected value <span class="math inline">\(\mathbb{E}[Z^2]\)</span> and asks on what is it defined? It is indeed a hard question.</p>
+<p>It is not surprising for me that measure theory becomes important in the Learning Theory, even though lighter courses from which I studied don’t mention it explicitly (Yaser Abu-Mostafa, Shai Ben-David, Reza Shadmehr). According to Mikio’s Brown <a href="https://www.quora.com/Is-Measure-Theory-relevant-to-Machine-Learning/answer/Mikio-L-Braun?srid=KONR">answer</a> it’s essential in the idea of <strong>uniform convergence</strong> and its bounds, where <em>“you consider the probability of a supremum over an infinite set of functions, but out of the box measure theory only allows for constructions with countably infinite index sets”</em>.</p>
+<p>If we’re thinking about a regression from the nonparametric perspective <span class="math inline">\(f(x) \in \mathscr{C}^2:X \rightarrow \mathbb{R}\)</span>, we might want to know how a draw from a (infinite) set of continuous differentiable functions might look like. The questions arises: how to define a PDF in this space? In my thesis <span class="citation">(Mihai <a href="#ref-Bizovi">2017</a>)</span> I got away with using Gaussian Processes, which are a very special class of stochastic processes. In this special case I could informally define an apriori distribution by defining the mean vector and Kernel (covariance function), then condition it on observed data with a Normal Likelihood.</p>
+<span class="math display">\[\begin{equation}
+p(f(x) \, |\left \{ x\right \})=\frac{p(\left \{ x\right \}| \, f) \, \mathbf{p(f)}}{p(\left \{ x\right \})}
+\end{equation}\]</span>
+<span class="math display">\[\begin{equation*}
+f(x) \sim GP(\mu(x); K(x,x&#39;))
+\end{equation*}\]</span>
+<div class="figure"><span id="fig:unnamed-chunk-2"></span>
+<img src="/post/2018-06-01-probabiliy_files/figure-html/prior.png" alt="An example of reasoning about distributions of random functions from my Thesis. The prior distribution"  />
+<p class="caption">
+Figure 2: An example of reasoning about distributions of random functions from my Thesis. The prior distribution
+</p>
+</div>
+<div class="figure"><span id="fig:unnamed-chunk-3"></span>
+<img src="/post/2018-06-01-probabiliy_files/figure-html/conditionare_gp.png" alt="Only the functions that explain the data well survive"  />
+<p class="caption">
+Figure 3: Only the functions that explain the data well survive
+</p>
+</div>
+<p>The result was that only the functions that explained the data well survived. While this reasoning makes intuitive sense, there are things “swiped under the carpet”. If we were to model stock prices, where there are jumps and the process itself is less smooth, measure theory would be very hard to avoid. If we would want to reason in terms of densities, ask with respect to what? So, the focus is shifted towards the question of what is the probability of every possible event. This leads us back to the fundamental object of state (outcome) space <span class="math inline">\(\mathbf{\Omega}\)</span>.</p>
+<blockquote>
+<p>Each element <span class="math inline">\(\omega_i \in \mathbf{\Omega}\)</span> is an elementary event (outcome), while <span class="math inline">\(A \subset \mathbf{\Omega}\)</span> is an event</p>
+</blockquote>
+<p>As we will shortly see, it’s impossible to define the probability (measure) on the set of all subsets <span class="math inline">\(2^\Omega\)</span>, except for the simple finite cases, without having to let go of a fundamental axiom like countable additivity. This will be the first step in getting closer to defining a Uniform distribution on <span class="math inline">\([0, 1]\)</span>.</p>
+<blockquote>
+<p>Surprisingly, to rigorously define an Uniform distribution is not a trivial task, because of the mentioned above impossibility, proved later by contradiction. In contrast, Caratheodori theorem allows us to do exactly that</p>
+</blockquote>
+<p>Tarun Chitra in the same thread argues that many classification problems are ill-posed mathematically, and the ones which can be formulated in a measure-theoretic way have very nice results, like SVMs with Reproducing Kernel Hilbert Spaces, where you cannot apply the Mercer’s Theorem unless the Kernel is measurable. The second example he gives is proving some results about Stochastic Gradient Descent, an optimization algorithm often successfully used, which has connection with Brownian Motion, thus Weiner measures.</p>
+<p>Measure theory is also important in rigorously defining distances and divergences (for example between two distributions as in Kullback-Leiber)</p>
+</div>
+<div id="measure-theory-and-the-fundamentals-of-probability-theory" class="section level2">
+<h2>Measure Theory and the fundamentals of Probability Theory</h2>
+<p>It is useful to step back and see where does Measure Theory fit in the framework of Probability Theory. The following list will be a summary of a lecture at doctoral school by <span class="citation">(Ruxanda <a href="#ref-Ruxanda2017">2017</a>)</span> Here are 8 steps to mastery of the basics by Gheorghe Ruxanda:</p>
+<ol style="list-style-type: decimal">
+<li>A <strong>random experiment</strong> (<span class="math inline">\(\mathscr{E}\)</span>) is a set of <em>conditions which are favorable for an event</em> in a given form with the following properties:
+<ul>
+<li>Possible results are known apriori</li>
+<li>It’s never known which of the results of <span class="math inline">\(\mathscr{E}\)</span> will exactly appear</li>
+<li>Despite (b), <strong>there is a perceptible regularity</strong>, (encoding the idea of a probabilistic “law”) in the results. Also, it could be as a result of the large scale of the phenomena.</li>
+<li>Repeatability of the conditions, i.e. the comparability and perservation of context are key.</li>
+</ul></li>
+<li><strong>Elementary event</strong> as an auxiliaty construction: one of the possible results of <span class="math inline">\(\mathscr{E}\)</span>, <span class="math inline">\(\omega_i \in \Omega\)</span></li>
+<li><strong>Universal set</strong> <span class="math inline">\(\Omega = \{ \omega_1, \omega_2, \dots \}\)</span> Also called (Outcome/ State/ Selection space), it suggests the idea of complementarity and stochasticity: we don’t know which <span class="math inline">\(\omega_i\)</span>, is a key object for a further formalization of probability measures.</li>
+<li>We care not only about <strong>an event</strong> <span class="math inline">\(A = \bigcup\limits_{i = 1}^n \omega_i\)</span> and its realization, but also about other events in the Universal Set, because they might add information about the probability of occurring of our event of interest</li>
+<li>The <strong>event space</strong> <span class="math inline">\(\mathcal{F}\)</span> should be defined on sets of subsets of <span class="math inline">\(\Omega\)</span> and this is where measure theory shines. We’ll discuss later in extensive detail the following conditions on the way to defining sigma-algebras. As can be seen later, we usually can’t define a probability measure on all sets of subsets.</li>
+<li><strong>Probability as an extension of the measure</strong>: chance of events realizing. Note that the perceptible regularity can be thought as the ability to assign a probability to elementary events: <span class="math inline">\(\mathbb{P}(\omega_i)\)</span>. This is where additivity properties are key. A long discussion on Frequentist vs Bayesian interpretation of it can follow from here.</li>
+<li>A <strong>probability triple</strong> <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span></li>
+<li>The idea of <strong>Random Variable</strong></li>
+</ol>
+Before moving on to probability measures, it’s useful to think about what a random variable really is and does, because formally, it’s neither a variable, nor random. That should be another motivation for speaking the language of measure theory.
+<div class="figure"><span id="fig:unnamed-chunk-4"></span>
+<img src="/post/2018-06-01-probabiliy_files/figure-html/random_variable.png" alt="Idea: Norman Wildberger, Gheorghe Ruxanda. A graphical representation of the random variable"  />
+<p class="caption">
+Figure 4: Idea: Norman Wildberger, Gheorghe Ruxanda. A graphical representation of the random variable
+</p>
+</div>
+<p>The idea of the random variable as being a quantificator of elementary events (function defined on the outcome space which maps the elementary events to the real line in 1d) that perserves the informational structure of the sample space is very powerful, is formally defined and related to the idea of <strong>measurability</strong>.</p>
+<blockquote>
+<p>Start from some phenomena of interest and a random experiment. The random variable is a necessary abstraction in order to mathematically define quantificable characteristics of the objects.</p>
+</blockquote>
+<span class="math display">\[\begin{align}
+X(\omega):\Omega \rightarrow \mathbb{R} \\
+s.t. ~~ \{\omega \in \Omega | X(\omega) \leq r, \forall r \in \mathbb{R} \} \in \mathcal{F}
+\end{align}\]</span>
+<p>The idea of conservation of the informational structure is actually equivalent to the one of measurablility. If this property doesn’t hold, it’s not possible to explicitly and uniquely refer to the sets (events) of interest. The idea is that the preimage defined above <span class="math inline">\(X^{-1}((-\infty,r]) = E \in \mathcal{F}\)</span> on the following interval corresponds to an event E which should be in the event space <span class="math inline">\(\mathcal{F}\)</span>. Because the only thing that varies is the limit of the interval r, the randomness comes from it. Also, it automatically suggests the idea of the Cumulative Distribution Function, which is <span class="math inline">\(F_X(X \le r)\)</span>.</p>
+</div>
+<div id="cant-have-it-all-the-trouble-with-the-uniform" class="section level2">
+<h2>Can’t have it all: The trouble with the Uniform</h2>
+<p><strong>Following the previous discussions</strong> we would want to define a probability measure <span class="math inline">\(\mathbb{P} :2^\Omega \rightarrow [0, 1]\)</span> on the set of all subsets of <span class="math inline">\(\Omega = [0, 1]\)</span> for the uniform distribution. Unfortunately we can’t have that <strong>and</strong> perserve essential properties of probability measures.</p>
+<blockquote>
+<p>All other properties can be easily derived from these, thus these are minimal requirements for a probability measure. Nonetheless, these conditions are too restrictive if we want to define an Uniform Distribution on <span class="math inline">\(2^\Omega\)</span>.</p>
+</blockquote>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\mathbb{P}(\Omega) = 1\)</span> and <span class="math inline">\(\mathbb{P}(\varnothing) = 0\)</span></li>
+<li><span class="math inline">\(\mathbb{P}(A) \in [0, 1]\)</span></li>
+<li>If <span class="math inline">\(A \cap B = \varnothing \implies \mathbb{P}( A \cap B) = \mathbb{P}(A) + \mathbb{P}(B)\)</span></li>
+<li>If <span class="math inline">\(\{ A_i \}_{i=1}^\infty\)</span> s.t. <span class="math inline">\(A_i \bigcap\limits_{i \ne j} A_j = \varnothing \implies \mathbb{P} ( \bigcup\limits_{i = 1}^\infty A_i) = \sum\limits_{i = 1}^{\infty}\mathbb{P}(A_i)\)</span></li>
+</ol>
+<p>The idea of uniform distribution is closely related to the one of <strong>length</strong>, area, volume, depending on what space are we into. That means the probability measure will look like this:</p>
+<span class="math display">\[\begin{equation}
+    \mathbb{P}([a, b]) = b - a
+\end{equation}\]</span>
+<p>where <span class="math inline">\(\mathbb{P} :2^\Omega \rightarrow [0, 1]\)</span> and <span class="math inline">\(0 \le a \le b \le 1\)</span></p>
+<p>The proof is done by contradiction, but the implications are a little bit deeper, related to paradoxes like <strong>Banakh-Tarsky</strong> and <strong>Vitali Sets</strong>, which are counter-intuitive but closely related to the idea of something being unmeasurable. Because we can’t get rid of any of the axioms, we should deal with the fact that we can’t define the measure on <span class="math inline">\(2^\Omega\)</span>.</p>
+<p>Instead define a set of subsets <span class="math inline">\(\mathcal{A} \subset 2^\Omega\)</span> such that <span class="math inline">\(\mathbb{P}: \mathcal{A} \rightarrow [0,1]\)</span>. These sets will have to obey certain properties and this is where all the terminology from measure theory comes in with algebras, semi-algebras and sigma-algebras. Each of these concepts and objects will be stepping stones towards understanding Caratheodori</p>
+</div>
+<div id="background-concepts-towards-caratheodori" class="section level2">
+<h2>Background concepts towards Caratheodori</h2>
+<p>Let’s continue on this upbeat note and try to figure out what kind of sets <span class="math inline">\(\mathcal{A}\)</span> are measurable, for which we can define their probabilities.</p>
+<p><strong>Def: Algebra and Semi Algebra:</strong> A set of subsets <span class="math inline">\(\mathcal{A} \subset 2^\Omega\)</span> is an algebra (field) if the following holds:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\Omega \in \mathcal{A}\)</span> and <span class="math inline">\(\varnothing \in \mathcal{A}\)</span></li>
+<li>If <span class="math inline">\(A \in \mathcal{A}\)</span> then <span class="math inline">\(A^C \in \mathcal{A}\)</span> (closed under complements)</li>
+<li>If <span class="math inline">\(A, B \in \mathcal{A}\)</span> then $ A B $ (closed under union). Note that 2 and 3 imply that it’s closed under countable intersection</li>
+<li>For sigma-algebra: <strong>sigma</strong> refers to countability} If <span class="math inline">\(\{ A_i \}_{i \ge 1} \in \mathcal{A}\)</span> then <span class="math inline">\(\bigcup\limits_{i \ge 1} A_i \in \mathcal{A}\)</span> (closed under <strong>countable union</strong>)</li>
+</ol>
+<p>On an intuitive note, we define the probability measure on sigma-algebras because if certain conditions did not hold, the measure wouldn’t make sense.</p>
+<p><strong>Def: Probability Measure:</strong> Suppose we have defined a <strong>measurable space</strong> <span class="math inline">\((\Omega, \mathcal{A})\)</span>, where <span class="math inline">\(\mathcal{A}\)</span> is a sigma-algebra. A <strong>probability measure</strong> is the function <span class="math inline">\(\mathbb{P}:\mathcal{A} \rightarrow [0, 1]\)</span> such that:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\mathbb{P}(\Omega) = 1\)</span> </li>
+<li><span class="math inline">\(\forall \{ A_i \}_{i \ge 1}\)</span> where <span class="math inline">\(A_i \bigcap\limits_{i \ne j} A_j = \varnothing\)</span> (countable sequences of mutually disjoint effects), <span class="math inline">\(\mathbb{P}(\bigcup\limits_{i \ge 1} A_i) = \sum\limits_{i \ge 1} \mathbb{P}(A_i)\)</span></li>
+</ol>
+<p>As stated earlier, for more difficult cases, when it’s hard or impossible to reason in terms of probability density functions, it is more convenient to talk about measures. For the previous cases of point masses <span class="math inline">\(\delta_k(x)\)</span> and continuous functions we can ask the question what is the probability of a certain outcome directly if using measure-theoretic formalism. <span class="math inline">\(\Omega = \mathbb{R}\)</span> and <span class="math inline">\(\mathcal{A} = 2^\Omega\)</span> and the point mass looks basically like a spike at <span class="math inline">\(k^{th}\)</span> place in the real line.</p>
+<span class="math display">\[\begin{equation}
+    \mathbb{P}(A) = \begin{cases}
+    1, ~~ k \in A\\
+    0, ~~ k \notin A
+    \end{cases}
+\end{equation}\]</span>
+<p>In order to define the probability measure for the continuous measure, much deeper results should be invoked. &gt; The Borel Spaces in itself encode a chain of new concepts that need to be understood from Banakh Spaces, Normed Spaces and how to close them under complement and union.</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\Omega = \mathscr{C}([0,1];\mathbb{R})\)</span></li>
+<li><span class="math inline">\(\mathcal{A} = \mathcal{B}(\mathscr{C}([0,1];\mathbb{R}))\)</span></li>
+</ol>
+<p>This might be one of the reasons why Stochastic Processes is such a difficult and powerful field, because of the amount of knowledge encoded even in the “simplest” Brownian Motion (where <span class="math inline">\(\mathbb{P}\)</span> is a Weiner measure).</p>
+<p>Going back to our pursuit of Caratheodori theorem, it is useful to understand why do we need countable additivity. If the finite additivity is clear, for example in the case of disjoint segments of the uniform distribution <span class="math inline">\(X \sim Unif([0,1])\)</span>, <span class="math inline">\([a_1, b_1]\)</span> and <span class="math inline">\([a_2, b_2]\)</span>, it’s essential that the following holds.</p>
+<p><span class="math display">\[
+\mathbb{P}([a_1, b_1] \cup [a_2, b_2] ) = \mathbb{P}(a_1 \le X \le b_1) + \mathbb{P}(a_2 \le X \le b_2)
+\]</span></p>
+<p>Countable additivity <span class="math inline">\(\mathbb{P}(\bigcup\limits_{i \ge 1} A_i) = \sum\limits_{i \ge 1} \mathbb{P}(A_i)\)</span> is useful to prove that limits exists, which is very important in various statistical procedures. We can’t say anything about uncountable additivity because the measure of each element on the r.h.s. will be zero, while the measure of the interval is one, which is a contradiction</p>
+<p>To get our feet wet, let’s see what techniques are employed by various authors in order to prove the impossibility of constructing a measure which has the idea of length while keeping the axioms.</p>
+<p><strong>Proposition:</strong> There does not exist a (probability) measure <span class="math inline">\(\lambda(A)\)</span> Note that we’ll switch conventions to the measure-theoretic one employed by the Claudio Landim’s course as it’s one of the very few available online and it should be easier to follow in parallel with this reading} defined for all subsets of <span class="math inline">\(A \subseteq [0, 1]\)</span> satisfying.</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\lambda: \mathscr{P}([0,1]) \rightarrow [0,1]\)</span> which could be all rational numbers, for example</li>
+<li><span class="math inline">\(\lambda([a, b]) = b - a\)</span> as an extension of the idea of length</li>
+<li><span class="math inline">\(\forall A \subseteq [0,1]\)</span> and <span class="math inline">\(\forall x \in [0,1]\)</span> translation invariance <span class="math inline">\(\lambda(A + x) = \lambda(A)\)</span>. Alternatively stated, <span class="math inline">\(A + x = \{x + y ~|~ y \in A \}\)</span>.</li>
+<li>If <span class="math inline">\(A = \bigcup\limits_{j \ge 1} A_j\)</span> is an union of mutually disjoint sets <span class="math inline">\(A_i \cap A_j = \varnothing\)</span> then <span class="math inline">\(\lambda(A) = \sum\limits_{j \ge 1} \lambda(A_j)\)</span> This is exactly the notion of sigma-additivity encontered over and over again.</li>
+</ol>
+<blockquote>
+<p>We can use <span class="math inline">\([0, 1]\)</span> as in Rosenthal without loss of generality. Landim uses <span class="math inline">\(\mathbb{R}_+\cup\{ +\infty \}\)</span>. Note that <span class="math inline">\(\mathscr{P}(\cdot)\)</span> is the power set}</p>
+</blockquote>
+<p><strong>Proof:</strong> Assume that <span class="math inline">\(\exists\)</span> a measure <span class="math inline">\(\lambda\)</span> such that above conditions hold. First, we need to introduce the notion of equivalence relation (in order to say “x is related to y”: <span class="math inline">\(x \sim y\)</span>), which is key to proving this. The point is that the equivalence relation will partition a set, which allows us by invoking the Axiom of Choice to get towards the desired contradiction.</p>
+<blockquote>
+<p><strong>Relation set</strong>: S is a boolean function with <span class="math inline">\(x, y \in S\)</span> <span class="math display">\[R:S \times S \rightarrow \{0, 1\}\]</span> Thus <span class="math inline">\(x \sim y\)</span> means x is <strong>related to</strong> y.</p>
+</blockquote>
+<p>Given an equivalence relation ~ and <span class="math inline">\(x \in S\)</span> the <strong>equivalence class</strong> of x is <span class="math inline">\(\{ y \in S \lvert y \sim x \}\)</span>. If x is an equivalence class then any pair of equivalence classes is either identical or disjoint. So, the relation forms equivalence classes, which form a partition on S.</p>
+<p><strong>Def:</strong> A relation is an equivalence relation if * reflexive: <span class="math inline">\(x \sim x\)</span> <span class="math inline">\(~~ \forall x \in S\)</span> * symmetric: <span class="math inline">\(x \sim y \implies y \sim x\)</span> <span class="math inline">\(~~ \forall x, y \in S\)</span> * tranzitive: <span class="math inline">\(x \sim y\)</span> and <span class="math inline">\(y \sim z \implies x \sim z\)</span> <span class="math inline">\(~~ \forall x, y, z \in S\)</span></p>
+<p>Both Rosenthal and Landim use a special equivalence class involving a relation <span class="math inline">\(x \sim y\)</span>, <span class="math inline">\(x, y \in \mathbb{R}\)</span> for rational numbers: <span class="math inline">\(y - x \in \mathbb{Q}\)</span>. The equivalence class for x becomes</p>
+<span class="math display">\[\begin{align}
+    [x] = \{ y \in \mathbb{R} | y - x \in \mathbb{Q} \} \\
+     \Lambda = \{ \alpha, \beta \dots \} = \mathbb{R} \lvert \sim
+\end{align}\]</span>
+<p><span class="math inline">\(\Lambda\)</span> is another important object (the set of equivalence classes) which is R modulo the equivalence relation, clearly uncountable, because <span class="math inline">\([x]\)</span> are countable. Now, using the Axiom of Choice a new set <span class="math inline">\(\Omega\)</span> is constructed in the following way: for each equivalence class <span class="math inline">\(\alpha, \beta\)</span> <strong>one</strong> and only one element is selected.</p>
+<blockquote>
+<p>There are deep philosophical discussions regarding it, but it’s outside the scope of current project. Basically what we need to know is that it allows us to “simultaneously” choose from <span class="math inline">\(\Lambda_j\)</span></p>
+</blockquote>
+<div class="figure"><span id="fig:unnamed-chunk-5"></span>
+<img src="/post/2018-06-01-probabiliy_files/figure-html/transition.png" alt="A graphical representation assuming the Axiom of Choice."  />
+<p class="caption">
+Figure 5: A graphical representation assuming the Axiom of Choice.
+</p>
+</div>
+<p><span class="math inline">\([x]\)</span> can be chosen in such a way that <span class="math inline">\(\Omega \in [0, 1]\)</span></p>
+<p>We reached a little milestone, as now there is a handle and structure to the problem, in contrast it wasn’t clear where to start from in the beginning. Here, Rosenthal is very brief, finishes the proof quickly and it seems that Landim chooses a much longer, but much more explicit way. A link to the alternative <a href="https://www.youtube.com/watch?v=qaCOTKh8o4w">proof</a>. I’ll choose the first one, because there are not many concepts used later for us to benefit by going through it.</p>
+<span class="math display">\[\begin{equation}
+    \Omega = \{ \omega_1 \in \alpha , \omega_2 \in \beta, \dots  \} \in [0, 1]
+\end{equation}\]</span>
+<p>A key claim is that if we translate <span class="math inline">\(\Omega\)</span> by <span class="math inline">\(p, q \in \mathbb{Q}\)</span>, the following dichotomy is true: either the sets are equal or disjoint (which was mentioned at the beginning of the proof). </p>
+<span class="math display">\[\begin{equation}
+ \begin{cases}
+    \Omega + q = \Omega + p   \\
+    (\Omega + q) \cap (\Omega + p) = \varnothing
+    \end{cases}
+\end{equation}\]</span>
+<p>Since <span class="math inline">\(\Omega\)</span> contains an element from each equivalence class, each point in <span class="math inline">\((0, 1] \subseteq \bigcup\limits_{r \in \mathbb{Q}} (\Omega + r)\)</span> (is contained in the union of rational shifts of <span class="math inline">\(\Omega\)</span>).</p>
+<p>Since <span class="math inline">\(\Omega\)</span> has only one element <span class="math inline">\(\forall [x] \implies \Omega + r, \forall r \in [0, 1]\)</span> are disjoint. Thus for <span class="math inline">\(r \in [0, 1]\)</span>,</p>
+<span class="math display">\[\begin{align}
+    \lambda([0, 1]) &amp;= \sum\limits_{r \in \mathbb{Q}} \lambda(\Omega + r) \\
+    &amp;= \sum\limits_{r \in \mathbb{Q}} \lambda(\Omega)
+\end{align}\]</span>
+<p>Notice the rhs is countably infinite sum, so it can be either zero or <span class="math inline">\(+\infty\)</span> or <span class="math inline">\(-\infty\)</span>, but lhs is one. So, we arrive at the contradiction. For the last steps, some more understanding is needed. This is why the second proof is great and even though longer, very explicit.</p>
+<p>So, what’s the trouble with the Uniform? Nothing particular, it’s just that not all subsets are measurable (have an associated measure). This is why we need concepts like semi-algebra, algebra and sigma-algebra in order to reason about what subsets of the power set are measurable.</p>
+</div>
+<div id="plan-of-attack" class="section level2">
+<h2>Plan of Attack</h2>
+<p><strong>The idea</strong> is to extend the following measure <span class="math inline">\(\lambda([a, b]) = b - a\)</span> (of the length) to increasingly more strict scope with respect to <span class="math inline">\(\mathscr{P}(\mathbb{R})\)</span>, while keeping the desired properties. I jumped a little bit ahead of myself defining the sigma-algebra, as there are more prerequisites and intermediary steps needed. Defining the following objects (<strong>classes of subsets</strong>) will help demistify a lot of terminology used</p>
+<ul>
+<li>semi-algebra</li>
+<li>algebra</li>
+<li>sigma-algebra</li>
+</ul>
+<p>We’ll construct an increasing set of more restrictive conditions. Basically, semi-algebra is weaker than algebra which is weaker than sigma-algebra. These classes of subsets have certain properties and subtle relationships between them and without understanding these, it is very hard to move on to extend the measure.</p>
+<p><strong>Def:</strong> Semi-Algebra is a class of subsets <span class="math inline">\(\mathcal{S} \subseteq \mathscr{P}(\Omega)\)</span> if the following holds</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\Omega \in \mathcal{S}\)</span> and <span class="math inline">\(\varnothing \in \mathcal{S}\)</span></li>
+<li><span class="math inline">\(A, B \in \mathcal{S} \implies A \cap B \in \mathcal{S}\)</span> (closed by finite intersections)</li>
+<li><span class="math inline">\(\forall A \in \mathcal{S}\)</span>, <span class="math inline">\(\exists \{ E_1 , \dots, E_n \} \implies A^C = \sum\limits_{j = 1}^n E_j\)</span> Complement viewed as a finite union of elements of <span class="math inline">\(\mathcal{S}\)</span></li>
+</ol>
+<p>Imagine a segment <span class="math inline">\([a, b]\)</span> on <span class="math inline">\([0, 1]\)</span> and take its complement, it is obvious that it can be represented as a finite union of sets of <span class="math inline">\(\mathcal{S}\)</span>. Actually, these simple examples inspired the definition of semi algebra, but as we can see the conditions are weaker than the ones for algebra. The algebra and sigma-algebra were defined above, but it doesn’t hurt to inspect the relationship between the two in more detail.</p>
+<p><strong>Def:</strong> Algebra is a class of subsets <span class="math inline">\(\mathcal{A} \subseteq \mathscr{P}(\Omega)\)</span> if the following holds</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\Omega \in \mathcal{A}\)</span> and <span class="math inline">\(\varnothing \in \mathcal{A}\)</span></li>
+<li><span class="math inline">\(A, B \in \mathcal{A} \implies A \cap B \in \mathcal{A}\)</span> (closed by finite intersections)</li>
+<li><span class="math inline">\(A \in \mathcal{A} \implies A^C \in \mathcal{A}\)</span> (closed under complements, a stronger condition)</li>
+</ol>
+<p><strong>Remark:</strong> If <span class="math inline">\(\mathcal{A}\)</span> is a sigma-algebra then <span class="math inline">\(\mathcal{A}\)</span> is also a semi-algebra. This is important because we want to make statements about algebras generated by semi-algebras which have very nice properties.</p>
+<p><strong>Remark:</strong> Let <span class="math inline">\(\mathcal{A}_i \subseteq \mathscr{P}(\Omega)\)</span> be an algebra of subsets of <span class="math inline">\(\Omega\)</span> where <span class="math inline">\(i \in I\)</span> could be any index. Then <span class="math inline">\(\bigcap\limits_{i \in I} \mathcal{A}_i = \mathcal{A}\)</span> is also an algebra. This is verified by the definition of algebra.</p>
+<p><strong>Def:</strong> Sigma-Algebra is a class of subsets <span class="math inline">\(\mathcal{F} \in \mathscr{P}(\Omega)\)</span> if the following holds 1. <span class="math inline">\(\Omega \in \mathcal{F}\)</span> and <span class="math inline">\(\varnothing \in \mathcal{F}\)</span> 2. <span class="math inline">\(A_j \in \mathcal{F}\)</span> <span class="math inline">\(\implies \bigcap\limits_{j \ge 1} A_j \in \mathcal{F}\)</span> (closed by <strong>countable</strong> intersections) 3. <span class="math inline">\(A \in \mathcal{F} \implies A^C \in \mathcal{F}\)</span> (closed under complements)</p>
+<p><strong>Remark:</strong> Let <span class="math inline">\(\mathcal{F}_i \in \mathscr{P}(\Omega)\)</span> be a sigma-algebra of subsets of <span class="math inline">\(\Omega\)</span> where <span class="math inline">\(i \in I\)</span> could be any index. Then <span class="math inline">\(\bigcap\limits_{i \in I} \mathcal{F}_i = \mathcal{F}\)</span> is also an algebra. Same as in case of algebra</p>
+<div class="figure"><span id="fig:unnamed-chunk-6"></span>
+<img src="/post/2018-06-01-probabiliy_files/figure-html/extension.png" alt="The plan of attack. A sigma-additive measure defined on semi-algebra is extended to the algebra generated by the semi-algebra. The latter in turn is extended by Caratheodori theorem to the sigma-additive measure  defined on sigma-algebra generated by the semi-algebra"  />
+<p class="caption">
+Figure 6: The plan of attack. A sigma-additive measure defined on semi-algebra is extended to the algebra generated by the semi-algebra. The latter in turn is extended by Caratheodori theorem to the sigma-additive measure defined on sigma-algebra generated by the semi-algebra
+</p>
+</div>
+<p>Also needs to be shown that these extensions are unique at each step. Let’s take a break in order not to get lost in detail and terminology: What are we doing here? It was proven that we cannot define a measure extending the idea of length on <span class="math inline">\(\mathscr{P}(\Omega)\)</span> under standard axioms of probability.</p>
+<p><span class="math inline">\(\Omega = [0, 1], \mathbb{P}([a, b]) = b - a\)</span>, but what is <span class="math inline">\(\mathcal{F}\)</span>? A sigma-algebra, but it’s not obvious at all why.</p>
+<span class="math display">\[\begin{equation}
+    Unif([0, 1]) \longrightarrow (\Omega, \mathcal{F}, \mathbb{P})
+\end{equation}\]</span>
+<p>That gave a motivation of defining measures on <strong>algebras</strong> with conditions of ever increasing strength/restriction. Relationships between these types of objects and their properties are key in making progress, which is quite clear from the diagram above. Even though these steps might look similar, the techniques and concepts employed are quite different. Nonetheless, the question always stays conceptually the same: On what can we define a (probability) measure? In essence, the whole language is developed in order to reason and make meaningful statements about sets of subsets and whether it can be “measured”.</p>
+<blockquote>
+<p>Also notice that we haven’t still reached even the start of what most measure-theoretic probability courses begin from. This is good, because we’re spending time on understanding the fundamentals on which all that theory is built.</p>
+</blockquote>
+<p>The next element we need is to define relationships between fields such as algebras generated by semi-algebras and so on. First, C. Landim introduces an algebra <span class="math inline">\(\mathcal{A}(\mathscr{C})\)</span> generated by a class of sets <span class="math inline">\(\mathscr{C} \subseteq \mathscr{P}(\Omega)\)</span> such that the following holds</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\mathscr{C} \subseteq \mathcal{A}\)</span>, where <span class="math inline">\(\mathcal{A}\)</span> is the smallest algebra that contains <span class="math inline">\(\mathscr{C}\)</span></li>
+<li>If <span class="math inline">\(\mathscr{B} \supseteq \mathscr{C}\)</span> is a sigma-algebra <span class="math inline">\(\implies \mathscr{B} \supseteq \mathcal{A}\)</span> \end{itemize}</li>
+</ol>
+<p>Remarkably, the same is true for sigma-algebras, proven by a chain of thought involving all sets <span class="math inline">\(\mathcal{A}_\alpha\)</span> which contain <span class="math inline">\(\mathscr{C}\)</span>. Their intersection <span class="math inline">\(\bigcap\limits_\alpha \mathcal{A}_\alpha = \mathcal{A}\)</span> contains <span class="math inline">\(\mathscr{B}\)</span> and since it contains $ $, it belongs to that intersection, hence, it’s the smallest sigma-algebra that contains <span class="math inline">\(\mathscr{C}\)</span>.</p>
+<p>If the underlying class <span class="math inline">\(\mathscr{C}\)</span> is a semi-algebra, then <span class="math inline">\(\mathcal{A}(\mathscr{C})\)</span> has an explicit form as a finite union of elements of semi-algebra. In the case of sigma-algebras, other techniques and arguments are needed because we don’t have such a form, which will be a major blocker.</p>
+<ol style="list-style-type: decimal">
+<li>Prove and formalize the last statement about sigma-algebras generated by semi-algebras</li>
+<li>Explore additivity in measure functions</li>
+<li>Explore sigma-additivity in measure functions</li>
+<li>Understand Continuity from Above and Below and its connections with additivity</li>
+<li>Extend the measure defined by semi-algebra on sigma-algebra generated by semi-algebra. Prove uniqueness</li>
+</ol>
+
+</div>
+<div id="proof-left-as-an-exercise-just-kidding" class="section level2">
+<h2>Proof Left as an Exercise [Just Kidding]</h2>
+<p>We’re middle way through and already discovered a lot of insights, but there are more things to be done:</p>
+<ol style="list-style-type: decimal">
+<li>Define and understand the concept of outer measure</li>
+<li>Prove that <span class="math inline">\(\mathcal{M}\)</span> is a sigma-algebra</li>
+<li>Construct the extension on the new restriction</li>
+<li>Learn about monotone classes</li>
+<li>Prove the extension is unique via monotone classes</li>
+<li>Look into “Extension of Caratheodori Extension Theorem”</li>
+</ol>
+<div id="refs" class="references">
+<div id="ref-Landim2016">
+<p>Landim, Claudio. 2016. “Caratheodori Theorem.” <a href="https://www.youtube.com/watch?v=ZNH4eDM7cJo" class="uri">https://www.youtube.com/watch?v=ZNH4eDM7cJo</a>.</p>
+</div>
+<div id="ref-Lawrence2012">
+<p>Lawrence, Evans. 2012. “Why Measure Theory for Probability?” <a href="https://www.youtube.com/watch?v=rAYA2Mu51bw" class="uri">https://www.youtube.com/watch?v=rAYA2Mu51bw</a>.</p>
+</div>
+<div id="ref-McElreath">
+<p>McElreath, Richard. 2015. <em>Statistical Rethinking: A Bayesian Course with Examples in R and Stan</em>. Second. CRC.</p>
+</div>
+<div id="ref-Bizovi">
+<p>Mihai, Bizovi. 2017. “Stochastic Modeling and Bayesian Inference.” ASE.</p>
+</div>
+<div id="ref-Rosenthal2006">
+<p>Rhosental, Jeffrey S. 2006. <em>First Look at Rigorous Probability Theory</em>. Second. World Scientific.</p>
+</div>
+<div id="ref-Ruxanda2011">
+<p>Ruxanda, Gheorghe. 2011. “Consideratii Privind Abordarea Stochastica in Domeniul Economic.” <a href="http://doccent.ase.ro/media/20111108_Abordarea_Cantitativa_Stochastica.pdfs" class="uri">http://doccent.ase.ro/media/20111108_Abordarea_Cantitativa_Stochastica.pdfs</a>.</p>
+</div>
+<div id="ref-Ruxanda2017">
+<p>———. 2017. “Probability Theory and Stochastic Modeling.” Lecture.</p>
+</div>
+</div>
+</div>
+
+    </div>
+  </div>
+
+</article>
+
+<div class="container">
+  <nav>
+  <ul class="pager">
+    
+    <li class="previous"><a href="/post/2018-01-15-fama/"><span
+      aria-hidden="true">&larr;</span> CAPM and Eugene Fama&#39;s devastating critique</a></li>
+    
+
+    
+  </ul>
+</nav>
+
+</div>
+
+<div class="article-container">
+  
+<section id="comments">
+  <div id="disqus_thread">
+    <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Bizovi" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</section>
+
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2017 Bizovi Mihai &middot; 
+
+      Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
+      theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="sha512-iHzEu7GbSc705hE2skyH6/AlTpOfBmkx7nUqTLGzPYR+C1tRaItbRlJ7hT/D3YQ9SV0fqLKzp4XY9wKulTBGTw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="sha512-Z5heTz36xTemt1TbtbfXtTq5lMfYnOkXM2/eWcTTiLU01+Sw4ku1i7vScDc8fWhrP2abz9GQzgKH5NGBLoYlAw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="sha512-CDeU7pRtkPX6XJtF/gcFWlEwyaX7mcAp5sO3VIu/ylsdR74wEw4wmBpD5yYTrmMAiAboi9thyBUr1vXRPA7t0Q==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/r.min.js"></script>
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+

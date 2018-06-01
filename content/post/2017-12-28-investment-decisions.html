@@ -175,10 +175,11 @@ tq_index_options()</code></pre>
 ## [6] &quot;SP400&quot;       &quot;SP500&quot;       &quot;SP600&quot;       &quot;SP1000&quot;</code></pre>
 <pre class="r"><code># With the following data being available on firms
 tq_get_options()</code></pre>
-<pre><code>##  [1] &quot;stock.prices&quot;       &quot;stock.prices.japan&quot; &quot;financials&quot;        
-##  [4] &quot;key.stats&quot;          &quot;key.ratios&quot;         &quot;dividends&quot;         
-##  [7] &quot;splits&quot;             &quot;economic.data&quot;      &quot;exchange.rates&quot;    
-## [10] &quot;metal.prices&quot;       &quot;quandl&quot;             &quot;quandl.datatable&quot;</code></pre>
+<pre><code>##  [1] &quot;stock.prices&quot;        &quot;stock.prices.google&quot; &quot;stock.prices.japan&quot; 
+##  [4] &quot;financials&quot;          &quot;key.ratios&quot;          &quot;dividends&quot;          
+##  [7] &quot;splits&quot;              &quot;economic.data&quot;       &quot;exchange.rates&quot;     
+## [10] &quot;metal.prices&quot;        &quot;quandl&quot;              &quot;quandl.datatable&quot;   
+## [13] &quot;alphavantager&quot;       &quot;rblpapi&quot;</code></pre>
 <pre class="r"><code># note that Tesla isn&#39;t a part of S&amp;P500
 # so maybe consider taking baseline S&amp;P and NASDAQ
 stock_list &lt;- c(&quot;GOOGL&quot;, &quot;AMZN&quot;, &quot;NFLX&quot;, &quot;JNJ&quot;, &quot;TSLA&quot;)
@@ -187,14 +188,14 @@ sp_list &lt;- readRDS(&quot;data/sp_list.RDS&quot;)
 data    &lt;- readRDS(&quot;data/stocks.RDS&quot;) 
 head(data)</code></pre>
 <pre><code>## # A tibble: 6 x 8
-##   symbol       date    open    high     low    close   volume adjusted
-##    &lt;chr&gt;     &lt;date&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-## 1  GOOGL 2007-01-03 233.233 238.569 230.786 234.0290 15397500 234.0290
-## 2  GOOGL 2007-01-04 234.735 242.217 234.409 241.8719 15759400 241.8719
-## 3  GOOGL 2007-01-05 241.491 243.994 239.294 243.8388 13730400 243.8388
-## 4  GOOGL 2007-01-08 244.089 245.180 241.341 242.0320  9499200 242.0320
-## 5  GOOGL 2007-01-09 242.968 244.369 240.841 242.9930 10752000 242.9930
-## 6  GOOGL 2007-01-10 242.457 247.022 241.261 244.9750 11925000 244.9750</code></pre>
+##   symbol date        open  high   low close    volume adjusted
+##   &lt;chr&gt;  &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 GOOGL  2007-01-03  233.  239.  231.  234. 15397500.     234.
+## 2 GOOGL  2007-01-04  235.  242.  234.  242. 15759400.     242.
+## 3 GOOGL  2007-01-05  241.  244.  239.  244. 13730400.     244.
+## 4 GOOGL  2007-01-08  244.  245.  241.  242.  9499200.     242.
+## 5 GOOGL  2007-01-09  243.  244.  241.  243. 10752000.     243.
+## 6 GOOGL  2007-01-10  242.  247.  241.  245. 11925000.     245.</code></pre>
 <pre class="r"><code>sp_list %&gt;% 
   mutate(choice = ifelse(symbol %in% stock_list, &quot;in&quot;, &quot;other&quot;)) %&gt;%
   ggplot(aes(x = weight, y = shares_held)) + 
@@ -222,36 +223,36 @@ ratios %&gt;%
   filter(section == &quot;Growth&quot;) %&gt;% 
   unnest() %&gt;% head(8)</code></pre>
 <pre><code>## # A tibble: 8 x 7
-##   symbol section sub.section group       category       date value
-##    &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;dbl&gt;          &lt;chr&gt;     &lt;date&gt; &lt;dbl&gt;
-## 1  GOOGL  Growth   Revenue %    33 Year over Year 2007-12-01 56.47
-## 2  GOOGL  Growth   Revenue %    33 Year over Year 2008-12-01 31.35
-## 3  GOOGL  Growth   Revenue %    33 Year over Year 2009-12-01  8.51
-## 4  GOOGL  Growth   Revenue %    33 Year over Year 2010-12-01 23.98
-## 5  GOOGL  Growth   Revenue %    33 Year over Year 2011-12-01 29.28
-## 6  GOOGL  Growth   Revenue %    33 Year over Year 2012-12-01 32.37
-## 7  GOOGL  Growth   Revenue %    33 Year over Year 2013-12-01 19.23
-## 8  GOOGL  Growth   Revenue %    33 Year over Year 2014-12-01 10.32</code></pre>
+##   symbol section sub.section group category       date       value
+##   &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;          &lt;date&gt;     &lt;dbl&gt;
+## 1 GOOGL  Growth  Revenue %     33. Year over Year 2007-12-01 56.5 
+## 2 GOOGL  Growth  Revenue %     33. Year over Year 2008-12-01 31.4 
+## 3 GOOGL  Growth  Revenue %     33. Year over Year 2009-12-01  8.51
+## 4 GOOGL  Growth  Revenue %     33. Year over Year 2010-12-01 24.0 
+## 5 GOOGL  Growth  Revenue %     33. Year over Year 2011-12-01 29.3 
+## 6 GOOGL  Growth  Revenue %     33. Year over Year 2012-12-01 32.4 
+## 7 GOOGL  Growth  Revenue %     33. Year over Year 2013-12-01 19.2 
+## 8 GOOGL  Growth  Revenue %     33. Year over Year 2014-12-01 10.3</code></pre>
 <pre class="r"><code># adding group and category woul allow an even more refined view 
 # with 89 KPIs
 ratios %&gt;% unnest() %&gt;% 
   select(section, sub.section) %&gt;% 
   unique()</code></pre>
 <pre><code>## # A tibble: 12 x 2
-##              section                sub.section
-##                &lt;chr&gt;                      &lt;chr&gt;
-##  1        Financials                 Financials
-##  2     Profitability          Margin of Sales %
-##  3     Profitability              Profitability
-##  4            Growth                  Revenue %
-##  5            Growth         Operating Income %
-##  6            Growth               Net Income %
-##  7            Growth                      EPS %
-##  8         Cash Flow           Cash Flow Ratios
-##  9  Financial Health Balance Sheet Items (in %)
-## 10  Financial Health  Liquidty/Financial Health
-## 11 Efficiency Ratios                 Efficiency
-## 12  Valuation Ratios           Valuation Ratios</code></pre>
+##    section           sub.section               
+##    &lt;chr&gt;             &lt;chr&gt;                     
+##  1 Financials        Financials                
+##  2 Profitability     Margin of Sales %         
+##  3 Profitability     Profitability             
+##  4 Growth            Revenue %                 
+##  5 Growth            Operating Income %        
+##  6 Growth            Net Income %              
+##  7 Growth            EPS %                     
+##  8 Cash Flow         Cash Flow Ratios          
+##  9 Financial Health  Balance Sheet Items (in %)
+## 10 Financial Health  Liquidty/Financial Health 
+## 11 Efficiency Ratios Efficiency                
+## 12 Valuation Ratios  Valuation Ratios</code></pre>
 <blockquote>
 <p>Before Jumping to analysis of returns and volatilities, it’s useful to spend some time on price evolutions</p>
 </blockquote>
@@ -391,8 +392,10 @@ Figure 5: Note that boxplots aren’t the appropriate representation for such da
 </p>
 </div>
 <p>Because of the very large sample size, I think most formal tests of normality would be useless in this particular case. See the <a href="https://stats.stackexchange.com/questions/2492/is-normality-testing-essentially-useless">discussion</a>.</p>
-<pre class="r"><code>library(corrplot)
-data.return %&gt;%
+<pre class="r"><code>library(corrplot)</code></pre>
+<pre><code>## Warning: package &#39;corrplot&#39; was built under R version 3.4.4</code></pre>
+<pre><code>## corrplot 0.84 loaded</code></pre>
+<pre class="r"><code>data.return %&gt;%
   filter(date &gt; as.Date(&quot;2017-01-01&quot;)) %&gt;%
   select(date, symbol, returns) %&gt;% 
   tidyr::spread(key = symbol, value = returns) %&gt;% 
@@ -596,14 +599,14 @@ saveRDS(sp_returns_2014, &quot;data/sp_returns_2014.RDS&quot;)</code></pre>
 sp_returns_2014 &lt;- readRDS(&quot;data/sp_returns_2014.RDS&quot;)
 sp_returns %&gt;% head()</code></pre>
 <pre><code>## # A tibble: 6 x 3
-##   symbol    avg_return         sd
-##    &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;
-## 1      A  3.836921e-04 0.02018601
-## 2    AAL -1.646356e-05 0.04454935
-## 3    AAP  3.865070e-04 0.02075724
-## 4   AAPL  9.964116e-04 0.02009505
-## 5   ABBV  9.459367e-04 0.01617369
-## 6    ABC  5.603568e-04 0.01534278</code></pre>
+##   symbol avg_return     sd
+##   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;
+## 1 A       0.000384  0.0202
+## 2 AAL    -0.0000165 0.0445
+## 3 AAP     0.000387  0.0208
+## 4 AAPL    0.000996  0.0201
+## 5 ABBV    0.000946  0.0162
+## 6 ABC     0.000560  0.0153</code></pre>
 <pre class="r"><code>daily.qtl %&gt;% 
   ggplot(aes(x = sd, y = mean)) +
   geom_point(data = sp_returns, aes(x = sd, y = avg_return), 

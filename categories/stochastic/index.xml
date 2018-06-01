@@ -2,69 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Stochastic on Data Analysis &amp; Economic Cybernetics</title>
-    <link>https://bizovi.github.io/categories/stochastic/</link>
+    <link>/categories/stochastic/</link>
     <description>Recent content in Stochastic on Data Analysis &amp; Economic Cybernetics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Bizovi Mihai</copyright>
     <lastBuildDate>Mon, 07 Aug 2017 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/categories/stochastic/" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="/categories/stochastic/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Stochastic Modeling and Bayesian Inference. Part I</title>
-      <link>https://bizovi.github.io/post/stochastic/</link>
+      <link>/post/stochastic/</link>
       <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/post/stochastic/</guid>
-      <description>
-
-&lt;blockquote&gt;
-&lt;p&gt;”I can live with doubt and uncertainty and not knowing. We absolutely must leave room for doubt or there is no progress and there is no learning. There is no learning without having to pose a question. And a question requires doubt. People search for certainty, but there is no certainty.”
-— Richard Feynman &lt;em&gt;The pleasure of finding things out&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;The first series of posts gives an overview of the probabilistic perspective on Machine Learning &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:Bizovi-Mihai-Sto&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:Bizovi-Mihai-Sto&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;, a flexible and adaptive approach which can be used in modeling complex phenomena. This allows the development of models for specific applications, in contrast with a toolkit view of the Machine Learning.&lt;/p&gt;
-
-&lt;h3 id=&#34;the-need-for-stochastic-modeling-and-bayesian-thinking&#34;&gt;The need for stochastic modeling and Bayesian thinking&lt;/h3&gt;
-
-&lt;p&gt;Current challenges in economics need an interdisciplinary, multidimensional approach and different perspectives. In order to have more powerful models in our toolbox, we&amp;rsquo;ll investigate statistical modeling based on three schools of thought: Stochastic Modeling, Machine Learning and Bayesian Analysis, which has applications from economics and finance to genetics, linguistics and artificial intelligence.&lt;/p&gt;
-
-&lt;p&gt;This approach is extremely general and allows us to make inferences about latent quantities and relationships, to identify what is hidden beneath appearance, to account for the uncertainty and nonlinearities of economic phenomena. The idea of learning from data, flexibility of representing uncertainty and the parsimony principle leads to adaptive and robust modeling, able to capture non-trivial aspects of the problem. The focus will be very much on models and a deep understanding of concepts on which they&amp;rsquo;re built.&lt;/p&gt;
-
-&lt;p&gt;The ugly truth is that humans are not good at prediction, neither consistent with probability theory. We are &amp;ldquo;suffering&amp;rdquo; from multiple evolutionary mechanisms, cognitive biases and even statisticians, formally trained in the language of uncertainty, aren&amp;rsquo;t guarded against pitfalls that arise in practice and everyday life.&lt;/p&gt;
-
-&lt;p&gt;The same story is in reconciliation of new evidence with prior beliefs, processing multidimensional data, ignorance of feedback loops and dynamics. The reason we are building models is to better understand the world, phenomena around us and in the end to improve our mental representations. Predictions that are less wrong usually take into account a variety of perspectives, a proven fact in ensemble modeling.&lt;/p&gt;
-
-&lt;h3 id=&#34;three-perspectives&#34;&gt;Three perspectives&lt;/h3&gt;
-
-&lt;p&gt;Machine learning models have become an essential part of online services and is taking over new fields, bringing firms and people lots of value. The multidimensional approach is what makes it all this possible. In contrast with classical stats and NHST (Null Hypothesis Significance Testing), our focus will be on generalization performance and the idea of a model. Even though these models have their roots in statistics, the field can be viewed in its own right.&lt;/p&gt;
-
-&lt;p&gt;An important extension for which there is an acute need is dynamical models. A lot of interesting problems are multidimensional time series, which might invalidate the hypotheses behind classical data mining models. Coupled with the need of accounting for uncertainty, this brings us to the idea of introducing &lt;strong&gt;stochastic&lt;/strong&gt; elements and to extend the idea of &lt;strong&gt;learning&lt;/strong&gt; and &lt;strong&gt;generalization&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;The third perspective which brings together stochastic elements with machine learning is &lt;em&gt;bayesian inference&lt;/em&gt;, as a method to update beliefs and knowledge based on data from different sources. Bayesian modeling enables us to build hierarchical models with latent structures, while encoding the uncertainty in parameters and operating with probability distributions. On the shoulders of these three &amp;ldquo;giants&amp;rdquo;, a stochastic perspective over Machine Learning emerges over the last two decades, which is flexible, general and more transparent than neural networks, works on thin data.&lt;/p&gt;
-
-&lt;p&gt;There are several reasons the field is not yet in the mainstream: scalability and complexity of the models, in the sense of necessary knowledge and skill to start modeling. Once the software implementations, approximation methods and probabilistic programming languages will become better, the Bayesian methods will see another rise in popularity.&lt;/p&gt;
-
-&lt;p&gt;The next posts will be dedicated to each of these fundamental perspectives, in which we&amp;rsquo;ll try to get to the essence. The last ones from this series will be on supervised and unsupervised probabilistic models such as Gaussian Processes and Mixture Models. An essential concept will be the ARD (Automatic Relevance Determination) and Kernels which encourage sparse solutions.&lt;/p&gt;
-
-&lt;h3 id=&#34;the-goal&#34;&gt;The goal&lt;/h3&gt;
-
-&lt;p&gt;The motivation behind the choice of probabilistic machine learning models is that there are a lot of opportunities to extend them and reuse as parts of a more complicated model.&lt;/p&gt;
-
-&lt;p&gt;For example, Gaussian Processes can be transformed into a Relevance Vector Machine (the probabilistic version of SVM) or used for Bayesian Optimization of expensive functions, in learning of complex dynamical phenomena, spatio-temporal modeling (also known as Kreiging). The Probabilistic Principal Component Analysis can be used for a latent representation of a multidimensional time series and intrinsic dimensionality determination. On the over hand, Mixture Models are a powerful model-based clustering technique, especially coupled with nonparametric techniques.&lt;/p&gt;
-
-&lt;p&gt;This approach is extremely powerful, intellectually fascinating and vibrant. It is also in the spirit of economic complexity, with ideas which bridge together different branches in data analysis. The catch is, that there are enormous barriers for beginners to start developing such models. First, a qualitative jump in understanding of probability theory and stochastic processes, bayesian inference and theory of statistical learning is needed. Another barrier is how to go from understanding the models towards the implementation in actual software products.&lt;/p&gt;
-
-&lt;p&gt;So, the main goal is to find connections between the three perspectives described before, to recognize Bayesian generalizations of classical machine learning models. The most important is the process of exploration and understanding, internalization of models, which will suggest new areas of study and practical opportunities, like learning STAN and improving R modeling skills.&lt;/p&gt;
-&lt;div class=&#34;footnotes&#34;&gt;
-
-&lt;hr /&gt;
-
-&lt;ol&gt;
-&lt;li id=&#34;fn:Bizovi-Mihai-Sto&#34;&gt;Bizovi Mihai - Stochastic Modeling and Bayesian Inference (2017, Thesis) &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:Bizovi-Mihai-Sto&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-</description>
+      <guid>/post/stochastic/</guid>
+      <description>”I can live with doubt and uncertainty and not knowing. We absolutely must leave room for doubt or there is no progress and there is no learning. There is no learning without having to pose a question. And a question requires doubt. People search for certainty, but there is no certainty.” — Richard Feynman The pleasure of finding things out
+ The first series of posts gives an overview of the probabilistic perspective on Machine Learning 1, a flexible and adaptive approach which can be used in modeling complex phenomena.</description>
     </item>
     
   </channel>

@@ -2,20 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ts Clustering on Data Analysis &amp; Economic Cybernetics</title>
-    <link>https://bizovi.github.io/tags/ts-clustering/</link>
+    <link>/tags/ts-clustering/</link>
     <description>Recent content in Ts Clustering on Data Analysis &amp; Economic Cybernetics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Bizovi Mihai</copyright>
     <lastBuildDate>Sun, 06 Aug 2017 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/ts-clustering/" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="/tags/ts-clustering/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Time Series Clustering (wip)</title>
-      <link>https://bizovi.github.io/project/ts-clustering/</link>
+      <link>/project/ts-clustering/</link>
       <pubDate>Sun, 06 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/project/ts-clustering/</guid>
+      <guid>/project/ts-clustering/</guid>
       <description></description>
     </item>
     
