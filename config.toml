@@ -237,17 +237,14 @@ defaultContentLanguageInSubdir = false
   languageCode = "en-us"
  
 [outputs]
-home = [ "HTML", "RSS", "RFEED"]
+home = [ "HTML", "FEED"]
 
 [outputFormats]
-[outputFormats.RSS]
+
+[outputFormats.FEED]
 mediatype = "application/rss"
 baseName = "feed"
 
-[outputFormats.RFEED]
-mediatype = "application/rss"
-baseName = "feed_r"
-noUgly = true
  
   
   
