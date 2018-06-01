@@ -4,6 +4,7 @@ author: "Bizovi Mihai"
 date: "2017-11-22"
 output: html_document
 tags: ["R", "behavioral-economics", "data-visualization"]
+categories: ["r"]
 ---
 
 In the last blog post I took a bird's eye (personal) perspective of R programming and suggested not to be discouraged by early encounters with this seemingly weird language. The conclusion was that by following "the right tool for the right job" principle, R is a great language for statistical research and the ecosystem of packages improves the data analysis workflow and gives the modeler more tools to extract insights from data.

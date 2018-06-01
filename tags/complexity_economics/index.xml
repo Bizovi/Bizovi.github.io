@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Complexity_economics on Data Analysis &amp; Economic Cybernetics</title>
-    <link>https://bizovi.github.io/tags/complexity_economics/</link>
+    <link>/tags/complexity_economics/</link>
     <description>Recent content in Complexity_economics on Data Analysis &amp; Economic Cybernetics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Bizovi Mihai</copyright>
     <lastBuildDate>Tue, 03 May 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://bizovi.github.io/tags/complexity_economics/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/complexity_economics/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>New Economic Thinking for a Knowledge-Based Society</title>
-      <link>https://bizovi.github.io/project/new-economic-thinking/</link>
+      <link>/project/new-economic-thinking/</link>
       <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/project/new-economic-thinking/</guid>
+      <guid>/project/new-economic-thinking/</guid>
       <description></description>
     </item>
     

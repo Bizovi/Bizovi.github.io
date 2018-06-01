@@ -6,6 +6,7 @@ output:
   html_document:
     toc: true
 tags: ["R", "programming"]
+categories: ["r"]
 ---
 
 > I wish somebody showed me the real power of R earlier and explained the big picture 

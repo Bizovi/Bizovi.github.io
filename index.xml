@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Analysis &amp; Economic Cybernetics on Data Analysis &amp; Economic Cybernetics</title>
-    <link>https://bizovi.github.io/</link>
+    <link>/</link>
     <description>Recent content in Data Analysis &amp; Economic Cybernetics on Data Analysis &amp; Economic Cybernetics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>Understanding Caratheodori Extension Theorem</title>
-      <link>https://bizovi.github.io/post/2018-06-01-probabiliy/</link>
+      <link>/post/2018-06-01-probabiliy/</link>
       <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/post/2018-06-01-probabiliy/</guid>
+      <guid>/post/2018-06-01-probabiliy/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;In order to build adequate models of economic and other complex phenomena, we have to take into account their inherent &lt;em&gt;stochastic nature&lt;/em&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -75,7 +75,7 @@
 &lt;/blockquote&gt;
 &lt;p&gt;In undergraduate probability we can get away with the lack of measure-theoretic notions, as we’re working on real spaces, continuous functions and the instruments we have in these tame cases seem enough. There are also wilder cases, in which we need new tools and language to be rigorous, as otherwise we would just hope for the best (that the probability measure is defined). In some of the fields mentioned above researchers have to deal with weird stuff like distributions which have continuous and discrete elements, when a mixture of a density with point masses isn’t very helpful to work with.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-1&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://bizovi.github.io/post/2018-06-01-probabiliy_files/figure-html/measure_theory_comics.jpg&#34; alt=&#34;Credit to (http://brownsharpie.courtneygibbons.org)&#34;  /&gt;
+&lt;img src=&#34;/post/2018-06-01-probabiliy_files/figure-html/measure_theory_comics.jpg&#34; alt=&#34;Credit to (http://brownsharpie.courtneygibbons.org)&#34;  /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1: Credit to (&lt;a href=&#34;http://brownsharpie.courtneygibbons.org&#34; class=&#34;uri&#34;&gt;http://brownsharpie.courtneygibbons.org&lt;/a&gt;)
 &lt;/p&gt;
@@ -103,13 +103,13 @@ p(f(x) \, |\left \{ x\right \})=\frac{p(\left \{ x\right \}| \, f) \, \mathbf{p(
 f(x) \sim GP(\mu(x); K(x,x&amp;#39;))
 \end{equation*}\]&lt;/span&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-2&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://bizovi.github.io/post/2018-06-01-probabiliy_files/figure-html/prior.png&#34; alt=&#34;An example of reasoning about distributions of random functions from my Thesis. The prior distribution&#34;  /&gt;
+&lt;img src=&#34;/post/2018-06-01-probabiliy_files/figure-html/prior.png&#34; alt=&#34;An example of reasoning about distributions of random functions from my Thesis. The prior distribution&#34;  /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 2: An example of reasoning about distributions of random functions from my Thesis. The prior distribution
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-3&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://bizovi.github.io/post/2018-06-01-probabiliy_files/figure-html/conditionare_gp.png&#34; alt=&#34;Only the functions that explain the data well survive&#34;  /&gt;
+&lt;img src=&#34;/post/2018-06-01-probabiliy_files/figure-html/conditionare_gp.png&#34; alt=&#34;Only the functions that explain the data well survive&#34;  /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 3: Only the functions that explain the data well survive
 &lt;/p&gt;
@@ -146,7 +146,7 @@ Figure 3: Only the functions that explain the data well survive
 &lt;/ol&gt;
 Before moving on to probability measures, it’s useful to think about what a random variable really is and does, because formally, it’s neither a variable, nor random. That should be another motivation for speaking the language of measure theory.
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-4&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://bizovi.github.io/post/2018-06-01-probabiliy_files/figure-html/random_variable.png&#34; alt=&#34;Idea: Norman Wildberger, Gheorghe Ruxanda. A graphical representation of the random variable&#34;  /&gt;
+&lt;img src=&#34;/post/2018-06-01-probabiliy_files/figure-html/random_variable.png&#34; alt=&#34;Idea: Norman Wildberger, Gheorghe Ruxanda. A graphical representation of the random variable&#34;  /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 4: Idea: Norman Wildberger, Gheorghe Ruxanda. A graphical representation of the random variable
 &lt;/p&gt;
@@ -247,7 +247,7 @@ s.t. ~~ \{\omega \in \Omega | X(\omega) \leq r, \forall r \in \mathbb{R} \} \in 
 &lt;p&gt;There are deep philosophical discussions regarding it, but it’s outside the scope of current project. Basically what we need to know is that it allows us to “simultaneously” choose from &lt;span class=&#34;math inline&#34;&gt;\(\Lambda_j\)&lt;/span&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-5&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://bizovi.github.io/post/2018-06-01-probabiliy_files/figure-html/transition.png&#34; alt=&#34;A graphical representation assuming the Axiom of Choice.&#34;  /&gt;
+&lt;img src=&#34;/post/2018-06-01-probabiliy_files/figure-html/transition.png&#34; alt=&#34;A graphical representation assuming the Axiom of Choice.&#34;  /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 5: A graphical representation assuming the Axiom of Choice.
 &lt;/p&gt;
@@ -305,7 +305,7 @@ Figure 5: A graphical representation assuming the Axiom of Choice.
 &lt;/ol&gt;
 &lt;p&gt;&lt;strong&gt;Remark:&lt;/strong&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{F}_i \in \mathscr{P}(\Omega)\)&lt;/span&gt; be a sigma-algebra of subsets of &lt;span class=&#34;math inline&#34;&gt;\(\Omega\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(i \in I\)&lt;/span&gt; could be any index. Then &lt;span class=&#34;math inline&#34;&gt;\(\bigcap\limits_{i \in I} \mathcal{F}_i = \mathcal{F}\)&lt;/span&gt; is also an algebra. Same as in case of algebra&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-6&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://bizovi.github.io/post/2018-06-01-probabiliy_files/figure-html/extension.png&#34; alt=&#34;The plan of attack. A sigma-additive measure defined on semi-algebra is extended to the algebra generated by the semi-algebra. The latter in turn is extended by Caratheodori theorem to the sigma-additive measure  defined on sigma-algebra generated by the semi-algebra&#34;  /&gt;
+&lt;img src=&#34;/post/2018-06-01-probabiliy_files/figure-html/extension.png&#34; alt=&#34;The plan of attack. A sigma-additive measure defined on semi-algebra is extended to the algebra generated by the semi-algebra. The latter in turn is extended by Caratheodori theorem to the sigma-additive measure  defined on sigma-algebra generated by the semi-algebra&#34;  /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 6: The plan of attack. A sigma-additive measure defined on semi-algebra is extended to the algebra generated by the semi-algebra. The latter in turn is extended by Caratheodori theorem to the sigma-additive measure defined on sigma-algebra generated by the semi-algebra
 &lt;/p&gt;
@@ -380,10 +380,10 @@ Figure 6: The plan of attack. A sigma-additive measure defined on semi-algebra i
     
     <item>
       <title>CAPM and Eugene Fama&#39;s devastating critique</title>
-      <link>https://bizovi.github.io/post/2018-01-15-fama/</link>
+      <link>/post/2018-01-15-fama/</link>
       <pubDate>Mon, 15 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/post/2018-01-15-fama/</guid>
+      <guid>/post/2018-01-15-fama/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;I was impressed by the down-to-earth &lt;a href=&#34;https://www.youtube.com/watch?v=bM9bYOBuKF4&#34;&gt;debate&lt;/a&gt; between Eugene Fama and Richard Thaler. Their discussion was very insightful in order to make sense of what’s going on with Efficient Market Hypothesis, CAPM, Fama and French 3 Factor Model, Markowitz and where is the field moving. This will be my last blog post on economics for a while, so expect lots of Machine Learning and Statistics topics next. This is a continuation that is supposed to add some missing pieces to the analysis done in the &lt;a href=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions/&#34;&gt;partI&lt;/a&gt; and &lt;a href=&#34;https://bizovi.github.io/post/2017-12-30-investment-decisions-2/&#34;&gt;partII&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -400,7 +400,7 @@ Figure 6: The plan of attack. A sigma-additive measure defined on semi-algebra i
 &lt;div id=&#34;analysing-portfolio-models-without-reading-fama-is-useless&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Analysing portfolio models without reading Fama is useless&lt;/h2&gt;
 &lt;p&gt;Before digging into the data, I would like to go through the Fama and French 2004 &lt;a href=&#34;http://pubs.aeaweb.org/doi/pdfplus/10.1257/0895330042162430&#34;&gt;paper&lt;/a&gt;. As a lot of things in economics, this powerful and intuitive theoretical model does not hold against empirical evidence. Last &lt;a href=&#34;https://bizovi.github.io/post/2017-12-30-investment-decisions-2/&#34;&gt;time&lt;/a&gt;, we built portfolios using ideas from Markowitz (in a toy form) at time &lt;span class=&#34;math inline&#34;&gt;\(t - 1\)&lt;/span&gt; resulting in a stochastic return at time &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;, where we as investors care about the mean and return (implicitly assuming risk aversion). If taken one step further, we’d have to solve one of the dual problems of maximizing expected returns given variance or minimizing variance given returns.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2018-01-15-fama_files/figure-html/meanvar.png&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-01-15-fama_files/figure-html/meanvar.png&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
 &lt;p&gt;In order to “tell the CAPM story” we should add to the usual picture the risk-free rate, which could bring additional investment opportunities, the efficient fronteer becoming a straight line. Formally:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 R_p = wR_f + (1 - w)R_{rp}
@@ -572,7 +572,7 @@ p1 &amp;lt;- Ra %&amp;gt;% tq_portfolio(
   theme_minimal() + 
   labs(x = &amp;quot;Baseline SP500 Return&amp;quot;, y = &amp;quot;Asset Return&amp;quot;, 
        title = &amp;quot;Relationship between asset return and market&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2018-01-15-fama_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-01-15-fama_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Assess the validity of the model using t-tests, Ramsey test for linearity, homoskedasticity test, Autocorrelation of first and higher order (Durbin-Watson statistic), Kolmogorov-Smirnov Normality test, Chow test. I always wondered about the carelessness these tests are taught, as tests are also models and might fail in unexpected ways, are based on assumptions. As a practitioner of statistics it would be nice not to abuse them myself.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -608,19 +608,19 @@ p1 &amp;lt;- Ra %&amp;gt;% tq_portfolio(
     
     <item>
       <title>Data Science and Machine Learning for complex problems</title>
-      <link>https://bizovi.github.io/talk/cybernetics/</link>
+      <link>/talk/cybernetics/</link>
       <pubDate>Fri, 12 Jan 2018 10:20:05 +0200</pubDate>
       
-      <guid>https://bizovi.github.io/talk/cybernetics/</guid>
+      <guid>/talk/cybernetics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tiny Steps in Prospect Theory and Investment Decisions Part II</title>
-      <link>https://bizovi.github.io/post/2017-12-30-investment-decisions-2/</link>
+      <link>/post/2017-12-30-investment-decisions-2/</link>
       <pubDate>Sat, 30 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/post/2017-12-30-investment-decisions-2/</guid>
+      <guid>/post/2017-12-30-investment-decisions-2/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Last &lt;a href=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions/&#34;&gt;time&lt;/a&gt; we went through a rigorous process of eliciting prior beliefs about 5 stocks, exploratory data analysis and quite advanced descriptive stats. The last part of the assignment has the goal of &lt;code&gt;drawing connections to the behavioral economics principles&lt;/code&gt;. A lesson learned for now, is that there are many pitfalls even in most innocently looking questions.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -875,7 +875,7 @@ updated3 &amp;lt;- tibble(
   theme_minimal() + 
   labs(title    = &amp;quot;Portfolios for 2 and 3 assets&amp;quot;, x = &amp;quot;risk&amp;quot;, y = &amp;quot;return&amp;quot;, 
        subtitle = &amp;quot;Prior portfolio range in [Red], Updated in [Gold]&amp;quot;) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-30-investment-decisions-2_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-12-30-investment-decisions-2_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Notice that with three assets, we can achieve an even higher level of returns, staying at the same level of volatility. Also, the interval shrinks after we see the data, which is delighting to see. However, the choice of probabilities leads to a slightly suboptimal choice, i.e it can be moved up to the fronteer without sacrificind in risk.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;part-v.-prospect-theory&#34; class=&#34;section level2&#34;&gt;
@@ -899,7 +899,7 @@ df %&amp;gt;%
   theme_minimal() + 
   labs(title = &amp;quot;A typical power Utility function&amp;quot;) + 
   scale_color_ochre(palette = &amp;quot;nolan_ned&amp;quot;) # if you feel fancy today&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-30-investment-decisions-2_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-12-30-investment-decisions-2_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The fitting of such an utility function seems reasonable for the 3-Asset case.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The question is actually, on &lt;em&gt;what&lt;/em&gt; do we (appropriately) fit the probability weighting and value functions? To use simulated portfolios or choose the parameters by judgement? Will have to read more about this and come back with sharper understanding in order to fit these appropriately.&lt;/p&gt;
@@ -924,7 +924,7 @@ df %&amp;gt;%
   labs(title = &amp;quot;Weighting probability function&amp;quot;, x = &amp;quot;probability&amp;quot;, 
        y = &amp;quot;decision weight&amp;quot;) + 
   scale_color_ochre(palette = &amp;quot;nolan_ned&amp;quot;) # if you feel fancy today&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-30-investment-decisions-2_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-12-30-investment-decisions-2_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 V(x)=
 \begin{cases}
@@ -1018,7 +1018,7 @@ returns_wide %&amp;gt;%
     ) +
   theme_minimal() + 
   theme(axis.text.x = element_text(angle = 90, hjust = 1))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-30-investment-decisions-2_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-12-30-investment-decisions-2_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Just from a glance, it’s quite clear which stocks are more correlated with S&amp;amp;P returns. Let’s run the model and extract the coefficients.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# excuse the following ugly piece of code, shoud&amp;#39;ve done a *apply
 rbind(
@@ -1054,10 +1054,10 @@ rbind(
     
     <item>
       <title>Tiny Steps in Prospect Theory and Investment Decisions Part I</title>
-      <link>https://bizovi.github.io/post/2017-12-28-investment-decisions/</link>
+      <link>/post/2017-12-28-investment-decisions/</link>
       <pubDate>Thu, 28 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/post/2017-12-28-investment-decisions/</guid>
+      <guid>/post/2017-12-28-investment-decisions/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;This is an assignment for the Behavioral Economics class at Quantitative Economics Masters taught by prof. dr. Anamaria Aldea. The subject is refreshing in the sense that it brings back the real world into the classroom with a &lt;code&gt;show me the evidence / data&lt;/code&gt; attitude.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1263,7 +1263,7 @@ head(data)&lt;/code&gt;&lt;/pre&gt;
   scale_size_manual(values = c(3, 1.4)) + 
   theme(legend.position = &amp;quot;none&amp;quot;) &lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-4&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-4-1.png&#34; alt=&#34;A brief look suggests Google and Amazon are clear Outliers&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-4-1.png&#34; alt=&#34;A brief look suggests Google and Amazon are clear Outliers&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1: A brief look suggests Google and Amazon are clear Outliers
 &lt;/p&gt;
@@ -1330,7 +1330,7 @@ for (stock in 1:length(stock_list)) {
     colov.vol = c(&amp;quot;indianred2&amp;quot;, &amp;quot;seagreen2&amp;quot;)
   )  &lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-9&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-9-1.png&#34; alt=&#34;The Chart involves quite a bit of descriptive statistics, so let&#39;s review what exactly do they mean&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-9-1.png&#34; alt=&#34;The Chart involves quite a bit of descriptive statistics, so let&#39;s review what exactly do they mean&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 2: The Chart involves quite a bit of descriptive statistics, so let’s review what exactly do they mean
 &lt;/p&gt;
@@ -1355,7 +1355,7 @@ Figure 2: The Chart involves quite a bit of descriptive statistics, so let’s r
 
 # similarly for others
 # plot_evolution(GOOGL) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-11-2.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-11-3.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-11-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-11-2.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-11-3.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-11-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Now we kind of have a problem, because we would want to support our decisions based on expectations/ projections in the future. There are a few very known pitfalls when you form your strategy based on past performance, like selling the winners and keeping the losers, which is clearly &lt;strong&gt;suboptimal&lt;/strong&gt; and works only in particular cases, conditioned on our beliefs about future evolution.&lt;/p&gt;
 &lt;p&gt;The assumptions we make about the future evolution of stocks is key in making good decisions, but this is again very tricky. I will be careful to avoid the &lt;code&gt;false belief in reversion to the mean&lt;/code&gt;, or at least be critical about it. This means that we need reasonable projections. Moreover, when we build the portfolios (e.g with Markowitz), we implicitly assume (wipe under the carpet) that the future will be &lt;em&gt;evolving&lt;/em&gt; the same way as in the past. &lt;em&gt;Do portfolio managers feed the model with forecasts?&lt;/em&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# take the monthy average for the long-term view
@@ -1380,7 +1380,7 @@ data %&amp;gt;%
        title = &amp;quot;Long-Term Trends of Price Evolution&amp;quot;, 
        subtitle = &amp;quot;Moving average of 15 and 40 weeks&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-12&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-12-1.png&#34; alt=&#34;Long-Term trends are somewhat expected, since it&#39;s recovery after the crisis&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-12-1.png&#34; alt=&#34;Long-Term trends are somewhat expected, since it&#39;s recovery after the crisis&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 3: Long-Term trends are somewhat expected, since it’s recovery after the crisis
 &lt;/p&gt;
@@ -1403,7 +1403,7 @@ Figure 3: Long-Term trends are somewhat expected, since it’s recovery after th
        title = &amp;quot;Stock Prices for the Last Year&amp;quot;, 
        subtitle = &amp;quot;Moving average of 15 and 45 days&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-13&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-13-1.png&#34; alt=&#34;Notice the divergence of Tesla and Netflix in mid-October&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-13-1.png&#34; alt=&#34;Notice the divergence of Tesla and Netflix in mid-October&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 4: Notice the divergence of Tesla and Netflix in mid-October
 &lt;/p&gt;
@@ -1436,7 +1436,7 @@ data.return %&amp;gt;%
   labs(x = &amp;quot;Log Returns&amp;quot;, title = &amp;quot;Distribution of Daily Log-Returns&amp;quot;, 
        subtitle = &amp;quot;Interval contains 95% of Observations&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-14&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-14-1.png&#34; alt=&#34;Note that boxplots aren&#39;t the appropriate representation for such data&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-14-1.png&#34; alt=&#34;Note that boxplots aren&#39;t the appropriate representation for such data&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 5: Note that boxplots aren’t the appropriate representation for such data
 &lt;/p&gt;
@@ -1455,7 +1455,7 @@ Figure 5: Note that boxplots aren’t the appropriate representation for such da
     addCoef.col = &amp;quot;black&amp;quot;,
     diag = FALSE)&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-15&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-15-1.png&#34; alt=&#34;Correlations between log returns for 2017&#34; width=&#34;480&#34; /&gt;
+&lt;img src=&#34;/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-15-1.png&#34; alt=&#34;Correlations between log returns for 2017&#34; width=&#34;480&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 6: Correlations between log returns for 2017
 &lt;/p&gt;
@@ -1478,7 +1478,7 @@ Figure 6: Correlations between log returns for 2017
   labs(y     = &amp;quot;Normalized Monthly Price (share of year)&amp;quot;, 
        title = &amp;quot;Seasonality of Average Prices&amp;quot;, 
        subtitle = &amp;quot;Notice how prices tend to increase throughout the year&amp;quot;)  &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Let’s now look at more advanced measures, such as drawdown plots, code taken from this cool &lt;a href=&#34;https://timelyportfolio.blogspot.ro/2011/08/drawdown-visualization.html&#34;&gt;blog&lt;/a&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# get the baseline (Index Fund)
 getSymbols(&amp;quot;SP500&amp;quot;, src = &amp;quot;FRED&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
@@ -1500,16 +1500,16 @@ charts.PerformanceSummary(SP.roc,
  legend.loc = &amp;quot;topleft&amp;quot;,
  main       = &amp;quot;S&amp;amp;P500 and Google Performance&amp;quot;
  )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;OK, So you get the mechanism with which to draw these charts. Notice that we control for which asset to draw the stripes.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-18&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-18-1.png&#34; alt=&#34;Index was removed for clarity and is slightly below J&amp;amp;J in terms of cumulative returns&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-18-1.png&#34; alt=&#34;Index was removed for clarity and is slightly below J&amp;amp;J in terms of cumulative returns&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 7: Index was removed for clarity and is slightly below J&amp;amp;J in terms of cumulative returns
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; /&gt; &lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-21-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; /&gt; &lt;img src=&#34;/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-21-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;What would be interesting, is to look at rolling correlations with respect to the baseline (S&amp;amp;P Index).&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1521,7 +1521,7 @@ Figure 7: Index was removed for clarity and is slightly below J&amp;amp;J in ter
   facet_wrap(ncol = 2, scale = &amp;quot;free_y&amp;quot;, ~ symbol) +
   theme_minimal() + 
   labs(x = &amp;quot;&amp;quot;, title = &amp;quot;Evolution and Volatility Regimes of Log-Returns&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-22-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-22-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# you can check for autocorrelation, but won&amp;#39;t find anything interesting
 acf_est &amp;lt;- data.return %&amp;gt;% 
   select(symbol, returns) %&amp;gt;% 
@@ -1674,7 +1674,7 @@ sp_returns %&amp;gt;% head()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: Removed 13 rows containing missing values (geom_point).&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: Removed 43 rows containing missing values (geom_point).&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-27&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-27-1.png&#34; alt=&#34;As Expected, Tesla and Netflix are high risk, high return, Amazon on the wave, Google Solid and if before we didn&#39;t know anything about J&amp;amp;J, now it&#39;s clear it&#39;s low risk-low return&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-27-1.png&#34; alt=&#34;As Expected, Tesla and Netflix are high risk, high return, Amazon on the wave, Google Solid and if before we didn&#39;t know anything about J&amp;amp;J, now it&#39;s clear it&#39;s low risk-low return&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 8: As Expected, Tesla and Netflix are high risk, high return, Amazon on the wave, Google Solid and if before we didn’t know anything about J&amp;amp;J, now it’s clear it’s low risk-low return
 &lt;/p&gt;
@@ -1839,7 +1839,7 @@ rbind(rsp_eb, rsp_mc) %&amp;gt;%
   labs(x = &amp;quot;&amp;quot;, y = &amp;quot;Probability&amp;quot;, 
        title = &amp;quot;Updated Probabilities after seeing the data&amp;quot;, 
        subtitle = &amp;quot;Notice the different preferences in the case of J&amp;amp;J&amp;quot;) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-30-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-12-28-investment-decisions_files/figure-html/unnamed-chunk-30-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;If we would have to chose portfolios of three assets, &lt;code&gt;Google&lt;/code&gt;, &lt;code&gt;Amazon&lt;/code&gt; and &lt;code&gt;J&amp;amp;J&lt;/code&gt; would be at the top.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;By now, you’re most probably tired from reading, so let’s stop and continue next time by constructing portfolios by simulation using the questinnaire results and connecting it to &lt;code&gt;Prospect Theory&lt;/code&gt;.&lt;/p&gt;
@@ -2036,10 +2036,10 @@ Graohically represent obtained values for each type of prospects.
     
     <item>
       <title>On Google&#39;s Alpha Zero beating the best chess engine</title>
-      <link>https://bizovi.github.io/post/alpha_zero/</link>
+      <link>/post/alpha_zero/</link>
       <pubDate>Thu, 07 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/post/alpha_zero/</guid>
+      <guid>/post/alpha_zero/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Chess has taught me how to better deal with &lt;code&gt;Dynamic Complexity&lt;/code&gt;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:A-complex-situat&#34;&gt;&lt;a href=&#34;#fn:A-complex-situat&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;, even though I did not realize this at the time. What I saw in these games by Alpha Zero was a Deep Reinforcement Learning algorithm that captured the essence of chess. It&amp;rsquo;s not the fact that Stockfish got crushed, it&amp;rsquo;s the fashion which brought so much fascination and excitement. [Thinking] What if I could put those rusty chess skills to good use again?&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -2078,12 +2078,12 @@ Graohically represent obtained values for each type of prospects.
     
     <item>
       <title>Reproducing The Economist Chart</title>
-      <link>https://bizovi.github.io/post/2017-11-25-reproducing-the-economist-chart/</link>
+      <link>/post/2017-11-25-reproducing-the-economist-chart/</link>
       <pubDate>Sat, 25 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/post/2017-11-25-reproducing-the-economist-chart/</guid>
+      <guid>/post/2017-11-25-reproducing-the-economist-chart/</guid>
       <description>&lt;p&gt;While searching for solutions to fine-tune ggplot2 visualizations, I stumbled upon&lt;a href=&#34;#fn1&#34; class=&#34;footnoteRef&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; a nice challenge: to reproduce &lt;code&gt;The Economist&lt;/code&gt;’s plot showing the correlation between &lt;em&gt;Corruption Perception Index&lt;/em&gt; and the &lt;em&gt;Human Development Index&lt;/em&gt;&lt;a href=&#34;#fn2&#34; class=&#34;footnoteRef&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-11-25-reproducing-the-economist-chart_files/figure-html/econ.png&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-11-25-reproducing-the-economist-chart_files/figure-html/econ.png&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The conclusion from this exercise is that even a simple task like reproducing a chart involves various analysis and modeling decisions. The only way to reduce the amount of mistakes is to make the analysis reproducible.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -2269,7 +2269,7 @@ p &amp;lt;- data %&amp;gt;% ggplot(aes(x = CPI_2015, y = HDI_2015)) +
   scale_y_continuous(breaks = scales::pretty_breaks(n = 10)) + 
   coord_cartesian(ylim = c(0.28, 1), xlim = c(1, 10))
 p&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-11-25-reproducing-the-economist-chart_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-11-25-reproducing-the-economist-chart_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggsave(filename = &amp;quot;data/economist.png&amp;quot;, plot = p, width=8, height=5)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: Removed 4 rows containing non-finite values (stat_smooth).&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: Removed 4 rows containing missing values (geom_point).&lt;/code&gt;&lt;/pre&gt;
@@ -2287,10 +2287,10 @@ p&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>R Tutorials for Behavioral Economics Class</title>
-      <link>https://bizovi.github.io/post/2017-11-18-r-tutorial-behavioral-economics-2/</link>
+      <link>/post/2017-11-18-r-tutorial-behavioral-economics-2/</link>
       <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/post/2017-11-18-r-tutorial-behavioral-economics-2/</guid>
+      <guid>/post/2017-11-18-r-tutorial-behavioral-economics-2/</guid>
       <description>&lt;p&gt;In the last blog post I took a bird’s eye (personal) perspective of R programming and suggested not to be discouraged by early encounters with this seemingly weird language. The conclusion was that by following “the right tool for the right job” principle, R is a great language for statistical research and the ecosystem of packages improves the data analysis workflow and gives the modeler more tools to extract insights from data.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;What is the link to Behavioral Economics? R will be used (in class) as a tool for exploring domain-specific data in order to make informed decisions, fitting different kinds of models and validating the intuition from readings like Tversky &amp;amp; Kahneman, Thaler on real data.&lt;/p&gt;
@@ -2340,7 +2340,7 @@ ny %&amp;gt;%
   theme(legend.position = &amp;quot;none&amp;quot;) + 
   scale_fill_ochre(palette = &amp;quot;nolan_ned&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-11-18-r-tutorial-behavioral-economics-2_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-11-18-r-tutorial-behavioral-economics-2_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;plotting-theoretical-utility-and-value-functions&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Plotting theoretical Utility and Value functions&lt;/h2&gt;
@@ -2395,7 +2395,7 @@ colnames(df) &amp;lt;- as.character(gammas)&lt;/code&gt;&lt;/pre&gt;
   labs(title = &amp;quot;Hyperbolic Absolute Risk Aversion function&amp;quot;, 
        subtitle = glue(&amp;quot;with hyperparameters a = {a}, b = {b}&amp;quot;)) + 
   scale_color_ochre(palette = &amp;quot;nolan_ned&amp;quot;) # if you feel fancy today&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://bizovi.github.io/post/2017-11-18-r-tutorial-behavioral-economics-2_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-11-18-r-tutorial-behavioral-economics-2_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Explain what is a color palette and why is it useful&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;a-tutorial-on-analysis-of-returns-and-investment-decisions&#34; class=&#34;section level2&#34;&gt;
@@ -2490,7 +2490,7 @@ monthly_returns %&gt;%
   theme(legend.position = &#34;none&#34;)
 ```
 
-&lt;img src=&#34;https://bizovi.github.io/post/2017-11-18-r-tutorial-behavioral-economics-2_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-11-18-r-tutorial-behavioral-economics-2_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;
 
 --&gt;
 &lt;/div&gt;
@@ -2507,10 +2507,10 @@ monthly_returns %&gt;%
     
     <item>
       <title>R Programming. The big picture</title>
-      <link>https://bizovi.github.io/post/2017-11-01-r-tutorial-behavioral-economics/</link>
+      <link>/post/2017-11-01-r-tutorial-behavioral-economics/</link>
       <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/post/2017-11-01-r-tutorial-behavioral-economics/</guid>
+      <guid>/post/2017-11-01-r-tutorial-behavioral-economics/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;I wish somebody showed me the real power of R earlier and explained the big picture&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -2563,10 +2563,10 @@ monthly_returns %&gt;%
     
     <item>
       <title>Stochastic Modeling and Bayesian Inference. Part I</title>
-      <link>https://bizovi.github.io/post/stochastic/</link>
+      <link>/post/stochastic/</link>
       <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/post/stochastic/</guid>
+      <guid>/post/stochastic/</guid>
       <description>
 
 &lt;blockquote&gt;
@@ -2620,37 +2620,37 @@ monthly_returns %&gt;%
     
     <item>
       <title>Probabilistic Dynamic Modeling (wip)</title>
-      <link>https://bizovi.github.io/project/probabilistic-dynamic-modeling/</link>
+      <link>/project/probabilistic-dynamic-modeling/</link>
       <pubDate>Sun, 06 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/project/probabilistic-dynamic-modeling/</guid>
+      <guid>/project/probabilistic-dynamic-modeling/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Time Series Clustering (wip)</title>
-      <link>https://bizovi.github.io/project/ts-clustering/</link>
+      <link>/project/ts-clustering/</link>
       <pubDate>Sun, 06 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/project/ts-clustering/</guid>
+      <guid>/project/ts-clustering/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Thesis: Stochastic Modeling and Bayesian Inference</title>
-      <link>https://bizovi.github.io/project/probabilistic-machine-learning/</link>
+      <link>/project/probabilistic-machine-learning/</link>
       <pubDate>Mon, 10 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/project/probabilistic-machine-learning/</guid>
+      <guid>/project/probabilistic-machine-learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>New Economic Thinking for a Knowledge-Based Society</title>
-      <link>https://bizovi.github.io/project/new-economic-thinking/</link>
+      <link>/project/new-economic-thinking/</link>
       <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/project/new-economic-thinking/</guid>
+      <guid>/project/new-economic-thinking/</guid>
       <description></description>
     </item>
     

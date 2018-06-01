@@ -248,16 +248,6 @@
     
     <url>
     
-      <loc>https://bizovi.github.io/categories/ml/</loc>
-      <lastmod>2017-12-07T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>https://bizovi.github.io/tags/ml/</loc>
       <lastmod>2017-08-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -268,7 +258,27 @@
     
     <url>
     
+      <loc>https://bizovi.github.io/categories/ml/</loc>
+      <lastmod>2017-12-07T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://bizovi.github.io/tags/probability/</loc>
+      <lastmod>2018-06-01T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://bizovi.github.io/categories/probability/</loc>
       <lastmod>2018-06-01T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -309,6 +319,16 @@
     
       <loc>https://bizovi.github.io/tags/r/</loc>
       <lastmod>2018-06-01T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://bizovi.github.io/categories/r/</loc>
+      <lastmod>2018-01-15T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

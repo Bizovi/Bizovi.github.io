@@ -32,6 +32,7 @@ defaultContentLanguageInSubdir = false
   phone = ""
   skype = "bizovi_v"
   telegram = ""
+  enableRSS = true
 
   # Enable Keybase in Contact section by entering your keybase.io username.
   keybase = ""
@@ -151,7 +152,6 @@ defaultContentLanguageInSubdir = false
     link = "//facebook.com/mihai.bizovi"
 
 
-
 # Navigation Links
 #   To link a homepage widget, specify the URL as a hash `#` followed by the filename of the
 #     desired widget in your `content/home/` folder.
@@ -184,6 +184,8 @@ defaultContentLanguageInSubdir = false
    name = "Blog"
    url = "post"
    weight = 3
+   
+
 
    
 # [[menu.main]]
@@ -199,6 +201,12 @@ defaultContentLanguageInSubdir = false
   name = "Projects"
   url = "#projects"
   weight = 2
+  
+[[menu.main]]
+  name = "R-Bloggers"
+  url  = "https://www.r-bloggers.com"
+  weight = 4
+
 
 #[[menu.main]]
 #  name = "Talks"
@@ -227,3 +235,45 @@ defaultContentLanguageInSubdir = false
 # Configure the English version of the website.
 [languages.en]
   languageCode = "en-us"
+ 
+[outputs]
+home = [ "HTML", "RSS", "RFEED"]
+
+[outputFormats]
+[outputFormats.RSS]
+mediatype = "application/rss"
+baseName = "feed"
+
+[outputFormats.RFEED]
+mediatype = "application/rss"
+baseName = "feed_r"
+noUgly = true
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

@@ -4,6 +4,7 @@ author: "Bizovi Mihai"
 date: "2017-12-30"
 output: html_document
 tags: ["R", "behavioral-economics"]
+categories: ["r"]
 ---
 
 > Last [time](https://bizovi.github.io/post/2017-12-28-investment-decisions/) we went through a rigorous process of eliciting prior beliefs about 5 stocks, exploratory data analysis and quite advanced descriptive stats. The last part of the assignment has the goal of `drawing connections to the behavioral economics principles`. A lesson learned for now, is that there are many pitfalls even in most innocently looking questions.

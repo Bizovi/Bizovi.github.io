@@ -4,6 +4,7 @@ author: "Bizovi Mihai"
 date: "2018-01-15"
 output: html_document
 tags: ["R", "behavioral-economics"]
+categories: ["r"]
 ---
 
 > I was impressed by the down-to-earth [debate](https://www.youtube.com/watch?v=bM9bYOBuKF4) between Eugene Fama and Richard Thaler. Their discussion was very insightful in order to make sense of what's going on with Efficient Market Hypothesis, CAPM, Fama and French 3 Factor Model, Markowitz and where is the field moving. This will be my last blog post on economics for a while, so expect lots of Machine Learning and Statistics topics next. This is a continuation that is supposed to add some missing pieces to the analysis done in the [partI](https://bizovi.github.io/post/2017-12-28-investment-decisions/) and [partII](https://bizovi.github.io/post/2017-12-30-investment-decisions-2/)

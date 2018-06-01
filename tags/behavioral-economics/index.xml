@@ -2,51 +2,51 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Behavioral Economics on Data Analysis &amp; Economic Cybernetics</title>
-    <link>https://bizovi.github.io/tags/behavioral-economics/</link>
+    <link>/tags/behavioral-economics/</link>
     <description>Recent content in Behavioral Economics on Data Analysis &amp; Economic Cybernetics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Bizovi Mihai</copyright>
     <lastBuildDate>Mon, 15 Jan 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://bizovi.github.io/tags/behavioral-economics/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/behavioral-economics/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>CAPM and Eugene Fama&#39;s devastating critique</title>
-      <link>https://bizovi.github.io/post/2018-01-15-fama/</link>
+      <link>/post/2018-01-15-fama/</link>
       <pubDate>Mon, 15 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/post/2018-01-15-fama/</guid>
+      <guid>/post/2018-01-15-fama/</guid>
       <description>I was impressed by the down-to-earth debate between Eugene Fama and Richard Thaler. Their discussion was very insightful in order to make sense of what’s going on with Efficient Market Hypothesis, CAPM, Fama and French 3 Factor Model, Markowitz and where is the field moving. This will be my last blog post on economics for a while, so expect lots of Machine Learning and Statistics topics next. This is a continuation that is supposed to add some missing pieces to the analysis done in the partI and partII</description>
     </item>
     
     <item>
       <title>Tiny Steps in Prospect Theory and Investment Decisions Part II</title>
-      <link>https://bizovi.github.io/post/2017-12-30-investment-decisions-2/</link>
+      <link>/post/2017-12-30-investment-decisions-2/</link>
       <pubDate>Sat, 30 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/post/2017-12-30-investment-decisions-2/</guid>
+      <guid>/post/2017-12-30-investment-decisions-2/</guid>
       <description>Last time we went through a rigorous process of eliciting prior beliefs about 5 stocks, exploratory data analysis and quite advanced descriptive stats. The last part of the assignment has the goal of drawing connections to the behavioral economics principles. A lesson learned for now, is that there are many pitfalls even in most innocently looking questions.
 Part IV. Portfolio Construction by SimulationBefore we dig in, I would like to suggest the following reading &amp;quot;Please no, not another bias&amp;quot; by Jason Collin.</description>
     </item>
     
     <item>
       <title>Tiny Steps in Prospect Theory and Investment Decisions Part I</title>
-      <link>https://bizovi.github.io/post/2017-12-28-investment-decisions/</link>
+      <link>/post/2017-12-28-investment-decisions/</link>
       <pubDate>Thu, 28 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/post/2017-12-28-investment-decisions/</guid>
+      <guid>/post/2017-12-28-investment-decisions/</guid>
       <description>This is an assignment for the Behavioral Economics class at Quantitative Economics Masters taught by prof. dr. Anamaria Aldea. The subject is refreshing in the sense that it brings back the real world into the classroom with a show me the evidence / data attitude.
 Nonetheless, this is hard to deliver as experimental data is scarce and classroom experiments involving a small sample of people with neoclassical training are hardly representative.</description>
     </item>
     
     <item>
       <title>R Tutorials for Behavioral Economics Class</title>
-      <link>https://bizovi.github.io/post/2017-11-18-r-tutorial-behavioral-economics-2/</link>
+      <link>/post/2017-11-18-r-tutorial-behavioral-economics-2/</link>
       <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://bizovi.github.io/post/2017-11-18-r-tutorial-behavioral-economics-2/</guid>
+      <guid>/post/2017-11-18-r-tutorial-behavioral-economics-2/</guid>
       <description>In the last blog post I took a bird’s eye (personal) perspective of R programming and suggested not to be discouraged by early encounters with this seemingly weird language. The conclusion was that by following “the right tool for the right job” principle, R is a great language for statistical research and the ecosystem of packages improves the data analysis workflow and gives the modeler more tools to extract insights from data.</description>
     </item>
     

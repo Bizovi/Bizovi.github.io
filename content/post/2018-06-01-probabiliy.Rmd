@@ -4,6 +4,7 @@ author: "Bizovi Mihai"
 date: "2018-06-01"
 output: html_document
 tags: ["R", "probability"]
+categories: ["probability"]
 bibliography: ["probability.bib"]
 biblio-style: "apalike"
 link-citations: true
