@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.37.1" />
+  <meta name="author" content="Bizovi Mihai">
+  <meta name="description" content="Data Scientist @Adore Me">
+
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/highlight.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css" integrity="sha512-GGGNUPDhnG8LEAEDsjqYIQns+Gu8RBs4j5XGlxl7UfRaZBhCCm5jenJkeJL8uPuOXGqgl8/H1gjlWQDRjd3cUQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
+  <link rel="stylesheet" href="/css/hugo-academic.css">
+  
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-104200881-1', 'auto');
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+
+  <link rel="alternate" href="" type="application/rss+xml" title="Data Analysis &amp; Economic Cybernetics">
+  <link rel="feed" href="" type="application/rss+xml" title="Data Analysis &amp; Economic Cybernetics">
+
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+
+  <link rel="canonical" href="/post/2018-07-21-king-county-prices/">
+
+  
+
+  <title>King County Homes Challenge. Exploratory Data Analysis | Data Analysis &amp; Economic Cybernetics</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Data Analysis &amp; Economic Cybernetics</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/post">
+            
+            <span>Blog</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="https://www.r-bloggers.com">
+            
+            <span>R-Bloggers</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">King County Homes Challenge. Exploratory Data Analysis</h1>
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2018-07-21 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Sat, Jul 21, 2018
+    </time>
+  </span>
+
+  
+  
+  
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/categories/r">R</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/r">R</a
+    >, 
+    
+    <a href="/tags/ml">ml</a
+    >, 
+    
+    <a href="/tags/eda">eda</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2fpost%2f2018-07-21-king-county-prices%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=King%20County%20Homes%20Challenge.%20Exploratory%20Data%20Analysis&amp;url=%2fpost%2f2018-07-21-king-county-prices%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2f2018-07-21-king-county-prices%2f&amp;title=King%20County%20Homes%20Challenge.%20Exploratory%20Data%20Analysis"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2f2018-07-21-king-county-prices%2f&amp;title=King%20County%20Homes%20Challenge.%20Exploratory%20Data%20Analysis"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=King%20County%20Homes%20Challenge.%20Exploratory%20Data%20Analysis&amp;body=%2fpost%2f2018-07-21-king-county-prices%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    <div class="article-style" itemprop="articleBody">
+      <p>The King County Homes prices prediction <a href="https://www.kaggle.com/harlfoxem/housesalesprediction">challenge</a> is an excellent dataset for trying out and experimenting with various regression models. As we’ll see in the following post on <a href="https://www.coursera.org/learn/ekonometrika">Moscow flats</a>, the modeler deals with similar challenges: skewed data and outliers, highly correlated variables (predictors), heteroskedasticity and a geographical correlation structure. Ignoring one of these may lead to undeperforming models, so in this post we’re going to carefully explore the dataset, which should inform which modeling strategy to choose.</p>
+<div id="getting-the-data" class="section level3">
+<h3>Getting the data</h3>
+<p>First, we’ll use a Python-based command line tool (<code>pip install kaggle</code>) to automatically download the data from kaggle competition. An access token is needed in <code>.kaggle</code> directory, which is slightly different in Windows and Linux. So far these commands will do, we don’t need anything fancier.</p>
+<ul>
+<li><code>kaggle datasets download -d harlfoxem/housesalesprediction</code></li>
+<li><code>cp .kaggle\datasets\harlfoxem\housesalesprediction\kc_house_data.csv .</code></li>
+</ul>
+<pre class="r"><code>library(tidyverse) # data processing and visualization
+library(ggthemes)  # themes for ggplot2
+library(ggmap)     # ggplot for geographical data
+library(GGally)    # ggpairs()
+library(RPostgreSQL) # if you want to play around with a DBs
+library(knitr)     # tables and interactive documents
+library(corrplot)  # visualization of correlation matrices
+library(OutliersO3) # multidimensional outlier detection</code></pre>
+<pre class="r"><code>data &lt;- read_csv(&quot;data/kc_house_data.csv&quot;)
+knitr::kable(head(data %&gt;% select(
+    price, bedrooms, bathrooms, sqft_living, sqft_lot, grade, zipcode, floors
+)))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">price</th>
+<th align="right">bedrooms</th>
+<th align="right">bathrooms</th>
+<th align="right">sqft_living</th>
+<th align="right">sqft_lot</th>
+<th align="right">grade</th>
+<th align="right">zipcode</th>
+<th align="right">floors</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">221900</td>
+<td align="right">3</td>
+<td align="right">1.00</td>
+<td align="right">1180</td>
+<td align="right">5650</td>
+<td align="right">7</td>
+<td align="right">98178</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">538000</td>
+<td align="right">3</td>
+<td align="right">2.25</td>
+<td align="right">2570</td>
+<td align="right">7242</td>
+<td align="right">7</td>
+<td align="right">98125</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">180000</td>
+<td align="right">2</td>
+<td align="right">1.00</td>
+<td align="right">770</td>
+<td align="right">10000</td>
+<td align="right">6</td>
+<td align="right">98028</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">604000</td>
+<td align="right">4</td>
+<td align="right">3.00</td>
+<td align="right">1960</td>
+<td align="right">5000</td>
+<td align="right">7</td>
+<td align="right">98136</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">510000</td>
+<td align="right">3</td>
+<td align="right">2.00</td>
+<td align="right">1680</td>
+<td align="right">8080</td>
+<td align="right">8</td>
+<td align="right">98074</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">1225000</td>
+<td align="right">4</td>
+<td align="right">4.50</td>
+<td align="right">5420</td>
+<td align="right">101930</td>
+<td align="right">11</td>
+<td align="right">98053</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>A side note on working with databases like MySQL and PostgreSQL. I haven’t explained much during previous blog posts how to interact with databases, which is weird because I haven’t read data from a .csv at work in almost half a year. I used MySQL and BigQuery, but as you see it takes almost no time to transition to PostgreSQL, after you get over a few setup hiccups.</p>
+</blockquote>
+<p>Now, for storing the data we need to setup the PostgreSQL and create a database. Then we’ll try to use the R package <code>RPostgreSQL</code> to avoid if possible writing insert statements by “hand”. Also don’t forget to add <code>../PostgreSQL/9.5/bin</code> and <code>../PostgreSQL/9.5/lib</code> to the <code>PATH</code> system variable. Then we need to make sure the PostgreSQL server is running and create a technical user. The credentials will be in an <code>.Renviron</code> file. The following line uses the <code>createuser.exe</code> service from the PG’s <code>/bin</code> directory to create a new user with db.</p>
+<p><code>createuser.exe --createdb --username postgres --no-createrole --pwprompt openpg</code></p>
+<p>The <code>.Renviron</code> file is of course hidden, but here it is how it looks like:</p>
+<pre class="r"><code>DB_PASS=&quot;kingcounty&quot;
+DB_USER=&quot;openpg&quot;
+DB_NAME=&quot;postgres&quot;</code></pre>
+<pre class="r"><code># load the environment variables
+readRenviron(&quot;.Renviron&quot;)
+
+# establish connection to the database
+drv &lt;- dbDriver(&quot;PostgreSQL&quot;)
+conn &lt;- dbConnect(drv, 
+  dbname = Sys.getenv(&quot;DB_NAME&quot;), 
+  host = &quot;localhost&quot;, port = 5432, 
+  user = Sys.getenv(&quot;DB_USER&quot;), 
+  password = Sys.getenv(&quot;DB_PASS&quot;)
+  )
+
+# Load step: write the data into a table
+dbWriteTable(conn, name = &quot;homes&quot;, value = data, append = FALSE, row.names = FALSE)
+
+# retrieve the data to check if it worked
+data_pg &lt;- dbGetQuery(conn, &quot;select * from homes&quot;)</code></pre>
+</div>
+<div id="exploratory-data-analysis" class="section level3">
+<h3>Exploratory Data Analysis</h3>
+<p>As always, before jumping into machine learning it is extremely useful to get a feel for the data through visualization and simple models. Some people prefer to do the paired feature scatterplots, histograms and then stack 13 models through scikit-learn. I’m an advocate to a more careful and thoughtful approach, having good reasons for the multiple modeling decisions which we have to make.</p>
+<blockquote>
+<p>A thoughtful problem formulation and data representation leads us quite far into solving it.</p>
+</blockquote>
+<p>Considering the warning above, ensembles are powerful. Even though I’m more of a Data Miner than statistician, I have to recognize that large amounts of data do not automatically solve the <code>&quot;econometric nightmares&quot;</code> we have to deal in practice. This is where statistical inference is key, working as a bridge between Machine Learning and Statistics. It is becoming increasingly important: see Efron and Hastie’s brilliant Computer Age Statistical Inference.</p>
+<p>A variant of this challenge asked whether it makes sense to talk about price per bedroom or bathroom. And whether we could “segment” the price by other features. I don’t think segmenting is the right term or even problem formulation. “Segmenting the price” doesn’t make sense without more context. What it looks like, is a simple means to get <strong>comparable</strong> prices (“controlling” for obvious factors). The first thing you should think about is price per living area, then per total area. Then an interesting thing to look at is the number of floors, bedrooms and bathrooms. Note that, it suddenly acquires sense in the case of models (e.g. linear regression), where the parameters act as <strong>compatibilization constants</strong> for different units of measure.</p>
+<pre class="r"><code>df &lt;- data %&gt;% 
+  mutate(price_bed  = price / bedrooms, 
+         price_bath = price / bathrooms) %&gt;%
+  # of course, we eliminate cases with 0 bedrooms or bathrooms
+  filter(price_bed != Inf &amp; price_bath != Inf)</code></pre>
+<pre><code>## Warning: package &#39;bindrcpp&#39; was built under R version 3.4.4</code></pre>
+<pre class="r"><code>df %&gt;%
+  select(price_bed, price_bath) %&gt;%
+  gather(key = variable, value = value) %&gt;%
+  ggplot(aes(x = value)) + 
+  geom_histogram(aes(fill = variable), bins = 70, alpha = 0.5, 
+                 color = NA, position = &quot;identity&quot;) + 
+  # the following is very quick and dirty, can be easily generalized
+  geom_point(data = NULL, y = Inf, x = mean(df$price_bed), 
+             color = &quot;darkred&quot;, pch = 25, size = 2) +
+  geom_vline(xintercept = mean(df$price_bed), 
+             color = &quot;darkred&quot;, lty = 3) + 
+  geom_point(data = NULL, y = Inf, x = mean(df$price_bath), 
+             color = &quot;steelblue&quot;, pch = 25, size = 2) +
+  geom_vline(xintercept = mean(df$price_bath), 
+             color = &quot;steelblue&quot;, lty = 3) + 
+  geom_rug(color = &quot;grey70&quot;) +
+  theme_tufte() + 
+  labs(x = &quot;Price ($)&quot;, y = &quot;Frequency&quot;, 
+       title = &quot;Distribution of House Prices in King County&quot;, 
+       subtitle = &quot;Per bedroom and bathroom &gt; Doesn&#39;t make much sense&quot;) + 
+  scale_color_ptol() + 
+  scale_fill_ptol() + 
+  theme(
+    legend.position = c(0.7, 0.5), 
+    axis.text.x = element_text(angle = 30, hjust = 1)) + 
+  scale_x_continuous(breaks = c(mean(df$price_bath), 
+                                mean(df$price_bed), 
+                                5e5, 1e6, 1.5e6)) </code></pre>
+<p><img src="/post/2018-07-21-king-county-prices_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>In the context of the problem, i.e. predicting house prices, it is not advisable to do this for feature engineering, because of leaking information into the test dataset. It makes more sense to me to look at correlations and group differences between the target and various attributes (features), which we will do next in the EDA. Note that libraries like <code>catboost</code> have a very smart bag of tricks to deal with categorical variables and avoid leaking. In the nutshell they don’t use the label of the particular observation to derive new features, but leverage multiple splits of data during the model training.</p>
+<pre class="r"><code>df &lt;- df %&gt;%
+  mutate(log_price = log(price)) 
+
+df %&gt;%
+  ggplot(aes(x = log_price)) + 
+  geom_histogram(aes(y = ..density..), bins = 70, 
+                 color = &quot;grey70&quot;, fill = &quot;grey80&quot;) + 
+  geom_point(data = NULL, y = 0, x = mean(df$log_price), 
+             color = &quot;darkred&quot;, pch = 17, size = 2) +
+  geom_vline(xintercept = mean(df$log_price), 
+             color = &quot;darkred&quot;, lty = 3) + 
+  geom_rug(color = &quot;grey70&quot;) +
+  stat_function(fun = dnorm, args = list(mean = mean(df$log_price), 
+                                         sd = sd(df$log_price))) + 
+  theme_tufte() + 
+  labs(x = &quot;Price ($)&quot;, y = &quot;Frequency&quot;, 
+       title = &quot;Distribution of House Prices in King County at Log-Scale&quot;)</code></pre>
+<p><img src="/post/2018-07-21-king-county-prices_files/figure-html/unnamed-chunk-6-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>A good advice for such datasets is to take the <code>log</code>, making the data more well-behaved for a large class of models. It is obvious that one of the main problems in this dataset is heteroskedasticity (i.e. increasing price variance as area increases). While taking the logarithm is clearly not enough, it would help further into analysis.</p>
+<pre class="r"><code>data[, 3:21] %&gt;% 
+  dplyr::select(-zipcode) %&gt;% cor() %&gt;% 
+  corrplot::corrplot(type = &quot;lower&quot;, order = &quot;hclust&quot;, tl.col = &quot;grey30&quot;, tl.cex = 0.9)</code></pre>
+<p><img src="/post/2018-07-21-king-county-prices_files/figure-html/unnamed-chunk-7-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Since the data is for 12 months across two years, the study of confounding induced by seasonality is a little bit outside the scope, though, it often messes things up in practice.</p>
+<pre class="r"><code># Don&#39;t use cut() here, because of outliers and skewed distribution!
+df &lt;- data %&gt;% 
+  mutate(price_bucket = ifelse(price &lt;= 1e5, &quot;[0,1e5)&quot;, 
+   ifelse(price &gt;= 1e5 &amp; price &lt; 3e5, &quot;[1e5, 3.5e5)&quot;, 
+    ifelse(price &gt;= 3e5 &amp; price &lt; 8e5, &quot;[3.5e5, 8e5)&quot;, &quot;8e5+)&quot;))))
+
+set.seed(456) # for reproductibility of the sample displayed
+# note that for qmplot to be working properly an internet connection is needed
+qmplot(long, lat, maptype = &quot;toner-lite&quot;, 
+       data = df %&gt;% sample_n(3000)) +
+  geom_point(aes(color = price_bucket), alpha = 0.5) + 
+  scale_color_ptol() + 
+  labs(title = &quot;Sample of 3000 homes by price sold&quot;) + 
+  guides(color = guide_legend(title = &quot;Price Range&quot;))</code></pre>
+<p><img src="/post/2018-07-21-king-county-prices_files/figure-html/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>In this case you don’t need anything more original than scatterplots on the map to get a sense of a good modeling strategy. It basically shows that the zipcode is a very promising variable for prediction, which absolutely makes sense, but we won’t have many degrees of freedom left if we do that with 20000 data points. The good news is that it leads us to the <strong>bayesian hierarchical regressions</strong>, which looks like the perfect model for such a dataseet.</p>
+<p>Alternative approaches like CatBoost can also take advantage of such data because of the way they treat categorical features. Bayesian Additive Regression trees, if computationally feasible, are an interesting option which is more robust than Random Forests. Of course, we shouldn’t forget about XGBoost + Bayesian Optimization as the industry standard, so checking how it performs is a no brainer.</p>
+<p>We moved quite far to the advanced models, but one should check the most naive linear regression and establish the baseline. Its assumptions of course will be violated, but being aware of that, we can incrementally build the model until we get to the optimal hierarchical bayesian representation.</p>
+<pre class="r"><code>qmplot(long, lat, data = df, maptype = &quot;toner-lite&quot;) +
+ geom_point(aes(color = as.factor(zipcode)), 
+            alpha = 0.5, show.legend = FALSE) + 
+ labs(title = &quot;ZIP Codes&quot;)</code></pre>
+<pre><code>## Using zoom = 10...</code></pre>
+<p><img src="/post/2018-07-21-king-county-prices_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<pre class="r"><code>qmplot(long, lat, data = data, geom = &quot;blank&quot;,
+       maptype = &quot;toner-lite&quot;) +
+  stat_density_2d(aes(fill = ..level..), 
+                  geom = &quot;polygon&quot;, alpha = .3, color = NA) +
+  scale_fill_gradient2(low = &quot;steelblue&quot;, mid = &quot;seagreen4&quot;, 
+                        high = &quot;indianred&quot;, midpoint = 7) +
+  labs(title = &quot;Estimated home density&quot;)</code></pre>
+<pre><code>## Using zoom = 10...</code></pre>
+<p><img src="/post/2018-07-21-king-county-prices_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>There looks like it’s enough data at the zip code for the model with weakly informative priors to be reasonable. Moreover, grace to variance pooling, the model will “borrow” information from up the hierarchy in the cases in which there is not enough data to estimate the parameters.</p>
+<pre class="r"><code>data %&gt;% group_by(zipcode) %&gt;%
+  summarise(nr_houses = n()) %&gt;% 
+  arrange(-nr_houses) %&gt;% 
+  head() %&gt;%
+  knitr::kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">zipcode</th>
+<th align="right">nr_houses</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">98103</td>
+<td align="right">602</td>
+</tr>
+<tr class="even">
+<td align="right">98038</td>
+<td align="right">590</td>
+</tr>
+<tr class="odd">
+<td align="right">98115</td>
+<td align="right">583</td>
+</tr>
+<tr class="even">
+<td align="right">98052</td>
+<td align="right">574</td>
+</tr>
+<tr class="odd">
+<td align="right">98117</td>
+<td align="right">553</td>
+</tr>
+<tr class="even">
+<td align="right">98042</td>
+<td align="right">548</td>
+</tr>
+</tbody>
+</table>
+<p>Notice that the log-transform of area variables looks beneficial, it only remains to be checked formally via model comparison and selection, and whether it improves on (validation) error metrics.</p>
+<pre class="r"><code>areas &lt;- data %&gt;%
+  mutate(sqft_diff = sqft_living - sqft_living15) %&gt;%
+  mutate(price = log(price), sqft_living = log(sqft_living), 
+         sqft_lot = log(sqft_lot), sqft_above = log(sqft_above)) %&gt;%
+  mutate(sqft_basement = ifelse(sqft_basement == 0, 0, log(sqft_basement))) %&gt;%
+  dplyr::select(price, sqft_living, sqft_above, 
+                sqft_basement, sqft_lot, sqft_diff, floors) %&gt;%
+  mutate(more_floors = as.factor(floors &gt; 1)) %&gt;%
+    sample_n(4000)
+areas %&gt;% ggpairs(columns = 1:6, aes(color = more_floors)) + 
+  theme_tufte()</code></pre>
+<p><img src="/post/2018-07-21-king-county-prices_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<pre class="r"><code>data %&gt;% 
+  mutate(log_price = log(price)) %&gt;%
+  mutate(floors = ifelse(floors &gt; 2, 2, floors)) %&gt;%
+  group_by(zipcode, floors) %&gt;% 
+  summarise(mean = mean(log_price), 
+            lower = mean(log_price) - 2 * sd(log_price) / n(), 
+            upper = mean(log_price) + 2 * sd(log_price) / n()) %&gt;%
+  ggplot(aes(x = reorder(as.factor(zipcode), mean), y = mean, 
+             color = as.factor(floors))) + 
+  geom_point() + 
+  coord_flip() +
+  geom_errorbar(aes(ymin = lower, ymax = upper), width = 0) +
+  theme_minimal() + 
+  labs(x = &quot;ZIP Code&quot;, y = &quot;Average Log-Price&quot;, 
+       title = &quot;Confidence intervals for prices by ZIP code&quot;, 
+       subtitle = &quot;As a motivation for hierarchical approach&quot;) + 
+  scale_color_fivethirtyeight() + 
+  guides(color = guide_legend(title = &quot;Nr. Floors&quot;))</code></pre>
+<p><img src="/post/2018-07-21-king-county-prices_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>It is also interesting to look at price per living square foot.</p>
+<pre class="r"><code>data %&gt;% 
+  mutate(log_price = log(price / sqft_living)) %&gt;%
+  mutate(floors = ifelse(floors &gt; 2, 2, floors)) %&gt;%
+  group_by(zipcode, floors) %&gt;% 
+  summarise(mean = mean(log_price), 
+            lower = mean(log_price) - 2 * sd(log_price) / n(), 
+            upper = mean(log_price) + 2 * sd(log_price) / n()) %&gt;%
+  ggplot(aes(x = reorder(as.factor(zipcode), mean), y = mean, 
+             color = as.factor(floors))) + 
+  geom_point() + 
+  coord_flip() +
+  geom_errorbar(aes(ymin = lower, ymax = upper), width = 0) +
+  theme_minimal() + 
+  labs(x = &quot;ZIP Code&quot;, y = &quot;Average Log-Price&quot;) + 
+  scale_color_fivethirtyeight()</code></pre>
+<p>Similarly, one can look at the configurations including a number of bathrooms and bedrooms. There are quite a lot of insights to be uncovered from these exploratory methods, from gaining an intuition of the data and domain particularities to suggesting potential modeling strategies. The last thing to do before modeling, is to carefully think about outliers and what to do with them. The answer is that it depends: some methods are robust to it, while the majority are not. Another aspect is what kind of information do outliers encode? This looks like a classical case where it is better to remove the most extreme ones.</p>
+<pre class="r"><code>table(data$bathrooms, data$bedrooms) %&gt;% 
+  as.data.frame() %&gt;% 
+  filter(Freq != 0) %&gt;%
+  ggplot(aes(x = Var1, y = Var2)) + 
+  geom_tile(aes(fill = Freq)) + 
+  theme_tufte() + 
+  coord_flip()</code></pre>
+<pre class="r"><code>table(data$bathrooms, data$grade) %&gt;% 
+  as.data.frame() %&gt;% 
+  filter(Freq != 0) %&gt;%
+  ggplot(aes(x = Var1, y = Var2)) + 
+  geom_tile(aes(fill = Freq)) + 
+  theme_tufte() + 
+  coord_flip() + 
+  scale_fill_gradient(low = &quot;steelblue&quot;, high = &quot;gold&quot;) + 
+  labs(x = &quot;Nr. of Bathrooms&quot;, y = &quot;Grade&quot;, 
+       title = &quot;How a home with a given number of bathrooms score?&quot;, 
+       subtitle = &quot;According to official methodology&quot;)</code></pre>
+<p><img src="/post/2018-07-21-king-county-prices_files/figure-html/unnamed-chunk-16-1.png" width="576" /></p>
+</div>
+<div id="outlier-detection-and-modeling" class="section level3">
+<h3>Outlier detection and Modeling</h3>
+<p>One could of course use a classical criteria like IQR on log price for outlier selection (which, except outliers is pretty normally distributed), but that seems rather ad-hoc. It would be much more interesting to consider the multivariate outliers across different dimensions, besides single dimensions.</p>
+<pre class="r"><code>set.seed(123)
+idx_train &lt;- sample(x = 1:nrow(data), 
+                    size = 0.85 * nrow(data), 
+                    replace = FALSE)
+idx_test  &lt;- setdiff(1:nrow(data), idx_train)
+
+data_train &lt;- data[idx_train, ] %&gt;% 
+  select(-c(id, date, lat, long)) %&gt;% 
+  mutate(zipcode = as.factor(zipcode))
+
+data_test  &lt;- data[idx_test, ] %&gt;% 
+  select(-c(id, date, lat, long)) %&gt;% 
+  mutate(zipcode = as.factor(zipcode))</code></pre>
+<pre class="r"><code>df_outlier_features &lt;- data_train %&gt;% select(price, sqft_living, bedrooms) %&gt;% 
+  mutate(price = log(price), sqft_living = log(sqft_living))
+# turns out as in Python, in R there is an amazing package for almost everything
+s  &lt;- O3prep(df_outlier_features, tols = c(0.01, 0.05), boxplotLimits = c(6, 12))
+s1 &lt;- O3plotT(s)
+s1$gO3</code></pre>
+<p><img src="/post/2018-07-21-king-county-prices_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<pre class="r"><code># find a way how to extract outliers, as this is not acceptable :)
+idx_outlier &lt;- c(3918, 10953, 12994, 14662, 14789, 14887, 15155, 
+  2563, 5749, 6109, 6186, 9641, 5544, 10200, 16125)
+
+data_train &lt;- data_train[-idx_outlier, ] %&gt;% 
+  filter(price &lt; 4e6) # remove outlies too extreme
+
+# notice that even at tail, these data points contain quite a bit of information
+# so I would not be too quick to remove them
+df &lt;- data_train %&gt;%
+  mutate(log_price = log(price))
+df %&gt;%  ggplot(aes(x = log_price)) + 
+  geom_histogram(aes(y = ..density..), bins = 70, 
+                 color = &quot;grey70&quot;, fill = &quot;grey80&quot;) + 
+  geom_point(data = NULL, y = 0, x = mean(df$log_price), 
+             color = &quot;darkred&quot;, pch = 17, size = 2) +
+  geom_vline(xintercept = mean(df$log_price), 
+             color = &quot;darkred&quot;, lty = 3) + 
+  geom_rug(color = &quot;grey70&quot;) +
+  stat_function(fun = dnorm, args = list(mean = mean(df$log_price), 
+                                         sd = sd(df$log_price))) + 
+  theme_tufte() + 
+  labs(x = &quot;Price ($)&quot;, y = &quot;Frequency&quot;, 
+       title = &quot;Distribution of House Prices in King County at Log-Scale&quot;, 
+       subtitle = &quot;With removed outliers&quot;)</code></pre>
+<p><img src="/post/2018-07-21-king-county-prices_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<blockquote>
+<p>To wrap up the discussion, we investigated the potential pitfalls of predicting house prices and the particularities of such data like skewed distribution, heteroskedasticity, strongly correlated predictors and outliers. Moreover, there is very interesting research which tries to exploit this spatial structure. Multilevel modeling is a very natural choice for this problem and the exploratory analysis gives us a justification why it can be a good idea.</p>
+</blockquote>
+</div>
+
+    </div>
+  </div>
+
+</article>
+
+<div class="container">
+  <nav>
+  <ul class="pager">
+    
+    <li class="previous"><a href="/post/2018-06-01-probabiliy/"><span
+      aria-hidden="true">&larr;</span> Understanding Caratheodori Extension Theorem</a></li>
+    
+
+    
+  </ul>
+</nav>
+
+</div>
+
+<div class="article-container">
+  
+<section id="comments">
+  <div id="disqus_thread">
+    <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "bizovi-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</section>
+
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2017 Bizovi Mihai &middot; 
+
+      Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
+      theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="sha512-iHzEu7GbSc705hE2skyH6/AlTpOfBmkx7nUqTLGzPYR+C1tRaItbRlJ7hT/D3YQ9SV0fqLKzp4XY9wKulTBGTw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="sha512-Z5heTz36xTemt1TbtbfXtTq5lMfYnOkXM2/eWcTTiLU01+Sw4ku1i7vScDc8fWhrP2abz9GQzgKH5NGBLoYlAw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="sha512-CDeU7pRtkPX6XJtF/gcFWlEwyaX7mcAp5sO3VIu/ylsdR74wEw4wmBpD5yYTrmMAiAboi9thyBUr1vXRPA7t0Q==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/r.min.js"></script>
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+

@@ -10,7 +10,7 @@ categories: ["r"]
 
 
 <p>While searching for solutions to fine-tune ggplot2 visualizations, I stumbled upon<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> a nice challenge: to reproduce <code>The Economist</code>’s plot showing the correlation between <em>Corruption Perception Index</em> and the <em>Human Development Index</em><a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>.</p>
-<p><img src="/post/2017-11-25-reproducing-the-economist-chart_files/figure-html/econ.png" /><!-- --></p>
+<p><img src="/post/2017-11-25-reproducing-the-economist-chart_files/figure-html/econ.png" width="768" /></p>
 <blockquote>
 <p>The conclusion from this exercise is that even a simple task like reproducing a chart involves various analysis and modeling decisions. The only way to reduce the amount of mistakes is to make the analysis reproducible.</p>
 </blockquote>
@@ -34,8 +34,9 @@ hdi &lt;- fread(&quot;data/Human development index (HDI).csv&quot;, skip = 1) %&
   # next line deletes the space before all countries, 
   # which would mess up the joining
   mutate(Country = substr(Country, 2, nchar(Country))) %&gt;% 
-  as_tibble()
-hdi %&gt;% head()</code></pre>
+  as_tibble()</code></pre>
+<pre><code>## Warning: package &#39;bindrcpp&#39; was built under R version 3.4.4</code></pre>
+<pre class="r"><code>hdi %&gt;% head()</code></pre>
 <pre><code>## # A tibble: 6 x 2
 ##   Country             HDI_2015
 ##   &lt;chr&gt;                  &lt;dbl&gt;

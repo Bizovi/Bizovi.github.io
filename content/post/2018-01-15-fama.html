@@ -25,7 +25,7 @@ categories: ["r"]
 <div id="analysing-portfolio-models-without-reading-fama-is-useless" class="section level2">
 <h2>Analysing portfolio models without reading Fama is useless</h2>
 <p>Before digging into the data, I would like to go through the Fama and French 2004 <a href="http://pubs.aeaweb.org/doi/pdfplus/10.1257/0895330042162430">paper</a>. As a lot of things in economics, this powerful and intuitive theoretical model does not hold against empirical evidence. Last <a href="https://bizovi.github.io/post/2017-12-30-investment-decisions-2/">time</a>, we built portfolios using ideas from Markowitz (in a toy form) at time <span class="math inline">\(t - 1\)</span> resulting in a stochastic return at time <span class="math inline">\(t\)</span>, where we as investors care about the mean and return (implicitly assuming risk aversion). If taken one step further, we’d have to solve one of the dual problems of maximizing expected returns given variance or minimizing variance given returns.</p>
-<p><img src="/post/2018-01-15-fama_files/figure-html/meanvar.png" /><!-- --></p>
+<p><img src="/post/2018-01-15-fama_files/figure-html/meanvar.png" width="672" /></p>
 <p>In order to “tell the CAPM story” we should add to the usual picture the risk-free rate, which could bring additional investment opportunities, the efficient fronteer becoming a straight line. Formally:</p>
 <p><span class="math display">\[
 R_p = wR_f + (1 - w)R_{rp}
@@ -76,8 +76,9 @@ Ra &lt;- risky.list %&gt;%
     mutate_fun = periodReturn,
     period     = &quot;daily&quot;, 
     col_rename = &quot;Ra&quot;
-  )
-Ra</code></pre>
+  )</code></pre>
+<pre><code>## Warning: package &#39;bindrcpp&#39; was built under R version 3.4.4</code></pre>
+<pre class="r"><code>Ra</code></pre>
 <pre><code>## # A tibble: 3,775 x 3
 ## # Groups:   symbol [5]
 ##    symbol date             Ra

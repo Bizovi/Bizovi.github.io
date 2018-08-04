@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>/post/2018-07-21-king-county-prices/</loc>
+      <lastmod>2018-07-21T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/post/2018-06-01-probabiliy/</loc>
       <lastmod>2018-06-01T00:00:00+00:00</lastmod>
     </url>
@@ -248,8 +257,18 @@
     
     <url>
     
+      <loc>/tags/eda/</loc>
+      <lastmod>2018-07-21T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/tags/ml/</loc>
-      <lastmod>2017-08-07T00:00:00+00:00</lastmod>
+      <lastmod>2018-07-21T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -318,7 +337,7 @@
     <url>
     
       <loc>/tags/r/</loc>
-      <lastmod>2018-06-01T00:00:00+00:00</lastmod>
+      <lastmod>2018-07-21T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -328,7 +347,7 @@
     <url>
     
       <loc>/categories/r/</loc>
-      <lastmod>2018-01-15T00:00:00+00:00</lastmod>
+      <lastmod>2018-07-21T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
