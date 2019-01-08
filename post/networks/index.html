@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.37.1" />
+  <meta name="author" content="Bizovi Mihai">
+  <meta name="description" content="Data Scientist @Adore Me">
+
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/highlight.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css" integrity="sha512-GGGNUPDhnG8LEAEDsjqYIQns+Gu8RBs4j5XGlxl7UfRaZBhCCm5jenJkeJL8uPuOXGqgl8/H1gjlWQDRjd3cUQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
+  <link rel="stylesheet" href="/css/hugo-academic.css">
+  
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-104200881-1', 'auto');
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+
+  <link rel="alternate" href="" type="application/rss+xml" title="Data Analysis &amp; Economic Cybernetics">
+  <link rel="feed" href="" type="application/rss+xml" title="Data Analysis &amp; Economic Cybernetics">
+
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+
+  <link rel="canonical" href="/post/networks/">
+
+  
+
+  <title>Statistical Analysis of Facebook Network of Friends | Data Analysis &amp; Economic Cybernetics</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Data Analysis &amp; Economic Cybernetics</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/post">
+            
+            <span>Blog</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="https://www.r-bloggers.com">
+            
+            <span>R-Bloggers</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Statistical Analysis of Facebook Network of Friends</h1>
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2019-01-09 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Wed, Jan 9, 2019
+    </time>
+  </span>
+
+  
+  
+  
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/categories/python">python</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/python">python</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2fpost%2fnetworks%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Statistical%20Analysis%20of%20Facebook%20Network%20of%20Friends&amp;url=%2fpost%2fnetworks%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fnetworks%2f&amp;title=Statistical%20Analysis%20of%20Facebook%20Network%20of%20Friends"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2fnetworks%2f&amp;title=Statistical%20Analysis%20of%20Facebook%20Network%20of%20Friends"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Statistical%20Analysis%20of%20Facebook%20Network%20of%20Friends&amp;body=%2fpost%2fnetworks%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<blockquote>
+<p>&ldquo;The Future of Economics Uses the Science of Real-Life Social Networks&rdquo; -  PAUL OMEROD <sup class="footnote-ref" id="fnref:omerod"><a href="#fn:omerod">1</a></sup></p>
+</blockquote>
+
+<p>The goal of this project is not to make a report or literature review or
+synthesis, rather to get some hands-on experience in working with Graphs
+and Network Data based on some classical and original (own) datasets and
+problems. It will involve both some theoretical understanding and
+programming. The outcome would be to get comfortable with this type of
+data and maybe build the ground for some future research.</p>
+
+<p>On a second note, the focus will be not on depth, but on the breadth of
+applications and the philosophy is that &ldquo;I don&rsquo;t understand something
+unless I code it up&rdquo;. Indeed, Graph Theory is a fascinating subject
+which I studied before, but as I found out, the understanding remains,
+but the skill perishes if left untrained or unused.</p>
+
+<p>The third point is that the ideas from Network science can be extremely
+useful in the field of Machine Learning, as it &ldquo;meshes&rdquo; well with the
+class of models called Probabilistic Graphical Models <sup class="footnote-ref" id="fnref:ghahramani"><a href="#fn:ghahramani">2</a></sup>,
+which represent random variables as nodes and the relationships between
+them as edges. The goal is given some data to infer the structure of the
+graph which can tell interesting insights about the phenomena at study.</p>
+
+<h1 id="introduction-by-example">Introduction by Example</h1>
+
+<p><img src="FB_Social_Network.png" alt="Facebook Social Network" />
+<em>My Facebook Network of friends extracted though <sup class="footnote-ref" id="fnref:lostcircles"><a href="#fn:lostcircles">3</a></sup>. The shadowed area over clusters represent different communities like the place I work at, chess, ASE and Moldavian diaspora. The red circles represent people connecting different communities or central figures for a given cluster.</em></p>
+
+<p>In search of a suitable dataset for statistical analysis of social
+networks, I stumbled upon many interesting applications, from the
+classical Karate Club to Email, Citations of Scientific Articles,
+Transportation and Biology. Unfortunately, there is a tradeoff between
+how manageable it is to work with the data in terms of volume and how
+interesting are the patterns to be discovered. The most promising way
+seemed to explore the scientific literature or knowledge graphs like
+DBPedia, but it&rsquo;s quite a difficult and heavy task.</p>
+
+<p>This is why I extracted my own network of Facebook friends, because I
+knew there are a few heterogeneous communities and the results could be
+interesting. It turned out even more surprising and insightful when
+applying the algorithms for the layout and node importance. <strong>The
+immediate contribution</strong> is that this anonimized dataset can be used for
+teaching and academic purposes, testing of algorithms on graphs.</p>
+
+<p>Moreover, it enables us to validate the results of algorithms with the
+actual knowledge of the communities and &ldquo;important&rdquo; people in it. First,
+I use the default visualization of the crawler and encode the knowledge
+I have about the network on the graph in the next page. Then, using
+<strong>python</strong> and <strong>networkx</strong> package try to visualize it, but this time
+by calculating importance metrics via <strong>PageRank</strong>, <strong>Hits</strong>, the
+central and peripheral nodes according to the definition.</p>
+
+<p>The observation is that the overlap between statistical insights and
+&ldquo;ground truth&rdquo; is quite large. Because the network is real and not
+idealized, some &ldquo;hubs&rdquo;, i.e. people connecting different clusters aren&rsquo;t
+identified. Instead, it finds important people within the clusters, and
+interpretation of this will be discussed later.</p>
+
+<p>The first graph is quite complicated, so let&rsquo;s review the
+<strong>communities</strong> which are clearly seen and shaded for clarity. The top
+cluster represents people from my highschool in Chisinau, Moldova. They
+are connected by a chess player to the quite large chess community of
+which I took part for many years. The chess cluster in turn is connected
+to my family, which joined later and are also interested in this game.</p>
+
+<p>Moreover, the network doesn&rsquo;t have timestamps, but hypothetically, if I
+had them, I could tell how the network developed to its final state. It
+is by no means an impediment of telling the story. We can move on to the
+times I moved to Bucharest for CSIE bachelor, and we see within the
+central, big cluster several sub-communities, the first one being the
+foreign students, with which other foreign students, of course interact
+a lot. The second part, people from university are pretty much the same
+during the Bachelor and Masters. The person connecting the highschool,
+diaspora and university is my roommate and chess with CSIE a grandmaster
+who is also a professor.</p>
+
+<p>Another source of connections are different conferences, summer schools
+and workshops, for example in Risk Management, Mathematics and Data
+Science. These nodes are not differentiated too well in the network, but
+the fact that the algorithm placed them in the same neighborhood is very
+insightful. Inside the Cybernetics Masters&rsquo;, the red point, also
+confirmed by PageRank is the most <strong>central</strong> person, the chief of
+students&rsquo; senate.</p>
+
+<p>Moving next, we see a sparsely connected region of PhD students and
+Teaching Assistants. They, and the Cybernetics cluster are connected to
+the firm I&rsquo;m working with by a professor who was a consultant at our
+firm. The last community is the Bucharest Machine Learning and Tech
+people, who use to be very active in meetups and conferences inside the
+capital.</p>
+
+<p>Now we are armed with the knowledge and interpretation of this graph and
+can start with a blank slate, using the raw data, which is stored in a
+<strong>json</strong> format <code>{’source’: 476, ’target’: 87}</code>, later transformed in an
+<strong>edge list</strong> and finally a <strong>networkx</strong> <code>Graph()</code> object. Now we can
+visualize this object in python, using different layout algorithms,
+calculate statistics and starting exploring the dataset as if we knew
+nothing about it. The node labels are numbers in order to anonimize the
+data, without much loss of insight.</p>
+
+<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot; language=&quot;python&quot; caption=&quot;Loading the data&quot;">import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+import json
+import networkx as nx
+from pprint import pprint
+%matplotlib inline
+
+with open('bizovi.json', 'rb') as f:
+    data = json.load(f)
+    
+df = pd.DataFrame([(x[&quot;source&quot;], x[&quot;target&quot;]) for x in data[&quot;links&quot;]], 
+    columns=[&quot;n1&quot;, &quot;n2&quot;])
+df.head()
+
+G = nx.from_pandas_edgelist(df, 'n1', 'n2')
+</code></pre>
+
+<p>Classical measures of centrality like degree, average clustering,
+betweenness centrality, despite their simplicity and power they all have
+the downside of how complex of patterns can they represent or suggest.
+This is where iterative, algorithmic approaches like Scaled PageRank and
+HITS come into play. The first one can be interpreted as the probability
+of ending up in a node when traversing the graph by a random walk a
+<strong>sufficiently long</strong> time. Hits uses another approach with the concepts
+of Authority and Hubs. It is important to note that they both were
+developed for directed graphs in the context of web pages and hyperlinks
+pointing to them and they show their full power there. Nonetheless, they
+can still be used for undirected graphs, as I did here.</p>
+
+<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot; language=&quot;python&quot; caption=&quot;Hits and PageRank&quot;">_ = plt.hist(nx.pagerank(G).values(), bins=30, color='.5')
+plt.xlabel(&quot;PageRank&quot;)
+plt.ylabel(&quot;Count&quot;)
+plt.title(&quot;Distribution of the PageRank Score&quot;)
+plt.show()
+
+pagerank = nx.pagerank(G, alpha=0.8)
+high_rank = [key for key, val in pagerank.items() if val &gt; 0.0042]
+
+hits = nx.hits(G, max_iter=1000)
+_ = plt.hist(hits[0].values(), bins=30, color='.5')
+plt.xlabel(&quot;Authority Score&quot;)
+plt.ylabel(&quot;Count&quot;)
+plt.title(&quot;Hits&quot;)
+plt.show()
+
+high_hits = [key for key, val in hits[0].items() if val &gt; 0.005]
+</code></pre>
+
+<p>First, I apply the algorithms and then look at the distribution of node
+&ldquo;importance&rdquo; in order to identify a good treshold for the visualization.
+The important nodes are then stored into <code>high_rank</code> and <code>high_hits</code>
+variables. The parameter <strong>alpha</strong> is essential for the PageRank not to
+get stuck into loops and distorting the distribution.</p>
+
+<p><img src="pagerank.png" alt="Scaled PageRank" />
+<img src="hits.png" alt="Hits" />
+<em>The distribution of node importance according to PageRank and Hits algorithms. HITS needed a much larger number of iterations to converge and is much more <code>strict</code> in what it considers to be important nodes, most of them being concentrated around zero. For this particular network, PageRank scores seem a bit more sensible overall, but HITS differentiates better between importance.</em></p>
+
+<p>As a further warm-up, let&rsquo;s calculate a few statistics on this graph,
+which interpretation we will discuss later. The two statistics which can
+vary greatly in conclusions by network type, in this case pretty much
+agree: the <strong>average clustering</strong> (0.49) and <strong>transitivity</strong> (0.45).
+The central and peripheral nodes will be displayed directly on the
+graph. The <strong>diameter</strong> of the network is 8, <strong>radius</strong> is 4 and the
+<strong>average shortest path</strong> between any node to other node is 3.26.</p>
+
+<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot; language=&quot;python&quot; caption=&quot;Statistics Calculation&quot;">periphery = nx.periphery(G)
+center = nx.center(G)
+min_node_cut = nx.minimum_node_cut(G)
+nx.average_clustering(G), nx.transitivity(G)
+print(nx.average_shortest_path_length(G))
+print(nx.diameter(G))
+</code></pre>
+
+<p>Now it is time to visualize the network and add the nodes which were
+calculated above according to criteria of importance. It is important to
+note that <strong>networkx</strong> is NOT primarily a visualization of network
+package: it uses the standard matplotlib, but it is good enough for
+small networks such as this one. In just 12 lines of code we get a
+publication-ready visualization. For more advanced use-cases
+<strong>graphviz</strong> and <strong>Gephi</strong>, <strong>igraph</strong> in R can be more suitable. In the
+next part, these repetitive operations will be wrapped up in a generic
+function which automates this a little bit painful process.</p>
+
+<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot; language=&quot;python&quot; caption=&quot;Network Visualization by Fruchterman Reigold Algorithm for Layout&quot;">np.random.seed(3245)
+legend_elements = [Line2D([0], [0], marker='o', color='wheat', 
+        markersize=10, label='Periphery'),
+    Line2D([0], [0], marker='o', color='steelblue', 
+        label='PageRank', markersize=10), 
+    Line2D([0], [0], marker='o', color='indianred', 
+        label='Centrality', markersize=10), 
+    Line2D([0], [0], marker='o', color='green', 
+        label='Min Node Cut', markersize=10)]
+
+plt.figure(figsize=(13, 11))
+plt.axis(&quot;off&quot;)
+plt.title(&quot;Network of Friends. Fruchterman Reigold Layout&quot;)
+pos = nx.fruchterman_reingold_layout(G)
+nx.draw_networkx(G, node_color=&quot;.3&quot;, pos=pos, node_size=60, 
+    with_labels=False, edge_color=&quot;.8&quot;)
+nx.draw_networkx_nodes(periphery, pos=pos, 
+    node_color='wheat', node_size=50)
+nx.draw_networkx_nodes(high_rank, pos=pos, 
+    node_color='steelblue', node_size=50)
+nx.draw_networkx_nodes(center, pos=pos, 
+    node_color='indianred', node_size=90)
+nx.draw_networkx_nodes(min_node_cut, pos=pos, 
+    node_color='green', node_size=90)
+
+plt.legend(legend_elements, [&quot;Periphery&quot;, 
+    &quot;PageRank&quot;, &quot;Centrality&quot;, &quot;Min Node Cut&quot;])
+plt.show()
+</code></pre>
+
+<p><img src="python_facebook.png" alt="Python Social Network" />
+<em>The final result of applying classical algorithms turned out extremely close to the <code>ground truth</code>, i.e. the interpretation I gave in the beginning</em></p>
+
+<p>The network is <strong>reversed</strong>, but even cleaner than the one generated by
+lostcircles. We can see on the graph on the next page that the periphery
+is not that large as expected. Three, or even four important people who
+connect clusters are correctly identified either by <strong>centrality</strong> or
+PageRank algorithm. Moreover, it identifies very well connected people
+inside the clusters.</p>
+
+<p>For the minimal node cut there are multiple choices, but it seems that
+the algorithm &ldquo;thinks&rdquo; that the family is the most poorly connected
+cluster to the other ones, which, looking at the picture is absolutely
+reasonable, as we have to remove only one node to achieve a
+disconnection, the green one.</p>
+
+<p>One a side note, good graph datasets for teaching are relatively rare,
+and with closure of Facebook API and LinkedIn API, researchers working
+with network data may stick with the old datasets. This one seems
+interesting enough for tutorials and projects.</p>
+
+<p>A few comments on what the code does: first it sets up the environment,
+defining the size of the picture and deleting the axis, then it
+calculates the position of each node by the Fruchterman Reigold
+Algorithm. The first layer of grey nodes is added, together with all of
+the connections. Then the peripheral nodes calculated above are
+displayed in beige with the function <code>nx.draw_networkx_nodes</code>, which
+also requires the position, the Centrality, Minimum Cut and PageRank are
+added in turn. The finishing touch is the legend.</p>
+
+<p>The last two obvious things to try are calculating the Local Clustering
+Coefficient and seeing the correlation between Node degree and LCC. We
+see that the first follows a pretty symmetric distribution, with
+exception of the stack at zero, which is expected in such a network. It
+means that there are nodes which are highly clustered and some not at
+all, but the majority at around 0.5.</p>
+
+<p>The correlation with the Node Degree shows that as node degree
+increases, the expected LCC drops. This relationship is usually
+visualized at a log scale, but our network is not enough for this to be
+necessary and for the pattern to emerge. There is also an interesting
+boundary on the top of the point cloud. Remember how we calculated the
+average clustering above (0.49) and it agreed in large with the
+alternative method of transitivity, which is based on the concept on
+&ldquo;triangle closure&rdquo;. It means that networks, in which pairs of 2 out of 3
+nodes are connected, tend to &ldquo;produce&rdquo; closures within those triplets.</p>
+
+<p><img src="lcc.png" alt="LCC" /></p>
+
+<p><img src="correlation.png" alt="Correlation" />
+<em>Two classical measures of clustering</em></p>
+
+<p>Below is the code which uses list comprehensions and nx functions on the
+graphs in order to compute and plot the distributions of the degree and
+LCC.</p>
+
+<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot; language=&quot;python&quot; caption=&quot;Node Degree and Local Clustering Coefficient&quot;">_ = plt.hist(list(nx.clustering(G).values()), bins=30, color='.5')
+plt.xlabel(&quot;Local clustering coefficient&quot;)
+plt.ylabel(&quot;Count&quot;)
+plt.title(&quot;Distribution of the Local clustering coefficient&quot;)
+plt.show()
+
+plt.scatter([x[1] for x in list(nx.degree(G))], 
+    list(nx.clustering(G).values()))
+plt.xlabel(&quot;Node Degree&quot;)
+plt.ylabel(&quot;Local Clustering Coefficient&quot;)
+plt.title(&quot;Distribution of the Node Degree&quot;)
+plt.show()
+
+# Bonus: Node degree distribution
+_ = plt.hist([x[1] for x in list(nx.degree(G))], bins=30, color='.5')
+plt.xlabel(&quot;Node Degree&quot;)
+plt.ylabel(&quot;Count&quot;)
+plt.title(&quot;Distribution of the Node Degree&quot;)
+plt.show()
+</code></pre>
+
+<h1 id="exploratory-data-analysis-of-classical-network-datasets">Exploratory Data Analysis of Classical Network Datasets</h1>
+
+<p>There are numerous articles and courses which discuss the theory behind
+the measures and algorithms I used in the previous section, so the
+reader is encouraged to look them up in the bibliography. In order to
+keep the spirit of this project as a tutorial and storytelling, let&rsquo;s
+move on to other applications, mainly from the business and research
+fields.</p>
+
+<p>Here we will have the chance to develop in more depth the programming
+skills on smaller dataset, which is a better strategy for learning.
+However, I wanted to show the &ldquo;big&rdquo; example first, for the most exciting
+stuff, to see what is possible to do and only then learn the skill.</p>
+
+<h2 id="bipartite-graphs-and-recommender-systems">Bipartite Graphs and Recommender Systems</h2>
+
+<p>There is an important subclass of graphs, called bipartite graphs which
+are extremely useful in Recommender Systems. It consists of two sets of
+nodes $\mathbf{V}=(L, R)$ with no edges between the nodes within each
+set, but with ${ E(u, v) : u \in L , v\in R }$. If we view the sets as
+users and products/items or fans and teams the edges can represent
+preferences or affiliations. From this point the Machine Learning and
+Recommender System goes into a direction orthogonal to ours. What we
+will do in the following simple example is to find <strong>projections</strong> of
+users and items which would indicate us the similarity between them.</p>
+
+<p><img src="movies.png" alt="Movie Graph" />
+<em>A bipartite graph of movies and users</em></p>
+
+<p>The following toy example is given as an exercise to the Coursera course
+on Applied Social Network Analysis in Python. <sup class="footnote-ref" id="fnref:coursera-social"><a href="#fn:coursera-social">4</a></sup> It
+represents different users and the movies they prefer. For the ones
+willing to go through it an important warning is that it was build with
+the networkx 1.x API, which is largely incompatible with 2.x (current
+version), which means that almost all of the code and serialized data is
+broken. I have rewritten everything with respect to the latest version,
+which will be the one officially maintained.</p>
+
+<p>Taking the projection of a bipartite graph means having an edge between
+&ldquo;users&rdquo; or &ldquo;movies&rdquo; when the two nodes have the connection with the same
+counterpart. The weights on the edges will be given by the number of
+overlaps (i.e. common movies both &ldquo;Lee&rdquo; and &ldquo;Joan&rdquo; liked). I display
+below both views, in the user space and item space. As the underlying
+file has an unfortunate format for loading, I declare this small network
+directly in Python.</p>
+
+<p><img src="people_projection.png" alt="People Projection" />
+<img src="movie_projection.png" alt="Movie Projection" />
+<em>The projection of the bipartite graph between users and movies.</em></p>
+
+<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot; language=&quot;python&quot; caption=&quot;Bipartite Graph Data&quot;">import networkx as nx
+import pandas as pd
+import numpy as np
+from networkx.algorithms import bipartite
+import matplotlib.pyplot as plt
+
+employees = set(['Pablo', 'Lee', 'Georgia', 'Vincent',
+    'Andy', 'Frida', 'Joan', 'Claude'])
+
+movies_list = set(['The Shawshank Redemption', 'Forrest Gump',
+    'The Matrix', 'Anaconda', 'The Social Network',
+    'The Godfather', 'Monty Python and the Holy Grail',
+    'Snakes on a Plane', 'Kung Fu Panda', 'The Dark Knight',
+    'Mean Girls'])
+</code></pre>
+
+<p>We discussed earlier the need to write a function which will automate
+the beautiful drawing of small graphs, as the defaults given by networkx
+are dreadful. A random seed is also used to ensure reproducibility of
+the graph. The last feature is having an option to draw bipartite graphs
+automatically, as networkx will choose another layout, not so suitable
+for drawing bipartite graphs. The projection is given by a submodule
+<strong>networkx.algorithms.bipartite</strong>.</p>
+
+<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot; language=&quot;python&quot; caption=&quot;Function for Graph Visualization&quot;">def clean_drawing(graph, title=&quot;&quot;, bipart=False, node_color=&quot;wheat&quot;, 
+    edge_color=&quot;grey&quot;, font_size=10, node_size=330, 
+    seed=1245, figsize=(7,5)):
+    np.random.seed(seed)
+    
+    _ = plt.figure(figsize=figsize) 
+    _ = plt.plot()
+    pos = nx.spring_layout(graph)
+    
+    for spine in plt.gca().spines.values():
+        spine.set_visible(False)
+    
+    _ = plt.tick_params(top='off', bottom='off', left='off', 
+        right='off', labelleft='off', labelbottom='off')
+    
+    if bipart==False:
+        _ = nx.draw_networkx(graph, node_size=node_size, pos=pos,
+        node_color=node_color, edge_color=edge_color, 
+        font_size=font_size)
+    else:
+        X, Y = bipartite.sets(graph)
+        pos = dict()
+        pos.update( (n, (0.8, i)) for i, n in enumerate(X))
+        pos.update( (n, (1.5, i)) for i, n in enumerate(Y))
+        _ = nx.draw_networkx(graph, node_size=330, pos=pos,
+        node_color=node_color, edge_color=edge_color, 
+        font_size=font_size)
+        _ = plt.xlim((0.5, 2))
+        _ = plt.title(title)
+        plt.show()
+</code></pre>
+
+<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot; language=&quot;python&quot; caption=&quot;Edges Data&quot;">def clean_drawing(graph, title=&quot;&quot;, bipart=False, node_color=&quot;wheat&quot;, 
+movies = [(&quot;Andy&quot;, &quot;Anaconda&quot;)
+    , (&quot;Andy&quot;, &quot;Mean Girls&quot;)
+    , (&quot;Andy&quot;, &quot;The Matrix&quot;)
+    , (&quot;Claude&quot;, &quot;Anaconda&quot;)
+    , (&quot;Claude&quot;, &quot;Monty Python and the Holy Grail&quot;)
+    , (&quot;Claude&quot;, &quot;Snakes on a Plane&quot;)
+    , (&quot;Frida&quot;, &quot;The Matrix&quot;)
+    , (&quot;Frida&quot;, &quot;The Shawshank Redemption&quot;)
+    , (&quot;Frida&quot;, &quot;The Social Network&quot;)
+    , (&quot;Georgia&quot;, &quot;Anaconda&quot;)
+    , (&quot;Georgia&quot;, &quot;Monty Python and the Holy Grail&quot;)
+    , (&quot;Georgia&quot;, &quot;Snakes on a Plane&quot;)
+    , (&quot;Joan&quot;, &quot;Forrest Gump&quot;)
+    , (&quot;Joan&quot;, &quot;Kung Fu Panda&quot;)
+    , (&quot;Joan&quot;, &quot;Mean Girls&quot;)
+    , (&quot;Lee&quot;, &quot;Forrest Gump&quot;)
+    , (&quot;Lee&quot;, &quot;Kung Fu Panda&quot;)
+    , (&quot;Lee&quot;, &quot;Mean Girls&quot;)
+    , (&quot;Pablo&quot;, &quot;The Dark Knight&quot;)
+    , (&quot;Pablo&quot;, &quot;The Matrix&quot;)
+    , (&quot;Pablo&quot;, &quot;The Shawshank Redemption&quot;)
+    , (&quot;Vincent&quot;, &quot;The Godfather&quot;)
+    , (&quot;Vincent&quot;, &quot;The Shawshank Redemption&quot;)
+    , (&quot;Vincent&quot;, &quot;The Social Network&quot;)]
+</code></pre>
+
+<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot; language=&quot;python&quot; caption=&quot;Visualization of the Bipartite Graph and Projections&quot;">G = nx.Graph(movies)
+clean_drawing(G, seed=155, bipart=True, 
+    title = &quot;Movie Preferences of Employees: Bipartite View&quot;, 
+    edge_color=&quot;lightgrey&quot;, figsize=(8, 6))
+clean_drawing(G, seed=1215, title = &quot;Movie Preferences of Employees&quot;, 
+    edge_color=&quot;lightgrey&quot;, figsize=(8, 6))
+    
+P = bipartite.projected_graph(G, bipartite.sets(G)[0])
+clean_drawing(P, node_size=800, font_size=12, 
+    seed=124, node_color=&quot;lightblue&quot;, 
+    title = &quot;The projection graph of Employees&quot;)
+
+Q = bipartite.projected_graph(G, bipartite.sets(G)[1])
+clean_drawing(Q, node_size=800, font_size=12, seed=539, figsize=(8, 6), 
+    title = &quot;The Projection Graph of Movies&quot;) 
+</code></pre>
+
+<h2 id="research-citations-and-ontologies">Research, Citations and Ontologies</h2>
+
+<p>The techniques and algorithms applied on these toy examples can be and
+have been successfully used in discovering patterns of citation networks
+for research pages, knowledge graphs, blogs and web pages. It turns out
+to be an extremely important tool for discovery and even recommendation,
+as a researcher or reader has limited time and capacity, it is
+reasonable to suggest the most relevant or important research on her
+topic.</p>
+
+<p>Also, papers which do meta-analyses, combined with Natural Language
+Processing techniques are extremely interesting, as they attempt to draw
+the landscape of research, opinions and topics. It can also be applied
+to News in real time, which was successfully accomplished by Marko
+Grobelnik and his group in Slovenia.</p>
+
+<h2 id="conclusions">Conclusions</h2>
+
+<p>As a data scientist/ machine learning researcher it was useful to step outside the (statistical) approaches on cross-sectional and panel data with which we usually work and explore applications driven by the network data.</p>
+
+<p>We looked at a fun and practical example of analysing a network of friends by applying some classical algorithms on it, managing to characterize quite a large part of its features and structure. A future area of improvement and research would be to see how such networks evolve in time, by enriching the data with timestamps of <code>friendship requests acceptance</code>. In this process, I learned a lot about practical statistical analysis of graph data and hope to pass this hands-on experience to the readers.</p>
+
+<h2 id="references">References</h2>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:omerod">Paul Omerod <em><a href="http://evonomics.com/the-future-of-economics-uses-the-sciiece-of-real-life-social-networks/" target="_blank">The Future of Economics Uses the Science of Real-Life Social Networks</a></em> (Evonomics, 2016)
+ <a class="footnote-return" href="#fnref:omerod"><sup>^</sup></a></li>
+<li id="fn:ghahramani">Zoubin Ghahramani <em><a href="http://mlg.eng.cam.ac.uk/" target="_blank">Probabilistic Models of Networks and other Relational Data</a></em> (NIPS Workshop on Social Networks, 2012)
+ <a class="footnote-return" href="#fnref:ghahramani"><sup>^</sup></a></li>
+<li id="fn:lostcircles">Lostcircles.com <em><a href="https://lostcircles.com" target="_blank">A scraper for Facebook friend network</a></em> (Lostcircles, 2017)
+ <a class="footnote-return" href="#fnref:lostcircles"><sup>^</sup></a></li>
+<li id="fn:coursera-social">Daniel Romero <em><a href="https://www.coursera.org/learn/python-social-network-analysis" target="_blank">Applied Data Science with Python</a></em> (Coursera, 2018)
+ <a class="footnote-return" href="#fnref:coursera-social"><sup>^</sup></a></li>
+</ol>
+</div>
+
+    </div>
+  </div>
+
+</article>
+
+<div class="container">
+  <nav>
+  <ul class="pager">
+    
+    <li class="previous"><a href="/post/2018-07-21-king-county-prices/"><span
+      aria-hidden="true">&larr;</span> King County Homes Challenge. Exploratory Data Analysis</a></li>
+    
+
+    
+  </ul>
+</nav>
+
+</div>
+
+<div class="article-container">
+  
+<section id="comments">
+  <div id="disqus_thread">
+    <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "bizovi-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</section>
+
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2017 Bizovi Mihai &middot; 
+
+      Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
+      theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="sha512-iHzEu7GbSc705hE2skyH6/AlTpOfBmkx7nUqTLGzPYR+C1tRaItbRlJ7hT/D3YQ9SV0fqLKzp4XY9wKulTBGTw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="sha512-Z5heTz36xTemt1TbtbfXtTq5lMfYnOkXM2/eWcTTiLU01+Sw4ku1i7vScDc8fWhrP2abz9GQzgKH5NGBLoYlAw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="sha512-CDeU7pRtkPX6XJtF/gcFWlEwyaX7mcAp5sO3VIu/ylsdR74wEw4wmBpD5yYTrmMAiAboi9thyBUr1vXRPA7t0Q==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/r.min.js"></script>
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+
