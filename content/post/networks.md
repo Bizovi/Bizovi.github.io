@@ -433,7 +433,6 @@ def clean_drawing(graph, title="", bipart=False, node_color="wheat",
 ```
 
 ``` {basicstyle="\ttfamily\small" language="python" caption="Edges Data"}
-def clean_drawing(graph, title="", bipart=False, node_color="wheat", 
 movies = [("Andy", "Anaconda")
     , ("Andy", "Mean Girls")
     , ("Andy", "The Matrix")
