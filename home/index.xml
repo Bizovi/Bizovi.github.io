@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Bizovi Mihai</copyright>
-    <lastBuildDate>Tue, 01 Aug 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/home/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,11 +15,10 @@
     <item>
       <title></title>
       <link>/home/about/</link>
-      <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 20 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>/home/about/</guid>
-      <description>An Interdisciplinary Blog on General regularities of CONTROL and DATA processing in animals, machines and society 1. Hi everybody! This blog is about things I&amp;rsquo;m passionate about. I can hardly imagine myself in a place of narrow specialization and the exploration of connections between fields brings me a lot of joy.2 I love writing about economics, solving business problems with statistical models and programming in R.
-My hobby is thinking about how can we improve economic models, and perhaps the answer is to step outside the field, gather new tools and inspiration from Complexity Science.</description>
+      <description>An Interdisciplinary Blog on General regularities of CONTROL and DATA processing in animals, machines and society 1. Hi everybody! This blog is about things I&amp;rsquo;m passionate about. I can hardly imagine myself in a place of narrow specialization and the exploration of connections between fields brings me a lot of joy.2 I love writing about economics, machine learning, applied mathematics, solving business problems with statistical models and operationalizing them.</description>
     </item>
     
     <item>

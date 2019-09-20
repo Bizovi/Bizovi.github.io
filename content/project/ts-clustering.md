@@ -3,7 +3,7 @@
 date = "2017-08-06"
 
 # Project title.
-title = "Time Series Clustering (wip)"
+title = "Time Series Clustering"
 
 # Project summary to display on homepage.
 summary = "`Bizovi Mihai and Jumanazar Gurbanov` on Dynamic Time Wraping. Exploration of R Implementations"

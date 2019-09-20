@@ -4,8 +4,8 @@
     
     <url>
     
-      <loc>/categories/</loc>
-      <lastmod>2019-01-09T00:00:00+00:00</lastmod>
+      <loc>/</loc>
+      <lastmod>2019-09-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -14,7 +14,66 @@
     
     <url>
     
-      <loc>/</loc>
+      <loc>/project/dissertation/</loc>
+      <lastmod>2019-09-20T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/project/</loc>
+      <lastmod>2019-09-20T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/</loc>
+      <lastmod>2019-09-20T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/bayes/</loc>
+      <lastmod>2019-09-20T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/hierarchical/</loc>
+      <lastmod>2019-09-20T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/hmm/</loc>
+      <lastmod>2019-09-20T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/categories/</loc>
       <lastmod>2019-01-09T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -26,16 +85,6 @@
     
       <loc>/post/networks/</loc>
       <lastmod>2019-01-09T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/</loc>
-      <lastmod>2019-01-09T00:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -292,16 +341,6 @@
     
     <url>
     
-      <loc>/tags/bayes/</loc>
-      <lastmod>2017-08-07T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>/categories/stochastic/</loc>
       <lastmod>2017-08-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -314,16 +353,6 @@
     
       <loc>/project/probabilistic-dynamic-modeling/</loc>
       <lastmod>2017-08-06T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/project/</loc>
-      <lastmod>2017-08-06T00:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   

@@ -202,10 +202,10 @@ defaultContentLanguageInSubdir = false
   url = "#projects"
   weight = 2
   
-[[menu.main]]
-  name = "R-Bloggers"
-  url  = "https://www.r-bloggers.com"
-  weight = 4
+# [[menu.main]]
+#  name = "R-Bloggers"
+#  url  = "https://www.r-bloggers.com"
+#  weight = 4
 
 
 #[[menu.main]]

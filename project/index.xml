@@ -7,13 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Bizovi Mihai</copyright>
-    <lastBuildDate>Sun, 06 Aug 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Probabilistic Dynamic Modeling (wip)</title>
+      <title>Dissertation: Bayesian Inference and Forecasting with applications in microeconometrics and business</title>
+      <link>/project/dissertation/</link>
+      <pubDate>Fri, 20 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/dissertation/</guid>
+      <description>A &lt;code&gt;Bayesian Hierarchical Model&lt;/code&gt; for TV Attribution, &lt;code&gt;Hidden Markov Model&lt;/code&gt; for panel customer data, Forecasting demand for new products and &lt;code&gt;short time series&lt;/code&gt;</description>
+    </item>
+    
+    <item>
+      <title>Probabilistic Dynamic Modeling</title>
       <link>/project/probabilistic-dynamic-modeling/</link>
       <pubDate>Sun, 06 Aug 2017 00:00:00 +0000</pubDate>
       
@@ -22,7 +31,7 @@
     </item>
     
     <item>
-      <title>Time Series Clustering (wip)</title>
+      <title>Time Series Clustering</title>
       <link>/project/ts-clustering/</link>
       <pubDate>Sun, 06 Aug 2017 00:00:00 +0000</pubDate>
       

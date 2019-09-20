@@ -3,7 +3,7 @@
 date = "2017-08-06"
 
 # Project title.
-title = "Probabilistic Dynamic Modeling (wip)"
+title = "Probabilistic Dynamic Modeling"
 
 # Project summary to display on homepage.
 summary = "Dynamics Linear and Nonlinear Models. Stochastic Filtering `Institute of Mathematics' of Romanian Academy Research Group`"
