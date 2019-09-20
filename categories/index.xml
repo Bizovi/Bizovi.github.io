@@ -7,12 +7,40 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Bizovi Mihai</copyright>
+    <lastBuildDate>Wed, 09 Jan 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Ml</title>
+      <title>python</title>
+      <link>/categories/python/</link>
+      <pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>r</title>
+      <link>/categories/r/</link>
+      <pubDate>Sat, 21 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>probability</title>
+      <link>/categories/probability/</link>
+      <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/probability/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ml</title>
       <link>/categories/ml/</link>
       <pubDate>Thu, 07 Dec 2017 00:00:00 +0000</pubDate>
       
@@ -21,7 +49,7 @@
     </item>
     
     <item>
-      <title>Stochastic</title>
+      <title>stochastic</title>
       <link>/categories/stochastic/</link>
       <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
       

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme" content="hugo-academic">
-  <meta name="generator" content="Hugo 0.37.1" />
+  <meta name="generator" content="Hugo 0.55.6" />
   <meta name="author" content="Bizovi Mihai">
   <meta name="description" content="Data Scientist @Adore Me">
 
@@ -320,7 +320,7 @@ calculate statistics and starting exploring the dataset as if we knew
 nothing about it. The node labels are numbers in order to anonimize the
 data, without much loss of insight.</p>
 
-<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot; language=&quot;python&quot; caption=&quot;Loading the data&quot;">import numpy as np
+<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot;">import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import json
@@ -350,7 +350,7 @@ developed for directed graphs in the context of web pages and hyperlinks
 pointing to them and they show their full power there. Nonetheless, they
 can still be used for undirected graphs, as I did here.</p>
 
-<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot; language=&quot;python&quot; caption=&quot;Hits and PageRank&quot;">_ = plt.hist(nx.pagerank(G).values(), bins=30, color='.5')
+<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot;">_ = plt.hist(nx.pagerank(G).values(), bins=30, color='.5')
 plt.xlabel(&quot;PageRank&quot;)
 plt.ylabel(&quot;Count&quot;)
 plt.title(&quot;Distribution of the PageRank Score&quot;)
@@ -387,7 +387,7 @@ The central and peripheral nodes will be displayed directly on the
 graph. The <strong>diameter</strong> of the network is 8, <strong>radius</strong> is 4 and the
 <strong>average shortest path</strong> between any node to other node is 3.26.</p>
 
-<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot; language=&quot;python&quot; caption=&quot;Statistics Calculation&quot;">periphery = nx.periphery(G)
+<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot;">periphery = nx.periphery(G)
 center = nx.center(G)
 min_node_cut = nx.minimum_node_cut(G)
 nx.average_clustering(G), nx.transitivity(G)
@@ -405,7 +405,7 @@ publication-ready visualization. For more advanced use-cases
 next part, these repetitive operations will be wrapped up in a generic
 function which automates this a little bit painful process.</p>
 
-<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot; language=&quot;python&quot; caption=&quot;Network Visualization by Fruchterman Reigold Algorithm for Layout&quot;">np.random.seed(3245)
+<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot;">np.random.seed(3245)
 legend_elements = [Line2D([0], [0], marker='o', color='wheat', 
         markersize=10, label='Periphery'),
     Line2D([0], [0], marker='o', color='steelblue', 
@@ -491,7 +491,7 @@ nodes are connected, tend to &ldquo;produce&rdquo; closures within those triplet
 graphs in order to compute and plot the distributions of the degree and
 LCC.</p>
 
-<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot; language=&quot;python&quot; caption=&quot;Node Degree and Local Clustering Coefficient&quot;">_ = plt.hist(list(nx.clustering(G).values()), bins=30, color='.5')
+<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot;">_ = plt.hist(list(nx.clustering(G).values()), bins=30, color='.5')
 plt.xlabel(&quot;Local clustering coefficient&quot;)
 plt.ylabel(&quot;Count&quot;)
 plt.title(&quot;Distribution of the Local clustering coefficient&quot;)
@@ -562,7 +562,7 @@ directly in Python.</p>
 <img src="movie_projection.png" alt="Movie Projection" />
 <em>The projection of the bipartite graph between users and movies.</em></p>
 
-<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot; language=&quot;python&quot; caption=&quot;Bipartite Graph Data&quot;">import networkx as nx
+<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot;">import networkx as nx
 import pandas as pd
 import numpy as np
 from networkx.algorithms import bipartite
@@ -586,7 +586,7 @@ automatically, as networkx will choose another layout, not so suitable
 for drawing bipartite graphs. The projection is given by a submodule
 <strong>networkx.algorithms.bipartite</strong>.</p>
 
-<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot; language=&quot;python&quot; caption=&quot;Function for Graph Visualization&quot;">def clean_drawing(graph, title=&quot;&quot;, bipart=False, node_color=&quot;wheat&quot;, 
+<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot;">def clean_drawing(graph, title=&quot;&quot;, bipart=False, node_color=&quot;wheat&quot;, 
     edge_color=&quot;grey&quot;, font_size=10, node_size=330, 
     seed=1245, figsize=(7,5)):
     np.random.seed(seed)
@@ -618,8 +618,7 @@ for drawing bipartite graphs. The projection is given by a submodule
         plt.show()
 </code></pre>
 
-<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot; language=&quot;python&quot; caption=&quot;Edges Data&quot;">def clean_drawing(graph, title=&quot;&quot;, bipart=False, node_color=&quot;wheat&quot;, 
-movies = [(&quot;Andy&quot;, &quot;Anaconda&quot;)
+<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot;">movies = [(&quot;Andy&quot;, &quot;Anaconda&quot;)
     , (&quot;Andy&quot;, &quot;Mean Girls&quot;)
     , (&quot;Andy&quot;, &quot;The Matrix&quot;)
     , (&quot;Claude&quot;, &quot;Anaconda&quot;)
@@ -645,7 +644,7 @@ movies = [(&quot;Andy&quot;, &quot;Anaconda&quot;)
     , (&quot;Vincent&quot;, &quot;The Social Network&quot;)]
 </code></pre>
 
-<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot; language=&quot;python&quot; caption=&quot;Visualization of the Bipartite Graph and Projections&quot;">G = nx.Graph(movies)
+<pre><code class="language-basicstyle=&quot;\ttfamily\small&quot;">G = nx.Graph(movies)
 clean_drawing(G, seed=155, bipart=True, 
     title = &quot;Movie Preferences of Employees: Bipartite View&quot;, 
     edge_color=&quot;lightgrey&quot;, figsize=(8, 6))
@@ -725,7 +724,7 @@ Grobelnik and his group in Slovenia.</p>
 <section id="comments">
   <div id="disqus_thread">
     <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     

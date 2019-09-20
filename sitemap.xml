@@ -1,5 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+    
+    
+    <url>
+    
+      <loc>/categories/</loc>
+      <lastmod>2019-01-09T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/</loc>
+      <lastmod>2019-01-09T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
   
     
     
@@ -7,6 +26,36 @@
     
       <loc>/post/networks/</loc>
       <lastmod>2019-01-09T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/</loc>
+      <lastmod>2019-01-09T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/categories/python/</loc>
+      <lastmod>2019-01-09T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/python/</loc>
+      <lastmod>2019-01-09T00:00:00+00:00</lastmod>
+      <priority>0</priority>
     </url>
     
   
@@ -23,8 +72,68 @@
     
     <url>
     
+      <loc>/tags/r/</loc>
+      <lastmod>2018-07-21T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/eda/</loc>
+      <lastmod>2018-07-21T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/ml/</loc>
+      <lastmod>2018-07-21T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/categories/r/</loc>
+      <lastmod>2018-07-21T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/post/2018-06-01-probabiliy/</loc>
       <lastmod>2018-06-01T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/categories/probability/</loc>
+      <lastmod>2018-06-01T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/probability/</loc>
+      <lastmod>2018-06-01T00:00:00+00:00</lastmod>
+      <priority>0</priority>
     </url>
     
   
@@ -41,8 +150,28 @@
     
     <url>
     
+      <loc>/tags/behavioral-economics/</loc>
+      <lastmod>2018-01-15T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/talk/cybernetics/</loc>
       <lastmod>2018-01-12T10:20:05+02:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/talk/</loc>
+      <lastmod>2018-01-12T10:20:05+02:00</lastmod>
+      <priority>0</priority>
     </url>
     
   
@@ -77,8 +206,48 @@
     
     <url>
     
+      <loc>/tags/chess/</loc>
+      <lastmod>2017-12-07T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/deep-learning/</loc>
+      <lastmod>2017-12-07T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/categories/ml/</loc>
+      <lastmod>2017-12-07T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/post/2017-11-25-reproducing-the-economist-chart/</loc>
       <lastmod>2017-11-25T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/data-visualization/</loc>
+      <lastmod>2017-11-25T00:00:00+00:00</lastmod>
+      <priority>0</priority>
     </url>
     
   
@@ -104,8 +273,38 @@
     
     <url>
     
+      <loc>/tags/programming/</loc>
+      <lastmod>2017-11-01T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/post/stochastic/</loc>
       <lastmod>2017-08-07T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/bayes/</loc>
+      <lastmod>2017-08-07T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/categories/stochastic/</loc>
+      <lastmod>2017-08-07T00:00:00+00:00</lastmod>
+      <priority>0</priority>
     </url>
     
   
@@ -122,8 +321,38 @@
     
     <url>
     
+      <loc>/project/</loc>
+      <lastmod>2017-08-06T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/project/ts-clustering/</loc>
       <lastmod>2017-08-06T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/dlm/</loc>
+      <lastmod>2017-08-06T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/ts-clustering/</loc>
+      <lastmod>2017-08-06T00:00:00+00:00</lastmod>
+      <priority>0</priority>
     </url>
     
   
@@ -140,8 +369,9 @@
     
     <url>
     
-      <loc>/post/sn_rmd/</loc>
-      <lastmod>2017-02-14T00:00:00+00:00</lastmod>
+      <loc>/tags/bayes-ml/</loc>
+      <lastmod>2017-07-10T00:00:00+00:00</lastmod>
+      <priority>0</priority>
     </url>
     
   
@@ -176,63 +406,6 @@
     
     <url>
     
-      <loc>/post/sn_rmd/</loc>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/bayes/</loc>
-      <lastmod>2017-08-07T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/bayes-ml/</loc>
-      <lastmod>2017-07-10T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/behavioral-economics/</loc>
-      <lastmod>2018-01-15T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/categories/</loc>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/chess/</loc>
-      <lastmod>2017-12-07T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>/tags/complexity_economics/</loc>
       <lastmod>2016-05-03T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -243,197 +416,7 @@
     
     <url>
     
-      <loc>/</loc>
-      <lastmod>2017-08-01T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/data-visualization/</loc>
-      <lastmod>2017-11-25T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/deep-learning/</loc>
-      <lastmod>2017-12-07T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/dlm/</loc>
-      <lastmod>2017-08-06T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/eda/</loc>
-      <lastmod>2018-07-21T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/ml/</loc>
-      <lastmod>2018-07-21T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/categories/ml/</loc>
-      <lastmod>2017-12-07T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/probability/</loc>
-      <lastmod>2018-06-01T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/categories/probability/</loc>
-      <lastmod>2018-06-01T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/programming/</loc>
-      <lastmod>2017-11-01T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/project/</loc>
-      <lastmod>2017-08-06T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>/publication_types/</loc>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/python/</loc>
-      <lastmod>2019-01-09T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/categories/python/</loc>
-      <lastmod>2019-01-09T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/r/</loc>
-      <lastmod>2018-07-21T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/categories/r/</loc>
-      <lastmod>2018-07-21T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/categories/stochastic/</loc>
-      <lastmod>2017-08-07T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/</loc>
-      <lastmod>2017-01-01T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/talk/</loc>
-      <lastmod>2018-01-12T10:20:05+02:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/ts-clustering/</loc>
-      <lastmod>2017-08-06T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

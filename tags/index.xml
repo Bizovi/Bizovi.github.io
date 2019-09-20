@@ -7,10 +7,136 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Bizovi Mihai</copyright>
-    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 09 Jan 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>python</title>
+      <link>/tags/python/</link>
+      <pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>/tags/r/</link>
+      <pubDate>Sat, 21 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>eda</title>
+      <link>/tags/eda/</link>
+      <pubDate>Sat, 21 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/eda/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ml</title>
+      <link>/tags/ml/</link>
+      <pubDate>Sat, 21 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/ml/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>probability</title>
+      <link>/tags/probability/</link>
+      <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/probability/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>behavioral-economics</title>
+      <link>/tags/behavioral-economics/</link>
+      <pubDate>Mon, 15 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/behavioral-economics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>chess</title>
+      <link>/tags/chess/</link>
+      <pubDate>Thu, 07 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/chess/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>deep-learning</title>
+      <link>/tags/deep-learning/</link>
+      <pubDate>Thu, 07 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>data-visualization</title>
+      <link>/tags/data-visualization/</link>
+      <pubDate>Sat, 25 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/data-visualization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>programming</title>
+      <link>/tags/programming/</link>
+      <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bayes</title>
+      <link>/tags/bayes/</link>
+      <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/bayes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dlm</title>
+      <link>/tags/dlm/</link>
+      <pubDate>Sun, 06 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/dlm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ts-clustering</title>
+      <link>/tags/ts-clustering/</link>
+      <pubDate>Sun, 06 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/ts-clustering/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bayes-ml</title>
+      <link>/tags/bayes-ml/</link>
+      <pubDate>Mon, 10 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/bayes-ml/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Content tagged as &#39;Academic&#39;</title>
@@ -22,119 +148,11 @@
     </item>
     
     <item>
-      <title>Bayes</title>
-      <link>/tags/bayes/</link>
-      <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/bayes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Bayes Ml</title>
-      <link>/tags/bayes-ml/</link>
-      <pubDate>Mon, 10 Jul 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/bayes-ml/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Behavioral Economics</title>
-      <link>/tags/behavioral-economics/</link>
-      <pubDate>Mon, 15 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/behavioral-economics/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Chess</title>
-      <link>/tags/chess/</link>
-      <pubDate>Thu, 07 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/chess/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Complexity_economics</title>
+      <title>complexity_economics</title>
       <link>/tags/complexity_economics/</link>
       <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
       
       <guid>/tags/complexity_economics/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Data Visualization</title>
-      <link>/tags/data-visualization/</link>
-      <pubDate>Sat, 25 Nov 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/data-visualization/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Deep Learning</title>
-      <link>/tags/deep-learning/</link>
-      <pubDate>Thu, 07 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/deep-learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Dlm</title>
-      <link>/tags/dlm/</link>
-      <pubDate>Sun, 06 Aug 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/dlm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Ml</title>
-      <link>/tags/ml/</link>
-      <pubDate>Mon, 07 Aug 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/ml/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Probability</title>
-      <link>/tags/probability/</link>
-      <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/probability/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Programming</title>
-      <link>/tags/programming/</link>
-      <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/programming/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>R</title>
-      <link>/tags/r/</link>
-      <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/r/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Ts Clustering</title>
-      <link>/tags/ts-clustering/</link>
-      <pubDate>Sun, 06 Aug 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/ts-clustering/</guid>
       <description></description>
     </item>
     

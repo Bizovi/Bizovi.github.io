@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Bizovi Mihai</copyright>
-    <lastBuildDate>Fri, 01 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 21 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>King County Homes Challenge. Exploratory Data Analysis</title>
+      <link>/post/2018-07-21-king-county-prices/</link>
+      <pubDate>Sat, 21 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2018-07-21-king-county-prices/</guid>
+      <description>The King County Homes prices prediction challenge is an excellent dataset for trying out and experimenting with various regression models. As we’ll see in the following post on Moscow flats, the modeler deals with similar challenges: skewed data and outliers, highly correlated variables (predictors), heteroskedasticity and a geographical correlation structure. Ignoring one of these may lead to undeperforming models, so in this post we’re going to carefully explore the dataset, which should inform which modeling strategy to choose.</description>
+    </item>
     
     <item>
       <title>Understanding Caratheodori Extension Theorem</title>
@@ -19,7 +28,7 @@
       
       <guid>/post/2018-06-01-probabiliy/</guid>
       <description>In order to build adequate models of economic and other complex phenomena, we have to take into account their inherent stochastic nature.
-Data is just the appearance, an external manifestation of some latent processes (seen as random mechanisms). Even though we won’t know the exact outcome for sure, we can model general regularities and relationships as a result of the large scale of phenomena. For more ideas see (Ruxanda 2011)</description>
+ Data is just the appearance, an external manifestation of some latent processes (seen as random mechanisms). Even though we won’t know the exact outcome for sure, we can model general regularities and relationships as a result of the large scale of phenomena. For more ideas see (Ruxanda 2011)</description>
     </item>
     
     <item>

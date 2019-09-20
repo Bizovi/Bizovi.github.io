@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme" content="hugo-academic">
-  <meta name="generator" content="Hugo 0.37.1" />
+  <meta name="generator" content="Hugo 0.55.6" />
   <meta name="author" content="Bizovi Mihai">
   <meta name="description" content="Data Scientist @Adore Me">
 
@@ -223,7 +223,10 @@
 </div>
 
     <div class="article-style" itemprop="articleBody">
-      <p>The King County Homes prices prediction <a href="https://www.kaggle.com/harlfoxem/housesalesprediction">challenge</a> is an excellent dataset for trying out and experimenting with various regression models. As we’ll see in the following post on <a href="https://www.coursera.org/learn/ekonometrika">Moscow flats</a>, the modeler deals with similar challenges: skewed data and outliers, highly correlated variables (predictors), heteroskedasticity and a geographical correlation structure. Ignoring one of these may lead to undeperforming models, so in this post we’re going to carefully explore the dataset, which should inform which modeling strategy to choose.</p>
+      
+
+
+<p>The King County Homes prices prediction <a href="https://www.kaggle.com/harlfoxem/housesalesprediction">challenge</a> is an excellent dataset for trying out and experimenting with various regression models. As we’ll see in the following post on <a href="https://www.coursera.org/learn/ekonometrika">Moscow flats</a>, the modeler deals with similar challenges: skewed data and outliers, highly correlated variables (predictors), heteroskedasticity and a geographical correlation structure. Ignoring one of these may lead to undeperforming models, so in this post we’re going to carefully explore the dataset, which should inform which modeling strategy to choose.</p>
 <div id="getting-the-data" class="section level3">
 <h3>Getting the data</h3>
 <p>First, we’ll use a Python-based command line tool (<code>pip install kaggle</code>) to automatically download the data from kaggle competition. An access token is needed in <code>.kaggle</code> directory, which is slightly different in Windows and Linux. So far these commands will do, we don’t need anything fancier.</p>
@@ -637,7 +640,7 @@ df %&gt;%  ggplot(aes(x = log_price)) +
 <section id="comments">
   <div id="disqus_thread">
     <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     
