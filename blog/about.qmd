@@ -1,24 +1,40 @@
 ---
-title: "About"
+title: "Who am I? Tough question ..."
 image: img/portrait.jpg
 # about:
 #   template: solana
+reference-location: margin
 ---
 
-**Mihai Bizovi** | Head of Data Science \@AdoreMe
 
-Think of me as an industry expert and a bridge between theory and practice. Think of the book as a map, rather than course or bootcamp.
+::: {.column-margin}
+![**Mihai Bizovi** | Head of Data Science \@AdoreMe](img/portrait.jpg "Portrait"){width="90%"}
+:::
 
-I'm a generalist -- navigating uncertainty and complexity to improve decision-making at scale with data and domain-driven software.
+:::: {.columns}
 
-
-I aspire to contribute to the understanding of AI's complex landscape and teach people how to navigate it, how to develop valuable skills, and become more effective at problem-solving.
-
-
-I find the idea of "Skin in the Game" very appealing. Therefore, a lot of attention will be given to the **pitfalls**, what can go wrong and what I learned from past mistakes, so that you don't have to repeat them.
-
+::: {.column width="50%"}
+![](img/phil_life.png "Philosophy"){width="90%"}
+:::
 
 
+::: {.column width="50%"}
+In the [homepage](index.qmd), you saw the different roles that are important to me: the craft, teaching, and just being. 
+
+On another note, my interests in AI, art, cognitive science, and philosophy have an aspect of science, craft, worldview, and deep participation, engagement. Moreover, they are deeply interconnected and I would even say, **synoptically integrated**.
+
+:::
+::::
+
+It is important to me that these conceptual frames fit into a coherent whole and contribute in a practical way towards a good life. When I started the blog in 2017, my work was at the center (metaphorically and literally), but now the golden thread is **philosophy as a way of life**.
+
+[Unfortunately, I have none of the answers of how does Intelligence, Rationality, Wisdom contribute to meaning in life -- at best, some plausible hypotheses]{.aside}
+
+I can't emphasise enough the importance of different levels of "knowing": propositional, procedural, perspectival, and participatory -- as it is not enough to know the facts (or have beliefs), but to know how to do something, to have a perspective of the "world" and a sense of participation in whatever you're engaged in. I mean that we're **agents** in different **arenas** of life, and the sense of meaning comes from an **attunement** to those arenas. We participate in a course of something, which has impact on the environment, which changes us and how we view and relate to the world, self and others.
+
+
+
+## Bio
 
 -   Graduate of Cybernetics (2017) and Quantitative Economics (2019)
     -   Did some research in Complex Systems, Agent-Based Modeling, Systems' Dynamics, and Heterodox Economics, which was lots of fun
@@ -43,21 +59,4 @@ I find the idea of "Skin in the Game" very appealing. Therefore, a lot of attent
 
 Unsurprisingly, there will be lots of painting metaphors when it comes to simplicity, and cognitive science references when talking about ways in which we're biased and foolish. Chess, of course, inspires analogies of competition, strategy, and tactics to its service. 
 
-You have to know that my concerns are related to a **synoptic integration** of different fields and perspectives over an incremental contribution in a narrow domain. To show how that could be applied in articulating a philosophy for life, here's a deeply personal diagram[^index-8] which emphasises how these different interests fit into a coherent whole. 
-
-:::: {.columns}
-
-::: {.column width="40%"}
-![](img/phil_life.png "Philosophy"){width="90%"}
-:::
-
-::: {.column width="60%"}
-Each of these interests and areas have an aspect of "science", craft, worldview, and deep participation / engagement
-:::
-
-::::
-
-I can't emphasise enough the importance of different levels to "knowing": propositional, procedural, perspectival, and participatory -- as it is not enough to know the facts (or have beliefs), but to know how to do something, to have a perspective of the "world" and a sense of participation in whatever you're engaged in. I mean that we're **agents** in different **arenas** of life, and the sense of meaning comes from an **attunement** to those arenas. We participate in a course of something, which has impact on the environment, which changes us and how we view and relate to the world, self and others.
-
-Unfortunately, I have none of the answers of how does Intelligence, Rationality, Wisdom contribute to meaning in life -- at best, some plausible hypotheses
 
