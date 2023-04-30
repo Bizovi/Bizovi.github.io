@@ -3,6 +3,7 @@
     "listing": "/index.html",
     "items": [
       "/posts/2023-rules/principles.html",
+      "/posts/2018-intro-measure/measure_theory.html",
       "/posts/2017-probability/stochastic.html"
     ]
   }

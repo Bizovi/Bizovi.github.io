@@ -70,6 +70,326 @@
   <media:content url="https://blog.economic-cybernetics.com/posts/2023-rules/socrates.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
+  <title>Understanding Caratheodori Extension Theorem</title>
+  <dc:creator>Bizovi Mihai</dc:creator>
+  <link>https://blog.economic-cybernetics.com/posts/2018-intro-measure/measure_theory.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>The reason we need probability theory is that it’s a formal language of uncertainty. Even though you can go a long way as a practitioner with standard tools in probability theory, deeply understanding its <strong>measure-theoretic</strong> foundations could open up a whole new world to the researcher. It’s easy to take the results from statistics and probability for granted, but it’s useful to be aware what hides beneath the surface.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>In order to build adequate models of economic and other complex phenomena, we have to take into account their inherent <em>stochastic nature</em>. Data is just the appearance, an external manifestation of some <code>latent processes</code> (seen as random mechanisms). Even though we won’t know the exact outcome for sure, we can model general regularities and relationships as a result of the large scale of phenomena. For more ideas see <span class="citation" data-cites="Ruxanda2011">(Ruxanda 2011)</span></p>
+</div></div><p>As an economist and modeler, the goal of this project is to step-by-step explain the <code>Caratheodori Extension Theorem</code> in order to understand the language, gain some intuition and insight about it. The value of studying it comes not from the theorem itself, but from the process of discovery and understanding a proof forces you to go through. <span class="citation" data-cites="Landim2016">(Landim 2016)</span> If you’re a mathematician and for some reason reading this, you might ask:</p>
+<blockquote class="blockquote">
+<p>“Are you insane going into it without any knowledge of real analysis”?</p>
+</blockquote>
+<p>The answer is that I want to learn the language, and not to achieve excellence in Measure Theory. Also, I can hardly take things for granted and need a justification of why things (in probability) are done exactly this way. <span class="citation" data-cites="Rosenthal2006">(Rhosental 2006)</span> We’ll develop a plan of attack and a network of ideas and concepts that need to be understood in order to tackle the problem, hoping that resourcefulness and intuitions will compensate for the lack of rigor.</p>
+<section id="motivation-for-measure-theory-in-a-practice-oriented-world" class="level2">
+<h2 class="anchored" data-anchor-id="motivation-for-measure-theory-in-a-practice-oriented-world">Motivation for measure theory in a practice-oriented world</h2>
+<p>The field of Data Mining moved a long way, becoming accessible and bringing value for individuals and industries. A lot of Machine Learning and Statistical models are available with a few lines of code. If it should be obvious why we need probability theory, it’s not so with measure theory.</p>
+<blockquote class="blockquote">
+<p>See the Andrew Gelan (a giant of Bayesian statistics) and Cosma Shalizi (an expert in Data Mining) disagreement on the <a href="http://andrewgelman.com/2008/01/14/what_to_learn_i/">subject</a></p>
+</blockquote>
+<p>I’ll give an analogy: even though the models can be easily applied in a high-level language like R or Python, understanding the Learning Theory can bring you on another level, closer to excellence. In the case of measure theory, some argue that there are alternative things to study which can bring more value, and they’re not wrong, but for an ambitious field like Bayesian Nonparametrics, it’s hard to make even little progress because of the understanding barrier. This is why I like to think of it as a language <span class="citation" data-cites="Lawrence2012">(Lawrence 2012)</span> extremely useful in the fields of stochastic processes and learning theory. So, the truth is somewhere in between and key to learning these subjects is a personally optimal balance of theoretical understanding, practice on real data problems and simulation exercises.</p>
+<p>Studying measure theory might look like a gruesome process to do on your own, but it makes sense posing a reverse question: what do I need to know to understand all these awesome papers where there is a urge to ask: <strong>“The probability over what?”</strong></p>
+<blockquote class="blockquote">
+<p>A personal experience was in an attempt to study nonlinear state-space models, where there are some exciting papers on Bayesian Nonparametrics and Stochastic Filtering. Reading and working through papers felt like missing a good part of the story, because of some lacking fundamentals. It’s extremely important to recognize what you don’t know. That’s right, I want to be able to formulate meaningful statements about distributions of more abstract objects, like functions, graphs, etc and to reason about stochastic processes.</p>
+</blockquote>
+<p>For example, having a great understanding of probability helps to define in a clear and rigorous way difficult concepts used in statistics and econometrics (which might look deceptively simple at first) as p-values, confidence intervals, power, hypothesis testing and helps avoiding a lot of confusion. Let’s take the idea of power of the test in its simplest form (for a one-sided Z test), which a lot of practitioners struggle to define when asked.</p>
+<blockquote class="blockquote">
+<p>The mathematical formulation uncovers some of the assumptions we’re making and suggests the interpretation. Notice how <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Cmu_a%20-%20%5Cmu_0%7D%7B%5Csigma%7D"> is a proxy for a “unit free” effect size.</p>
+</blockquote>
+<ul>
+<li><img src="https://latex.codecogs.com/png.latex?%5Cbeta"> Type II error: Failure to reject <img src="https://latex.codecogs.com/png.latex?H_0"> when it’s false</li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Calpha"> Type I error: Falsely rejecting a true <img src="https://latex.codecogs.com/png.latex?H_0"></li>
+<li><img src="https://latex.codecogs.com/png.latex?1%20-%20%5Cbeta"> is the power</li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Cmu_0"> the null hypothesis</li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Cmu_a"> the alternative hypothesis</li>
+</ul>
+<p>The response of the power being the probability of rejecting a null hypothesis when it’s false might not suggests that there is much going on.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%20%20%20%201-%20%5Cbeta%20&amp;=%20%5Cmathbb%7BP%7D%20%5Cbigg(%20%5Cfrac%7B%5Cbar%7BX%7D%20-%20%5Cmu_0%7D%7B%5Csigma%20/%20%5Csqrt%7Bn%7D%7D%20%3E%0A%20%20%20%20%5Cmathbf%7BZ%7D_%7B1-%5Calpha%7D%20%20%5Cbigg%5Clvert%20%5Cmu%20=%20%5Cmu_a%20%20%5Cbigg)%20%5C%5C%0A%20%20%20%20~%20&amp;=%20%5Cmathbb%7BP%7D%20%5Cbigg(%20%5Cfrac%7B%5Cbar%7BX%7D%20-%20%5Cmu_a%20+%20%5Cmu_a%20-%20%5Cmu_0%7D%7B%5Csigma%20/%20%5Csqrt%7Bn%7D%7D%20%3E%0A%20%20%20%20%5Cmathbf%7BZ%7D_%7B1-%5Calpha%7D%20%20%5Cbigg%5Clvert%20%5Cmu%20=%20%5Cmu_a%20%20%5Cbigg)%20%5C%5C%0A%20%20%20%20~%20&amp;=%20%5Cmathbb%7BP%7D%20%5Cbigg(%20%5Cfrac%7B%5Cbar%7BX%7D%20-%20%5Cmu_a%7D%7B%5Csigma%20/%20%5Csqrt%7Bn%7D%7D%20%3E%0A%20%20%20%20%5Cmathbf%7BZ%7D_%7B1-%5Calpha%7D%20-%20%5Cfrac%7B%5Cmu_a%20-%20%5Cmu_0%7D%7B%5Csigma%20/%20%5Csqrt%7Bn%7D%7D%20%5Cbigg%5Clvert%20%5Cmu%20=%20%5Cmu_a%20%20%5Cbigg)%20%5C%5C%0A%20%20%20%20~%20&amp;=%20%5Cmathbb%7BP%7D%20%5Cbigg(%20%5Cmathbf%7BZ%7D%20%3E%0A%20%20%20%20%5Cmathbf%7BZ%7D_%7B1-%5Calpha%7D%20-%20%5Cfrac%7B%5Cmu_a%20-%20%5Cmu_0%7D%7B%5Csigma%20/%20%5Csqrt%7Bn%7D%7D%20%5Cbigg%5Clvert%20%5Cmu%20=%20%5Cmu_a%20%20%5Cbigg)%0A%5Cend%7Balign*%7D"></p>
+<p>But there is a lot going on, the power depending on the effect size, assumed level for the type I error and the sample size. The distribution of the term <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BZ%7D%20=%20%5Cfrac%7B%5Cbar%7BX%7D%20-%20%5Cmu_a%7D%7B%5Csigma%20/%20%5Csqrt%7Bn%7D%7D"> is actually the one under the alternative hypothesis. Note that power calculations done post-hoc are usually a terrible idea.</p>
+<p>Also, it’s almost impossible to sense the dangers of interpretations of <strong>p-values</strong>, types of errors and <strong>confidence intervals</strong> without trying to understand the mathematics behind statistical testing. Tests are also models, little <strong>“Golemns of the Prague”</strong> and they might fail in unexpected ways when the assumptions do not hold. <span class="citation" data-cites="McElreath">(McElreath 2015)</span></p>
+<p>As it’s often the case in mathematics, things have a deep justification behind them and even though you can successfully apply the models in practice, understanding is what separates a great modeler. Often, a breakthrough comes in the form of something that nobody have thought before.</p>
+<blockquote class="blockquote">
+<p>I think we’ll appreciate the input from mathematicians more in an applied field like Data Mining, as it will help figure out why deep neural networks work so well. Same is true for <em>Extreme Gradient Boosting</em> and other things that just seem to work. It took me some time trying to solve real world problems, in order to appreciate the usefulness of deeply understanding different ideas in mathematics.</p>
+</blockquote>
+<p>This is why, in the path to mastery of machine learning, certain topics appear which might change your perspective forever. One of these is Measure Theory. Is it useful in practice? Probability Theory taught in undergraduate courses might be what most people need, but it’s limited in a certain sense, imposing an <em>artificial dichotomy between discrete and continuous random variables</em> and thinking in terms of probability density functions and cumulative distribution functions.</p>
+<p>Regarding (Caratheodori), it’s not the formulation of the theorem which brings the most insight, but ideas in the proof as measurable sets and outer measures.</p>
+</section>
+<section id="measure-theory-in-machine-learning" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="measure-theory-in-machine-learning">Measure Theory in Machine Learning</h2>
+<blockquote class="blockquote">
+<p>Some courses will mention it, but as a side for the mathematically inclined students and not appearing anywhere later</p>
+</blockquote>
+<p>In undergraduate probability we can get away with the lack of measure-theoretic notions, as we’re working on real spaces, continuous functions and the instruments we have in these tame cases seem enough. There are also wilder cases, in which we need new tools and language to be rigorous, as otherwise we would just hope for the best (that the probability measure is defined). In some of the fields mentioned above researchers have to deal with weird stuff like distributions which have continuous and discrete elements, when a mixture of a density with point masses isn’t very helpful to work with.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><img src="https://blog.economic-cybernetics.com/posts/2018-intro-measure/img/measure_theory_comics.jpg" class="img-fluid"> Source: <a href="http://brownsharpie.courtneygibbons.org">brownsharpie</a></p>
+</div></div><p>Evans Lawrence gives the following example of a function which is neither discrete nor continuous, for which you flip a coin and if it comes heads, draw from an uniform distribution and in case of tails a unit mass at one. If <img src="https://latex.codecogs.com/png.latex?%5Cchi_%7B%5B0,1%5D%7D(x)%20=%20(e%5E%7Bix%7D%20-%201)/ix"> is the characteristic function of the interval from zero to one, in a way you can formulate its density, but usually it’s not the case, nor is it very helpful to think about it in such terms.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bequation%7D%0A%20%20%20%20p(x)%20=%20w_1%20%5Cchi_%7B%5B0,1%5D%7D(x)%20+%20%20w_2%5Cdelta_1(x)%0A%5Cend%7Bequation%7D"></p>
+<p>Even though you can visualize this in two dimensions as the uniform and a spike, or as a CDF with a discontinuity, this approach just breaks down in higher dimensions or more complicated combinations of functions.</p>
+<p>Jeffrey Rosenthal begins his book <span class="citation" data-cites="Rosenthal2006">(Rhosental 2006)</span> by a similar motivation, constructing the following random variable as a coin toss between a discrete <img src="https://latex.codecogs.com/png.latex?X%20%5Csim%20Pois(%5Clambda)"> and continuous <img src="https://latex.codecogs.com/png.latex?Y%20%5Csim%20%5Cmathcal%7BN%7D(0,1)"> r.v.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bequation%7D%0A%20%20%20%20Z%20=%20%5Cbegin%7Bcases%7D%0A%20%20%20%20X,%20p%20=%200.5%20%5C%5C%0A%20%20%20%20Y,%20p%20=%200.5%0A%20%20%20%20%5Cend%7Bcases%7D%0A%5Cend%7Bequation%7D"></p>
+<p>He then challenges the readers to come up with the expected value <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BE%7D%5BZ%5E2%5D"> and asks on what is it defined? It is indeed a hard question.</p>
+<p>It is not surprising for me that measure theory becomes important in the Learning Theory, even though lighter courses from which I studied don’t mention it explicitly (Yaser Abu-Mostafa, Shai Ben-David, Reza Shadmehr). According to Mikio’s Brown <a href="https://www.quora.com/Is-Measure-Theory-relevant-to-Machine-Learning/answer/Mikio-L-Braun?srid=KONR">answer</a> it’s essential in the idea of <strong>uniform convergence</strong> and its bounds, where <em>“you consider the probability of a supremum over an infinite set of functions, but out of the box measure theory only allows for constructions with countably infinite index sets”</em>.</p>
+<p>If we’re thinking about a regression from the nonparametric perspective <img src="https://latex.codecogs.com/png.latex?f(x)%20%5Cin%20%5Cmathscr%7BC%7D%5E2:X%20%5Crightarrow%20%5Cmathbb%7BR%7D">, we might want to know how a draw from a (infinite) set of continuous differentiable functions might look like. The questions arises: how to define a PDF in this space? In my thesis <span class="citation" data-cites="Bizovi">(Mihai 2017)</span> I got away with using Gaussian Processes, which are a very special class of stochastic processes. In this special case I could informally define an apriori distribution by defining the mean vector and Kernel (covariance function), then condition it on observed data with a Normal Likelihood.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><img src="https://blog.economic-cybernetics.com/posts/2018-intro-measure/img/prior.png" class="img-fluid"> An example of reasoning about distributions of random functions from my Thesis. The prior distribution</p>
+</div><div class="">
+<p><img src="https://blog.economic-cybernetics.com/posts/2018-intro-measure/img/conditionare_gp.png" class="img-fluid"> Only the functions that explain the data well survive</p>
+</div></div>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bequation%7D%0Ap(f(x)%20%5C,%20%7C%5Cleft%20%5C%7B%20x%5Cright%20%5C%7D)=%5Cfrac%7Bp(%5Cleft%20%5C%7B%20x%5Cright%20%5C%7D%7C%20%5C,%20f)%20%5C,%20%5Cmathbf%7Bp(f)%7D%7D%7Bp(%5Cleft%20%5C%7B%20x%5Cright%20%5C%7D)%7D%0A%5Cend%7Bequation%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bequation*%7D%0Af(x)%20%5Csim%20GP(%5Cmu(x);%20K(x,x'))%0A%5Cend%7Bequation*%7D"></p>
+<p>The result was that only the functions that explained the data well survived. While this reasoning makes intuitive sense, there are things “swiped under the carpet”. If we were to model stock prices, where there are jumps and the process itself is less smooth, measure theory would be very hard to avoid. If we would want to reason in terms of densities, ask with respect to what? So, the focus is shifted towards the question of what is the probability of every possible event. This leads us back to the fundamental object of state (outcome) space <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%5COmega%7D">.</p>
+<blockquote class="blockquote">
+<p>Each element <img src="https://latex.codecogs.com/png.latex?%5Comega_i%20%5Cin%20%5Cmathbf%7B%5COmega%7D"> is an elementary event (outcome), while <img src="https://latex.codecogs.com/png.latex?A%20%5Csubset%20%5Cmathbf%7B%5COmega%7D"> is an event</p>
+</blockquote>
+<p>As we will shortly see, it’s impossible to define the probability (measure) on the set of all subsets <img src="https://latex.codecogs.com/png.latex?2%5E%5COmega">, except for the simple finite cases, without having to let go of a fundamental axiom like countable additivity. This will be the first step in getting closer to defining a Uniform distribution on <img src="https://latex.codecogs.com/png.latex?%5B0,%201%5D">.</p>
+<blockquote class="blockquote">
+<p>Surprisingly, to rigorously define an Uniform distribution is not a trivial task, because of the mentioned above impossibility, proved later by contradiction. In contrast, Caratheodori theorem allows us to do exactly that</p>
+</blockquote>
+<p>Tarun Chitra in the same thread argues that many classification problems are ill-posed mathematically, and the ones which can be formulated in a measure-theoretic way have very nice results, like SVMs with Reproducing Kernel Hilbert Spaces, where you cannot apply the Mercer’s Theorem unless the Kernel is measurable. The second example he gives is proving some results about Stochastic Gradient Descent, an optimization algorithm often successfully used, which has connection with Brownian Motion, thus Weiner measures.</p>
+<p>Measure theory is also important in rigorously defining distances and divergences (for example between two distributions as in Kullback-Leiber)</p>
+</section>
+<section id="measure-theory-and-the-fundamentals-of-probability-theory" class="level2">
+<h2 class="anchored" data-anchor-id="measure-theory-and-the-fundamentals-of-probability-theory">Measure Theory and the fundamentals of Probability Theory</h2>
+<p>It is useful to step back and see where does Measure Theory fit in the framework of Probability Theory. The following list will be a summary of a lecture at doctoral school by <span class="citation" data-cites="Ruxanda2017">(Ruxanda 2017)</span> Here are 8 steps to mastery of the basics by Gheorghe Ruxanda:</p>
+<ol type="1">
+<li>A <strong>random experiment</strong> (<img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BE%7D">) is a set of <em>conditions which are favorable for an event</em> in a given form with the following properties:
+<ul>
+<li>Possible results are known apriori</li>
+<li>It’s never known which of the results of <img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BE%7D"> will exactly appear</li>
+<li>Despite (b), <strong>there is a perceptible regularity</strong>, (encoding the idea of a probabilistic “law”) in the results. Also, it could be as a result of the large scale of the phenomena.</li>
+<li>Repeatability of the conditions, i.e.&nbsp;the comparability and perservation of context are key.</li>
+</ul></li>
+<li><strong>Elementary event</strong> as an auxiliaty construction: one of the possible results of <img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BE%7D">, <img src="https://latex.codecogs.com/png.latex?%5Comega_i%20%5Cin%20%5COmega"></li>
+<li><strong>Universal set</strong> <img src="https://latex.codecogs.com/png.latex?%5COmega%20=%20%5C%7B%20%5Comega_1,%20%5Comega_2,%20%5Cdots%20%5C%7D"> Also called (Outcome/ State/ Selection space), it suggests the idea of complementarity and stochasticity: we don’t know which <img src="https://latex.codecogs.com/png.latex?%5Comega_i">, is a key object for a further formalization of probability measures.</li>
+<li>We care not only about <strong>an event</strong> <img src="https://latex.codecogs.com/png.latex?A%20=%20%5Cbigcup%5Climits_%7Bi%20=%201%7D%5En%20%5Comega_i"> and its realization, but also about other events in the Universal Set, because they might add information about the probability of occurring of our event of interest</li>
+<li>The <strong>event space</strong> <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BF%7D"> should be defined on sets of subsets of <img src="https://latex.codecogs.com/png.latex?%5COmega"> and this is where measure theory shines. We’ll discuss later in extensive detail the following conditions on the way to defining sigma-algebras. As can be seen later, we usually can’t define a probability measure on all sets of subsets.</li>
+<li><strong>Probability as an extension of the measure</strong>: chance of events realizing. Note that the perceptible regularity can be thought as the ability to assign a probability to elementary events: <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(%5Comega_i)">. This is where additivity properties are key. A long discussion on Frequentist vs Bayesian interpretation of it can follow from here.</li>
+<li>A <strong>probability triple</strong> <img src="https://latex.codecogs.com/png.latex?(%5COmega,%20%5Cmathcal%7BF%7D,%20%5Cmathbb%7BP%7D)"></li>
+<li>The idea of <strong>Random Variable</strong></li>
+</ol>
+<p>Before moving on to probability measures, it’s useful to think about what a random variable really is and does, because formally, it’s neither a variable, nor random. That should be another motivation for speaking the language of measure theory.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://blog.economic-cybernetics.com/posts/2018-intro-measure/img/random_variable.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Idea: Norman Wildberger, Gheorghe Ruxanda. A graphical representation of the random variable</figcaption><p></p>
+</figure>
+</div>
+<p>The idea of the random variable as being a quantificator of elementary events (function defined on the outcome space which maps the elementary events to the real line in 1d) that perserves the informational structure of the sample space is very powerful, is formally defined and related to the idea of <strong>measurability</strong>.</p>
+<blockquote class="blockquote">
+<p>Start from some phenomena of interest and a random experiment. The random variable is a necessary abstraction in order to mathematically define quantificable characteristics of the objects.</p>
+</blockquote>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign%7D%0AX(%5Comega):%5COmega%20%5Crightarrow%20%5Cmathbb%7BR%7D%20%5C%5C%0As.t.%20~~%20%5C%7B%5Comega%20%5Cin%20%5COmega%20%7C%20X(%5Comega)%20%5Cleq%20r,%20%5Cforall%20r%20%5Cin%20%5Cmathbb%7BR%7D%20%5C%7D%20%5Cin%20%5Cmathcal%7BF%7D%0A%5Cend%7Balign%7D"></p>
+<p>The idea of conservation of the informational structure is actually equivalent to the one of measurablility. If this property doesn’t hold, it’s not possible to explicitly and uniquely refer to the sets (events) of interest. The idea is that the preimage defined above <img src="https://latex.codecogs.com/png.latex?X%5E%7B-1%7D((-%5Cinfty,r%5D)%20=%20E%20%5Cin%20%5Cmathcal%7BF%7D"> on the following interval corresponds to an event E which should be in the event space <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BF%7D">. Because the only thing that varies is the limit of the interval r, the randomness comes from it. Also, it automatically suggests the idea of the Cumulative Distribution Function, which is <img src="https://latex.codecogs.com/png.latex?F_X(X%20%5Cle%20r)">.</p>
+</section>
+<section id="cant-have-it-all-the-trouble-with-the-uniform" class="level2">
+<h2 class="anchored" data-anchor-id="cant-have-it-all-the-trouble-with-the-uniform">Can’t have it all: The trouble with the Uniform</h2>
+<p><strong>Following the previous discussions</strong> we would want to define a probability measure <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D%20:2%5E%5COmega%20%5Crightarrow%20%5B0,%201%5D"> on the set of all subsets of <img src="https://latex.codecogs.com/png.latex?%5COmega%20=%20%5B0,%201%5D"> for the uniform distribution. Unfortunately we can’t have that <strong>and</strong> perserve essential properties of probability measures.</p>
+<blockquote class="blockquote">
+<p>All other properties can be easily derived from these, thus these are minimal requirements for a probability measure. Nonetheless, these conditions are too restrictive if we want to define an Uniform Distribution on <img src="https://latex.codecogs.com/png.latex?2%5E%5COmega">.</p>
+</blockquote>
+<ol type="1">
+<li><img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(%5COmega)%20=%201"> and <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(%5Cvarnothing)%20=%200"></li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(A)%20%5Cin%20%5B0,%201%5D"></li>
+<li>If <img src="https://latex.codecogs.com/png.latex?A%20%5Ccap%20B%20=%20%5Cvarnothing%20%5Cimplies%20%5Cmathbb%7BP%7D(%20A%20%5Ccap%20B)%20=%20%5Cmathbb%7BP%7D(A)%20+%20%5Cmathbb%7BP%7D(B)"></li>
+<li>If <img src="https://latex.codecogs.com/png.latex?%5C%7B%20A_i%20%5C%7D_%7Bi=1%7D%5E%5Cinfty"> s.t. <img src="https://latex.codecogs.com/png.latex?A_i%20%5Cbigcap%5Climits_%7Bi%20%5Cne%20j%7D%20A_j%20=%20%5Cvarnothing%20%5Cimplies%20%5Cmathbb%7BP%7D%20(%20%5Cbigcup%5Climits_%7Bi%20=%201%7D%5E%5Cinfty%20A_i)%20=%20%5Csum%5Climits_%7Bi%20=%201%7D%5E%7B%5Cinfty%7D%5Cmathbb%7BP%7D(A_i)"></li>
+</ol>
+<p>The idea of uniform distribution is closely related to the one of <strong>length</strong>, area, volume, depending on what space are we into. That means the probability measure will look like this:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bequation%7D%0A%20%20%20%20%5Cmathbb%7BP%7D(%5Ba,%20b%5D)%20=%20b%20-%20a%0A%5Cend%7Bequation%7D"></p>
+<p>where <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D%20:2%5E%5COmega%20%5Crightarrow%20%5B0,%201%5D"> and <img src="https://latex.codecogs.com/png.latex?0%20%5Cle%20a%20%5Cle%20b%20%5Cle%201"></p>
+<p>The proof is done by contradiction, but the implications are a little bit deeper, related to paradoxes like <strong>Banakh-Tarsky</strong> and <strong>Vitali Sets</strong>, which are counter-intuitive but closely related to the idea of something being unmeasurable. Because we can’t get rid of any of the axioms, we should deal with the fact that we can’t define the measure on <img src="https://latex.codecogs.com/png.latex?2%5E%5COmega">.</p>
+<p>Instead define a set of subsets <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BA%7D%20%5Csubset%202%5E%5COmega"> such that <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D:%20%5Cmathcal%7BA%7D%20%5Crightarrow%20%5B0,1%5D">. These sets will have to obey certain properties and this is where all the terminology from measure theory comes in with algebras, semi-algebras and sigma-algebras. Each of these concepts and objects will be stepping stones towards understanding Caratheodori</p>
+</section>
+<section id="background-concepts-towards-caratheodori" class="level2">
+<h2 class="anchored" data-anchor-id="background-concepts-towards-caratheodori">Background concepts towards Caratheodori</h2>
+<p>Let’s continue on this upbeat note and try to figure out what kind of sets <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BA%7D"> are measurable, for which we can define their probabilities.</p>
+<p><strong>Def: Algebra and Semi Algebra:</strong> A set of subsets <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BA%7D%20%5Csubset%202%5E%5COmega"> is an algebra (field) if the following holds:</p>
+<ol type="1">
+<li><img src="https://latex.codecogs.com/png.latex?%5COmega%20%5Cin%20%5Cmathcal%7BA%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Cvarnothing%20%5Cin%20%5Cmathcal%7BA%7D"></li>
+<li>If <img src="https://latex.codecogs.com/png.latex?A%20%5Cin%20%5Cmathcal%7BA%7D"> then <img src="https://latex.codecogs.com/png.latex?A%5EC%20%5Cin%20%5Cmathcal%7BA%7D"> (closed under complements)</li>
+<li>If <img src="https://latex.codecogs.com/png.latex?A,%20B%20%5Cin%20%5Cmathcal%7BA%7D"> then $ A B $ (closed under union). Note that 2 and 3 imply that it’s closed under countable intersection</li>
+<li>For sigma-algebra: <strong>sigma</strong> refers to countability} If <img src="https://latex.codecogs.com/png.latex?%5C%7B%20A_i%20%5C%7D_%7Bi%20%5Cge%201%7D%20%5Cin%20%5Cmathcal%7BA%7D"> then <img src="https://latex.codecogs.com/png.latex?%5Cbigcup%5Climits_%7Bi%20%5Cge%201%7D%20A_i%20%5Cin%20%5Cmathcal%7BA%7D"> (closed under <strong>countable union</strong>)</li>
+</ol>
+<p>On an intuitive note, we define the probability measure on sigma-algebras because if certain conditions did not hold, the measure wouldn’t make sense.</p>
+<p><strong>Def: Probability Measure:</strong> Suppose we have defined a <strong>measurable space</strong> <img src="https://latex.codecogs.com/png.latex?(%5COmega,%20%5Cmathcal%7BA%7D)">, where <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BA%7D"> is a sigma-algebra. A <strong>probability measure</strong> is the function <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D:%5Cmathcal%7BA%7D%20%5Crightarrow%20%5B0,%201%5D"> such that:</p>
+<ol type="1">
+<li><img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(%5COmega)%20=%201"> </li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Cforall%20%5C%7B%20A_i%20%5C%7D_%7Bi%20%5Cge%201%7D"> where <img src="https://latex.codecogs.com/png.latex?A_i%20%5Cbigcap%5Climits_%7Bi%20%5Cne%20j%7D%20A_j%20=%20%5Cvarnothing"> (countable sequences of mutually disjoint effects), <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(%5Cbigcup%5Climits_%7Bi%20%5Cge%201%7D%20A_i)%20=%20%5Csum%5Climits_%7Bi%20%5Cge%201%7D%20%5Cmathbb%7BP%7D(A_i)"></li>
+</ol>
+<p>As stated earlier, for more difficult cases, when it’s hard or impossible to reason in terms of probability density functions, it is more convenient to talk about measures. For the previous cases of point masses <img src="https://latex.codecogs.com/png.latex?%5Cdelta_k(x)"> and continuous functions we can ask the question what is the probability of a certain outcome directly if using measure-theoretic formalism. <img src="https://latex.codecogs.com/png.latex?%5COmega%20=%20%5Cmathbb%7BR%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BA%7D%20=%202%5E%5COmega"> and the point mass looks basically like a spike at <img src="https://latex.codecogs.com/png.latex?k%5E%7Bth%7D"> place in the real line.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bequation%7D%0A%20%20%20%20%5Cmathbb%7BP%7D(A)%20=%20%5Cbegin%7Bcases%7D%0A%20%20%20%201,%20~~%20k%20%5Cin%20A%5C%5C%0A%20%20%20%200,%20~~%20k%20%5Cnotin%20A%0A%20%20%20%20%5Cend%7Bcases%7D%0A%5Cend%7Bequation%7D"></p>
+<p>In order to define the probability measure for the continuous measure, much deeper results should be invoked. &gt; The Borel Spaces in itself encode a chain of new concepts that need to be understood from Banakh Spaces, Normed Spaces and how to close them under complement and union.</p>
+<ol type="1">
+<li><img src="https://latex.codecogs.com/png.latex?%5COmega%20=%20%5Cmathscr%7BC%7D(%5B0,1%5D;%5Cmathbb%7BR%7D)"></li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BA%7D%20=%20%5Cmathcal%7BB%7D(%5Cmathscr%7BC%7D(%5B0,1%5D;%5Cmathbb%7BR%7D))"></li>
+</ol>
+<p>This might be one of the reasons why Stochastic Processes is such a difficult and powerful field, because of the amount of knowledge encoded even in the “simplest” Brownian Motion (where <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D"> is a Weiner measure).</p>
+<p>Going back to our pursuit of Caratheodori theorem, it is useful to understand why do we need countable additivity. If the finite additivity is clear, for example in the case of disjoint segments of the uniform distribution <img src="https://latex.codecogs.com/png.latex?X%20%5Csim%20Unif(%5B0,1%5D)">, <img src="https://latex.codecogs.com/png.latex?%5Ba_1,%20b_1%5D"> and <img src="https://latex.codecogs.com/png.latex?%5Ba_2,%20b_2%5D">, it’s essential that the following holds.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbb%7BP%7D(%5Ba_1,%20b_1%5D%20%5Ccup%20%5Ba_2,%20b_2%5D%20)%20=%20%5Cmathbb%7BP%7D(a_1%20%5Cle%20X%20%5Cle%20b_1)%20+%20%5Cmathbb%7BP%7D(a_2%20%5Cle%20X%20%5Cle%20b_2)%0A"></p>
+<p>Countable additivity <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(%5Cbigcup%5Climits_%7Bi%20%5Cge%201%7D%20A_i)%20=%20%5Csum%5Climits_%7Bi%20%5Cge%201%7D%20%5Cmathbb%7BP%7D(A_i)"> is useful to prove that limits exists, which is very important in various statistical procedures. We can’t say anything about uncountable additivity because the measure of each element on the r.h.s. will be zero, while the measure of the interval is one, which is a contradiction</p>
+<p>To get our feet wet, let’s see what techniques are employed by various authors in order to prove the impossibility of constructing a measure which has the idea of length while keeping the axioms.</p>
+<p><strong>Proposition:</strong> There does not exist a (probability) measure <img src="https://latex.codecogs.com/png.latex?%5Clambda(A)"> <em>(Note that we’ll switch conventions to the measure-theoretic one employed by the Claudio Landim’s course as it’s one of the very few available online and it should be easier to follow in parallel with this reading)</em> defined for all subsets of <img src="https://latex.codecogs.com/png.latex?A%20%5Csubseteq%20%5B0,%201%5D"> satisfying.</p>
+<ol type="1">
+<li><img src="https://latex.codecogs.com/png.latex?%5Clambda:%20%5Cmathscr%7BP%7D(%5B0,1%5D)%20%5Crightarrow%20%5B0,1%5D"> which could be all rational numbers, for example</li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Clambda(%5Ba,%20b%5D)%20=%20b%20-%20a"> as an extension of the idea of length</li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Cforall%20A%20%5Csubseteq%20%5B0,1%5D"> and <img src="https://latex.codecogs.com/png.latex?%5Cforall%20x%20%5Cin%20%5B0,1%5D"> translation invariance <img src="https://latex.codecogs.com/png.latex?%5Clambda(A%20+%20x)%20=%20%5Clambda(A)">. Alternatively stated, <img src="https://latex.codecogs.com/png.latex?A%20+%20x%20=%20%5C%7Bx%20+%20y%20~%7C~%20y%20%5Cin%20A%20%5C%7D">.</li>
+<li>If <img src="https://latex.codecogs.com/png.latex?A%20=%20%5Cbigcup%5Climits_%7Bj%20%5Cge%201%7D%20A_j"> is an union of mutually disjoint sets <img src="https://latex.codecogs.com/png.latex?A_i%20%5Ccap%20A_j%20=%20%5Cvarnothing"> then <img src="https://latex.codecogs.com/png.latex?%5Clambda(A)%20=%20%5Csum%5Climits_%7Bj%20%5Cge%201%7D%20%5Clambda(A_j)"> This is exactly the notion of sigma-additivity encontered over and over again.</li>
+</ol>
+<blockquote class="blockquote">
+<p>We can use <img src="https://latex.codecogs.com/png.latex?%5B0,%201%5D"> as in Rosenthal without loss of generality. Landim uses <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BR%7D_+%5Ccup%5C%7B%20+%5Cinfty%20%5C%7D">. Note that <img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BP%7D(%5Ccdot)"> is the power set}</p>
+</blockquote>
+<p><strong>Proof:</strong> Assume that <img src="https://latex.codecogs.com/png.latex?%5Cexists"> a measure <img src="https://latex.codecogs.com/png.latex?%5Clambda"> such that above conditions hold. First, we need to introduce the notion of equivalence relation (in order to say “x is related to y”: <img src="https://latex.codecogs.com/png.latex?x%20%5Csim%20y">), which is key to proving this. The point is that the equivalence relation will partition a set, which allows us by invoking the Axiom of Choice to get towards the desired contradiction.</p>
+<blockquote class="blockquote">
+<p><strong>Relation set</strong>: S is a boolean function with <img src="https://latex.codecogs.com/png.latex?x,%20y%20%5Cin%20S"> <img src="https://latex.codecogs.com/png.latex?R:S%20%5Ctimes%20S%20%5Crightarrow%20%5C%7B0,%201%5C%7D"> Thus <img src="https://latex.codecogs.com/png.latex?x%20%5Csim%20y"> means x is <strong>related to</strong> y.</p>
+</blockquote>
+<p>Given an equivalence relation ~ and <img src="https://latex.codecogs.com/png.latex?x%20%5Cin%20S"> the <strong>equivalence class</strong> of x is <img src="https://latex.codecogs.com/png.latex?%5C%7B%20y%20%5Cin%20S%20%5Clvert%20y%20%5Csim%20x%20%5C%7D">. If x is an equivalence class then any pair of equivalence classes is either identical or disjoint. So, the relation forms equivalence classes, which form a partition on S.</p>
+<p><strong>Def:</strong> A relation is an equivalence relation if</p>
+<ul>
+<li>reflexive: <img src="https://latex.codecogs.com/png.latex?x%20%5Csim%20x"> <img src="https://latex.codecogs.com/png.latex?~~%20%5Cforall%20x%20%5Cin%20S"></li>
+<li>symmetric: <img src="https://latex.codecogs.com/png.latex?x%20%5Csim%20y%20%5Cimplies%20y%20%5Csim%20x"> <img src="https://latex.codecogs.com/png.latex?~~%20%5Cforall%20x,%20y%20%5Cin%20S"></li>
+<li>tranzitive: <img src="https://latex.codecogs.com/png.latex?x%20%5Csim%20y"> and <img src="https://latex.codecogs.com/png.latex?y%20%5Csim%20z%20%5Cimplies%20x%20%5Csim%20z"> <img src="https://latex.codecogs.com/png.latex?~~%20%5Cforall%20x,%20y,%20z%20%5Cin%20S"></li>
+</ul>
+<p>Both Rosenthal and Landim use a special equivalence class involving a relation <img src="https://latex.codecogs.com/png.latex?x%20%5Csim%20y">, <img src="https://latex.codecogs.com/png.latex?x,%20y%20%5Cin%20%5Cmathbb%7BR%7D"> for rational numbers: <img src="https://latex.codecogs.com/png.latex?y%20-%20x%20%5Cin%20%5Cmathbb%7BQ%7D">. The equivalence class for x becomes</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign%7D%0A%20%20%20%20%5Bx%5D%20=%20%5C%7B%20y%20%5Cin%20%5Cmathbb%7BR%7D%20%7C%20y%20-%20x%20%5Cin%20%5Cmathbb%7BQ%7D%20%5C%7D%20%5C%5C%0A%20%20%20%20%20%5CLambda%20=%20%5C%7B%20%5Calpha,%20%5Cbeta%20%5Cdots%20%5C%7D%20=%20%5Cmathbb%7BR%7D%20%5Clvert%20%5Csim%0A%5Cend%7Balign%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%5CLambda"> is another important object (the set of equivalence classes) which is R modulo the equivalence relation, clearly uncountable, because <img src="https://latex.codecogs.com/png.latex?%5Bx%5D"> are countable. Now, using the Axiom of Choice a new set <img src="https://latex.codecogs.com/png.latex?%5COmega"> is constructed in the following way: for each equivalence class <img src="https://latex.codecogs.com/png.latex?%5Calpha,%20%5Cbeta"> <strong>one</strong> and only one element is selected.</p>
+<blockquote class="blockquote">
+<p>There are deep philosophical discussions regarding it, but it’s outside the scope of current project. Basically what we need to know is that it allows us to “simultaneously” choose from <img src="https://latex.codecogs.com/png.latex?%5CLambda_j"></p>
+</blockquote>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://blog.economic-cybernetics.com/posts/2018-intro-measure/img/transition.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">A graphical representation assuming the Axiom of Choice.</figcaption><p></p>
+</figure>
+</div>
+<p><img src="https://latex.codecogs.com/png.latex?%5Bx%5D"> can be chosen in such a way that <img src="https://latex.codecogs.com/png.latex?%5COmega%20%5Cin%20%5B0,%201%5D"></p>
+<p>We reached a little milestone, as now there is a handle and structure to the problem, in contrast it wasn’t clear where to start from in the beginning. Here, Rosenthal is very brief, finishes the proof quickly and it seems that Landim chooses a much longer, but much more explicit way. A link to the alternative <a href="https://www.youtube.com/watch?v=qaCOTKh8o4w">proof</a>. I’ll choose the first one, because there are not many concepts used later for us to benefit by going through it.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bequation%7D%0A%20%20%20%20%5COmega%20=%20%5C%7B%20%5Comega_1%20%5Cin%20%5Calpha%20,%20%5Comega_2%20%5Cin%20%5Cbeta,%20%5Cdots%20%20%5C%7D%20%5Cin%20%5B0,%201%5D%0A%5Cend%7Bequation%7D"></p>
+<p>A key claim is that if we translate <img src="https://latex.codecogs.com/png.latex?%5COmega"> by <img src="https://latex.codecogs.com/png.latex?p,%20q%20%5Cin%20%5Cmathbb%7BQ%7D">, the following dichotomy is true: either the sets are equal or disjoint (which was mentioned at the beginning of the proof). </p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bequation%7D%0A%5Cbegin%7Bcases%7D%0A%20%20%20%20%5COmega%20+%20q%20=%20%5COmega%20+%20p%20%20%20%5C%5C%0A%20%20%20%20(%5COmega%20+%20q)%20%5Ccap%20(%5COmega%20+%20p)%20=%20%5Cvarnothing%0A%20%20%20%20%5Cend%7Bcases%7D%0A%5Cend%7Bequation%7D"></p>
+<p>Since <img src="https://latex.codecogs.com/png.latex?%5COmega"> contains an element from each equivalence class, each point in <img src="https://latex.codecogs.com/png.latex?(0,%201%5D%20%5Csubseteq%20%5Cbigcup%5Climits_%7Br%20%5Cin%20%5Cmathbb%7BQ%7D%7D%20(%5COmega%20+%20r)"> (is contained in the union of rational shifts of <img src="https://latex.codecogs.com/png.latex?%5COmega">).</p>
+<p>Since <img src="https://latex.codecogs.com/png.latex?%5COmega"> has only one element <img src="https://latex.codecogs.com/png.latex?%5Cforall%20%5Bx%5D%20%5Cimplies%20%5COmega%20+%20r,%20%5Cforall%20r%20%5Cin%20%5B0,%201%5D"> are disjoint. Thus for <img src="https://latex.codecogs.com/png.latex?r%20%5Cin%20%5B0,%201%5D">,</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign%7D%0A%20%20%20%20%5Clambda(%5B0,%201%5D)%20&amp;=%20%5Csum%5Climits_%7Br%20%5Cin%20%5Cmathbb%7BQ%7D%7D%20%5Clambda(%5COmega%20+%20r)%20%5C%5C%0A%20%20%20%20&amp;=%20%5Csum%5Climits_%7Br%20%5Cin%20%5Cmathbb%7BQ%7D%7D%20%5Clambda(%5COmega)%0A%5Cend%7Balign%7D"></p>
+<p>Notice the rhs is countably infinite sum, so it can be either zero or <img src="https://latex.codecogs.com/png.latex?+%5Cinfty"> or <img src="https://latex.codecogs.com/png.latex?-%5Cinfty">, but lhs is one. So, we arrive at the contradiction. For the last steps, some more understanding is needed. This is why the second proof is great and even though longer, very explicit.</p>
+<p>So, what’s the trouble with the Uniform? Nothing particular, it’s just that not all subsets are measurable (have an associated measure). This is why we need concepts like semi-algebra, algebra and sigma-algebra in order to reason about what subsets of the power set are measurable.</p>
+</section>
+<section id="plan-of-attack" class="level2">
+<h2 class="anchored" data-anchor-id="plan-of-attack">Plan of Attack</h2>
+<p><strong>The idea</strong> is to extend the following measure <img src="https://latex.codecogs.com/png.latex?%5Clambda(%5Ba,%20b%5D)%20=%20b%20-%20a"> (of the length) to increasingly more strict scope with respect to <img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BP%7D(%5Cmathbb%7BR%7D)">, while keeping the desired properties. I jumped a little bit ahead of myself defining the sigma-algebra, as there are more prerequisites and intermediary steps needed. Defining the following objects (<strong>classes of subsets</strong>) will help demistify a lot of terminology used</p>
+<ul>
+<li>semi-algebra</li>
+<li>algebra</li>
+<li>sigma-algebra</li>
+</ul>
+<p>We’ll construct an increasing set of more restrictive conditions. Basically, semi-algebra is weaker than algebra which is weaker than sigma-algebra. These classes of subsets have certain properties and subtle relationships between them and without understanding these, it is very hard to move on to extend the measure.</p>
+<p><strong>Def:</strong> Semi-Algebra is a class of subsets <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BS%7D%20%5Csubseteq%20%5Cmathscr%7BP%7D(%5COmega)"> if the following holds</p>
+<ol type="1">
+<li><img src="https://latex.codecogs.com/png.latex?%5COmega%20%5Cin%20%5Cmathcal%7BS%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Cvarnothing%20%5Cin%20%5Cmathcal%7BS%7D"></li>
+<li><img src="https://latex.codecogs.com/png.latex?A,%20B%20%5Cin%20%5Cmathcal%7BS%7D%20%5Cimplies%20A%20%5Ccap%20B%20%5Cin%20%5Cmathcal%7BS%7D"> (closed by finite intersections)</li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Cforall%20A%20%5Cin%20%5Cmathcal%7BS%7D">, <img src="https://latex.codecogs.com/png.latex?%5Cexists%20%5C%7B%20E_1%20,%20%5Cdots,%20E_n%20%5C%7D%20%5Cimplies%20A%5EC%20=%20%5Csum%5Climits_%7Bj%20=%201%7D%5En%20E_j"> Complement viewed as a finite union of elements of <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BS%7D"></li>
+</ol>
+<p>Imagine a segment <img src="https://latex.codecogs.com/png.latex?%5Ba,%20b%5D"> on <img src="https://latex.codecogs.com/png.latex?%5B0,%201%5D"> and take its complement, it is obvious that it can be represented as a finite union of sets of <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BS%7D">. Actually, these simple examples inspired the definition of semi algebra, but as we can see the conditions are weaker than the ones for algebra. The algebra and sigma-algebra were defined above, but it doesn’t hurt to inspect the relationship between the two in more detail.</p>
+<p><strong>Def:</strong> Algebra is a class of subsets <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BA%7D%20%5Csubseteq%20%5Cmathscr%7BP%7D(%5COmega)"> if the following holds</p>
+<ol type="1">
+<li><img src="https://latex.codecogs.com/png.latex?%5COmega%20%5Cin%20%5Cmathcal%7BA%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Cvarnothing%20%5Cin%20%5Cmathcal%7BA%7D"></li>
+<li><img src="https://latex.codecogs.com/png.latex?A,%20B%20%5Cin%20%5Cmathcal%7BA%7D%20%5Cimplies%20A%20%5Ccap%20B%20%5Cin%20%5Cmathcal%7BA%7D"> (closed by finite intersections)</li>
+<li><img src="https://latex.codecogs.com/png.latex?A%20%5Cin%20%5Cmathcal%7BA%7D%20%5Cimplies%20A%5EC%20%5Cin%20%5Cmathcal%7BA%7D"> (closed under complements, a stronger condition)</li>
+</ol>
+<p><strong>Remark:</strong> If <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BA%7D"> is a sigma-algebra then <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BA%7D"> is also a semi-algebra. This is important because we want to make statements about algebras generated by semi-algebras which have very nice properties.</p>
+<p><strong>Remark:</strong> Let <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BA%7D_i%20%5Csubseteq%20%5Cmathscr%7BP%7D(%5COmega)"> be an algebra of subsets of <img src="https://latex.codecogs.com/png.latex?%5COmega"> where <img src="https://latex.codecogs.com/png.latex?i%20%5Cin%20I"> could be any index. Then <img src="https://latex.codecogs.com/png.latex?%5Cbigcap%5Climits_%7Bi%20%5Cin%20I%7D%20%5Cmathcal%7BA%7D_i%20=%20%5Cmathcal%7BA%7D"> is also an algebra. This is verified by the definition of algebra.</p>
+<p><strong>Def:</strong> Sigma-Algebra is a class of subsets <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BF%7D%20%5Cin%20%5Cmathscr%7BP%7D(%5COmega)"> if the following holds</p>
+<ol type="1">
+<li><img src="https://latex.codecogs.com/png.latex?%5COmega%20%5Cin%20%5Cmathcal%7BF%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Cvarnothing%20%5Cin%20%5Cmathcal%7BF%7D"></li>
+<li><img src="https://latex.codecogs.com/png.latex?A_j%20%5Cin%20%5Cmathcal%7BF%7D"> <img src="https://latex.codecogs.com/png.latex?%5Cimplies%20%5Cbigcap%5Climits_%7Bj%20%5Cge%201%7D%20A_j%20%5Cin%20%5Cmathcal%7BF%7D"> (closed by <strong>countable</strong> intersections)</li>
+<li><img src="https://latex.codecogs.com/png.latex?A%20%5Cin%20%5Cmathcal%7BF%7D%20%5Cimplies%20A%5EC%20%5Cin%20%5Cmathcal%7BF%7D"> (closed under complements)</li>
+</ol>
+<p><strong>Remark:</strong> Let <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BF%7D_i%20%5Cin%20%5Cmathscr%7BP%7D(%5COmega)"> be a sigma-algebra of subsets of <img src="https://latex.codecogs.com/png.latex?%5COmega"> where <img src="https://latex.codecogs.com/png.latex?i%20%5Cin%20I"> could be any index. Then <img src="https://latex.codecogs.com/png.latex?%5Cbigcap%5Climits_%7Bi%20%5Cin%20I%7D%20%5Cmathcal%7BF%7D_i%20=%20%5Cmathcal%7BF%7D"> is also an algebra. Same as in case of algebra</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://blog.economic-cybernetics.com/posts/2018-intro-measure/img/extension.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">The plan of attack. A sigma-additive measure defined on semi-algebra is extended to the algebra generated by the semi-algebra. The latter in turn is extended by Caratheodori theorem to the sigma-additive measure defined on sigma-algebra generated by the semi-algebra</figcaption><p></p>
+</figure>
+</div>
+<p>Also needs to be shown that these extensions are unique at each step. Let’s take a break in order not to get lost in detail and terminology: What are we doing here? It was proven that we cannot define a measure extending the idea of length on <img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BP%7D(%5COmega)"> under standard axioms of probability.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5COmega%20=%20%5B0,%201%5D,%20%5Cmathbb%7BP%7D(%5Ba,%20b%5D)%20=%20b%20-%20a">, but what is <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BF%7D">? A sigma-algebra, but it’s not obvious at all why.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bequation%7D%0A%20%20%20%20Unif(%5B0,%201%5D)%20%5Clongrightarrow%20(%5COmega,%20%5Cmathcal%7BF%7D,%20%5Cmathbb%7BP%7D)%0A%5Cend%7Bequation%7D"></p>
+<p>That gave a motivation of defining measures on <strong>algebras</strong> with conditions of ever increasing strength/restriction. Relationships between these types of objects and their properties are key in making progress, which is quite clear from the diagram above. Even though these steps might look similar, the techniques and concepts employed are quite different. Nonetheless, the question always stays conceptually the same: On what can we define a (probability) measure? In essence, the whole language is developed in order to reason and make meaningful statements about sets of subsets and whether it can be “measured”.</p>
+<blockquote class="blockquote">
+<p>Also notice that we haven’t still reached even the start of what most measure-theoretic probability courses begin from. This is good, because we’re spending time on understanding the fundamentals on which all that theory is built.</p>
+</blockquote>
+<p>The next element we need is to define relationships between fields such as algebras generated by semi-algebras and so on. First, C. Landim introduces an algebra <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BA%7D(%5Cmathscr%7BC%7D)"> generated by a class of sets <img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BC%7D%20%5Csubseteq%20%5Cmathscr%7BP%7D(%5COmega)"> such that the following holds</p>
+<ol type="1">
+<li><img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BC%7D%20%5Csubseteq%20%5Cmathcal%7BA%7D">, where <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BA%7D"> is the smallest algebra that contains <img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BC%7D"></li>
+<li>If <img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BB%7D%20%5Csupseteq%20%5Cmathscr%7BC%7D"> is a sigma-algebra <img src="https://latex.codecogs.com/png.latex?%5Cimplies%20%5Cmathscr%7BB%7D%20%5Csupseteq%20%5Cmathcal%7BA%7D"></li>
+</ol>
+<p>Remarkably, the same is true for sigma-algebras, proven by a chain of thought involving all sets <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BA%7D_%5Calpha"> which contain <img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BC%7D">. Their intersection <img src="https://latex.codecogs.com/png.latex?%5Cbigcap%5Climits_%5Calpha%20%5Cmathcal%7BA%7D_%5Calpha%20=%20%5Cmathcal%7BA%7D"> contains <img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BB%7D"> and since it contains $ $, it belongs to that intersection, hence, it’s the smallest sigma-algebra that contains <img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BC%7D">.</p>
+<p>If the underlying class <img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BC%7D"> is a semi-algebra, then <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BA%7D(%5Cmathscr%7BC%7D)"> has an explicit form as a finite union of elements of semi-algebra. In the case of sigma-algebras, other techniques and arguments are needed because we don’t have such a form, which will be a major blocker.</p>
+<ol type="1">
+<li>Prove and formalize the last statement about sigma-algebras generated by semi-algebras</li>
+<li>Explore additivity in measure functions</li>
+<li>Explore sigma-additivity in measure functions</li>
+<li>Understand Continuity from Above and Below and its connections with additivity</li>
+<li>Extend the measure defined by semi-algebra on sigma-algebra generated by semi-algebra. Prove uniqueness</li>
+</ol>
+<p><strong>Theorem:</strong> (Caratheodori) Let <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BF%7D(%5COmega)"> be a semi-algebra of subsets of <img src="https://latex.codecogs.com/png.latex?%5COmega"> and <img src="https://latex.codecogs.com/png.latex?%5Cpi:%20%5Cmathcal%7BF%7D%20%5Crightarrow%20%5B0,%201%5D"> with <img src="https://latex.codecogs.com/png.latex?%5Cpi(%5Cvarnothing)%20=%200"> and <img src="https://latex.codecogs.com/png.latex?%5Cpi(%5COmega)%20=%201"> satisfying the superadditivity property:</p>
+<ol type="1">
+<li><p><img src="https://latex.codecogs.com/png.latex?%5Cpi(%5Cbigcup%5Climits_%7Bi%20=%201%7D%5Ek%20A_i)%20%5Cge%20%5Csum%5Climits_%7Bi%20=%201%7D%5Ek%20%5Cpi(A_i)"> where <img src="https://latex.codecogs.com/png.latex?A_i%20%5Cin%20%5Cmathcal%7BF%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Cbigcup%5Climits_%7Bi%20=%201%7D%5Ek%20A_i%20%5Cin%20%5Cmathcal%7BF%7D"> disjoint.</p></li>
+<li><p><img src="https://latex.codecogs.com/png.latex?%5Cpi(A)%20%5Cle%20%5Csum%5Climits_n%20%5Cpi(A_n)"> where <img src="https://latex.codecogs.com/png.latex?A_i%20%5Cin%20%5Cmathcal%7BF%7D"> and <img src="https://latex.codecogs.com/png.latex?A%20%5Cin%20%5Cbigcup%5Climits_n%20A_n"></p>
+<p>Then <img src="https://latex.codecogs.com/png.latex?%5Cexists"> a sigma-algebra <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BM%7D%20%5Csupseteq%20%5Cmathcal%7BF%7D"> and a countably additive probability measure <img src="https://latex.codecogs.com/png.latex?%5Cpi%5E*:%5Cmathcal%7BM%7D%5Crightarrow%20%5B0,%201%5D"> such that <img src="https://latex.codecogs.com/png.latex?%5Cpi%5E*(A)%20=%20%5Cpi(A)%20~~%20%5Cforall%20A%20%5Cin%20%5Cmathcal%7BF%7D%20%5Cimplies%20(%5COmega,%20%5Cmathcal%7BF%7D,%20%5Cpi%5E*)"> is a valid probability triple, which agrees with previous probabilities on <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BF%7D"> <span class="citation" data-cites="Rosenthal2006">(Rhosental 2006)</span></p></li>
+</ol>
+</section>
+<section id="proof-left-as-an-exercise-just-kidding" class="level2">
+<h2 class="anchored" data-anchor-id="proof-left-as-an-exercise-just-kidding">Proof Left as an Exercise [Just Kidding]</h2>
+<p>We’re middle way through and already discovered a lot of insights, but there are more things to be done:</p>
+<ol type="1">
+<li>Define and understand the concept of outer measure</li>
+<li>Prove that <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BM%7D"> is a sigma-algebra</li>
+<li>Construct the extension on the new restriction</li>
+<li>Learn about monotone classes</li>
+<li>Prove the extension is unique via monotone classes</li>
+<li>Look into “Extension of Caratheodori Extension Theorem”</li>
+</ol>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Landim2016" class="csl-entry">
+Landim, Claudio. 2016. <span>“Caratheodori Theorem.”</span> <a href="https://www.youtube.com/watch?v=ZNH4eDM7cJo" class="uri">https://www.youtube.com/watch?v=ZNH4eDM7cJo</a>.
+</div>
+<div id="ref-Lawrence2012" class="csl-entry">
+Lawrence, Evans. 2012. <span>“Why Measure Theory for Probability?”</span> <a href="https://www.youtube.com/watch?v=rAYA2Mu51bw" class="uri">https://www.youtube.com/watch?v=rAYA2Mu51bw</a>.
+</div>
+<div id="ref-McElreath" class="csl-entry">
+McElreath, Richard. 2015. <em>Statistical Rethinking: A Bayesian Course with Examples in r and Stan</em>. Second. CRC.
+</div>
+<div id="ref-Bizovi" class="csl-entry">
+Mihai, Bizovi. 2017. <span>“Stochastic Modeling and Bayesian Inference.”</span> ASE.
+</div>
+<div id="ref-Rosenthal2006" class="csl-entry">
+Rhosental, Jeffrey S. 2006. <em>First Look at Rigorous Probability Theory</em>. Second. World Scientific.
+</div>
+<div id="ref-Ruxanda2011" class="csl-entry">
+Ruxanda, Gheorghe. 2011. <span>“Consideratii Privind Abordarea Stochastica in Domeniul Economic.”</span> <a href="http://doccent.ase.ro/media/20111108_Abordarea_Cantitativa_Stochastica.pdfs" class="uri">http://doccent.ase.ro/media/20111108_Abordarea_Cantitativa_Stochastica.pdfs</a>.
+</div>
+<div id="ref-Ruxanda2017" class="csl-entry">
+———. 2017. <span>“Probability Theory and Stochastic Modeling.”</span> Lecture.
+</div>
+</div></section></div> ]]></description>
+  <category>probability</category>
+  <category>measure-theory</category>
+  <guid>https://blog.economic-cybernetics.com/posts/2018-intro-measure/measure_theory.html</guid>
+  <pubDate>Thu, 31 May 2018 21:00:00 GMT</pubDate>
+  <media:content url="https://blog.economic-cybernetics.com/posts/2018-intro-measure/img/measure_theory_comics.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
   <title>Making Friends with Probability</title>
   <dc:creator>Bizovi Mihai</dc:creator>
   <link>https://blog.economic-cybernetics.com/posts/2017-probability/stochastic.html</link>
