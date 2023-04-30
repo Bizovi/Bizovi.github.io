@@ -3,6 +3,7 @@ title: 10 Lessons in Humility
 author: Bizovi Mihai
 date: '2023-04-10'
 categories: ["philosophy"]
+reference-location: margin
 ---
 
 I was trying to articulate a philosophy for the courses I teach and accidentally wrote 10 non-exhaustive principles for life, which are also lessons in humility. It will not be surprising if the humble wonder practice by John Vervaeke shaped these ideas.
@@ -23,6 +24,12 @@ I was trying to articulate a philosophy for the courses I teach and accidentally
 
 ## John Vervaeke's Humble Wonder
 
+::: {.column-margin}
+![](socrates.jpeg){width="100%"}
+
+Check out John Vervaeke's After Socrates, [Lecture 2](https://youtu.be/erxLwlk6RCQ?t=4276).
+:::
+
 Practicing the Socratic learned ignorance about the self:
 
 - There is so much I do not know about myself because of all of the [combinatorially explosive] facts.
@@ -30,7 +37,7 @@ Practicing the Socratic learned ignorance about the self:
 - There is so much I refuse to see about myself because of all of my foolishness.
 - There is so much I am unable to see about myself because of all of my faults.
 
-Practicing the Learned Ignorance about the world:
+Practicing the learned ignorance about the world:
 
 - There is so much I do not know about the world because of all of the facts.
 - There is so much I shall never know about the world because of all of the fate.

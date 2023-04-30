@@ -5,7 +5,7 @@ website:
   title: "{Love, Math, Philosophy}"
   site-url: https://blog.economic-cybernetics.com
   description: "{Love, Math, Philosophy}"
-  favicon: img/favicon.jpeg
+  favicon: img/icon.png
   open-graph:
     locale: es_ES
     site-name: "{Love, Math, Philosophy}"
@@ -26,7 +26,7 @@ website:
         href: index.xml
 format:
   html:
-    theme: simplex
+    theme: journal
     css: styles.css
 
 

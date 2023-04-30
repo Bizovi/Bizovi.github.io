@@ -1,19 +1,22 @@
 ---
 title: "Interdisciplinary Unorthodoxy"
+# subtitle: "Ceva"
 listing:
   contents: posts
   sort: "date desc"
   type: default
-  categories: true
+  categories: true # cloud
   sort-ui: true
   filter-ui: true
   feed: true
+  max-description-length: 300
+  fields: [image, date, title, author, reading-time, description, categories]
+  # image-height: "100%"
 page-layout: full
-title-block-banner: false
+title-block-banner: true
 ---
 
 
---- 
 
 :::: {.columns}
 
@@ -33,7 +36,7 @@ title-block-banner: false
 
 **As a teacher,** I aspire to contribute to the understanding of AI's complex landscape; how to navigate it, develop valuable skills, and become more effective at problem-solving.
 
-**As a person,** I aspire to a life of wisdom and meaning. Learning to be present and what is friendship, caring, love, beauty, and spirituality.
+**As a person,** I aspire to a life of wisdom and meaning. Learning how to be present and deeply understanding what is friendship, caring, love, beauty, and spirituality.
 :::
 ::::
 
