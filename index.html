@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./img/favicon.jpeg" rel="icon" type="image/jpeg">
+<link href="./img/icon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-listing/list.min.js"></script>
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -71,9 +71,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-date','listing-title','listing-author','listing-reading-time','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-description","listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -160,33 +160,34 @@ ga('send', {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Interdisciplinary Unorthodoxy</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bayes">bayes <span class="quarto-category-count">(1)</span></div><div class="category" data-category="philosophy">philosophy <span class="quarto-category-count">(1)</span></div><div class="category" data-category="probability">probability <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bayes">bayes <span class="quarto-category-count">(1)</span></div><div class="category" data-category="philosophy">philosophy <span class="quarto-category-count">(2)</span></div><div class="category" data-category="probability">probability <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Interdisciplinary Unorthodoxy</h1>
-</div>
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<hr>
 <div class="columns">
 <div class="column" style="width:30%;">
 <p><img src="img/portrait.jpg" title="Portrait" class="img-fluid" style="width:90.0%"></p>
@@ -197,7 +198,7 @@ ga('send', {
 <hr>
 <p><strong>At my day job,</strong> I’m a generalist – navigating uncertainty and complexity to improve decision-making at scale.</p>
 <p><strong>As a teacher,</strong> I aspire to contribute to the understanding of AI’s complex landscape; how to navigate it, develop valuable skills, and become more effective at problem-solving.</p>
-<p><strong>As a person,</strong> I aspire to a life of wisdom and meaning. Learning to be present and what is friendship, caring, love, beauty, and spirituality.</p>
+<p><strong>As a person,</strong> I aspire to a life of wisdom and meaning. Learning how to be present and deeply understanding what is friendship, caring, love, beauty, and spirituality.</p>
 </div>
 </div>
 <hr>
@@ -232,7 +233,10 @@ ga('send', {
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="philosophy" data-listing-date-sort="1681074000000" data-listing-file-modified-sort="1682840267464" data-listing-reading-time-sort="1.81">
+<div class="quarto-post image-right" data-index="0" data-categories="philosophy" data-listing-date-sort="1681074000000" data-listing-file-modified-sort="1682855222992" data-listing-reading-time-sort="1.85">
+<div class="thumbnail">
+<p><a href="./posts/2023-rules/principles.html"> <img src="./posts/2023-rules/socrates.jpeg" class="thumnail-image"> </a></p>
+</div>
 <div class="body">
 <a href="./posts/2023-rules/principles.html">
 <h3 class="no-anchor listing-title">
@@ -249,7 +253,7 @@ philosophy
 </div>
 <a href="./posts/2023-rules/principles.html">
 <div class="listing-description">
-I was trying to articulate a philosophy for the courses I teach and…
+I was trying to articulate a philosophy for the courses I teach and accidentally wrote 10 non-exhaustive principles for life, which are also lessons in humility. It will not be surprising if the humble wonder practice by John Vervaeke shaped these ideas.
 </div>
 </a>
 </div>
@@ -261,14 +265,20 @@ Apr 10, 2023
 <div class="listing-author">
 Bizovi Mihai
 </div>
+<div class="listing-reading-time">
+1 min
+</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="probability,bayes" data-listing-date-sort="1502053200000" data-listing-file-modified-sort="1682839847278" data-listing-reading-time-sort="4.595">
+<div class="quarto-post image-right" data-index="1" data-categories="probability,bayes,philosophy" data-listing-date-sort="1502053200000" data-listing-file-modified-sort="1682858454596" data-listing-reading-time-sort="6.71">
+<div class="thumbnail">
+<p><a href="./posts/2017-probability/stochastic.html"> <img src="./posts/2017-probability/kolmogorov.jpeg" class="thumnail-image"> </a></p>
+</div>
 <div class="body">
 <a href="./posts/2017-probability/stochastic.html">
 <h3 class="no-anchor listing-title">
-On Bayes and Interdisciplinarity
+Making Friends with Probability
 </h3>
 <div class="listing-subtitle">
 
@@ -281,10 +291,13 @@ probability
 <div class="listing-category" onclick="window.quartoListingCategory('bayes'); return false;">
 bayes
 </div>
+<div class="listing-category" onclick="window.quartoListingCategory('philosophy'); return false;">
+philosophy
+</div>
 </div>
 <a href="./posts/2017-probability/stochastic.html">
 <div class="listing-description">
-”I can live with doubt and uncertainty and not knowing. We absolutely must leave room for doubt or there is no progress and there…<em></em>
+Thinking deeply about uncertainty and probability theory changed my worldview and eventually became an essential part of my job. In 2023, I’m looking back at the game-changing encounters which instilled a passion for probability, followed by some paragraphs from the bachelor’s thesis<sup>1</sup>.
 </div>
 </a>
 </div>
@@ -295,6 +308,9 @@ Aug 7, 2017
 </div>
 <div class="listing-author">
 Bizovi Mihai
+</div>
+<div class="listing-reading-time">
+6 min
 </div>
 </a>
 </div>
