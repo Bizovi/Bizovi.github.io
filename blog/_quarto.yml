@@ -1,0 +1,33 @@
+project:
+  type: website
+
+website:
+  title: "{Love, Math, Philosophy}"
+  site-url: https://blog.economic-cybernetics.com
+  description: "{Love, Math, Philosophy}"
+  favicon: img/favicon.jpeg
+  open-graph:
+    locale: es_ES
+    site-name: "{Love, Math, Philosophy}"
+  google-analytics: "UA-104200881-1"
+
+  navbar:
+    right:
+      - href: about.qmd
+        text: "About Me"
+      - icon: bi-journal-bookmark
+        href: https://course.economic-cybernetics.com/
+        text: "Decision-Making Course"
+      - icon: github
+        href: https://github.com/bizovi/decision-making
+      - icon: linkedin
+        href: https://www.linkedin.com/in/bizovi-mihai-56982abb/
+      - icon: rss
+        href: index.xml
+format:
+  html:
+    theme: simplex
+    css: styles.css
+
+
+

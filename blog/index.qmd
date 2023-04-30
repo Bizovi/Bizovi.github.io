@@ -1,0 +1,43 @@
+---
+title: "Interdisciplinary Unorthodoxy"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: true
+  filter-ui: true
+  feed: true
+page-layout: full
+title-block-banner: false
+---
+
+
+--- 
+
+:::: {.columns}
+
+::: {.column width="30%"}
+![](img/portrait.jpg "Portrait"){width="90%"}
+:::
+
+::: {.column width="5%"}
+<!-- empty column to create gap -->
+:::
+
+::: {.column width="65%"}
+**Mihai Bizovi** | Head of Data Science \@AdoreMe
+---
+
+**At my day job,** I'm a generalist -- navigating uncertainty and complexity to improve decision-making at scale.
+
+**As a teacher,** I aspire to contribute to the understanding of AI's complex landscape; how to navigate it, develop valuable skills, and become more effective at problem-solving.
+
+**As a person,** I aspire to a life of wisdom and meaning. Learning to be present and what is friendship, caring, love, beauty, and spirituality.
+:::
+::::
+
+---
+
+
+
