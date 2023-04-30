@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Bizovi Mihai">
+<meta name="dcterms.date" content="2019-01-09">
+
+<title>{Love, Math, Philosophy} - Statistical Analysis of Facebook Network of Friends</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../img/icon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript">
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-104200881-1', 'auto');
+
+ga('send', {
+  hitType: 'pageview',
+  'anonymizeIp': true,
+});
+</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="{Love, Math, Philosophy} - Statistical Analysis of Facebook Network of Friends">
+<meta property="og:description" content="The goal of this project is to get some hands-on experience in working with Graphs and Network Data based on a dataset from my personal life.">
+<meta property="og:site-name" content="{Love, Math, Philosophy}">
+<meta property="og:locale" content="es_ES">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">{Love, Math, Philosophy}</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">
+ <span class="menu-text">About Me</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://course.economic-cybernetics.com/"><i class="bi bi-journal-bookmark" role="img">
+</i> 
+ <span class="menu-text">Decision-Making Course</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/bizovi/decision-making"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/bizovi-mihai-56982abb/"><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Statistical Analysis of Facebook Network of Friends</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">networks</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Bizovi Mihai </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 9, 2019</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
+
+
+
+
+<p>The goal of this project is to get some hands-on experience in working with Graphs and Network Data based on a dataset from my personal life. It will involve some theoretical understanding and programming.</p>
+<div class="page-columns page-full"><p>Graph Theory is a fascinating subject which I studied before, but as I found out – the understanding remains, but the skill perishes if left untrained or unused. Besides getting comfortable with this type of data, there is an opportunity to build the ground for future research<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Moreover, ideas from graph theory can be useful in the field of Machine Learning, with the emergence of Graph Neural Networks.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Paul Omerod <em><a href="http://evonomics.com/the-future-of-economics-uses-the-sciiece-of-real-life-social-networks/">The Future of Economics Uses the Science of Real-Life Social Networks</a></em> (Evonomics, 2016)</p></li></div></div>
+<section id="crawling-the-data" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="crawling-the-data">Crawling the data</h2>
+<p>In search of a suitable dataset for statistical analysis of social networks, I stumbled upon many interesting applications, from the classical Karate Club to Email, Citations of Scientific Articles, Transportation and Biology. Unfortunately, there is a tradeoff between how manageable it is to work with the data in terms of volume and how interesting are the patterns to be discovered. The most promising way seemed to explore the scientific literature or knowledge graphs like DBPedia, but it’s quite a difficult and heavy task.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/FB_Social_Network.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Facebook Social Network extracted though lostcircles. The shadowed area over clusters represent different communities like the place I work at, chess, ASE and Moldavian diaspora. The red circles represent people connecting different communities or central figures for a given cluster.</figcaption><p></p>
+</figure>
+</div>
+<div class="page-columns page-full"><p>This is why I extracted my own network of Facebook friends<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, because I knew there are a few heterogeneous communities and the results could be interesting. It turned out even more surprising and insightful when applying the algorithms for the layout and node importance. <strong>The immediate contribution</strong> is that this anonimized dataset can be used for teaching and academic purposes, testing of algorithms on graphs.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;Lostcircles.com <em><a href="https://lostcircles.com">A scraper for Facebook friend network</a></em> (Lostcircles, 2017)</p></li></div></div>
+<p>Moreover, it enables us to validate the results of algorithms with the actual knowledge of the communities and “important” people in it. First, I use the default visualization of the crawler and encode the knowledge I have about the network on the graph in the next page. Then, using <strong>python</strong> and <strong>networkx</strong> package to visualize it, but this time by calculating importance metrics via <strong>PageRank</strong>, <strong>Hits</strong>, the central and peripheral nodes according to the definition.</p>
+<p>The observation is that the overlap between statistical insights and “ground truth” is quite large. Because the network is real and not idealized, some “hubs”, i.e.&nbsp;people connecting different clusters aren’t identified. Instead, it finds important people within the clusters, and interpretation of this will be discussed later.</p>
+</section>
+<section id="interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="interpretation">Interpretation</h2>
+<p>The first graph is quite complicated, so let’s review the <strong>communities</strong> which are clearly seen and shaded for clarity. The top cluster represents people from my highschool in Chisinau, Moldova. They are connected by a chess player to the quite large chess community of which I took part for many years. The chess cluster in turn is connected to my family, which joined later and are also interested in this game.</p>
+<p>Moreover, the network doesn’t have timestamps, but hypothetically, if I had them, I could tell how the network developed to its final state. It is by no means an impediment of telling the story. We can move on to the times I moved to Bucharest for CSIE bachelor, and we see within the central, big cluster several sub-communities, the first one being the foreign students, with which other foreign students, of course interact a lot. The second part, people from university are pretty much the same during the Bachelor and Masters. The person connecting the highschool, diaspora and university is my roommate and chess with CSIE a grandmaster who is also a professor.</p>
+<p>Another source of connections are different conferences, summer schools and workshops, for example in Risk Management, Mathematics and Data Science. These nodes are not differentiated too well in the network, but the fact that the algorithm placed them in the same neighborhood is very insightful. Inside the Cybernetics Masters’, the red point, also confirmed by PageRank is the most <strong>central</strong> person, the chief of students’ senate.</p>
+<p>Moving next, we see a sparsely connected region of PhD students and Teaching Assistants. They, and the Cybernetics cluster are connected to the firm I’m working with by a professor who was a consultant at our firm. The last community is the Bucharest Machine Learning and Tech people, who use to be very active in meetups and conferences inside the capital.</p>
+</section>
+<section id="analysis-in-networkx" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-in-networkx">Analysis in NetworkX</h2>
+<p>Now we are armed with the knowledge and interpretation of this graph and can start with a blank slate, using the raw data, which is stored in a <strong>json</strong> format <code>{’source’: 476, ’target’: 87}</code>, later transformed in an <strong>edge list</strong> and finally a <strong>networkx</strong> <code>Graph()</code> object. Now we can visualize this object in python, using different layout algorithms, calculate statistics and starting exploring the dataset as if we knew nothing about it. The node labels are numbers in order to anonimize the data, without much loss of insight.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'bizovi.json'</span>, <span class="st">'rb'</span>) <span class="im">as</span> f:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> json.load(f)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame([(x[<span class="st">"source"</span>], x[<span class="st">"target"</span>]) <span class="cf">for</span> x <span class="kw">in</span> data[<span class="st">"links"</span>]], </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">"n1"</span>, <span class="st">"n2"</span>])</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>df.head()</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> nx.from_pandas_edgelist(df, <span class="st">'n1'</span>, <span class="st">'n2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Classical measures of centrality like degree, average clustering, betweenness centrality, despite their simplicity and power they all have the downside of how complex of patterns can they represent or suggest. This is where iterative, algorithmic approaches like Scaled PageRank and HITS come into play. The first one can be interpreted as the probability of ending up in a node when traversing the graph by a random walk a <strong>sufficiently long</strong> time. Hits uses another approach with the concepts of Authority and Hubs. It is important to note that they both were developed for directed graphs in the context of web pages and hyperlinks pointing to them and they show their full power there. Nonetheless, they can still be used for undirected graphs, as I did here.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> plt.hist(nx.pagerank(G).values(), bins<span class="op">=</span><span class="dv">30</span>, color<span class="op">=</span><span class="st">'.5'</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"PageRank"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Count"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Distribution of the PageRank Score"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>pagerank <span class="op">=</span> nx.pagerank(G, alpha<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>high_rank <span class="op">=</span> [key <span class="cf">for</span> key, val <span class="kw">in</span> pagerank.items() <span class="cf">if</span> val <span class="op">&gt;</span> <span class="fl">0.0042</span>]</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>hits <span class="op">=</span> nx.hits(G, max_iter<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> plt.hist(hits[<span class="dv">0</span>].values(), bins<span class="op">=</span><span class="dv">30</span>, color<span class="op">=</span><span class="st">'.5'</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Authority Score"</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Count"</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Hits"</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>high_hits <span class="op">=</span> [key <span class="cf">for</span> key, val <span class="kw">in</span> hits[<span class="dv">0</span>].items() <span class="cf">if</span> val <span class="op">&gt;</span> <span class="fl">0.005</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>First, I apply the algorithms and then look at the distribution of node “importance” in order to identify a good treshold for the visualization. The important nodes are then stored into <code>high_rank</code> and <code>high_hits</code> variables. The parameter <strong>alpha</strong> is essential for the PageRank not to get stuck into loops and distorting the distribution.</p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/pagerank.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Scaled PageRank</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/hits.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Hits</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p><em>The distribution of node importance according to PageRank and Hits algorithms. HITS needed a much larger number of iterations to converge and is much more <code>strict</code> in what it considers to be important nodes, most of them being concentrated around zero. For this particular network, PageRank scores seem a bit more sensible overall, but HITS differentiates better between importance.</em></p>
+<p>As a further warm-up, let’s calculate a few statistics on this graph, which interpretation we will discuss later. The two statistics which can vary greatly in conclusions by network type, in this case pretty much agree: the <strong>average clustering</strong> (0.49) and <strong>transitivity</strong> (0.45). The central and peripheral nodes will be displayed directly on the graph. The <strong>diameter</strong> of the network is 8, <strong>radius</strong> is 4 and the <strong>average shortest path</strong> between any node to other node is 3.26.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>periphery <span class="op">=</span> nx.periphery(G)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>center <span class="op">=</span> nx.center(G)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>min_node_cut <span class="op">=</span> nx.minimum_node_cut(G)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>nx.average_clustering(G), nx.transitivity(G)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(nx.average_shortest_path_length(G))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(nx.diameter(G))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now it is time to visualize the network and add the nodes which were calculated above according to criteria of importance. It is important to note that <strong>networkx</strong> is NOT primarily a visualization of network package: it uses the standard matplotlib, but it is good enough for small networks such as this one. In just 12 lines of code we get a publication-ready visualization. For more advanced use-cases <strong>graphviz</strong> and <strong>Gephi</strong>, <strong>igraph</strong> in R can be more suitable. In the next part, these repetitive operations will be wrapped up in a generic function which automates this a little bit painful process.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">3245</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>legend_elements <span class="op">=</span> [Line2D([<span class="dv">0</span>], [<span class="dv">0</span>], marker<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'wheat'</span>, </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        markersize<span class="op">=</span><span class="dv">10</span>, label<span class="op">=</span><span class="st">'Periphery'</span>),</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    Line2D([<span class="dv">0</span>], [<span class="dv">0</span>], marker<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'steelblue'</span>, </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        label<span class="op">=</span><span class="st">'PageRank'</span>, markersize<span class="op">=</span><span class="dv">10</span>), </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    Line2D([<span class="dv">0</span>], [<span class="dv">0</span>], marker<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'indianred'</span>, </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        label<span class="op">=</span><span class="st">'Centrality'</span>, markersize<span class="op">=</span><span class="dv">10</span>), </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    Line2D([<span class="dv">0</span>], [<span class="dv">0</span>], marker<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'green'</span>, </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        label<span class="op">=</span><span class="st">'Min Node Cut'</span>, markersize<span class="op">=</span><span class="dv">10</span>)]</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">13</span>, <span class="dv">11</span>))</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">"off"</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Network of Friends. Fruchterman Reigold Layout"</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>pos <span class="op">=</span> nx.fruchterman_reingold_layout(G)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>nx.draw_networkx(G, node_color<span class="op">=</span><span class="st">".3"</span>, pos<span class="op">=</span>pos, node_size<span class="op">=</span><span class="dv">60</span>, </span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    with_labels<span class="op">=</span><span class="va">False</span>, edge_color<span class="op">=</span><span class="st">".8"</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>nx.draw_networkx_nodes(periphery, pos<span class="op">=</span>pos, </span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    node_color<span class="op">=</span><span class="st">'wheat'</span>, node_size<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>nx.draw_networkx_nodes(high_rank, pos<span class="op">=</span>pos, </span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    node_color<span class="op">=</span><span class="st">'steelblue'</span>, node_size<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>nx.draw_networkx_nodes(center, pos<span class="op">=</span>pos, </span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    node_color<span class="op">=</span><span class="st">'indianred'</span>, node_size<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>nx.draw_networkx_nodes(min_node_cut, pos<span class="op">=</span>pos, </span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    node_color<span class="op">=</span><span class="st">'green'</span>, node_size<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>plt.legend(legend_elements, [<span class="st">"Periphery"</span>, </span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"PageRank"</span>, <span class="st">"Centrality"</span>, <span class="st">"Min Node Cut"</span>])</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/python_facebook.png" class="img-fluid" alt="Python Social Network"> <em>The final result of applying classical algorithms turned out extremely close to the <code>ground truth</code>, i.e.&nbsp;the interpretation I gave in the beginning</em></p>
+<p>The network is <strong>reversed</strong>, but even cleaner than the one generated by lostcircles. We can see on the graph on the next page that the periphery is not that large as expected. Three, or even four important people who connect clusters are correctly identified either by <strong>centrality</strong> or PageRank algorithm. Moreover, it identifies very well connected people inside the clusters.</p>
+<p>For the minimal node cut there are multiple choices, but it seems that the algorithm “thinks” that the family is the most poorly connected cluster to the other ones, which, looking at the picture is absolutely reasonable, as we have to remove only one node to achieve a disconnection, the green one.</p>
+<p>One a side note, good graph datasets for teaching are relatively rare, and with closure of Facebook API and LinkedIn API, researchers working with network data may stick with the old datasets. This one seems interesting enough for tutorials and projects.</p>
+<p>A few comments on what the code does: first it sets up the environment, defining the size of the picture and deleting the axis, then it calculates the position of each node by the Fruchterman Reigold Algorithm. The first layer of grey nodes is added, together with all of the connections. Then the peripheral nodes calculated above are displayed in beige with the function <code>nx.draw_networkx_nodes</code>, which also requires the position, the Centrality, Minimum Cut and PageRank are added in turn. The finishing touch is the legend.</p>
+<p>The last two obvious things to try are calculating the Local Clustering Coefficient and seeing the correlation between Node degree and LCC. We see that the first follows a pretty symmetric distribution, with exception of the stack at zero, which is expected in such a network. It means that there are nodes which are highly clustered and some not at all, but the majority at around 0.5.</p>
+<p>The correlation with the Node Degree shows that as node degree increases, the expected LCC drops. This relationship is usually visualized at a log scale, but our network is not enough for this to be necessary and for the pattern to emerge. There is also an interesting boundary on the top of the point cloud. Remember how we calculated the average clustering above (0.49) and it agreed in large with the alternative method of transitivity, which is based on the concept on “triangle closure”. It means that networks, in which pairs of 2 out of 3 nodes are connected, tend to “produce” closures within those triplets.</p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/lcc.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">LCC</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/correlation.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Correlation</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p><em>Two classical measures of clustering</em></p>
+<p>Below is the code which uses list comprehensions and nx functions on the graphs in order to compute and plot the distributions of the degree and LCC.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> plt.hist(<span class="bu">list</span>(nx.clustering(G).values()), bins<span class="op">=</span><span class="dv">30</span>, color<span class="op">=</span><span class="st">'.5'</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Local clustering coefficient"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Count"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Distribution of the Local clustering coefficient"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>plt.scatter([x[<span class="dv">1</span>] <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">list</span>(nx.degree(G))], </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">list</span>(nx.clustering(G).values()))</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Node Degree"</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Local Clustering Coefficient"</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Distribution of the Node Degree"</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Bonus: Node degree distribution</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> plt.hist([x[<span class="dv">1</span>] <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">list</span>(nx.degree(G))], bins<span class="op">=</span><span class="dv">30</span>, color<span class="op">=</span><span class="st">'.5'</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Node Degree"</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Count"</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Distribution of the Node Degree"</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="research-citations-and-ontologies" class="level2">
+<h2 class="anchored" data-anchor-id="research-citations-and-ontologies">Research, Citations and Ontologies</h2>
+<p>The techniques and algorithms applied on these toy examples can be and have been successfully used in discovering patterns of citation networks for research pages, knowledge graphs, blogs and web pages. It turns out to be an extremely important tool for discovery and even recommendation, as a researcher or reader has limited time and capacity, it is reasonable to suggest the most relevant or important research on her topic.</p>
+<p>Also, papers which do meta-analyses, combined with Natural Language Processing techniques are extremely interesting, as they attempt to draw the landscape of research, opinions and topics. It can also be applied to News in real time, which was successfully accomplished by Marko Grobelnik and his group in Slovenia.</p>
+</section>
+<section id="conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
+<p>As a data scientist/ machine learning researcher it was useful to step outside the (statistical) approaches on cross-sectional and panel data with which we usually work and explore applications driven by the network data.</p>
+<p>We looked at a fun and practical example of analysing a network of friends by applying some classical algorithms on it, managing to characterize quite a large part of its features and structure. A future area of improvement and research would be to see how such networks evolve in time, by enriching the data with timestamps of <code>friendship requests acceptance</code>. In this process, I learned a lot about practical statistical analysis of graph data and hope to pass this hands-on experience to the readers.</p>
+
+
+</section>
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
