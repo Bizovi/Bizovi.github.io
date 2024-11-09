@@ -5,17 +5,18 @@
       xmlns:dc="http://purl.org/dc/elements/1.1/" 
       version="2.0">
 <channel>
-<title>{Love, Math, Philosophy}</title>
-<link>https://blog.economic-cybernetics.com/index.html</link>
+<title>{Art, Math, Philosophy}</title>
+<link>https://blog.economic-cybernetics.com/</link>
 <atom:link href="https://blog.economic-cybernetics.com/index.xml" rel="self" type="application/rss+xml"/>
-<description>{Love, Math, Philosophy}</description>
-<generator>quarto-1.2.269</generator>
+<description>{Art, Math, Philosophy}</description>
+<generator>quarto-1.6.33</generator>
 <lastBuildDate>Sun, 09 Apr 2023 21:00:00 GMT</lastBuildDate>
 <item>
   <title>10 Lessons in Humility</title>
   <dc:creator>Bizovi Mihai</dc:creator>
   <link>https://blog.economic-cybernetics.com/posts/2023-rules/principles.html</link>
   <description><![CDATA[ 
+
 
 
 
@@ -67,7 +68,6 @@
   <category>philosophy</category>
   <guid>https://blog.economic-cybernetics.com/posts/2023-rules/principles.html</guid>
   <pubDate>Sun, 09 Apr 2023 21:00:00 GMT</pubDate>
-  <media:content url="https://blog.economic-cybernetics.com/posts/2023-rules/socrates.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Statistical Analysis of Facebook Network of Friends</title>
@@ -78,19 +78,20 @@
 
 
 
+
 <p>The goal of this project is to get some hands-on experience in working with Graphs and Network Data based on a dataset from my personal life. It will involve some theoretical understanding and programming.</p>
-<div class="page-columns page-full"><p>Graph Theory is a fascinating subject which I studied before, but as I found out – the understanding remains, but the skill perishes if left untrained or unused. Besides getting comfortable with this type of data, there is an opportunity to build the ground for future research<sup>1</sup>. Moreover, ideas from graph theory can be useful in the field of Machine Learning, with the emergence of Graph Neural Networks.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Paul Omerod <em><a href="http://evonomics.com/the-future-of-economics-uses-the-sciiece-of-real-life-social-networks/">The Future of Economics Uses the Science of Real-Life Social Networks</a></em> (Evonomics, 2016)</p></li></div></div>
-<section id="crawling-the-data" class="level2 page-columns page-full">
+<p>Graph Theory is a fascinating subject which I studied before, but as I found out – the understanding remains, but the skill perishes if left untrained or unused. Besides getting comfortable with this type of data, there is an opportunity to build the ground for future research<sup>1</sup>. Moreover, ideas from graph theory can be useful in the field of Machine Learning, with the emergence of Graph Neural Networks.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Paul Omerod <em><a href="http://evonomics.com/the-future-of-economics-uses-the-sciiece-of-real-life-social-networks/">The Future of Economics Uses the Science of Real-Life Social Networks</a></em> (Evonomics, 2016)</p></div></div><section id="crawling-the-data" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="crawling-the-data">Crawling the data</h2>
 <p>In search of a suitable dataset for statistical analysis of social networks, I stumbled upon many interesting applications, from the classical Karate Club to Email, Citations of Scientific Articles, Transportation and Biology. Unfortunately, there is a tradeoff between how manageable it is to work with the data in terms of volume and how interesting are the patterns to be discovered. The most promising way seemed to explore the scientific literature or knowledge graphs like DBPedia, but it’s quite a difficult and heavy task.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://blog.economic-cybernetics.com/posts/2019-networks/img/FB_Social_Network.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Facebook Social Network extracted though lostcircles. The shadowed area over clusters represent different communities like the place I work at, chess, ASE and Moldavian diaspora. The red circles represent people connecting different communities or central figures for a given cluster.</figcaption><p></p>
+<figcaption>Facebook Social Network extracted though lostcircles. The shadowed area over clusters represent different communities like the place I work at, chess, ASE and Moldavian diaspora. The red circles represent people connecting different communities or central figures for a given cluster.</figcaption>
 </figure>
 </div>
-<div class="page-columns page-full"><p>This is why I extracted my own network of Facebook friends<sup>2</sup>, because I knew there are a few heterogeneous communities and the results could be interesting. It turned out even more surprising and insightful when applying the algorithms for the layout and node importance. <strong>The immediate contribution</strong> is that this anonimized dataset can be used for teaching and academic purposes, testing of algorithms on graphs.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;Lostcircles.com <em><a href="https://lostcircles.com">A scraper for Facebook friend network</a></em> (Lostcircles, 2017)</p></li></div></div>
-<p>Moreover, it enables us to validate the results of algorithms with the actual knowledge of the communities and “important” people in it. First, I use the default visualization of the crawler and encode the knowledge I have about the network on the graph in the next page. Then, using <strong>python</strong> and <strong>networkx</strong> package to visualize it, but this time by calculating importance metrics via <strong>PageRank</strong>, <strong>Hits</strong>, the central and peripheral nodes according to the definition.</p>
+<p>This is why I extracted my own network of Facebook friends<sup>2</sup>, because I knew there are a few heterogeneous communities and the results could be interesting. It turned out even more surprising and insightful when applying the algorithms for the layout and node importance. <strong>The immediate contribution</strong> is that this anonimized dataset can be used for teaching and academic purposes, testing of algorithms on graphs.</p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;Lostcircles.com <em><a href="https://lostcircles.com">A scraper for Facebook friend network</a></em> (Lostcircles, 2017)</p></div></div><p>Moreover, it enables us to validate the results of algorithms with the actual knowledge of the communities and “important” people in it. First, I use the default visualization of the crawler and encode the knowledge I have about the network on the graph in the next page. Then, using <strong>python</strong> and <strong>networkx</strong> package to visualize it, but this time by calculating importance metrics via <strong>PageRank</strong>, <strong>Hits</strong>, the central and peripheral nodes according to the definition.</p>
 <p>The observation is that the overlap between statistical insights and “ground truth” is quite large. Because the network is real and not idealized, some “hubs”, i.e.&nbsp;people connecting different clusters aren’t identified. Instead, it finds important people within the clusters, and interpretation of this will be discussed later.</p>
 </section>
 <section id="interpretation" class="level2">
@@ -103,56 +104,200 @@
 <section id="analysis-in-networkx" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-in-networkx">Analysis in NetworkX</h2>
 <p>Now we are armed with the knowledge and interpretation of this graph and can start with a blank slate, using the raw data, which is stored in a <strong>json</strong> format <code>{’source’: 476, ’target’: 87}</code>, later transformed in an <strong>edge list</strong> and finally a <strong>networkx</strong> <code>Graph()</code> object. Now we can visualize this object in python, using different layout algorithms, calculate statistics and starting exploring the dataset as if we knew nothing about it. The node labels are numbers in order to anonimize the data, without much loss of insight.</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;">import</span> numpy <span class="im" style="color: #00769E;">as</span> np</span>
-<span id="cb1-2"><span class="im" style="color: #00769E;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;">as</span> plt</span>
-<span id="cb1-3"><span class="im" style="color: #00769E;">import</span> pandas <span class="im" style="color: #00769E;">as</span> pd</span>
-<span id="cb1-4"><span class="im" style="color: #00769E;">import</span> json</span>
-<span id="cb1-5"><span class="im" style="color: #00769E;">import</span> networkx <span class="im" style="color: #00769E;">as</span> nx</span>
-<span id="cb1-6"><span class="im" style="color: #00769E;">from</span> pprint <span class="im" style="color: #00769E;">import</span> pprint</span>
-<span id="cb1-7"><span class="op" style="color: #5E5E5E;">%</span>matplotlib inline</span>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> np</span>
+<span id="cb1-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> plt</span>
+<span id="cb1-3"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> pandas <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> pd</span>
+<span id="cb1-4"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> json</span>
+<span id="cb1-5"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> networkx <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> nx</span>
+<span id="cb1-6"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> pprint <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> pprint</span>
+<span id="cb1-7"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%</span>matplotlib inline</span>
 <span id="cb1-8"></span>
-<span id="cb1-9"><span class="cf" style="color: #003B4F;">with</span> <span class="bu" style="color: null;">open</span>(<span class="st" style="color: #20794D;">'bizovi.json'</span>, <span class="st" style="color: #20794D;">'rb'</span>) <span class="im" style="color: #00769E;">as</span> f:</span>
-<span id="cb1-10">    data <span class="op" style="color: #5E5E5E;">=</span> json.load(f)</span>
+<span id="cb1-9"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'bizovi.json'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'rb'</span>) <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> f:</span>
+<span id="cb1-10">    data <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> json.load(f)</span>
 <span id="cb1-11">    </span>
-<span id="cb1-12">df <span class="op" style="color: #5E5E5E;">=</span> pd.DataFrame([(x[<span class="st" style="color: #20794D;">"source"</span>], x[<span class="st" style="color: #20794D;">"target"</span>]) <span class="cf" style="color: #003B4F;">for</span> x <span class="kw" style="color: #003B4F;">in</span> data[<span class="st" style="color: #20794D;">"links"</span>]], </span>
-<span id="cb1-13">    columns<span class="op" style="color: #5E5E5E;">=</span>[<span class="st" style="color: #20794D;">"n1"</span>, <span class="st" style="color: #20794D;">"n2"</span>])</span>
+<span id="cb1-12">df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pd.DataFrame([(x[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"source"</span>], x[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"target"</span>]) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> x <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> data[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"links"</span>]], </span>
+<span id="cb1-13">    columns<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"n1"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"n2"</span>])</span>
 <span id="cb1-14">df.head()</span>
 <span id="cb1-15"></span>
-<span id="cb1-16">G <span class="op" style="color: #5E5E5E;">=</span> nx.from_pandas_edgelist(df, <span class="st" style="color: #20794D;">'n1'</span>, <span class="st" style="color: #20794D;">'n2'</span>)</span></code></pre></div>
+<span id="cb1-16">G <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> nx.from_pandas_edgelist(df, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'n1'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'n2'</span>)</span></code></pre></div>
 <p>Classical measures of centrality like degree, average clustering, betweenness centrality, despite their simplicity and power they all have the downside of how complex of patterns can they represent or suggest. This is where iterative, algorithmic approaches like Scaled PageRank and HITS come into play. The first one can be interpreted as the probability of ending up in a node when traversing the graph by a random walk a <strong>sufficiently long</strong> time. Hits uses another approach with the concepts of Authority and Hubs. It is important to note that they both were developed for directed graphs in the context of web pages and hyperlinks pointing to them and they show their full power there. Nonetheless, they can still be used for undirected graphs, as I did here.</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">_ <span class="op" style="color: #5E5E5E;">=</span> plt.hist(nx.pagerank(G).values(), bins<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">30</span>, color<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'.5'</span>)</span>
-<span id="cb2-2">plt.xlabel(<span class="st" style="color: #20794D;">"PageRank"</span>)</span>
-<span id="cb2-3">plt.ylabel(<span class="st" style="color: #20794D;">"Count"</span>)</span>
-<span id="cb2-4">plt.title(<span class="st" style="color: #20794D;">"Distribution of the PageRank Score"</span>)</span>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">_ <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> plt.hist(nx.pagerank(G).values(), bins<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'.5'</span>)</span>
+<span id="cb2-2">plt.xlabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"PageRank"</span>)</span>
+<span id="cb2-3">plt.ylabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Count"</span>)</span>
+<span id="cb2-4">plt.title(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Distribution of the PageRank Score"</span>)</span>
 <span id="cb2-5">plt.show()</span>
 <span id="cb2-6"></span>
-<span id="cb2-7">pagerank <span class="op" style="color: #5E5E5E;">=</span> nx.pagerank(G, alpha<span class="op" style="color: #5E5E5E;">=</span><span class="fl" style="color: #AD0000;">0.8</span>)</span>
-<span id="cb2-8">high_rank <span class="op" style="color: #5E5E5E;">=</span> [key <span class="cf" style="color: #003B4F;">for</span> key, val <span class="kw" style="color: #003B4F;">in</span> pagerank.items() <span class="cf" style="color: #003B4F;">if</span> val <span class="op" style="color: #5E5E5E;">&gt;</span> <span class="fl" style="color: #AD0000;">0.0042</span>]</span>
+<span id="cb2-7">pagerank <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> nx.pagerank(G, alpha<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.8</span>)</span>
+<span id="cb2-8">high_rank <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [key <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> key, val <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> pagerank.items() <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> val <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.0042</span>]</span>
 <span id="cb2-9"></span>
-<span id="cb2-10">hits <span class="op" style="color: #5E5E5E;">=</span> nx.hits(G, max_iter<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">1000</span>)</span>
-<span id="cb2-11">_ <span class="op" style="color: #5E5E5E;">=</span> plt.hist(hits[<span class="dv" style="color: #AD0000;">0</span>].values(), bins<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">30</span>, color<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'.5'</span>)</span>
-<span id="cb2-12">plt.xlabel(<span class="st" style="color: #20794D;">"Authority Score"</span>)</span>
-<span id="cb2-13">plt.ylabel(<span class="st" style="color: #20794D;">"Count"</span>)</span>
-<span id="cb2-14">plt.title(<span class="st" style="color: #20794D;">"Hits"</span>)</span>
+<span id="cb2-10">hits <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> nx.hits(G, max_iter<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000</span>)</span>
+<span id="cb2-11">_ <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> plt.hist(hits[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].values(), bins<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'.5'</span>)</span>
+<span id="cb2-12">plt.xlabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Authority Score"</span>)</span>
+<span id="cb2-13">plt.ylabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Count"</span>)</span>
+<span id="cb2-14">plt.title(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Hits"</span>)</span>
 <span id="cb2-15">plt.show()</span>
 <span id="cb2-16"></span>
-<span id="cb2-17">high_hits <span class="op" style="color: #5E5E5E;">=</span> [key <span class="cf" style="color: #003B4F;">for</span> key, val <span class="kw" style="color: #003B4F;">in</span> hits[<span class="dv" style="color: #AD0000;">0</span>].items() <span class="cf" style="color: #003B4F;">if</span> val <span class="op" style="color: #5E5E5E;">&gt;</span> <span class="fl" style="color: #AD0000;">0.005</span>]</span></code></pre></div>
+<span id="cb2-17">high_hits <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [key <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> key, val <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> hits[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].items() <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> val <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.005</span>]</span></code></pre></div>
 <p>First, I apply the algorithms and then look at the distribution of node “importance” in order to identify a good treshold for the visualization. The important nodes are then stored into <code>high_rank</code> and <code>high_hits</code> variables. The parameter <strong>alpha</strong> is essential for the PageRank not to get stuck into loops and distorting the distribution.</p>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[40, 40]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://blog.economic-cybernetics.com/posts/2019-networks/img/pagerank.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Scaled PageRank</figcaption><p></p>
+<figcaption>Scaled PageRank</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://blog.economic-cybernetics.com/posts/2019-networks/img/hits.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Hits</figcaption><p></p>
+<figcaption>Hits</figcaption>
 </figure>
 </div>
 </div>
@@ -160,40 +305,212 @@
 </div>
 <p><em>The distribution of node importance according to PageRank and Hits algorithms. HITS needed a much larger number of iterations to converge and is much more <code>strict</code> in what it considers to be important nodes, most of them being concentrated around zero. For this particular network, PageRank scores seem a bit more sensible overall, but HITS differentiates better between importance.</em></p>
 <p>As a further warm-up, let’s calculate a few statistics on this graph, which interpretation we will discuss later. The two statistics which can vary greatly in conclusions by network type, in this case pretty much agree: the <strong>average clustering</strong> (0.49) and <strong>transitivity</strong> (0.45). The central and peripheral nodes will be displayed directly on the graph. The <strong>diameter</strong> of the network is 8, <strong>radius</strong> is 4 and the <strong>average shortest path</strong> between any node to other node is 3.26.</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">periphery <span class="op" style="color: #5E5E5E;">=</span> nx.periphery(G)</span>
-<span id="cb3-2">center <span class="op" style="color: #5E5E5E;">=</span> nx.center(G)</span>
-<span id="cb3-3">min_node_cut <span class="op" style="color: #5E5E5E;">=</span> nx.minimum_node_cut(G)</span>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">periphery <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> nx.periphery(G)</span>
+<span id="cb3-2">center <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> nx.center(G)</span>
+<span id="cb3-3">min_node_cut <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> nx.minimum_node_cut(G)</span>
 <span id="cb3-4">nx.average_clustering(G), nx.transitivity(G)</span>
-<span id="cb3-5"><span class="bu" style="color: null;">print</span>(nx.average_shortest_path_length(G))</span>
-<span id="cb3-6"><span class="bu" style="color: null;">print</span>(nx.diameter(G))</span></code></pre></div>
+<span id="cb3-5"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(nx.average_shortest_path_length(G))</span>
+<span id="cb3-6"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(nx.diameter(G))</span></code></pre></div>
 <p>Now it is time to visualize the network and add the nodes which were calculated above according to criteria of importance. It is important to note that <strong>networkx</strong> is NOT primarily a visualization of network package: it uses the standard matplotlib, but it is good enough for small networks such as this one. In just 12 lines of code we get a publication-ready visualization. For more advanced use-cases <strong>graphviz</strong> and <strong>Gephi</strong>, <strong>igraph</strong> in R can be more suitable. In the next part, these repetitive operations will be wrapped up in a generic function which automates this a little bit painful process.</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">np.random.seed(<span class="dv" style="color: #AD0000;">3245</span>)</span>
-<span id="cb4-2">legend_elements <span class="op" style="color: #5E5E5E;">=</span> [Line2D([<span class="dv" style="color: #AD0000;">0</span>], [<span class="dv" style="color: #AD0000;">0</span>], marker<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'o'</span>, color<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'wheat'</span>, </span>
-<span id="cb4-3">        markersize<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">10</span>, label<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'Periphery'</span>),</span>
-<span id="cb4-4">    Line2D([<span class="dv" style="color: #AD0000;">0</span>], [<span class="dv" style="color: #AD0000;">0</span>], marker<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'o'</span>, color<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'steelblue'</span>, </span>
-<span id="cb4-5">        label<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'PageRank'</span>, markersize<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">10</span>), </span>
-<span id="cb4-6">    Line2D([<span class="dv" style="color: #AD0000;">0</span>], [<span class="dv" style="color: #AD0000;">0</span>], marker<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'o'</span>, color<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'indianred'</span>, </span>
-<span id="cb4-7">        label<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'Centrality'</span>, markersize<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">10</span>), </span>
-<span id="cb4-8">    Line2D([<span class="dv" style="color: #AD0000;">0</span>], [<span class="dv" style="color: #AD0000;">0</span>], marker<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'o'</span>, color<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'green'</span>, </span>
-<span id="cb4-9">        label<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'Min Node Cut'</span>, markersize<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">10</span>)]</span>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">np.random.seed(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3245</span>)</span>
+<span id="cb4-2">legend_elements <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [Line2D([<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>], [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>], marker<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'o'</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'wheat'</span>, </span>
+<span id="cb4-3">        markersize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Periphery'</span>),</span>
+<span id="cb4-4">    Line2D([<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>], [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>], marker<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'o'</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'steelblue'</span>, </span>
+<span id="cb4-5">        label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'PageRank'</span>, markersize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>), </span>
+<span id="cb4-6">    Line2D([<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>], [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>], marker<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'o'</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'indianred'</span>, </span>
+<span id="cb4-7">        label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Centrality'</span>, markersize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>), </span>
+<span id="cb4-8">    Line2D([<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>], [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>], marker<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'o'</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'green'</span>, </span>
+<span id="cb4-9">        label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Min Node Cut'</span>, markersize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>)]</span>
 <span id="cb4-10"></span>
-<span id="cb4-11">plt.figure(figsize<span class="op" style="color: #5E5E5E;">=</span>(<span class="dv" style="color: #AD0000;">13</span>, <span class="dv" style="color: #AD0000;">11</span>))</span>
-<span id="cb4-12">plt.axis(<span class="st" style="color: #20794D;">"off"</span>)</span>
-<span id="cb4-13">plt.title(<span class="st" style="color: #20794D;">"Network of Friends. Fruchterman Reigold Layout"</span>)</span>
-<span id="cb4-14">pos <span class="op" style="color: #5E5E5E;">=</span> nx.fruchterman_reingold_layout(G)</span>
-<span id="cb4-15">nx.draw_networkx(G, node_color<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">".3"</span>, pos<span class="op" style="color: #5E5E5E;">=</span>pos, node_size<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">60</span>, </span>
-<span id="cb4-16">    with_labels<span class="op" style="color: #5E5E5E;">=</span><span class="va" style="color: #111111;">False</span>, edge_color<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">".8"</span>)</span>
-<span id="cb4-17">nx.draw_networkx_nodes(periphery, pos<span class="op" style="color: #5E5E5E;">=</span>pos, </span>
-<span id="cb4-18">    node_color<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'wheat'</span>, node_size<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">50</span>)</span>
-<span id="cb4-19">nx.draw_networkx_nodes(high_rank, pos<span class="op" style="color: #5E5E5E;">=</span>pos, </span>
-<span id="cb4-20">    node_color<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'steelblue'</span>, node_size<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">50</span>)</span>
-<span id="cb4-21">nx.draw_networkx_nodes(center, pos<span class="op" style="color: #5E5E5E;">=</span>pos, </span>
-<span id="cb4-22">    node_color<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'indianred'</span>, node_size<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">90</span>)</span>
-<span id="cb4-23">nx.draw_networkx_nodes(min_node_cut, pos<span class="op" style="color: #5E5E5E;">=</span>pos, </span>
-<span id="cb4-24">    node_color<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'green'</span>, node_size<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">90</span>)</span>
+<span id="cb4-11">plt.figure(figsize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">13</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">11</span>))</span>
+<span id="cb4-12">plt.axis(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"off"</span>)</span>
+<span id="cb4-13">plt.title(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Network of Friends. Fruchterman Reigold Layout"</span>)</span>
+<span id="cb4-14">pos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> nx.fruchterman_reingold_layout(G)</span>
+<span id="cb4-15">nx.draw_networkx(G, node_color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">".3"</span>, pos<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>pos, node_size<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">60</span>, </span>
+<span id="cb4-16">    with_labels<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>, edge_color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">".8"</span>)</span>
+<span id="cb4-17">nx.draw_networkx_nodes(periphery, pos<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>pos, </span>
+<span id="cb4-18">    node_color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'wheat'</span>, node_size<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>)</span>
+<span id="cb4-19">nx.draw_networkx_nodes(high_rank, pos<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>pos, </span>
+<span id="cb4-20">    node_color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'steelblue'</span>, node_size<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>)</span>
+<span id="cb4-21">nx.draw_networkx_nodes(center, pos<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>pos, </span>
+<span id="cb4-22">    node_color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'indianred'</span>, node_size<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">90</span>)</span>
+<span id="cb4-23">nx.draw_networkx_nodes(min_node_cut, pos<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>pos, </span>
+<span id="cb4-24">    node_color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'green'</span>, node_size<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">90</span>)</span>
 <span id="cb4-25"></span>
-<span id="cb4-26">plt.legend(legend_elements, [<span class="st" style="color: #20794D;">"Periphery"</span>, </span>
-<span id="cb4-27">    <span class="st" style="color: #20794D;">"PageRank"</span>, <span class="st" style="color: #20794D;">"Centrality"</span>, <span class="st" style="color: #20794D;">"Min Node Cut"</span>])</span>
+<span id="cb4-26">plt.legend(legend_elements, [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Periphery"</span>, </span>
+<span id="cb4-27">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"PageRank"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Centrality"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Min Node Cut"</span>])</span>
 <span id="cb4-28">plt.show()</span></code></pre></div>
 <p><img src="https://blog.economic-cybernetics.com/posts/2019-networks/img/python_facebook.png" class="img-fluid" alt="Python Social Network"> <em>The final result of applying classical algorithms turned out extremely close to the <code>ground truth</code>, i.e.&nbsp;the interpretation I gave in the beginning</em></p>
 <p>The network is <strong>reversed</strong>, but even cleaner than the one generated by lostcircles. We can see on the graph on the next page that the periphery is not that large as expected. Three, or even four important people who connect clusters are correctly identified either by <strong>centrality</strong> or PageRank algorithm. Moreover, it identifies very well connected people inside the clusters.</p>
@@ -202,21 +519,24 @@
 <p>A few comments on what the code does: first it sets up the environment, defining the size of the picture and deleting the axis, then it calculates the position of each node by the Fruchterman Reigold Algorithm. The first layer of grey nodes is added, together with all of the connections. Then the peripheral nodes calculated above are displayed in beige with the function <code>nx.draw_networkx_nodes</code>, which also requires the position, the Centrality, Minimum Cut and PageRank are added in turn. The finishing touch is the legend.</p>
 <p>The last two obvious things to try are calculating the Local Clustering Coefficient and seeing the correlation between Node degree and LCC. We see that the first follows a pretty symmetric distribution, with exception of the stack at zero, which is expected in such a network. It means that there are nodes which are highly clustered and some not at all, but the majority at around 0.5.</p>
 <p>The correlation with the Node Degree shows that as node degree increases, the expected LCC drops. This relationship is usually visualized at a log scale, but our network is not enough for this to be necessary and for the pattern to emerge. There is also an interesting boundary on the top of the point cloud. Remember how we calculated the average clustering above (0.49) and it agreed in large with the alternative method of transitivity, which is based on the concept on “triangle closure”. It means that networks, in which pairs of 2 out of 3 nodes are connected, tend to “produce” closures within those triplets.</p>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[40, 40]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://blog.economic-cybernetics.com/posts/2019-networks/img/lcc.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">LCC</figcaption><p></p>
+<figcaption>LCC</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://blog.economic-cybernetics.com/posts/2019-networks/img/correlation.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Correlation</figcaption><p></p>
+<figcaption>Correlation</figcaption>
 </figure>
 </div>
 </div>
@@ -224,24 +544,88 @@
 </div>
 <p><em>Two classical measures of clustering</em></p>
 <p>Below is the code which uses list comprehensions and nx functions on the graphs in order to compute and plot the distributions of the degree and LCC.</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">_ <span class="op" style="color: #5E5E5E;">=</span> plt.hist(<span class="bu" style="color: null;">list</span>(nx.clustering(G).values()), bins<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">30</span>, color<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'.5'</span>)</span>
-<span id="cb5-2">plt.xlabel(<span class="st" style="color: #20794D;">"Local clustering coefficient"</span>)</span>
-<span id="cb5-3">plt.ylabel(<span class="st" style="color: #20794D;">"Count"</span>)</span>
-<span id="cb5-4">plt.title(<span class="st" style="color: #20794D;">"Distribution of the Local clustering coefficient"</span>)</span>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">_ <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> plt.hist(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>(nx.clustering(G).values()), bins<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'.5'</span>)</span>
+<span id="cb5-2">plt.xlabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Local clustering coefficient"</span>)</span>
+<span id="cb5-3">plt.ylabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Count"</span>)</span>
+<span id="cb5-4">plt.title(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Distribution of the Local clustering coefficient"</span>)</span>
 <span id="cb5-5">plt.show()</span>
 <span id="cb5-6"></span>
-<span id="cb5-7">plt.scatter([x[<span class="dv" style="color: #AD0000;">1</span>] <span class="cf" style="color: #003B4F;">for</span> x <span class="kw" style="color: #003B4F;">in</span> <span class="bu" style="color: null;">list</span>(nx.degree(G))], </span>
-<span id="cb5-8">    <span class="bu" style="color: null;">list</span>(nx.clustering(G).values()))</span>
-<span id="cb5-9">plt.xlabel(<span class="st" style="color: #20794D;">"Node Degree"</span>)</span>
-<span id="cb5-10">plt.ylabel(<span class="st" style="color: #20794D;">"Local Clustering Coefficient"</span>)</span>
-<span id="cb5-11">plt.title(<span class="st" style="color: #20794D;">"Distribution of the Node Degree"</span>)</span>
+<span id="cb5-7">plt.scatter([x[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>] <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> x <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>(nx.degree(G))], </span>
+<span id="cb5-8">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>(nx.clustering(G).values()))</span>
+<span id="cb5-9">plt.xlabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Node Degree"</span>)</span>
+<span id="cb5-10">plt.ylabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Local Clustering Coefficient"</span>)</span>
+<span id="cb5-11">plt.title(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Distribution of the Node Degree"</span>)</span>
 <span id="cb5-12">plt.show()</span>
 <span id="cb5-13"></span>
-<span id="cb5-14"><span class="co" style="color: #5E5E5E;"># Bonus: Node degree distribution</span></span>
-<span id="cb5-15">_ <span class="op" style="color: #5E5E5E;">=</span> plt.hist([x[<span class="dv" style="color: #AD0000;">1</span>] <span class="cf" style="color: #003B4F;">for</span> x <span class="kw" style="color: #003B4F;">in</span> <span class="bu" style="color: null;">list</span>(nx.degree(G))], bins<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">30</span>, color<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'.5'</span>)</span>
-<span id="cb5-16">plt.xlabel(<span class="st" style="color: #20794D;">"Node Degree"</span>)</span>
-<span id="cb5-17">plt.ylabel(<span class="st" style="color: #20794D;">"Count"</span>)</span>
-<span id="cb5-18">plt.title(<span class="st" style="color: #20794D;">"Distribution of the Node Degree"</span>)</span>
+<span id="cb5-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Bonus: Node degree distribution</span></span>
+<span id="cb5-15">_ <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> plt.hist([x[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>] <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> x <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>(nx.degree(G))], bins<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'.5'</span>)</span>
+<span id="cb5-16">plt.xlabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Node Degree"</span>)</span>
+<span id="cb5-17">plt.ylabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Count"</span>)</span>
+<span id="cb5-18">plt.title(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Distribution of the Node Degree"</span>)</span>
 <span id="cb5-19">plt.show()</span></code></pre></div>
 </section>
 <section id="research-citations-and-ontologies" class="level2">
@@ -262,13 +646,13 @@
   <category>networks</category>
   <guid>https://blog.economic-cybernetics.com/posts/2019-networks/networks.html</guid>
   <pubDate>Tue, 08 Jan 2019 22:00:00 GMT</pubDate>
-  <media:content url="https://blog.economic-cybernetics.com/posts/2019-networks/img/FB_Social_Network.png" medium="image" type="image/png" height="155" width="144"/>
 </item>
 <item>
   <title>Understanding Caratheodori Extension Theorem</title>
   <dc:creator>Bizovi Mihai</dc:creator>
   <link>https://blog.economic-cybernetics.com/posts/2018-intro-measure/measure_theory.html</link>
   <description><![CDATA[ 
+
 
 
 
@@ -374,7 +758,7 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://blog.economic-cybernetics.com/posts/2018-intro-measure/img/random_variable.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Idea: Norman Wildberger, Gheorghe Ruxanda. A graphical representation of the random variable</figcaption><p></p>
+<figcaption>Idea: Norman Wildberger, Gheorghe Ruxanda. A graphical representation of the random variable</figcaption>
 </figure>
 </div>
 <p>The idea of the random variable as being a quantificator of elementary events (function defined on the outcome space which maps the elementary events to the real line in 1d) that perserves the informational structure of the sample space is very powerful, is formally defined and related to the idea of <strong>measurability</strong>.</p>
@@ -393,7 +777,7 @@
 <ol type="1">
 <li><img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(%5COmega)%20=%201"> and <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(%5Cvarnothing)%20=%200"></li>
 <li><img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(A)%20%5Cin%20%5B0,%201%5D"></li>
-<li>If <img src="https://latex.codecogs.com/png.latex?A%20%5Ccap%20B%20=%20%5Cvarnothing%20%5Cimplies%20%5Cmathbb%7BP%7D(%20A%20%5Ccap%20B)%20=%20%5Cmathbb%7BP%7D(A)%20+%20%5Cmathbb%7BP%7D(B)"></li>
+<li>If <img src="https://latex.codecogs.com/png.latex?A%20%5Ccap%20B%20=%20%5Cvarnothing%20%5Cimplies%20%20%5Cmathbb%7BP%7D(%20A%20%5Ccap%20B)%20=%20%20%5Cmathbb%7BP%7D(A)%20+%20%5Cmathbb%7BP%7D(B)"></li>
 <li>If <img src="https://latex.codecogs.com/png.latex?%5C%7B%20A_i%20%5C%7D_%7Bi=1%7D%5E%5Cinfty"> s.t. <img src="https://latex.codecogs.com/png.latex?A_i%20%5Cbigcap%5Climits_%7Bi%20%5Cne%20j%7D%20A_j%20=%20%5Cvarnothing%20%5Cimplies%20%5Cmathbb%7BP%7D%20(%20%5Cbigcup%5Climits_%7Bi%20=%201%7D%5E%5Cinfty%20A_i)%20=%20%5Csum%5Climits_%7Bi%20=%201%7D%5E%7B%5Cinfty%7D%5Cmathbb%7BP%7D(A_i)"></li>
 </ol>
 <p>The idea of uniform distribution is closely related to the one of <strong>length</strong>, area, volume, depending on what space are we into. That means the probability measure will look like this:</p>
@@ -410,7 +794,7 @@
 <li><img src="https://latex.codecogs.com/png.latex?%5COmega%20%5Cin%20%5Cmathcal%7BA%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Cvarnothing%20%5Cin%20%5Cmathcal%7BA%7D"></li>
 <li>If <img src="https://latex.codecogs.com/png.latex?A%20%5Cin%20%5Cmathcal%7BA%7D"> then <img src="https://latex.codecogs.com/png.latex?A%5EC%20%5Cin%20%5Cmathcal%7BA%7D"> (closed under complements)</li>
 <li>If <img src="https://latex.codecogs.com/png.latex?A,%20B%20%5Cin%20%5Cmathcal%7BA%7D"> then $ A B $ (closed under union). Note that 2 and 3 imply that it’s closed under countable intersection</li>
-<li>For sigma-algebra: <strong>sigma</strong> refers to countability} If <img src="https://latex.codecogs.com/png.latex?%5C%7B%20A_i%20%5C%7D_%7Bi%20%5Cge%201%7D%20%5Cin%20%5Cmathcal%7BA%7D"> then <img src="https://latex.codecogs.com/png.latex?%5Cbigcup%5Climits_%7Bi%20%5Cge%201%7D%20A_i%20%5Cin%20%5Cmathcal%7BA%7D"> (closed under <strong>countable union</strong>)</li>
+<li>For sigma-algebra: <strong>sigma</strong> refers to countability} If <img src="https://latex.codecogs.com/png.latex?%5C%7B%20%20A_i%20%5C%7D_%7Bi%20%5Cge%201%7D%20%5Cin%20%5Cmathcal%7BA%7D"> then <img src="https://latex.codecogs.com/png.latex?%5Cbigcup%5Climits_%7Bi%20%5Cge%201%7D%20A_i%20%5Cin%20%5Cmathcal%7BA%7D"> (closed under <strong>countable union</strong>)</li>
 </ol>
 <p>On an intuitive note, we define the probability measure on sigma-algebras because if certain conditions did not hold, the measure wouldn’t make sense.</p>
 <p><strong>Def: Probability Measure:</strong> Suppose we have defined a <strong>measurable space</strong> <img src="https://latex.codecogs.com/png.latex?(%5COmega,%20%5Cmathcal%7BA%7D)">, where <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BA%7D"> is a sigma-algebra. A <strong>probability measure</strong> is the function <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D:%5Cmathcal%7BA%7D%20%5Crightarrow%20%5B0,%201%5D"> such that:</p>
@@ -433,8 +817,8 @@
 <p><strong>Proposition:</strong> There does not exist a (probability) measure <img src="https://latex.codecogs.com/png.latex?%5Clambda(A)"> <em>(Note that we’ll switch conventions to the measure-theoretic one employed by the Claudio Landim’s course as it’s one of the very few available online and it should be easier to follow in parallel with this reading)</em> defined for all subsets of <img src="https://latex.codecogs.com/png.latex?A%20%5Csubseteq%20%5B0,%201%5D"> satisfying.</p>
 <ol type="1">
 <li><img src="https://latex.codecogs.com/png.latex?%5Clambda:%20%5Cmathscr%7BP%7D(%5B0,1%5D)%20%5Crightarrow%20%5B0,1%5D"> which could be all rational numbers, for example</li>
-<li><img src="https://latex.codecogs.com/png.latex?%5Clambda(%5Ba,%20b%5D)%20=%20b%20-%20a"> as an extension of the idea of length</li>
-<li><img src="https://latex.codecogs.com/png.latex?%5Cforall%20A%20%5Csubseteq%20%5B0,1%5D"> and <img src="https://latex.codecogs.com/png.latex?%5Cforall%20x%20%5Cin%20%5B0,1%5D"> translation invariance <img src="https://latex.codecogs.com/png.latex?%5Clambda(A%20+%20x)%20=%20%5Clambda(A)">. Alternatively stated, <img src="https://latex.codecogs.com/png.latex?A%20+%20x%20=%20%5C%7Bx%20+%20y%20~%7C~%20y%20%5Cin%20A%20%5C%7D">.</li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Clambda(%5Ba,%20b%5D)%20%20=%20b%20-%20a"> as an extension of the idea of length</li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Cforall%20A%20%5Csubseteq%20%5B0,1%5D"> and <img src="https://latex.codecogs.com/png.latex?%5Cforall%20x%20%5Cin%20%5B0,1%5D"> translation invariance <img src="https://latex.codecogs.com/png.latex?%5Clambda(A%20+%20x)%20%20=%20%5Clambda(A)">. Alternatively stated, <img src="https://latex.codecogs.com/png.latex?A%20+%20x%20=%20%5C%7Bx%20+%20y%20~%7C~%20y%20%5Cin%20A%20%5C%7D">.</li>
 <li>If <img src="https://latex.codecogs.com/png.latex?A%20=%20%5Cbigcup%5Climits_%7Bj%20%5Cge%201%7D%20A_j"> is an union of mutually disjoint sets <img src="https://latex.codecogs.com/png.latex?A_i%20%5Ccap%20A_j%20=%20%5Cvarnothing"> then <img src="https://latex.codecogs.com/png.latex?%5Clambda(A)%20=%20%5Csum%5Climits_%7Bj%20%5Cge%201%7D%20%5Clambda(A_j)"> This is exactly the notion of sigma-additivity encontered over and over again.</li>
 </ol>
 <blockquote class="blockquote">
@@ -444,12 +828,12 @@
 <blockquote class="blockquote">
 <p><strong>Relation set</strong>: S is a boolean function with <img src="https://latex.codecogs.com/png.latex?x,%20y%20%5Cin%20S"> <img src="https://latex.codecogs.com/png.latex?R:S%20%5Ctimes%20S%20%5Crightarrow%20%5C%7B0,%201%5C%7D"> Thus <img src="https://latex.codecogs.com/png.latex?x%20%5Csim%20y"> means x is <strong>related to</strong> y.</p>
 </blockquote>
-<p>Given an equivalence relation ~ and <img src="https://latex.codecogs.com/png.latex?x%20%5Cin%20S"> the <strong>equivalence class</strong> of x is <img src="https://latex.codecogs.com/png.latex?%5C%7B%20y%20%5Cin%20S%20%5Clvert%20y%20%5Csim%20x%20%5C%7D">. If x is an equivalence class then any pair of equivalence classes is either identical or disjoint. So, the relation forms equivalence classes, which form a partition on S.</p>
+<p>Given an equivalence relation ~ and <img src="https://latex.codecogs.com/png.latex?x%20%5Cin%20S"> the <strong>equivalence class</strong> of x is <img src="https://latex.codecogs.com/png.latex?%5C%7B%20y%20%5Cin%20S%20%5Clvert%20y%20%5Csim%20x%20%20%5C%7D">. If x is an equivalence class then any pair of equivalence classes is either identical or disjoint. So, the relation forms equivalence classes, which form a partition on S.</p>
 <p><strong>Def:</strong> A relation is an equivalence relation if</p>
 <ul>
 <li>reflexive: <img src="https://latex.codecogs.com/png.latex?x%20%5Csim%20x"> <img src="https://latex.codecogs.com/png.latex?~~%20%5Cforall%20x%20%5Cin%20S"></li>
 <li>symmetric: <img src="https://latex.codecogs.com/png.latex?x%20%5Csim%20y%20%5Cimplies%20y%20%5Csim%20x"> <img src="https://latex.codecogs.com/png.latex?~~%20%5Cforall%20x,%20y%20%5Cin%20S"></li>
-<li>tranzitive: <img src="https://latex.codecogs.com/png.latex?x%20%5Csim%20y"> and <img src="https://latex.codecogs.com/png.latex?y%20%5Csim%20z%20%5Cimplies%20x%20%5Csim%20z"> <img src="https://latex.codecogs.com/png.latex?~~%20%5Cforall%20x,%20y,%20z%20%5Cin%20S"></li>
+<li>tranzitive: <img src="https://latex.codecogs.com/png.latex?x%20%5Csim%20y"> and <img src="https://latex.codecogs.com/png.latex?y%20%5Csim%20z%20%20%5Cimplies%20x%20%5Csim%20z"> <img src="https://latex.codecogs.com/png.latex?~~%20%5Cforall%20x,%20y,%20z%20%5Cin%20S"></li>
 </ul>
 <p>Both Rosenthal and Landim use a special equivalence class involving a relation <img src="https://latex.codecogs.com/png.latex?x%20%5Csim%20y">, <img src="https://latex.codecogs.com/png.latex?x,%20y%20%5Cin%20%5Cmathbb%7BR%7D"> for rational numbers: <img src="https://latex.codecogs.com/png.latex?y%20-%20x%20%5Cin%20%5Cmathbb%7BQ%7D">. The equivalence class for x becomes</p>
 <p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign%7D%0A%20%20%20%20%5Bx%5D%20=%20%5C%7B%20y%20%5Cin%20%5Cmathbb%7BR%7D%20%7C%20y%20-%20x%20%5Cin%20%5Cmathbb%7BQ%7D%20%5C%7D%20%5C%5C%0A%20%20%20%20%20%5CLambda%20=%20%5C%7B%20%5Calpha,%20%5Cbeta%20%5Cdots%20%5C%7D%20=%20%5Cmathbb%7BR%7D%20%5Clvert%20%5Csim%0A%5Cend%7Balign%7D"></p>
@@ -460,7 +844,7 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://blog.economic-cybernetics.com/posts/2018-intro-measure/img/transition.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">A graphical representation assuming the Axiom of Choice.</figcaption><p></p>
+<figcaption>A graphical representation assuming the Axiom of Choice.</figcaption>
 </figure>
 </div>
 <p><img src="https://latex.codecogs.com/png.latex?%5Bx%5D"> can be chosen in such a way that <img src="https://latex.codecogs.com/png.latex?%5COmega%20%5Cin%20%5B0,%201%5D"></p>
@@ -508,7 +892,7 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://blog.economic-cybernetics.com/posts/2018-intro-measure/img/extension.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">The plan of attack. A sigma-additive measure defined on semi-algebra is extended to the algebra generated by the semi-algebra. The latter in turn is extended by Caratheodori theorem to the sigma-additive measure defined on sigma-algebra generated by the semi-algebra</figcaption><p></p>
+<figcaption>The plan of attack. A sigma-additive measure defined on semi-algebra is extended to the algebra generated by the semi-algebra. The latter in turn is extended by Caratheodori theorem to the sigma-additive measure defined on sigma-algebra generated by the semi-algebra</figcaption>
 </figure>
 </div>
 <p>Also needs to be shown that these extensions are unique at each step. Let’s take a break in order not to get lost in detail and terminology: What are we doing here? It was proven that we cannot define a measure extending the idea of length on <img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BP%7D(%5COmega)"> under standard axioms of probability.</p>
@@ -523,7 +907,7 @@
 <li><img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BC%7D%20%5Csubseteq%20%5Cmathcal%7BA%7D">, where <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BA%7D"> is the smallest algebra that contains <img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BC%7D"></li>
 <li>If <img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BB%7D%20%5Csupseteq%20%5Cmathscr%7BC%7D"> is a sigma-algebra <img src="https://latex.codecogs.com/png.latex?%5Cimplies%20%5Cmathscr%7BB%7D%20%5Csupseteq%20%5Cmathcal%7BA%7D"></li>
 </ol>
-<p>Remarkably, the same is true for sigma-algebras, proven by a chain of thought involving all sets <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BA%7D_%5Calpha"> which contain <img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BC%7D">. Their intersection <img src="https://latex.codecogs.com/png.latex?%5Cbigcap%5Climits_%5Calpha%20%5Cmathcal%7BA%7D_%5Calpha%20=%20%5Cmathcal%7BA%7D"> contains <img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BB%7D"> and since it contains $ $, it belongs to that intersection, hence, it’s the smallest sigma-algebra that contains <img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BC%7D">.</p>
+<p>Remarkably, the same is true for sigma-algebras, proven by a chain of thought involving all sets <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BA%7D_%5Calpha"> which contain <img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BC%7D">. Their intersection <img src="https://latex.codecogs.com/png.latex?%5Cbigcap%5Climits_%5Calpha%20%5Cmathcal%7BA%7D_%5Calpha%20%20=%20%5Cmathcal%7BA%7D"> contains <img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BB%7D"> and since it contains $ $, it belongs to that intersection, hence, it’s the smallest sigma-algebra that contains <img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BC%7D">.</p>
 <p>If the underlying class <img src="https://latex.codecogs.com/png.latex?%5Cmathscr%7BC%7D"> is a semi-algebra, then <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BA%7D(%5Cmathscr%7BC%7D)"> has an explicit form as a finite union of elements of semi-algebra. In the case of sigma-algebras, other techniques and arguments are needed because we don’t have such a form, which will be a major blocker.</p>
 <ol type="1">
 <li>Prove and formalize the last statement about sigma-algebras generated by semi-algebras</li>
@@ -536,7 +920,7 @@
 <ol type="1">
 <li><p><img src="https://latex.codecogs.com/png.latex?%5Cpi(%5Cbigcup%5Climits_%7Bi%20=%201%7D%5Ek%20A_i)%20%5Cge%20%5Csum%5Climits_%7Bi%20=%201%7D%5Ek%20%5Cpi(A_i)"> where <img src="https://latex.codecogs.com/png.latex?A_i%20%5Cin%20%5Cmathcal%7BF%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Cbigcup%5Climits_%7Bi%20=%201%7D%5Ek%20A_i%20%5Cin%20%5Cmathcal%7BF%7D"> disjoint.</p></li>
 <li><p><img src="https://latex.codecogs.com/png.latex?%5Cpi(A)%20%5Cle%20%5Csum%5Climits_n%20%5Cpi(A_n)"> where <img src="https://latex.codecogs.com/png.latex?A_i%20%5Cin%20%5Cmathcal%7BF%7D"> and <img src="https://latex.codecogs.com/png.latex?A%20%5Cin%20%5Cbigcup%5Climits_n%20A_n"></p>
-<p>Then <img src="https://latex.codecogs.com/png.latex?%5Cexists"> a sigma-algebra <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BM%7D%20%5Csupseteq%20%5Cmathcal%7BF%7D"> and a countably additive probability measure <img src="https://latex.codecogs.com/png.latex?%5Cpi%5E*:%5Cmathcal%7BM%7D%5Crightarrow%20%5B0,%201%5D"> such that <img src="https://latex.codecogs.com/png.latex?%5Cpi%5E*(A)%20=%20%5Cpi(A)%20~~%20%5Cforall%20A%20%5Cin%20%5Cmathcal%7BF%7D%20%5Cimplies%20(%5COmega,%20%5Cmathcal%7BF%7D,%20%5Cpi%5E*)"> is a valid probability triple, which agrees with previous probabilities on <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BF%7D"> <span class="citation" data-cites="Rosenthal2006">(Rhosental 2006)</span></p></li>
+<p>Then <img src="https://latex.codecogs.com/png.latex?%5Cexists"> a sigma-algebra <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BM%7D%20%5Csupseteq%20%5Cmathcal%7BF%7D"> and a countably additive probability measure <img src="https://latex.codecogs.com/png.latex?%5Cpi%5E*:%5Cmathcal%7BM%7D%5Crightarrow%20%5B0,%201%5D"> such that <img src="https://latex.codecogs.com/png.latex?%5Cpi%5E*(A)%20=%20%5Cpi(A)%20~~%20%5Cforall%20A%20%5Cin%20%5Cmathcal%7BF%7D%20%5Cimplies%20(%5COmega,%20%5Cmathcal%7BF%7D,%20%20%5Cpi%5E*)"> is a valid probability triple, which agrees with previous probabilities on <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BF%7D"> <span class="citation" data-cites="Rosenthal2006">(Rhosental 2006)</span></p></li>
 </ol>
 </section>
 <section id="proof-left-as-an-exercise-just-kidding" class="level2">
@@ -555,7 +939,7 @@
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
 <div id="ref-Landim2016" class="csl-entry">
 Landim, Claudio. 2016. <span>“Caratheodori Theorem.”</span> <a href="https://www.youtube.com/watch?v=ZNH4eDM7cJo" class="uri">https://www.youtube.com/watch?v=ZNH4eDM7cJo</a>.
 </div>
@@ -579,10 +963,8 @@ Ruxanda, Gheorghe. 2011. <span>“Consideratii Privind Abordarea Stochastica in 
 </div>
 </div></section></div> ]]></description>
   <category>probability</category>
-  <category>measure-theory</category>
   <guid>https://blog.economic-cybernetics.com/posts/2018-intro-measure/measure_theory.html</guid>
   <pubDate>Thu, 31 May 2018 21:00:00 GMT</pubDate>
-  <media:content url="https://blog.economic-cybernetics.com/posts/2018-intro-measure/img/measure_theory_comics.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Making Friends with Probability</title>
@@ -593,10 +975,11 @@ Ruxanda, Gheorghe. 2011. <span>“Consideratii Privind Abordarea Stochastica in 
 
 
 
+
 <section id="foreword-from-2023" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="foreword-from-2023">Foreword from 2023</h2>
-<div class="page-columns page-full"><p>Thinking deeply about uncertainty and probability theory changed my worldview and eventually became an essential part of my job. In 2023, I’m looking back at the game-changing encounters which instilled a passion for probability, followed by some paragraphs from the bachelor’s thesis<sup>1</sup>.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Bizovi Mihai - Stochastic Modeling and Bayesian Inference (2017)</p></li></div></div>
-<ul>
+<p>Thinking deeply about uncertainty and probability theory changed my worldview and eventually became an essential part of my job. In 2023, I’m looking back at the game-changing encounters which instilled a passion for probability, followed by some paragraphs from the bachelor’s thesis<sup>1</sup>.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Bizovi Mihai - Stochastic Modeling and Bayesian Inference (2017)</p></div></div><ul>
 <li>In 2013, it was Richard Feynman’s “The pleasure of finding things out”, which put the question of uncertainty somewhere on the back of my mind</li>
 <li>In 2014, Taleb Nassim’s “Fooled by randomness” and “Black Swan” deeply resonated with me. There were many instances when I asked myself: “What would the academic do?”, “What would Taleb and Fat Tony do?”, “What would Hume and Popper say about that?”</li>
 <li>In 2015, I was obsessed about systems’ dynamics and nonlinear differential equations for modeling the stocks and flows in an economy. The big question arose: how to actually represent the uncertainty and do inference for those parameters? It was also when the <a href="https://www.youtube.com/watch?v=BrK7X_XlGB8">“Visual guide to Bayesian thinking”</a> by Julia Galef popped up on my youtube recommendation feed.</li>
@@ -606,13 +989,13 @@ Ruxanda, Gheorghe. 2011. <span>“Consideratii Privind Abordarea Stochastica in 
 </ul></li>
 <li>In 2017, after the brilliant lectures in Multidimensional Data Analysis by Gheorghe Ruxanda at our university, I realized I know nothing about probability. There was so much more depth, nuance, philosophy, and history to it: Kolmogorov’s breakthrough<sup>2</sup>, measure-theoretic foundations and those stochastic processes.</li>
 </ul>
-<div class="no-row-height column-margin column-container"><li id="fn2"><div class="quarto-figure quarto-figure-center"><sup>2</sup>&nbsp;
+<div class="no-row-height column-margin column-container"><div id="fn2"><div class="quarto-figure quarto-figure-center"><sup>2</sup>&nbsp;
 <figure class="figure">
 <p><img src="https://blog.economic-cybernetics.com/posts/2017-probability/kolmogorov.jpeg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Andrey Kolmogorov</figcaption><p></p>
+<figcaption>Andrey Kolmogorov</figcaption>
 </figure>
 </div>
-</li></div><p>In the thesis, I was interested in probabilistic approaches to modeling complex, dynamic economic phenomena. What stayed the same all these years, is a preference for the development of custom models for specific applications, where it is possible to explicitly declare domain and statistical assumptions, over an out-of-the-box Machine Learning solution.</p>
+</div></div><p>In the thesis, I was interested in probabilistic approaches to modeling complex, dynamic economic phenomena. What stayed the same all these years, is a preference for the development of custom models for specific applications, where it is possible to explicitly declare domain and statistical assumptions, over an out-of-the-box Machine Learning solution.</p>
 <p>Since then, after years of experience and practice, you can find an evolving presentation of the subject in the <a href="https://course.economic-cybernetics.com/01_fundamentals/stat_foundations.html">course website</a>. It is a work-in-progress, with the purpose of reminding students why did they study probability and what really matters.</p>
 </section>
 <section id="thoughts-from-the-thesis" class="level2 page-columns page-full">
@@ -622,24 +1005,24 @@ Ruxanda, Gheorghe. 2011. <span>“Consideratii Privind Abordarea Stochastica in 
 </blockquote>
 <section id="the-need-for-stochastic-modeling-and-bayesian-thinking" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="the-need-for-stochastic-modeling-and-bayesian-thinking">The need for stochastic modeling and Bayesian thinking</h3>
-<div class="page-columns page-full"><p>Current challenges in economics need an interdisciplinary, multidimensional approach, and different perspectives. In order to have more powerful models in our toolbox, we’ll investigate statistical modeling based on three schools of thought: <strong>Stochastic Modeling</strong><sup>3</sup>, <strong>Machine Learning</strong>, and <strong>Bayesian Analysis</strong> – which has applications ranging from economics and finance to genetics, linguistics and artificial intelligence.</p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;Stochastic, meaning probabilistic, specifically in the Fisherian and Neyman-Pearson frameworks.</p></li></div></div>
-<p>This approach is extremely general and allows us to make inferences about latent quantities and relationships, to identify what is hidden beneath appearance, to account for the uncertainty and nonlinearities of economic phenomena. The idea of learning from data, flexibility of representing uncertainty and the parsimony principle leads to adaptive and robust modeling, able to capture non-trivial aspects of the problem. The focus will be very much on models and a deep understanding of concepts on which they’re built.</p>
+<p>Current challenges in economics need an interdisciplinary, multidimensional approach, and different perspectives. In order to have more powerful models in our toolbox, we’ll investigate statistical modeling based on three schools of thought: <strong>Stochastic Modeling</strong><sup>3</sup>, <strong>Machine Learning</strong>, and <strong>Bayesian Analysis</strong> – which has applications ranging from economics and finance to genetics, linguistics and artificial intelligence.</p>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;Stochastic, meaning probabilistic, specifically in the Fisherian and Neyman-Pearson frameworks.</p></div></div><p>This approach is extremely general and allows us to make inferences about latent quantities and relationships, to identify what is hidden beneath appearance, to account for the uncertainty and nonlinearities of economic phenomena. The idea of learning from data, flexibility of representing uncertainty and the parsimony principle leads to adaptive and robust modeling, able to capture non-trivial aspects of the problem. The focus will be very much on models and a deep understanding of concepts on which they’re built.</p>
 <p>The ugly truth is that humans are not good at prediction, neither consistent with probability theory. We are “suffering” from multiple evolutionary mechanisms, cognitive biases and even statisticians, formally trained in the language of uncertainty, aren’t guarded against pitfalls that arise in practice and everyday life.</p>
-<div class="page-columns page-full"><p>The same story is in reconciliation of new evidence with prior beliefs, processing multidimensional data, ignorance of feedback loops and dynamics. The reason we are building models is to better understand the world, phenomena around us and in the end to improve our mental representations<sup>4</sup>. Predictions that are less wrong usually take into account a variety of perspectives, a proven fact in ensemble modeling.</p><div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;The only thing which I would add here in 2023, is an appreciation for Action and Decisions. Back then, knowledge was foregrounded for me.</p></li></div></div>
-</section>
+<p>The same story is in reconciliation of new evidence with prior beliefs, processing multidimensional data, ignorance of feedback loops and dynamics. The reason we are building models is to better understand the world, phenomena around us and in the end to improve our mental representations<sup>4</sup>. Predictions that are less wrong usually take into account a variety of perspectives, a proven fact in ensemble modeling.</p>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;The only thing which I would add here in 2023, is an appreciation for Action and Decisions. Back then, knowledge was foregrounded for me.</p></div></div></section>
 <section id="three-perspectives" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="three-perspectives">Three perspectives</h3>
-<div class="page-columns page-full"><p>Machine learning models have become an essential part of online services and is taking over new fields, bringing firms and people lots of value. The multidimensional approach is what makes it all this possible. In contrast with classical statistics and NHST (Null Hypothesis Significance Testing)<sup>5</sup>, our focus will be on generalization performance and the idea of a model. Even though these models have their roots in statistics, the field can be viewed in its own right.</p><div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;In 2023, I wouldn’t equivocate between NHST and the Neyman-Pearson, action-oriented frequentism, which can be done well</p></li></div></div>
-<p>An important extension for which there is an acute need is dynamical models. A lot of interesting problems are multidimensional time series, which might invalidate the hypotheses behind classical data mining models. Coupled with the need of accounting for uncertainty, this brings us to the idea of introducing <strong>stochastic</strong> elements and to extend the idea of <strong>learning</strong> and <strong>generalization</strong>.</p>
-<div class="page-columns page-full"><p>The third perspective which brings together stochastic elements with machine learning is <em>bayesian inference</em>, as a method to update beliefs and knowledge based on data from different sources. Bayesian modeling enables us to build hierarchical models with latent structures, while encoding the uncertainty in parameters and operating with probability distributions. On the shoulders of these three “giants”, a stochastic perspective over Machine Learning emerges over the last two decades, which is flexible, general and more transparent than neural networks, works on “thin”<sup>6</sup> data.</p><div class="no-row-height column-margin column-container"><li id="fn6"><p><sup>6</sup>&nbsp;Perhaps I meant small samples at group level, which would make sense in the context of multilevel models.</p></li></div></div>
-<p>There are several reasons the field is not yet in the mainstream: scalability and complexity of the models, in the sense of necessary knowledge and skill to start modeling. Once the software implementations, approximation methods and probabilistic programming languages will become better, the Bayesian methods will see another rise in popularity.</p>
+<p>Machine learning models have become an essential part of online services and is taking over new fields, bringing firms and people lots of value. The multidimensional approach is what makes it all this possible. In contrast with classical statistics and NHST (Null Hypothesis Significance Testing)<sup>5</sup>, our focus will be on generalization performance and the idea of a model. Even though these models have their roots in statistics, the field can be viewed in its own right.</p>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;In 2023, I wouldn’t equivocate between NHST and the Neyman-Pearson, action-oriented frequentism, which can be done well</p></div></div><p>An important extension for which there is an acute need is dynamical models. A lot of interesting problems are multidimensional time series, which might invalidate the hypotheses behind classical data mining models. Coupled with the need of accounting for uncertainty, this brings us to the idea of introducing <strong>stochastic</strong> elements and to extend the idea of <strong>learning</strong> and <strong>generalization</strong>.</p>
+<p>The third perspective which brings together stochastic elements with machine learning is <em>bayesian inference</em>, as a method to update beliefs and knowledge based on data from different sources. Bayesian modeling enables us to build hierarchical models with latent structures, while encoding the uncertainty in parameters and operating with probability distributions. On the shoulders of these three “giants”, a stochastic perspective over Machine Learning emerges over the last two decades, which is flexible, general and more transparent than neural networks, works on “thin”<sup>6</sup> data.</p>
+<div class="no-row-height column-margin column-container"><div id="fn6"><p><sup>6</sup>&nbsp;Perhaps I meant small samples at group level, which would make sense in the context of multilevel models.</p></div></div><p>There are several reasons the field is not yet in the mainstream: scalability and complexity of the models, in the sense of necessary knowledge and skill to start modeling. Once the software implementations, approximation methods and probabilistic programming languages will become better, the Bayesian methods will see another rise in popularity.</p>
 <p>The next chapters will be dedicated to each of these fundamental perspectives, in which we’ll try to get to the essence. The last ones will be on supervised and unsupervised probabilistic models such as Gaussian Processes and Mixture Models. An essential concept will be the ARD (Automatic Relevance Determination) and Kernels which encourage sparse solutions.</p>
 </section>
 <section id="the-goal" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="the-goal">The goal</h3>
 <p>The motivation behind the choice of probabilistic machine learning models is that there are a lot of opportunities to extend them and reuse as parts of a more complicated model.</p>
-<div class="page-columns page-full"><p>For example, Gaussian Processes<sup>7</sup> can be transformed into a Relevance Vector Machine (the probabilistic version of SVM) or used for Bayesian Optimization of expensive functions, in learning of complex dynamical phenomena, spatio-temporal modeling (also known as Kreiging). The Probabilistic Principal Component Analysis can be used for a latent representation of a multidimensional time series and intrinsic dimensionality determination. On the over hand, Mixture Models are a powerful model-based clustering technique, especially coupled with nonparametric techniques.</p><div class="no-row-height column-margin column-container"><li id="fn7"><p><sup>7</sup>&nbsp;This is still true, although fallen a bit out-of-fashion. However, the Bayesian Additive Regression Trees have risen to the challenge, especially in the field of Causal Inference.</p></li></div></div>
-<p>This approach is extremely powerful, intellectually fascinating and vibrant. It is also in the spirit of economic complexity, with ideas which bridge together different branches in data analysis. The catch is, that there are enormous barriers for beginners to start developing such models. First, a qualitative jump in understanding of probability theory and stochastic processes, Bayesian inference and theory of statistical learning is needed. Another barrier is how to go from understanding the models towards the implementation in actual software products.</p>
+<p>For example, Gaussian Processes<sup>7</sup> can be transformed into a Relevance Vector Machine (the probabilistic version of SVM) or used for Bayesian Optimization of expensive functions, in learning of complex dynamical phenomena, spatio-temporal modeling (also known as Kreiging). The Probabilistic Principal Component Analysis can be used for a latent representation of a multidimensional time series and intrinsic dimensionality determination. On the over hand, Mixture Models are a powerful model-based clustering technique, especially coupled with nonparametric techniques.</p>
+<div class="no-row-height column-margin column-container"><div id="fn7"><p><sup>7</sup>&nbsp;This is still true, although fallen a bit out-of-fashion. However, the Bayesian Additive Regression Trees have risen to the challenge, especially in the field of Causal Inference.</p></div></div><p>This approach is extremely powerful, intellectually fascinating and vibrant. It is also in the spirit of economic complexity, with ideas which bridge together different branches in data analysis. The catch is, that there are enormous barriers for beginners to start developing such models. First, a qualitative jump in understanding of probability theory and stochastic processes, Bayesian inference and theory of statistical learning is needed. Another barrier is how to go from understanding the models towards the implementation in actual software products.</p>
 <p>So, the main goal is to find connections between the three perspectives described before, to recognize Bayesian generalizations of classical machine learning models. The most important is the process of exploration and understanding, internalization of models, which will suggest new areas of study and practical opportunities.</p>
 
 
@@ -653,7 +1036,6 @@ Ruxanda, Gheorghe. 2011. <span>“Consideratii Privind Abordarea Stochastica in 
   <category>philosophy</category>
   <guid>https://blog.economic-cybernetics.com/posts/2017-probability/stochastic.html</guid>
   <pubDate>Sun, 06 Aug 2017 21:00:00 GMT</pubDate>
-  <media:content url="https://blog.economic-cybernetics.com/posts/2017-probability/kolmogorov.jpeg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>
