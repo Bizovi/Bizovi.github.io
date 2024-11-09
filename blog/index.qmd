@@ -29,14 +29,14 @@ title-block-banner: true
 :::
 
 ::: {.column width="65%"}
-**Mihai Bizovi** | Head of Data Science \@AdoreMe
+**Mihai Bizovi** | VP of Decision Science \@AdoreMe
 ---
 
 **At my day job,** I'm a generalist -- navigating uncertainty and complexity to improve decision-making at scale.
 
 **As a teacher,** I aspire to contribute to the understanding of AI's complex landscape; how to navigate it, develop valuable skills, and become more effective at problem-solving.
 
-**As a person,** I aspire to a life of wisdom and meaning. Learning how to be present and deeply understanding what is friendship, caring, love, beauty, and spirituality.
+**As a person,** I aspire to a life of wisdom and meaning.
 :::
 ::::
 

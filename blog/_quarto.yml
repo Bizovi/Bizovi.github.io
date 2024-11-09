@@ -2,13 +2,13 @@ project:
   type: website
 
 website:
-  title: "{Love, Math, Philosophy}"
+  title: "{Art, Math, Philosophy}"
   site-url: https://blog.economic-cybernetics.com
-  description: "{Love, Math, Philosophy}"
+  description: "{Art, Math, Philosophy}"
   favicon: img/icon.png
   open-graph:
     locale: es_ES
-    site-name: "{Love, Math, Philosophy}"
+    site-name: "{Art, Math, Philosophy}"
   google-analytics: "UA-104200881-1"
 
   navbar:
@@ -17,7 +17,7 @@ website:
         text: "About Me"
       - icon: bi-journal-bookmark
         href: https://course.economic-cybernetics.com/
-        text: "Decision-Making Course"
+        text: "Decision-Making"
       - icon: github
         href: https://github.com/bizovi/decision-making
       - icon: linkedin
