@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://blog.economic-cybernetics.com/about.html</loc>
-    <lastmod>2024-11-09T15:46:33.248Z</lastmod>
+    <loc>https://blog.economic-cybernetics.com/art.html</loc>
+    <lastmod>2024-11-09T18:03:28.659Z</lastmod>
   </url>
   <url>
-    <loc>https://blog.economic-cybernetics.com/posts/2023-rules/principles.html</loc>
-    <lastmod>2024-11-08T21:10:23.760Z</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.economic-cybernetics.com/posts/2019-networks/networks.html</loc>
-    <lastmod>2024-11-08T21:10:23.760Z</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.economic-cybernetics.com/posts/2017-probability/stochastic.html</loc>
-    <lastmod>2024-11-08T21:10:23.751Z</lastmod>
+    <loc>https://blog.economic-cybernetics.com/index.html</loc>
+    <lastmod>2024-11-09T15:10:27.511Z</lastmod>
   </url>
   <url>
     <loc>https://blog.economic-cybernetics.com/posts/2018-intro-measure/measure_theory.html</loc>
     <lastmod>2024-11-09T15:11:07.053Z</lastmod>
   </url>
   <url>
-    <loc>https://blog.economic-cybernetics.com/index.html</loc>
-    <lastmod>2024-11-09T15:10:27.511Z</lastmod>
+    <loc>https://blog.economic-cybernetics.com/posts/2017-probability/stochastic.html</loc>
+    <lastmod>2024-11-08T21:10:23.751Z</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.economic-cybernetics.com/posts/2019-networks/networks.html</loc>
+    <lastmod>2024-11-08T21:10:23.760Z</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.economic-cybernetics.com/posts/2023-rules/principles.html</loc>
+    <lastmod>2024-11-08T21:10:23.760Z</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.economic-cybernetics.com/about.html</loc>
+    <lastmod>2024-11-09T15:46:33.248Z</lastmod>
   </url>
 </urlset>
