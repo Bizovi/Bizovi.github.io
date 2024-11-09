@@ -13,6 +13,8 @@ website:
 
   navbar:
     right:
+      - href: art.qmd
+        text: "Paintings"
       - href: about.qmd
         text: "About Me"
       - icon: bi-journal-bookmark

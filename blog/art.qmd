@@ -1,0 +1,155 @@
+---
+filters:
+   - lightbox
+lightbox:
+  match: auto
+  effect: fade
+  desc-position: bottom
+  loop: false
+---
+
+
+
+## Landscape impressions in oil
+
+::: {layout-ncol=3}
+
+![The hills of Piatra Neamt, 30x30cm](paintings/piatraneamt-hq.jpeg){group="oil"}
+
+![A memory from Boian, 30x30cm](paintings/boian-street.jpg){group="oil"}
+
+![Sunset at Arsenale, 30x30cm](paintings/venice-arsenale.jpg){group="oil"}
+
+![Montjuic Castle, 30x40cm](paintings/montjuic-castle.JPG){group="oil"}
+
+![Morining in Wyndham, 24x33cm](paintings/wyndham.jpg){group="oil"}
+
+![Sunlit park in Sevilla, 30x40cm](paintings/sevilla-park.jpg){group="oil"}
+
+![Altar, Busteni, 30x30cm](paintings/busteni-altar.jpg){group="oil"}
+
+![AM Social Space, 30x30cm](paintings/am-space.JPG){group="oil"}
+
+![Azuga trail, 18x23cm](paintings/azuga.JPG){group="oil"}
+
+![Morning in Plancoet, 40x60cm](paintings/plancoet.JPG){group="oil"}
+
+![Light before the storm, 20x40cm](paintings/mangalia.JPG){group="oil"}
+
+![Spring in Bergamo, 20x40cm](paintings/bergamo.JPG){group="oil"}
+
+:::
+
+
+## Light and shadow in watercolor
+
+::: {layout-ncol=3}
+
+![Azuga trail, 32x42cm](paintings/azuga-trail.JPG){group="water"}
+
+![Negresti-Oas, 24x30cm](paintings/negresti-oas.JPG){group="water"}
+
+![Old bridge in Prague, 32x38cm](paintings/praga-bridge.JPG){group="water"}
+
+![Church in Pradelle, 32x42cm](paintings/pradelle-church.JPG){group="water"}
+
+![Cypresses in Toulon, 32x42cm](paintings/toulon.jpg){group="water"}
+
+![Boats in Mangalia, 30x42cm](paintings/mangalia-boats.JPG){group="water"}
+
+![Wild flowers, 30x24cm](paintings/grandma-flowers.JPG){group="water"}
+
+![Sunset in Balti, 30x24cm](paintings/balti-sunset.JPG){group="water"}
+
+![CEC bank: Bucharest, 25x15cm](paintings/cec.JPG){group="water"}
+
+![Old town, 42x32cm](paintings/old-town.JPG){group="water"}
+
+![Fountain at Unirii, 30x24cm](paintings/biblioteca.JPG){group="water"}
+
+![Church in Piatra Neamt, 30x24cm](paintings/piatra-neamt-church.JPG){group="water"}
+
+![Old town, 30x24cm](paintings/old-town-2.JPG){group="water"}
+
+![Church in Pradelle, 30x24cm](paintings/pradelle-church-2.JPG){group="water"}
+
+![Details from Prague, 30x24cm](paintings/architectural-detail.JPG){group="water"}
+
+![Street at Muncii, 24x30cm](paintings/muncii.JPG){group="water"}
+
+![Pond in Toulon, 24x30cm](paintings/toulon-2.JPG){group="water"}
+
+![Vinalia Ceptura, 24x30cm](paintings/vinalia-ceptura.JPG){group="water"}
+
+![Toloaca din Boian, 24x30cm](paintings/boian-toloaca.JPG){group="water"}
+
+![The dearest place, 22x26cm](paintings/boian.JPG){group="water"}
+
+![Lion's obelisk, Iasi, 22x26cm](paintings/lion-obelisk.JPG){group="water"}
+
+![Plein-air in Toulon, 13x21cm](paintings/toulon-3.jpg){group="water"}
+
+![Still Life, 15x20cm](paintings/still-life-2.JPG){group="water"}
+
+![A creek in Wyndham, 15x20cm](paintings/wyndham-2.JPG){group="water"}
+
+![Fields of Loire, 20x15cm](paintings/loire.JPG){group="water"}
+
+![Evening in Bucharest, 20x13cm](paintings/old-house.JPG){group="water"}
+
+![Bull, 20x13cm](paintings/bull.JPG){group="water"}
+
+:::
+
+## Preparatory monochrome studies
+
+::: {layout-ncol=3}
+
+![Boatyard in Venice, 24x30cm](paintings/venice-boatyard.JPG){group="bw"}
+
+![Fence in Predeal, 20x30cm](paintings/predeal.JPG){group="bw"}
+
+![Father in Caucas, 15x20cm](paintings/father-mountain.JPG){group="bw"}
+
+![Sunlit Trees at Unirii, 20x15cm](paintings/unirii-trees.JPG){group="bw"}
+
+![Sunlit Trees at Unirii, 20x15cm](paintings/muncii-2.JPG){group="bw"}
+
+![Villa in Toulon, 21x13cm](paintings/toulon-bw.jpg){group="bw"}
+
+![Pond in Cismigiu, 15x20cm](paintings/cismigiu.JPG){group="bw"}
+
+![Frozen lake in Chisinau, 20x30cm](paintings/chisinau.JPG){group="bw"}
+
+![Lion's Obelisk in Iasi, 20x30cm](paintings/lion-obelisk-bw.JPG){group="bw"}
+
+![My messy desk, 20x15cm](paintings/my-desk.JPG){group="bw"}
+
+![Guest house in Toulon, 10x13cm](paintings/toulon-bw-2.JPG){group="bw"}
+
+![Coffee break at Noi, 30x21cm](paintings/coffee-noi.JPG){group="bw"}
+
+![View from Park Guell, 10x15cm](paintings/guell-park.JPG){group="bw"}
+
+![If those apples should fall, 10x12cm](paintings/apples.JPG){group="bw"}
+
+![Church in Fagarasi, 12x24cm](paintings/fagarasi-church.JPG){group="bw"}
+
+![Red Onions, 10x15cm](paintings/red-onion.JPG){group="bw"}
+
+![Still life, 21x30cm](paintings/still-life-filter.JPG){group="bw"}
+
+![Multi-figure study, 21x30cm](paintings/un-ete-inoubliable.JPG){group="bw"}
+
+![Barbernini museum, Rome, 15x20cm](paintings/rome.JPG){group="bw"}
+
+![Sunlit tree in Milano, 10x10cm](paintings/sunlit-tree-milano.JPG){group="bw"}
+
+![Study for Arsenale, 10x10cm](paintings/venice-arsenale-bw.JPG){group="bw"}
+
+![The wall of Bergamo, 15x20cm](paintings/bergamo-2.JPG){group="bw"}
+
+![Household in Breb, 15x20cm](paintings/breb.JPG){group="bw"}
+
+![Figure study, 10x15cm](paintings/figure-study.JPG){group="bw"}
+:::
