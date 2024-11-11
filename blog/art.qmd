@@ -89,7 +89,7 @@ lightbox:
 
 ![Plein-air in Toulon, 13x21cm](paintings/toulon-3.jpg){group="water"}
 
-![Still Life, 15x20cm](paintings/still-life-2.JPG){group="water"}
+![Still Life, 15x20cm](paintings/still-life-peppers.JPG){group="water"}
 
 ![A creek in Wyndham, 15x20cm](paintings/wyndham-2.JPG){group="water"}
 
