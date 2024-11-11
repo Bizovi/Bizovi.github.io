@@ -77,7 +77,7 @@ lightbox:
 
 ![Street at Muncii, 24x30cm](paintings/muncii.JPG){group="water"}
 
-![Pond in Toulon, 24x30cm](paintings/toulon-2.JPG){group="water"}
+![Pond in Toulon, 24x30cm](paintings/toulon-2-hq.JPG){group="water"}
 
 ![Vinalia Ceptura, 24x30cm](paintings/vinalia-ceptura.JPG){group="water"}
 
