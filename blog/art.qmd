@@ -30,13 +30,13 @@ lightbox:
 
 ![AM Social Space, 30x30cm](paintings/am-space.JPG){group="oil"}
 
-![Azuga trail, 18x23cm](paintings/azuga.JPG){group="oil"}
+![Azuga trail, 18x23cm](paintings/azuga-trail-hq.JPG){group="oil"}
 
 ![Morning in Plancoet, 40x60cm](paintings/plancoet.JPG){group="oil"}
 
 ![Light before the storm, 20x40cm](paintings/mangalia.JPG){group="oil"}
 
-![Spring in Bergamo, 20x40cm](paintings/bergamo.JPG){group="oil"}
+![Spring in Bergamo, 20x40cm](paintings/bergamo-valley-hq.JPG){group="oil"}
 
 :::
 
