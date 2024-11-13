@@ -12,6 +12,8 @@ lightbox:
 
 ## Landscape impressions in oil
 
+![Spring in Bergamo, 20x40cm](paintings/bergamo-valley-hq.JPG){group="oil"}
+
 ::: {layout-ncol=3}
 
 ![The hills of Piatra Neamt, 30x30cm](paintings/piatraneamt-hq.jpeg){group="oil"}
@@ -36,20 +38,24 @@ lightbox:
 
 ![Light before the storm, 20x40cm](paintings/mangalia.JPG){group="oil"}
 
-![Spring in Bergamo, 20x40cm](paintings/bergamo-valley-hq.JPG){group="oil"}
+![A creek in Wyndham, 15x20cm](paintings/wyndham-2.JPG){group="water"}
 
 :::
 
 
+
 ## Light and shadow in watercolor
+
+![Village Museum in Negresti-Oas, 24x30cm](paintings/negresti-oas.JPG){group="water"}
 
 ::: {layout-ncol=3}
 
 ![Azuga trail, 32x42cm](paintings/azuga-trail.JPG){group="water"}
 
-![Negresti-Oas, 24x30cm](paintings/negresti-oas.JPG){group="water"}
 
 ![Old bridge in Prague, 32x38cm](paintings/praga-bridge.JPG){group="water"}
+
+![Still Life, 15x20cm](paintings/still-life-peppers.JPG){group="water"}
 
 ![Church in Pradelle, 32x42cm](paintings/pradelle-church.JPG){group="water"}
 
@@ -81,11 +87,6 @@ lightbox:
 
 ![The dearest place, 22x26cm](paintings/boian.JPG){group="water"}
 
-![Plein-air in Toulon, 13x21cm](paintings/toulon-3.jpg){group="water"}
-
-![Still Life, 15x20cm](paintings/still-life-peppers.JPG){group="water"}
-
-![A creek in Wyndham, 15x20cm](paintings/wyndham-2.JPG){group="water"}
 
 ![Fields of Loire, 20x15cm](paintings/loire.JPG){group="water"}
 
@@ -93,17 +94,22 @@ lightbox:
 
 ![Bull, 20x13cm](paintings/bull.JPG){group="water"}
 
+![Plein-air in Toulon, 13x21cm](paintings/toulon-3.jpg){group="water"}
+
+
 :::
 
 ## Preparatory monochrome studies
 
-::: {layout-ncol=3}
-
 ![Boatyard in Venice, 24x30cm](paintings/venice-boatyard.JPG){group="bw"}
+
+::: {layout-ncol=3}
 
 ![Fence in Predeal, 20x30cm](paintings/predeal.JPG){group="bw"}
 
 ![Father in Caucas, 15x20cm](paintings/father-mountain.JPG){group="bw"}
+
+![Pond in Cismigiu, 15x20cm](paintings/cismigiu.JPG){group="bw"}
 
 ![Sunlit Trees at Unirii, 20x15cm](paintings/unirii-trees.JPG){group="bw"}
 
@@ -111,11 +117,12 @@ lightbox:
 
 ![Villa in Toulon, 21x13cm](paintings/toulon-bw.jpg){group="bw"}
 
-![Pond in Cismigiu, 15x20cm](paintings/cismigiu.JPG){group="bw"}
 
 ![Frozen lake in Chisinau, 20x30cm](paintings/chisinau.JPG){group="bw"}
 
 ![Lion's Obelisk in Iasi, 20x30cm](paintings/lion-obelisk-bw.JPG){group="bw"}
+
+![View from Park Guell, 10x15cm](paintings/guell-park.JPG){group="bw"}
 
 ![My messy desk, 20x15cm](paintings/my-desk.JPG){group="bw"}
 
@@ -123,7 +130,6 @@ lightbox:
 
 ![Coffee break at Noi, 30x21cm](paintings/coffee-noi.JPG){group="bw"}
 
-![View from Park Guell, 10x15cm](paintings/guell-park.JPG){group="bw"}
 
 ![If those apples should fall, 10x12cm](paintings/apples.JPG){group="bw"}
 
@@ -153,16 +159,16 @@ lightbox:
 
 ![Chess players, 20x20cm](paintings/chess.JPG){group="bw"}
 
+![Paper bag, 5x5cm](paintings/paper-bag.JPG){group="bw"}
+
 ![Sketch of a cat, 5x10cm](paintings/the_cat.JPG){group="bw"}
 
 ![Barns in winter, 5x10cm](paintings/barns.JPG){group="bw"}
 
 ![Old fence, 5x10cm](paintings/fences.JPG){group="bw"}
 
-![Gondolas in Venice, 10x5cm](paintings/venice.JPG){group="bw"}
-
 ![Study after Carravagio, 10x5cm](paintings/caravaggio-egypt.JPG){group="bw"}
 
-![Paper bag, 5x5cm](paintings/paper-bag.JPG){group="bw"}
+![Gondolas in Venice, 10x5cm](paintings/venice.JPG){group="bw"}
 
 :::
