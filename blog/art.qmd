@@ -79,13 +79,7 @@ lightbox:
 
 ![Pond in Toulon, 24x30cm](paintings/toulon-2-hq.JPG){group="water"}
 
-![Vinalia Ceptura, 24x30cm](paintings/vinalia-ceptura.JPG){group="water"}
-
-![Toloaca din Boian, 24x30cm](paintings/boian-toloaca.JPG){group="water"}
-
 ![The dearest place, 22x26cm](paintings/boian.JPG){group="water"}
-
-![Lion's obelisk, Iasi, 22x26cm](paintings/lion-obelisk.JPG){group="water"}
 
 ![Plein-air in Toulon, 13x21cm](paintings/toulon-3.jpg){group="water"}
 
@@ -151,5 +145,24 @@ lightbox:
 
 ![Household in Breb, 15x20cm](paintings/breb.JPG){group="bw"}
 
+![Sunny street in Boian, 10x10cm](paintings/boian-bw.JPG){group="bw"}
+
 ![Figure study, 10x15cm](paintings/figure-study.JPG){group="bw"}
+
+![Cape Kiwanda, 20x30cm](paintings/cape-bw.JPG){group="bw"}
+
+![Chess players, 20x20cm](paintings/chess.JPG){group="bw"}
+
+![Sketch of a cat, 5x10cm](paintings/the_cat.JPG){group="bw"}
+
+![Barns in winter, 5x10cm](paintings/barns.JPG){group="bw"}
+
+![Old fence, 5x10cm](paintings/fences.JPG){group="bw"}
+
+![Gondolas in Venice, 10x5cm](paintings/venice.JPG){group="bw"}
+
+![Study after Carravagio, 10x5cm](paintings/caravaggio-egypt.JPG){group="bw"}
+
+![Paper bag, 5x5cm](paintings/paper-bag.JPG){group="bw"}
+
 :::
