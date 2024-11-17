@@ -6,6 +6,8 @@ lightbox:
   effect: fade
   desc-position: bottom
   loop: false
+toc: true
+toc-title: Explore the works
 ---
 
 
