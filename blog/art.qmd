@@ -99,7 +99,61 @@ lightbox:
 
 :::
 
-## Preparatory monochrome studies
+## Drawings and monochrome
+
+![Still Life after Ian Roberts, 40x40cm](paintings/still-life-jug.JPG){group="drawing"}
+
+::: {layout-ncol=3}
+
+![Coffee break at Noi, 30x21cm](paintings/coffee-noi.JPG){group="drawing"}
+
+![Cape Kiwanda, 30x21cm](paintings/cape-bw.JPG){group="drawing"}
+
+![My messy desk, 20x15cm](paintings/my-desk.JPG){group="drawing"}
+
+![Chess players, 20x20cm](paintings/chess.JPG){group="drawing"}
+
+![Barbernini museum, Rome, 15x20cm](paintings/rome.JPG){group=""}
+
+![Study for Arsenale, 10x10cm](paintings/venice-arsenale-bw.JPG){group="drawing"}
+
+![Still life, 21x30cm](paintings/still-life-filter.JPG){group="drawing"}
+
+![Multi-figure study, 21x30cm](paintings/un-ete-inoubliable.JPG){group="drawing"}
+
+![Household in Breb, 15x20cm](paintings/breb.JPG){group="drawing"}
+
+![The wall of Bergamo, 15x20cm](paintings/bergamo-2.JPG){group="drawing"}
+
+![Red Onions, 10x15cm](paintings/red-onion.JPG){group="drawing"}
+
+![Old fence, 5x10cm](paintings/fences.JPG){group="drawing"}
+
+![Sunny street in Boian, 10x10cm](paintings/boian-bw.JPG){group="drawing"}
+
+![Sunlit tree in Milano, 10x10cm](paintings/sunlit-tree-milano.JPG){group="drawing"}
+
+![Venice boatyard, 18x18cm](paintings/venice-boatyard-2.JPG){group="drawing"}
+
+![Study after Carravagio, 10x5cm](paintings/caravaggio-egypt.JPG){group="drawing"}
+
+![Figure study, 10x15cm](paintings/figure-study.JPG){group="drawing"}
+
+![Gondolas in Venice, 10x5cm](paintings/venice.JPG){group="drawing"}
+
+![If those apples should fall, 10x12cm](paintings/apples.JPG){group="drawing"}
+
+![Barns in winter, 5x10cm](paintings/barns.JPG){group="drawing"}
+
+![Study after Paul Baum, 5x10cm](paintings/baum-4.JPG){group="drawing"}
+
+![Study after McCurry, 30x20cm](paintings/mccurry.jpg){group="drawing"}
+
+![Study after Paul Baum, 5x10cm](paintings/baum-5.JPG){group="drawing"}
+
+:::
+
+## Preparatory studies and notans
 
 ![Boatyard in Venice, 24x30cm](paintings/venice-boatyard.JPG){group="bw"}
 
@@ -117,60 +171,98 @@ lightbox:
 
 ![Villa in Toulon, 21x13cm](paintings/toulon-bw.jpg){group="bw"}
 
-
 ![Frozen lake in Chisinau, 20x30cm](paintings/chisinau.JPG){group="bw"}
 
 ![Lion's Obelisk in Iasi, 20x30cm](paintings/lion-obelisk-bw.JPG){group="bw"}
 
 ![View from Park Guell, 10x15cm](paintings/guell-park.JPG){group="bw"}
 
-![My messy desk, 20x15cm](paintings/my-desk.JPG){group="bw"}
-
 ![Guest house in Toulon, 10x13cm](paintings/toulon-bw-2.JPG){group="bw"}
-
-![Coffee break at Noi, 30x21cm](paintings/coffee-noi.JPG){group="bw"}
-
-
-![If those apples should fall, 10x12cm](paintings/apples.JPG){group="bw"}
 
 ![Church in Fagarasi, 12x24cm](paintings/fagarasi-church.JPG){group="bw"}
 
-![Red Onions, 10x15cm](paintings/red-onion.JPG){group="bw"}
+:::
 
-![Still life, 21x30cm](paintings/still-life-filter.JPG){group="bw"}
+## Ink scribbles and doodles
 
-![Multi-figure study, 21x30cm](paintings/un-ete-inoubliable.JPG){group="bw"}
+![Chester, 5x5cm](paintings/chester-2.jpg){group="ink"}
 
-![Barbernini museum, Rome, 15x20cm](paintings/rome.JPG){group="bw"}
+::: {layout-ncol=3}
 
-![Sunlit tree in Milano, 10x10cm](paintings/sunlit-tree-milano.JPG){group="bw"}
+![Paper bag, 5x5cm](paintings/paper-bag.JPG){group="ink"}
 
-![Study for Arsenale, 10x10cm](paintings/venice-arsenale-bw.JPG){group="bw"}
+![Chester, 5x5cm](paintings/chester-1.jpg){group="ink"}
 
-![The wall of Bergamo, 15x20cm](paintings/bergamo-2.JPG){group="bw"}
+![Cat at Simbio, 10x5cm](paintings/cat-2.jpg){group="ink"}
 
-![Household in Breb, 15x20cm](paintings/breb.JPG){group="bw"}
+![Paper bag, 10x5cm](paintings/paper-bag-1.JPG){group="ink"}
 
-![Sunny street in Boian, 10x10cm](paintings/boian-bw.JPG){group="bw"}
+![Cat near my house, 10x5cm](paintings/cat-1.jpg){group="ink"}
 
-![Still Life, 40x40cm](paintings/still-life-jug.JPG){group="bw"}
+![Study after Lautrec, 10x5cm](paintings/toulouse.JPG){group="ink"}
 
-![Cape Kiwanda, 20x30cm](paintings/cape-bw.JPG){group="bw"}
+![Cat at Shift, 5x10cm](paintings/the_cat.JPG){group="ink"}
 
-![Chess players, 20x20cm](paintings/chess.JPG){group="bw"}
+![Cat near my house, 5x10cm](paintings/cat-3.jpg){group="ink"}
 
-![Paper bag, 5x5cm](paintings/paper-bag.JPG){group="bw"}
+![Pier in Mangalia, 5x10cm](paintings/mangalia-1.JPG){group="ink"}
 
-![Sketch of a cat, 5x10cm](paintings/the_cat.JPG){group="bw"}
+![Study after Paul Baum, 5x10cm](paintings/baum-1.JPG){group="ink"}
 
-![Barns in winter, 5x10cm](paintings/barns.JPG){group="bw"}
+![Study after Paul Baum, 5x10cm](paintings/baum-2.JPG){group="ink"}
 
-![Old fence, 5x10cm](paintings/fences.JPG){group="bw"}
+![Study after Paul Baum, 5x10cm](paintings/baum-3.JPG){group="ink"}
 
-![Study after Carravagio, 10x5cm](paintings/caravaggio-egypt.JPG){group="bw"}
+:::
 
-![Gondolas in Venice, 10x5cm](paintings/venice.JPG){group="bw"}
+## Photography
 
-![Figure study, 10x15cm](paintings/figure-study.JPG){group="bw"}
+![Before the rain, Rimini](paintings/sea-1.jpg){group="photo"}
+
+::: {layout-ncol=3}
+
+![Serenity, Rimini](paintings/sea-5.jpg){group="photo"}
+
+![Sunset, Rimini](paintings/sea-4.jpg){group="photo"}
+
+![Sheep, Busteni](paintings/sheep-1.jpg){group="photo"}
+
+![Clouds, Rimini](paintings/sea-2.jpg){group="photo"}
+
+![The pier, Rimini](paintings/sea-6.jpg){group="photo"}
+
+![Cliffs, Busteni](paintings/cliffs.jpg){group="photo"}
+
+![Sheep, Busteni](paintings/sheep-2.jpg){group="photo"}
+
+![Cliffs, Livigno](paintings/cliffs-2.jpg){group="photo"}
+
+
+![Untitled](paintings/abstract-1.jpg){group="photo"}
+
+![Wires, Livigno](paintings/wires-1.jpg){group="photo"}
+
+![Trail, Livigno](paintings/trail-1.jpg){group="photo"}
+
+![Trail, Livigno](paintings/trail-2.jpg){group="photo"}
+
+![Rolling hills, Livigno](paintings/hills-1.jpg){group="photo"}
+
+![Rolling hills, Livigno](paintings/hills-2.jpg){group="photo"}
+
+![Rolling hills, Livigno](paintings/hills-3.jpg){group="photo"}
+
+
+![Trail, Livigno](paintings/trail-3.jpg){group="photo"}
+
+![Untitled](paintings/abstract-2.jpg){group="photo"}
+
+![Untitled](paintings/abstract-5.jpg){group="photo"}
+
+![Lone tree, Livigno](paintings/hills-5.jpg){group="photo"}
+
+![Untitled](paintings/abstract-3.jpg){group="photo"}
+
+![Rolling hills, Livigno](paintings/hills-4.jpg){group="photo"}
 
 :::
