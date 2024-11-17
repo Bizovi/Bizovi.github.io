@@ -153,7 +153,7 @@ lightbox:
 
 ![Sunny street in Boian, 10x10cm](paintings/boian-bw.JPG){group="bw"}
 
-![Figure study, 10x15cm](paintings/figure-study.JPG){group="bw"}
+![Still Life, 40x40cm](paintings/still-life-jug.JPG){group="bw"}
 
 ![Cape Kiwanda, 20x30cm](paintings/cape-bw.JPG){group="bw"}
 
@@ -170,5 +170,7 @@ lightbox:
 ![Study after Carravagio, 10x5cm](paintings/caravaggio-egypt.JPG){group="bw"}
 
 ![Gondolas in Venice, 10x5cm](paintings/venice.JPG){group="bw"}
+
+![Figure study, 10x15cm](paintings/figure-study.JPG){group="bw"}
 
 :::
