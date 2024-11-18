@@ -169,12 +169,15 @@ toc-title: Explore the works
 
 ![Winter in Dolomites, 30x20cm](paintings/lone-tree.JPG){group="drawing"}
 
-![If those apples should fall, 10x12cm](paintings/apples.JPG){group="drawing"}
+![Fields in Boian, 10x10cm](paintings/boian.jpeg){group="drawing"}
 
 ![The last snow, 20x30cm](paintings/last-snow.jpg){group="drawing"}
 
 ![Winter in Balti, 26x40cm](paintings/balti-valley.JPG){group="drawing"}
 
+![Boat Study, 10x15cm](paintings/boat.jpeg){group="drawing"}
+
+![If those apples should fall, 10x12cm](paintings/apples.JPG){group="drawing"}
 
 :::
 
