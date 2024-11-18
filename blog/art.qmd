@@ -1,6 +1,4 @@
 ---
-filters:
-   - lightbox
 lightbox:
   match: auto
   effect: fade
@@ -34,13 +32,27 @@ toc-title: Explore the works
 
 ![AM Social Space, 30x30cm](paintings/am-space.JPG){group="oil"}
 
-![Azuga trail, 18x23cm](paintings/azuga-trail-hq.JPG){group="oil"}
+![Dinner in Paris, 20x20cm](paintings/paris-cafe-oil.JPG){group="oil"}
 
 ![Morning in Plancoet, 40x60cm](paintings/plancoet.JPG){group="oil"}
 
 ![Light before the storm, 20x40cm](paintings/mangalia.JPG){group="oil"}
 
-![A creek in Wyndham, 15x20cm](paintings/wyndham-2.JPG){group="water"}
+![A creek in Wyndham, 15x20cm](paintings/wyndham-2.JPG){group="oil"}
+
+![Road to Suceava, 30x40cm](paintings/road-suceava.JPG){group="oil"}
+
+![Azuga trail, 18x23cm](paintings/azuga-trail-hq.JPG){group="oil"}
+
+![View from Sapanta, 20x30cm](paintings/sapanta.JPG){group="oil"}
+
+![Sunset at IOR, 30x30cm](paintings/ior-sunset.JPG){group="oil"}
+
+![Study after Tarbell, 15x20cm](paintings/tarbell.JPG){group="oil"}
+
+![Winter trail in Balti, 20x30cm](paintings/winter-trail.JPG){group="oil"}
+
+![Night walk in IOR, 40x30cm](paintings/ior-lights.jpg){group="oil"}
 
 :::
 
@@ -96,6 +108,10 @@ toc-title: Explore the works
 
 ![Bull, 20x13cm](paintings/bull.JPG){group="water"}
 
+![Slope in Montjuic, 30x20cm](paintings/montjuic-slope.JPG){group="water"}
+
+![Hike in Piatra Neamt, 20x15cm](paintings/piatra-neamt-lake.JPG){group="water"}
+
 ![Plein-air in Toulon, 13x21cm](paintings/toulon-3.jpg){group="water"}
 
 
@@ -143,15 +159,22 @@ toc-title: Explore the works
 
 ![Gondolas in Venice, 10x5cm](paintings/venice.JPG){group="drawing"}
 
-![If those apples should fall, 10x12cm](paintings/apples.JPG){group="drawing"}
-
 ![Barns in winter, 5x10cm](paintings/barns.JPG){group="drawing"}
+
+![Study after Paul Baum, 5x10cm](paintings/baum-5.JPG){group="drawing"}
 
 ![Study after Paul Baum, 5x10cm](paintings/baum-4.JPG){group="drawing"}
 
 ![Study after McCurry, 30x20cm](paintings/mccurry.jpg){group="drawing"}
 
-![Study after Paul Baum, 5x10cm](paintings/baum-5.JPG){group="drawing"}
+![Winter in Dolomites, 30x20cm](paintings/lone-tree.JPG){group="drawing"}
+
+![If those apples should fall, 10x12cm](paintings/apples.JPG){group="drawing"}
+
+![The last snow, 20x30cm](paintings/last-snow.jpg){group="drawing"}
+
+![Winter in Balti, 26x40cm](paintings/balti-valley.JPG){group="drawing"}
+
 
 :::
 
