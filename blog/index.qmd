@@ -21,7 +21,7 @@ title-block-banner: true
 :::: {.columns}
 
 ::: {.column width="30%"}
-![](img/portrait.jpg "Portrait"){width="90%"}
+![](img/bizovi-portrait.jpg "Portrait"){width="90%"}
 :::
 
 ::: {.column width="5%"}

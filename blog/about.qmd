@@ -8,7 +8,7 @@ reference-location: margin
 
 
 ::: {.column-margin}
-![**Mihai Bizovi** | VP of Decision Science \@AdoreMe](img/portrait.jpg "Portrait"){width="90%"}
+![**Mihai Bizovi** | VP of Decision Science \@AdoreMe](img/bizovi-portrait.jpg "Portrait"){width="90%"}
 :::
 
 :::: {.columns}
