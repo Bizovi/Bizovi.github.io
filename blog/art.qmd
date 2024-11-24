@@ -40,7 +40,7 @@ toc-title: Explore the works
 
 ![A creek in Wyndham, 15x20cm](paintings/wyndham-2.JPG){group="oil"}
 
-![Road to Suceava, 30x40cm](paintings/road-suceava.JPG){group="oil"}
+![Road to Suceava, 30x40cm](paintings/road-to-suceava.JPG){group="oil"}
 
 ![Azuga trail, 18x23cm](paintings/azuga-trail-hq.JPG){group="oil"}
 
