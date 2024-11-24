@@ -1,2 +1,0 @@
-# Love, Math and Philosophy
-
