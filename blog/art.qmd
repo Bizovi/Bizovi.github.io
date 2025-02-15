@@ -46,7 +46,7 @@ toc-title: Explore the works
 
 ![View from Sapanta, 20x30cm](paintings/sapanta.JPG){group="oil"}
 
-![Sunset at IOR, 30x30cm](paintings/ior-sunset.JPG){group="oil"}
+![Sunset at IOR, 10x15cm](paintings/ior-sunset.JPG){group="oil"}
 
 ![Study after Tarbell, 15x20cm](paintings/tarbell.JPG){group="oil"}
 
@@ -106,14 +106,13 @@ toc-title: Explore the works
 
 ![Evening in Bucharest, 20x13cm](paintings/old-house.JPG){group="water"}
 
-![Bull, 20x13cm](paintings/bull.JPG){group="water"}
-
 ![Slope in Montjuic, 30x20cm](paintings/montjuic-slope.JPG){group="water"}
 
 ![Hike in Piatra Neamt, 20x15cm](paintings/piatra-neamt-lake.JPG){group="water"}
 
-![Plein-air in Toulon, 13x21cm](paintings/toulon-3.jpg){group="water"}
+![Golden hour in Bucharest, 24x30cm](paintings/bucharest-street.jpg){group="water"}
 
+![Plein-air in Toulon, 13x21cm](paintings/toulon-3.jpg){group="water"}
 
 :::
 
