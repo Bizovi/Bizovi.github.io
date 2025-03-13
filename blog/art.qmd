@@ -108,11 +108,14 @@ toc-title: Explore the works
 
 ![Slope in Montjuic, 30x20cm](paintings/montjuic-slope.JPG){group="water"}
 
-![Hike in Piatra Neamt, 20x15cm](paintings/piatra-neamt-lake.JPG){group="water"}
+![Golden hour in Bucharest 1, 24x30cm](paintings/calea-calarasi.jpg){group="water"}
 
-![Golden hour in Bucharest, 24x30cm](paintings/bucharest-street.jpg){group="water"}
+![Golden hour in Bucharest 2, 24x30cm](paintings/bucharest-street.jpg){group="water"}
 
 ![Plein-air in Toulon, 13x21cm](paintings/toulon-3.jpg){group="water"}
+
+![Hike in Piatra Neamt, 20x15cm](paintings/piatra-neamt-lake.JPG){group="water"}
+
 
 :::
 
