@@ -116,6 +116,12 @@ toc-title: Explore the works
 
 ![Hike in Piatra Neamt, 20x15cm](paintings/piatra-neamt-lake.JPG){group="water"}
 
+![Patchwork, Bucharest, 27x20cm](paintings/matache.jpg){group="water"}
+
+![View from the Office, 27x20cm](paintings/office.jpg){group="water"}
+
+![Breb, 24x30cm](paintings/breb-church.jpg){group="water"}
+
 
 :::
 
