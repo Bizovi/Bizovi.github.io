@@ -122,6 +122,9 @@ toc-title: Explore the works
 
 ![Breb, 24x30cm](paintings/breb-church.jpg){group="water"}
 
+![The highline, NY, 24x30cm](paintings/high-line.jpg){group="water"}
+
+![Fall in Wyndham, 24x30cm](paintings/wyndham-fall.jpg){group="water"}
 
 :::
 
