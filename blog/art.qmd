@@ -25,7 +25,7 @@ toc-title: Explore the works
 
 ![The highline, NY, 24x30cm](paintings/high-line.jpg){group="water"}
 
-![Pond in Toulon, 24x30cm](paintings/toulon-2-hq.JPG){group="water"}
+![Church in Pradelle, 24x30cm](paintings/pradelle-church-3.JPG){group="water"}
 
 ![Church in Pradelle, 32x42cm](paintings/pradelle-church.JPG){group="water"}
 
@@ -47,9 +47,11 @@ toc-title: Explore the works
 
 ![Movie night, IOR, 30x24cm](paintings/ior-nocturne.jpg){group="water"}
 
-![Church in Piatra Neamt, 30x24cm](paintings/piatra-neamt-church.JPG){group="water"}
-
 ![Patchwork, Bucharest, 27x20cm](paintings/matache.jpg){group="water"}
+
+![Guest house, Toulon, 30x24cm](paintings/toulon-4.jpg){group="water"}
+
+
 
 :::
 
@@ -62,13 +64,11 @@ toc-title: Explore the works
 
 ![Hike in Piatra Neamt, 20x15cm](paintings/piatra-neamt-lake.JPG){group="water"}
 
-![Slope in Montjuic, 30x20cm](paintings/montjuic-slope.JPG){group="water"}
+![Old town, 42x32cm](paintings/old-town.JPG){group="water"}
 
 ![Evening in Bucharest, 20x13cm](paintings/old-house.JPG){group="water"}
 
 ![Fields of Loire, 20x15cm](paintings/loire.JPG){group="water"}
-
-![Church in Pradelle, 30x24cm](paintings/pradelle-church-2.JPG){group="water"}
 
 ![Fountain at Unirii, 30x24cm](paintings/biblioteca.JPG){group="water"}
 
@@ -78,7 +78,6 @@ toc-title: Explore the works
 
 ![Old town, 30x24cm](paintings/old-town-2.JPG){group="water"}
 
-![Old town, 42x32cm](paintings/old-town.JPG){group="water"}
 
 ![Plein-air in Toulon, 13x21cm](paintings/toulon-3.jpg){group="water"}
 
@@ -169,12 +168,11 @@ toc-title: Explore the works
 
 ![View from Park Guell, 10x15cm](paintings/guell-park.JPG){group="bw"}
 
-![Guest house in Toulon, 10x13cm](paintings/toulon-bw-2.JPG){group="bw"}
+![If those apples should fall, 10x12cm](paintings/apples.JPG){group="drawing"}
 
 ![Church in Fagarasi, 12x24cm](paintings/fagarasi-church.JPG){group="bw"}
 
-![If those apples should fall, 10x12cm](paintings/apples.JPG){group="drawing"}
-
+<!--  -->
 :::
 
 ## Drawings and monochrome
