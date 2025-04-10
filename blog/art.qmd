@@ -31,13 +31,13 @@ toc-title: Explore the works
 
 ![Cypresses in Toulon, 32x42cm](paintings/toulon.jpg){group="water"}
 
-![Boats in Mangalia, 30x42cm](paintings/mangalia-boats.JPG){group="water"}
+![Boats in Mangalia, 30x24cm](paintings/mangalia-boats-2.jpg){group="water"}
 
 ![Wild flowers, 30x24cm](paintings/grandma-flowers.JPG){group="water"}
 
 ![Sunset in Balti, 30x24cm](paintings/balti-sunset.JPG){group="water"}
 
-![CEC bank: Bucharest, 25x15cm](paintings/cec.JPG){group="water"}
+![CEC bank, Bucharest, 30x24cm](paintings/cec2.JPG){group="water"}
 
 ![Street at Muncii, 24x30cm](paintings/muncii.JPG){group="water"}
 
@@ -50,6 +50,12 @@ toc-title: Explore the works
 ![Patchwork, Bucharest, 27x20cm](paintings/matache.jpg){group="water"}
 
 ![Guest house, Toulon, 30x24cm](paintings/toulon-4.jpg){group="water"}
+
+![Old town, 30x24cm](paintings/old-town-new.jpg){group="water"}
+
+![View from the Office, 27x20cm](paintings/office.jpg){group="water"}
+
+![Church in Piatra Neamt, 30x24cm](paintings/piatra-church-2.jpg){group="water"}
 
 
 
@@ -64,8 +70,6 @@ toc-title: Explore the works
 
 ![Hike in Piatra Neamt, 20x15cm](paintings/piatra-neamt-lake.JPG){group="water"}
 
-![Old town, 42x32cm](paintings/old-town.JPG){group="water"}
-
 ![Evening in Bucharest, 20x13cm](paintings/old-house.JPG){group="water"}
 
 ![Fields of Loire, 20x15cm](paintings/loire.JPG){group="water"}
@@ -74,7 +78,6 @@ toc-title: Explore the works
 
 ![Details from Prague, 30x24cm](paintings/architectural-detail.JPG){group="water"}
 
-![View from the Office, 27x20cm](paintings/office.jpg){group="water"}
 
 ![Old town, 30x24cm](paintings/old-town-2.JPG){group="water"}
 
