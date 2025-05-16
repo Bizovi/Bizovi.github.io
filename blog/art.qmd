@@ -29,9 +29,9 @@ toc-title: Explore the works
 
 ![Movie night, IOR, 30x24cm](paintings/ior-nocturne.jpg){group="water"}
 
-![Patchwork, Bucharest, 27x20cm](paintings/matache.jpg){group="water"}
+![Hammock, Balotesti, 30x24cm](paintings/hammock.jpg){group="water"}
 
-![Guest house, Toulon, 30x24cm](paintings/toulon-4.jpg){group="water"}
+![Duality, Prague, 30x24cm](paintings/prague-castle.jpg){group="water"}
 
 ![Old town, 30x24cm](paintings/old-town-new.jpg){group="water"}
 
@@ -39,11 +39,11 @@ toc-title: Explore the works
 
 ![Church in Piatra Neamt, 30x24cm](paintings/piatra-church-2.jpg){group="water"}
 
-![Azuga trail, 32x42cm](paintings/azuga-trail.JPG){group="water"}
+![Plein air, Bucharest, 24x30cm](paintings/parcul-national.jpg){group="water"}
 
 ![Still Life, 15x20cm](paintings/still-life-peppers.JPG){group="water"}
 
-![Golden hour in Bucharest 1, 24x30cm](paintings/calea-calarasi.jpg){group="water"}
+![Storm, Mangalia, 24x30cm](paintings/mangalia-storm.jpg){group="water"}
 
 ![Church in Pradelle, 32x42cm](paintings/pradelle-church.JPG){group="water"}
 
