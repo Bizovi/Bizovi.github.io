@@ -41,7 +41,7 @@ toc-title: Explore the works
 
 ![Plein air, Bucharest, 24x30cm](paintings/parcul-national.jpg){group="water"}
 
-![Still Life, 15x20cm](paintings/still-life-peppers.JPG){group="water"}
+![Winter, Chisinau 24x30cm](paintings/chisinau-color.jpg){group="water"}
 
 ![Storm, Mangalia, 24x30cm](paintings/mangalia-storm.jpg){group="water"}
 
@@ -49,7 +49,16 @@ toc-title: Explore the works
 
 ![Cypresses in Toulon, 32x42cm](paintings/toulon.jpg){group="water"}
 
-![Boats in Mangalia, 30x24cm](paintings/mangalia-boats-2.jpg){group="water"}
+![Boats in Mangalia, 24x30cm](paintings/mangalia-boats-2.jpg){group="water"}
+
+![Dirt road, 24x34cm](paintings/dirt-road.jpg){group="water"}
+
+![Still life (sketchbook), 16x21cm](paintings/bell-pepper.jpg){group="water"}
+
+![Shade, Toulon, 24x30cm](paintings/toulon-umbrella.jpg){group="water"}
+
+![Spring, IOR, 30x24cm](paintings/ior-bush.jpg){group="water"}
+
 
 :::
 
@@ -105,8 +114,36 @@ toc-title: Explore the works
 
 ![Spring in Bergamo, 20x40cm](paintings/bergamo-valley-hq.JPG){group="oil"}
 
-
 ![Morining in Wyndham, 24x33cm](paintings/wyndham.jpg){group="oil"}
+
+## Miscellanea
+
+![Sunset, IOR, 24x18cm](paintings/ior-clouds.jpg){group="misc"}
+
+
+::: {layout-ncol=3}
+
+![Study after McCurry, 30x20cm](paintings/mccurry.jpg){group="misc"}
+
+![My messy desk, 20x15cm](paintings/my-desk.JPG){group="misc"}
+
+![Sunlit Trees at Unirii, 20x15cm](paintings/unirii-trees.JPG){group="misc"}
+
+![Piata Alba Iulia, 19x26cm](paintings/loom.jpg){group="misc"}
+
+![Boatyard in Venice, 24x30cm](paintings/venice-boatyard.JPG){group="misc"}
+
+![Fence in Predeal, 20x30cm](paintings/predeal.JPG){group="misc"}
+
+![Paper bag, 24x18cm](paintings/paper-bag-3.jpg){group="misc"}
+
+![Bluestone Lane, NY, 24x12cm](paintings/bluestone-lane.jpg){group="misc"}
+
+![Still life, 24x16cm](paintings/still-life.jpg){group="misc"}
+
+:::
+
+
 
 <!-- 
 ### Studies
@@ -130,24 +167,19 @@ toc-title: Explore the works
 
 ![A creek in Wyndham, 15x20cm](paintings/wyndham-2.JPG){group="studies"}
 
-![My messy desk, 20x15cm](paintings/my-desk.JPG){group="drawing"}
-
 ::: -->
 
 <!-- 
 ## Preparatory studies and notans
 
-![Boatyard in Venice, 24x30cm](paintings/venice-boatyard.JPG){group="bw"}
 
 ::: {layout-ncol=3}
 
-![Fence in Predeal, 20x30cm](paintings/predeal.JPG){group="bw"}
 
 ![Father in Caucas, 15x20cm](paintings/father-mountain.JPG){group="bw"}
 
 ![Pond in Cismigiu, 15x20cm](paintings/cismigiu.JPG){group="bw"}
 
-![Sunlit Trees at Unirii, 20x15cm](paintings/unirii-trees.JPG){group="bw"}
 
 ![Sunlit Trees at Unirii, 20x15cm](paintings/muncii-2.JPG){group="bw"}
 
