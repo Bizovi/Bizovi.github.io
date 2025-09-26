@@ -13,23 +13,23 @@ toc-title: Explore the works
 
 ![Fall in Wyndham, 24x30cm](paintings/wyndham-fall.jpg){group="water"}
 
-::: {layout-ncol=3}
+::: {layout-ncol=2}
 
 ![Breb, 24x30cm](paintings/breb-church.jpg){group="water"}
 
 ![The highline, NY, 30x40cm](paintings/high-line2.jpg){group="water"}
 
-![Golden hour in Bucharest 2, 24x30cm](paintings/bucharest-street.jpg){group="water"}
+![Spring, IOR, 30x24cm](paintings/ior-bush.jpg){group="water"}
 
 ![Wild flowers, 30x24cm](paintings/grandma-flowers.JPG){group="water"}
 
-![Sunset in Balti, 30x24cm](paintings/balti-sunset.JPG){group="water"}
+![Hammock, Balotesti, 30x24cm](paintings/hammock.jpg){group="water"}
 
 ![CEC bank, Bucharest, 30x24cm](paintings/cec2.JPG){group="water"}
 
 ![Movie night, IOR, 30x24cm](paintings/ior-nocturne.jpg){group="water"}
 
-![Hammock, Balotesti, 30x24cm](paintings/hammock.jpg){group="water"}
+![Sunset in Balti, 30x24cm](paintings/balti-sunset.JPG){group="water"}
 
 ![Duality, Prague, 30x24cm](paintings/prague-castle.jpg){group="water"}
 
@@ -47,18 +47,13 @@ toc-title: Explore the works
 
 ![Church in Pradelle, 32x42cm](paintings/pradelle-church.JPG){group="water"}
 
-![Cypresses in Toulon, 32x42cm](paintings/toulon.jpg){group="water"}
-
 ![Boats in Mangalia, 24x30cm](paintings/mangalia-boats-2.jpg){group="water"}
 
 ![Dirt road, 24x34cm](paintings/dirt-road.jpg){group="water"}
 
-![Still life (sketchbook), 16x21cm](paintings/bell-pepper.jpg){group="water"}
-
 ![Shade, Toulon, 24x30cm](paintings/toulon-umbrella.jpg){group="water"}
 
-![Spring, IOR, 30x24cm](paintings/ior-bush.jpg){group="water"}
-
+![Golden hour in Bucharest 2, 24x30cm](paintings/bucharest-street.jpg){group="water"}
 
 :::
 
@@ -93,10 +88,11 @@ toc-title: Explore the works
 
 ## Landscape impressions in oil
 
-![The hills of Piatra Neamt, 30x30cm](paintings/piatraneamt-hq.jpeg){group="oil"}
+![After the Storm, IOR, 30x30cm](paintings/ior-sunset-storm.jpg){group="oil"}
 
+![Sunset, IOR, 24x18cm](paintings/ior-clouds.jpg){group="misc"}
 
-::: {layout-ncol=3}
+::: {layout-ncol=2}
 
 ![A memory from Boian, 30x30cm](paintings/boian-street.jpg){group="oil"}
 
@@ -104,11 +100,23 @@ toc-title: Explore the works
 
 ![Altar, Busteni, 30x30cm](paintings/busteni-altar.jpg){group="oil"}
 
-![Montjuic Castle, 30x40cm](paintings/montjuic-castle.JPG){group="oil"}
+![The hills of Piatra Neamt, 30x30cm](paintings/piatraneamt-hq.jpeg){group="oil"}
 
 ![Sunlit park in Sevilla, 30x40cm](paintings/sevilla-park.jpg){group="oil"}
 
 ![Azuga trail, 18x23cm](paintings/azuga-trail-hq.JPG){group="oil"}
+
+![Montjuic Castle, 30x40cm](paintings/montjuic-castle.JPG){group="oil"}
+
+![Toulon Cypresses, 15x20cm](paintings/toulon-cypresses.jpg){group="oil"}
+
+![Caucasus, 15x20cm](paintings/caucas.jpg){group="oil"}
+
+![Fall in Fagarasi, 15x20cm](paintings/fagarasi.jpg){group="misc"}
+
+![Pond, Cismigiu, 15x20cm](paintings/cismigiu2.jpg){group="misc"}
+
+![Morning in Plancoet, 40x60cm](paintings/plancoet.JPG){group="studies"}
 
 :::
 
@@ -118,30 +126,59 @@ toc-title: Explore the works
 
 ## Miscellanea
 
-![Sunset, IOR, 24x18cm](paintings/ior-clouds.jpg){group="misc"}
+
+### Pastel
+
+::: {layout-ncol=2}
+![Sunlit Trees at Muncii, 20x15cm](paintings/muncii-trees.jpg){group="misc"}
+
+![Coffee break, 16x13cm](paintings/noi-coffee.jpg){group="misc"}
+
+![Old town, 15x20cm](paintings/old-town-victoriei.jpg){group="misc"}
+
+![The last snow, 20x30cm](paintings/last-snow.jpg){group="drawing"}
+
+:::
+
+### Still life
+
+::: {layout-ncol=2}
+
+![Still life, 24x16cm](paintings/still-life.jpg){group="misc"}
+
+![Still life (sketchbook), 16x21cm](paintings/bell-pepper.jpg){group="water"}
+
+![Bluestone Lane, NY, 24x12cm](paintings/bluestone-lane.jpg){width=67% group="misc"}
+
+![Paper bag, 24x18cm](paintings/paper-bag-3.jpg){group="misc"}
 
 
-::: {layout-ncol=3}
+:::
+
+
+### Sketches, Studies, and Notans
+
+::: {layout-ncol=2}
 
 ![Study after McCurry, 30x20cm](paintings/mccurry.jpg){group="misc"}
 
-![My messy desk, 20x15cm](paintings/my-desk.JPG){group="misc"}
-
 ![Sunlit Trees at Unirii, 20x15cm](paintings/unirii-trees.JPG){group="misc"}
-
-![Piata Alba Iulia, 19x26cm](paintings/loom.jpg){group="misc"}
 
 ![Boatyard in Venice, 24x30cm](paintings/venice-boatyard.JPG){group="misc"}
 
 ![Fence in Predeal, 20x30cm](paintings/predeal.JPG){group="misc"}
 
-![Paper bag, 24x18cm](paintings/paper-bag-3.jpg){group="misc"}
+![Still Life after Ian Roberts, 40x40cm](paintings/still-life-jug.JPG){group="drawing"}
 
-![Bluestone Lane, NY, 24x12cm](paintings/bluestone-lane.jpg){group="misc"}
-
-![Still life, 24x16cm](paintings/still-life.jpg){group="misc"}
+![Still life, 21x30cm](paintings/still-life-filter.JPG){group="drawing"}
 
 :::
+
+![Piata Alba Iulia, 19x26cm](paintings/loom.jpg){group="misc"}
+
+
+
+
 
 
 
@@ -159,52 +196,20 @@ toc-title: Explore the works
 
 ![Sunset at IOR, 10x15cm](paintings/ior-sunset.JPG){group="studies"}
 
-![Study after Tarbell, 15x20cm](paintings/tarbell.JPG){group="studies"}
 
-![Winter trail in Balti, 20x30cm](paintings/winter-trail.JPG){group="studies"}
 
-![Morning in Plancoet, 40x60cm](paintings/plancoet.JPG){group="studies"}
 
 ![A creek in Wyndham, 15x20cm](paintings/wyndham-2.JPG){group="studies"}
 
 ::: -->
 
 <!-- 
-## Preparatory studies and notans
-
-
-::: {layout-ncol=3}
-
-
-![Father in Caucas, 15x20cm](paintings/father-mountain.JPG){group="bw"}
-
-![Pond in Cismigiu, 15x20cm](paintings/cismigiu.JPG){group="bw"}
-
-
-![Sunlit Trees at Unirii, 20x15cm](paintings/muncii-2.JPG){group="bw"}
-
-![Villa in Toulon, 21x13cm](paintings/toulon-bw.jpg){group="bw"}
-
-![Frozen lake in Chisinau, 20x30cm](paintings/chisinau.JPG){group="bw"}
-
-![Lion's Obelisk in Iasi, 20x30cm](paintings/lion-obelisk-bw.JPG){group="bw"}
-
-![View from Park Guell, 10x15cm](paintings/guell-park.JPG){group="bw"}
-
-![If those apples should fall, 10x12cm](paintings/apples.JPG){group="drawing"}
-
-![Church in Fagarasi, 12x24cm](paintings/fagarasi-church.JPG){group="bw"}
-
-
-:::
 
 ## Drawings and monochrome
 
-![Still Life after Ian Roberts, 40x40cm](paintings/still-life-jug.JPG){group="drawing"}
 
 ::: {layout-ncol=3}
 
-![Coffee break at Noi, 30x21cm](paintings/coffee-noi.JPG){group="drawing"}
 
 ![Cape Kiwanda, 30x21cm](paintings/cape-bw.JPG){group="drawing"}
 
@@ -215,8 +220,6 @@ toc-title: Explore the works
 ![Barbernini museum, Rome, 15x20cm](paintings/rome.JPG){group=""}
 
 ![Study for Arsenale, 10x10cm](paintings/venice-arsenale-bw.JPG){group="drawing"}
-
-![Still life, 21x30cm](paintings/still-life-filter.JPG){group="drawing"}
 
 ![Multi-figure study, 21x30cm](paintings/un-ete-inoubliable.JPG){group="drawing"}
 
@@ -246,13 +249,10 @@ toc-title: Explore the works
 
 ![Study after Paul Baum, 5x10cm](paintings/baum-4.JPG){group="drawing"}
 
-![Study after McCurry, 30x20cm](paintings/mccurry.jpg){group="drawing"}
-
 ![Winter in Dolomites, 30x20cm](paintings/lone-tree.JPG){group="drawing"}
 
 ![Fields in Boian, 10x10cm](paintings/boian.jpeg){group="drawing"}
 
-![The last snow, 20x30cm](paintings/last-snow.jpg){group="drawing"}
 
 ![Winter in Balti, 26x40cm](paintings/balti-valley.JPG){group="drawing"}
 
