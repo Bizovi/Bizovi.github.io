@@ -11,80 +11,66 @@ toc-title: Explore the works
 
 ## Light and shadow in watercolor
 
-![Fall in Wyndham, 24x30cm](paintings/wyndham-fall.jpg){group="water"}
+![Fall, Wyndham, 24x30cm](paintings/wyndham-fall.jpg){group="water"}
 
 ::: {layout-ncol=2}
 
-![Breb, 24x30cm](paintings/breb-church.jpg){group="water"}
+![Church courtyard, Breb, 24x30cm](paintings/breb-church.jpg){group="water"}
 
 ![The highline, NY, 30x40cm](paintings/high-line2.jpg){group="water"}
 
-![Spring, IOR, 30x24cm](paintings/ior-bush.jpg){group="water"}
+![In bloom, IOR, 30x24cm](paintings/ior-bush.jpg){group="water"}
 
-![Wild flowers, 30x24cm](paintings/grandma-flowers.JPG){group="water"}
 
-![Hammock, Balotesti, 30x24cm](paintings/hammock.jpg){group="water"}
-
-![CEC bank, Bucharest, 30x24cm](paintings/cec2.JPG){group="water"}
+![Walking home, Bucharest, 30x24cm](paintings/cec2.JPG){group="water"}
 
 ![Movie night, IOR, 30x24cm](paintings/ior-nocturne.jpg){group="water"}
 
-![Sunset in Balti, 30x24cm](paintings/balti-sunset.JPG){group="water"}
-
 ![Duality, Prague, 30x24cm](paintings/prague-castle.jpg){group="water"}
 
-![Old town, 30x24cm](paintings/old-town-new.jpg){group="water"}
+![Church, Piatra Neamt, 30x24cm](paintings/piatra-church-2.jpg){group="water"}
 
-![View from the Office, 30x24cm](paintings/view-office-2.jpg){group="water"}
+![At the office, Bucharest, 30x24cm](paintings/view-office-2.jpg){group="water"}
 
-![Church in Piatra Neamt, 30x24cm](paintings/piatra-church-2.jpg){group="water"}
-
-![Plein air, Bucharest, 24x30cm](paintings/parcul-national.jpg){group="water"}
-
-![Winter, Chisinau 24x30cm](paintings/chisinau-color.jpg){group="water"}
+![Village museum, Negresti-Oas, 24x30cm](paintings/negresti-oas.JPG){group="water"}
 
 ![Storm, Mangalia, 24x30cm](paintings/mangalia-storm.jpg){group="water"}
 
-![Church in Pradelle, 32x42cm](paintings/pradelle-church.JPG){group="water"}
-
-![Boats in Mangalia, 24x30cm](paintings/mangalia-boats-2.jpg){group="water"}
+![Breaking the waves, Mangalia, 24x30cm](paintings/mangalia-boats-2.jpg){group="water"}
 
 ![Dirt road, 24x34cm](paintings/dirt-road.jpg){group="water"}
 
 ![Shade, Toulon, 24x30cm](paintings/toulon-umbrella.jpg){group="water"}
 
-![Golden hour in Bucharest 2, 24x30cm](paintings/bucharest-street.jpg){group="water"}
+![Before sunset, Bucharest, 24x30cm](paintings/bucharest-street.jpg){group="water"}
 
 :::
 
-![Village Museum in Negresti-Oas, 24x30cm](paintings/negresti-oas.JPG){group="water"}
-
-<!-- 
-### Studies 
-
-::: {layout-ncol=4}
-
-![Hike in Piatra Neamt, 20x15cm](paintings/piatra-neamt-lake.JPG){group="water"}
-
-![Evening in Bucharest, 20x13cm](paintings/old-house.JPG){group="water"}
-
-![Fields of Loire, 20x15cm](paintings/loire.JPG){group="water"}
-
-![Fountain at Unirii, 30x24cm](paintings/biblioteca.JPG){group="water"}
-
-![Details from Prague, 30x24cm](paintings/architectural-detail.JPG){group="water"}
+![Winter, Chisinau 24x30cm](paintings/chisinau-color.jpg){group="water"}
 
 
-![Old town, 30x24cm](paintings/old-town-2.JPG){group="water"}
 
+### Plein-air paintings
 
-![Plein-air in Toulon, 13x21cm](paintings/toulon-3.jpg){group="water"}
+::: {layout-ncol=2}
 
-![The dearest place, 22x26cm](paintings/boian.JPG){group="water"}
+![Plein air, Bucharest, 24x30cm](paintings/parcul-national.jpg){group="water"}
+
+![Piata Alba Iulia, 19x26cm](paintings/loom.jpg){group="misc"}
+
+![Hammock, Balotesti, 30x24cm](paintings/hammock.jpg){group="water"}
+
+![Reflections, IOR, 30x24cm](paintings/ior-boat.jpg){group="water"}
+
+![At the willows, IOR, 19x26cm](paintings/ior-island.jpg){group="water"}
+
+![The duck spot, IOR, 19x24cm](paintings/ior-ducks.jpg){group="water"}
+
+![View from the garage, Bucharest, 13x19cm](paintings/matache-dobrescu.jpg){group="water"}
+
+![Overcast, IOR, 19x26cm](paintings/ior-reflections-4.jpg){group="water"}
 
 :::
- -->
-
 
 ## Landscape impressions in oil
 
@@ -114,10 +100,6 @@ toc-title: Explore the works
 
 ![Fall in Fagarasi, 15x20cm](paintings/fagarasi.jpg){group="misc"}
 
-![Pond, Cismigiu, 15x20cm](paintings/cismigiu2.jpg){group="misc"}
-
-![Morning in Plancoet, 40x60cm](paintings/plancoet.JPG){group="studies"}
-
 :::
 
 ![Spring in Bergamo, 20x40cm](paintings/bergamo-valley-hq.JPG){group="oil"}
@@ -130,13 +112,17 @@ toc-title: Explore the works
 ### Pastel
 
 ::: {layout-ncol=2}
-![Sunlit Trees at Muncii, 20x15cm](paintings/muncii-trees.jpg){group="misc"}
+![Last days of summer, 20x30cm](paintings/sunlit-alley.jpg){group="drawing"}
 
-![Coffee break, 16x13cm](paintings/noi-coffee.jpg){group="misc"}
+![The lone tree, 20x30cm](paintings/lone-tree.JPG){group="drawing"}
 
 ![Old town, 15x20cm](paintings/old-town-victoriei.jpg){group="misc"}
 
-![The last snow, 20x30cm](paintings/last-snow.jpg){group="drawing"}
+![Untitled, Bucharest, 20x30cm](paintings/dudesti.jpg){group="drawing"}
+
+![Sunlit Trees at Muncii, 20x15cm](paintings/muncii-trees.jpg){group="misc"}
+
+![Coffee break, 16x13cm](paintings/noi-coffee.jpg){group="misc"}
 
 :::
 
@@ -152,117 +138,83 @@ toc-title: Explore the works
 
 ![Paper bag, 24x18cm](paintings/paper-bag-3.jpg){group="misc"}
 
+![All dry, 40x30cm](paintings/study-vase.jpg){group="misc"}
+
+![Still Life after Ian Roberts, 40x40cm](paintings/still-life-jug.JPG){group="drawing"}
+
 
 :::
 
 
-### Sketches, Studies, and Notans
+### Portraits
 
 ::: {layout-ncol=2}
 
 ![Study after McCurry, 30x20cm](paintings/mccurry.jpg){group="misc"}
 
-![Sunlit Trees at Unirii, 20x15cm](paintings/unirii-trees.JPG){group="misc"}
+![AM hackathon illustration, 40x30cm](paintings/hackathon.jpg){group="misc"}
+
+![Eleonora, 20x15cm](paintings/grandma.jpg){group="misc"}
+
+![Earth's World 1, 30x20cm](paintings/earthsworld-5.jpg){group="misc"}
+
+![Earth's World 2, 30x20cm](paintings/earthsworld-1.jpg){group="misc"}
+
+![Earth's World 3, 30x20cm](paintings/earthsworld-3.jpg){group="misc"}
+
+![Earth's World 4, 30x20cm](paintings/earthsworld-4.jpg){group="misc"}
+
+![Earth's World 5, 30x20cm](paintings/earthsworld.jpg){group="misc"}
+
+:::
+
+### Pets
+
+::: {layout-ncol=2}
+
+![Artemis by the window, 20x15cm](paintings/artemis.jpg){group="misc"}
+
+![Artemis and Tigrisor, 15x20cm](paintings/artemis-tigrisor.jpg){group="misc"}
+
+:::
+
+### Frigure and life drawing
+
+::: {layout-ncol=2}
+
+![Study after B.C. Liston reference, 20x15cm](paintings/figurative-liston.jpg){group="misc"}
+
+![Life drawing, 10min, 15x30cm](paintings/croquis-1.jpg){group="misc"}
+
+![Gestures 1, 20x30cm](paintings/gestures-0.jpg){group="misc"}
+
+![Gestures 2, 20x30cm](paintings/gestures-2.jpg){group="misc"}
+
+:::
+
+### Urban sketching
+
+::: {layout-ncol=2}
+
+![Urban sketchers meetup, 20x30cm](paintings/meet-sketch-1.jpg){group="misc"}
+
+![Coffee at Loom 68, 20x30cm](paintings/loom-1.jpg){group="misc"}
+
+![Coffee at Boiler 1, 20x30cm](paintings/boiler-1.jpg){group="misc"}
+
+![Coffee at Boiler 2, 20x30cm](paintings/boiler-2.jpg){group="misc"}
+
+:::
+
+
+### Notans and composition studies
+::: {layout-ncol=2}
 
 ![Boatyard in Venice, 24x30cm](paintings/venice-boatyard.JPG){group="misc"}
 
 ![Fence in Predeal, 20x30cm](paintings/predeal.JPG){group="misc"}
 
-![Still Life after Ian Roberts, 40x40cm](paintings/still-life-jug.JPG){group="drawing"}
-
-![Still life, 21x30cm](paintings/still-life-filter.JPG){group="drawing"}
-
 :::
-
-![Piata Alba Iulia, 19x26cm](paintings/loom.jpg){group="misc"}
-
-
-
-
-
-
-
-<!-- 
-### Studies
-
-::: {layout-ncol=4}
-
-![Dinner in Paris, 20x20cm](paintings/paris-cafe-oil.JPG){group="studies"}
-
-
-![Road to Suceava, 30x40cm](paintings/road-to-suceava.JPG){group="studies"}
-
-![View from Sapanta, 20x30cm](paintings/sapanta.JPG){group="studies"}
-
-![Sunset at IOR, 10x15cm](paintings/ior-sunset.JPG){group="studies"}
-
-
-
-
-![A creek in Wyndham, 15x20cm](paintings/wyndham-2.JPG){group="studies"}
-
-::: -->
-
-<!-- 
-
-## Drawings and monochrome
-
-
-::: {layout-ncol=3}
-
-
-![Cape Kiwanda, 30x21cm](paintings/cape-bw.JPG){group="drawing"}
-
-
-
-![Chess players, 20x20cm](paintings/chess.JPG){group="drawing"}
-
-![Barbernini museum, Rome, 15x20cm](paintings/rome.JPG){group=""}
-
-![Study for Arsenale, 10x10cm](paintings/venice-arsenale-bw.JPG){group="drawing"}
-
-![Multi-figure study, 21x30cm](paintings/un-ete-inoubliable.JPG){group="drawing"}
-
-![Household in Breb, 15x20cm](paintings/breb.JPG){group="drawing"}
-
-![The wall of Bergamo, 15x20cm](paintings/bergamo-2.JPG){group="drawing"}
-
-![Red Onions, 10x15cm](paintings/red-onion.JPG){group="drawing"}
-
-![Old fence, 5x10cm](paintings/fences.JPG){group="drawing"}
-
-![Sunny street in Boian, 10x10cm](paintings/boian-bw.JPG){group="drawing"}
-
-![Sunlit tree in Milano, 10x10cm](paintings/sunlit-tree-milano.JPG){group="drawing"}
-
-![Venice boatyard, 18x18cm](paintings/venice-boatyard-2.JPG){group="drawing"}
-
-![Study after Carravagio, 10x5cm](paintings/caravaggio-egypt.JPG){group="drawing"}
-
-![Figure study, 10x15cm](paintings/figure-study.JPG){group="drawing"}
-
-![Gondolas in Venice, 10x5cm](paintings/venice.JPG){group="drawing"}
-
-![Barns in winter, 5x10cm](paintings/barns.JPG){group="drawing"}
-
-![Study after Paul Baum, 5x10cm](paintings/baum-5.JPG){group="drawing"}
-
-![Study after Paul Baum, 5x10cm](paintings/baum-4.JPG){group="drawing"}
-
-![Winter in Dolomites, 30x20cm](paintings/lone-tree.JPG){group="drawing"}
-
-![Fields in Boian, 10x10cm](paintings/boian.jpeg){group="drawing"}
-
-
-![Winter in Balti, 26x40cm](paintings/balti-valley.JPG){group="drawing"}
-
-![Boat Study, 10x15cm](paintings/boat.jpeg){group="drawing"}
-
-
-:::
- -->
-
-
 
 ## Photography
 
@@ -276,24 +228,26 @@ toc-title: Explore the works
 
 ![Sheep, Busteni](paintings/sheep-1.jpg){group="photo"}
 
-![Clouds, Rimini](paintings/sea-2.jpg){group="photo"}
 
 ![The pier, Rimini](paintings/sea-6.jpg){group="photo"}
 
 ![Cliffs, Busteni](paintings/cliffs.jpg){group="photo"}
 
+![Rolling hills, Livigno](paintings/hills-4.jpg){group="photo"}
+
+
 ![Sheep, Busteni](paintings/sheep-2.jpg){group="photo"}
 
 ![Cliffs, Livigno](paintings/cliffs-2.jpg){group="photo"}
-
-
-![Untitled](paintings/abstract-1.jpg){group="photo"}
 
 ![Wires, Livigno](paintings/wires-1.jpg){group="photo"}
 
 ![Trail, Livigno](paintings/trail-1.jpg){group="photo"}
 
 ![Trail, Livigno](paintings/trail-2.jpg){group="photo"}
+
+![Trail, Livigno](paintings/trail-3.jpg){group="photo"}
+
 
 ![Rolling hills, Livigno](paintings/hills-1.jpg){group="photo"}
 
@@ -302,43 +256,15 @@ toc-title: Explore the works
 ![Rolling hills, Livigno](paintings/hills-3.jpg){group="photo"}
 
 
-![Trail, Livigno](paintings/trail-3.jpg){group="photo"}
+
+![Untitled](paintings/abstract-1.jpg){group="photo"}
 
 ![Untitled](paintings/abstract-2.jpg){group="photo"}
 
 ![Untitled](paintings/abstract-5.jpg){group="photo"}
 
-![Lone tree, Livigno](paintings/hills-5.jpg){group="photo"}
 
-![Untitled](paintings/abstract-3.jpg){group="photo"}
-
-![Rolling hills, Livigno](paintings/hills-4.jpg){group="photo"}
 
 :::
 
-<!-- 
-## Ink scribbles and doodles
-
-::: {layout-ncol=2}
-
-![Chester, 5x5cm](paintings/chester-2.jpg){group="ink"}
-
-![Chester, 5x5cm](paintings/chester-1.jpg){group="ink"}
-
-:::
-
-::: {layout-ncol=3}
-
-![Paper bag, 5x5cm](paintings/paper-bag.JPG){group="ink"}
-
-![Cat at Simbio, 10x5cm](paintings/cat-2.jpg){group="ink"}
-
-![Paper bag, 10x5cm](paintings/paper-bag-1.JPG){group="ink"}
-
-![Cat near my house, 10x5cm](paintings/cat-1.jpg){group="ink"}
-
-![Cat at Shift, 5x10cm](paintings/the_cat.JPG){group="ink"}
-
-![Cat near my house, 5x10cm](paintings/cat-3.jpg){group="ink"}
-
-::: -->
+![Clouds, Rimini](paintings/sea-2.jpg){group="photo"}
