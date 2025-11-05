@@ -11,7 +11,7 @@ toc-title: Explore the works
 
 ## Light and shadow in watercolor
 
-![Fall, Wyndham, 24x30cm](paintings/wyndham-fall.jpg){group="water"}
+![Winter, Chisinau 24x30cm](paintings/chisinau-color.jpg){group="water"}
 
 ::: {layout-ncol=2}
 
@@ -24,11 +24,9 @@ toc-title: Explore the works
 
 ![Walking home, Bucharest, 30x24cm](paintings/cec2.JPG){group="water"}
 
-![Movie night, IOR, 30x24cm](paintings/ior-nocturne.jpg){group="water"}
 
 ![Duality, Prague, 30x24cm](paintings/prague-castle.jpg){group="water"}
 
-![Church, Piatra Neamt, 30x24cm](paintings/piatra-church-2.jpg){group="water"}
 
 ![At the office, Bucharest, 30x24cm](paintings/view-office-2.jpg){group="water"}
 
@@ -42,11 +40,11 @@ toc-title: Explore the works
 
 ![Shade, Toulon, 24x30cm](paintings/toulon-umbrella.jpg){group="water"}
 
-![Before sunset, Bucharest, 24x30cm](paintings/bucharest-street.jpg){group="water"}
+![Fall, Wyndham, 24x30cm](paintings/wyndham-fall.jpg){group="water"}
+
 
 :::
 
-![Winter, Chisinau 24x30cm](paintings/chisinau-color.jpg){group="water"}
 
 
 
@@ -54,9 +52,9 @@ toc-title: Explore the works
 
 ::: {layout-ncol=2}
 
-![Plein air, Bucharest, 24x30cm](paintings/parcul-national.jpg){group="water"}
+![Parcul National, Bucharest, 24x30cm](paintings/parcul-national.jpg){group="water"}
 
-![Piata Alba Iulia, 19x26cm](paintings/loom.jpg){group="misc"}
+![Parcul National, Bucharest, 24x30cm](paintings/fall-parcul-national.jpg){group="water"}
 
 ![Hammock, Balotesti, 30x24cm](paintings/hammock.jpg){group="water"}
 
@@ -66,11 +64,34 @@ toc-title: Explore the works
 
 ![The duck spot, IOR, 19x24cm](paintings/ior-ducks.jpg){group="water"}
 
-![View from the garage, Bucharest, 13x19cm](paintings/matache-dobrescu.jpg){group="water"}
-
 ![Overcast, IOR, 19x26cm](paintings/ior-reflections-4.jpg){group="water"}
 
+![Fall, IOR, 30x24cm](paintings/ior-fall.jpg){group="water"}
+
 :::
+
+:::: {.callout-note collapse="true"}
+
+## Archive
+
+::: {layout-ncol=2}
+![Church, Piatra Neamt, 30x24cm](paintings/piatra-church-2.jpg){group="water"}
+
+![Movie night, IOR, 30x24cm](paintings/ior-nocturne.jpg){group="water"}
+
+![Before sunset, Bucharest, 24x30cm](paintings/bucharest-street.jpg){group="water"}
+
+![View from the garage, Bucharest, 13x19cm](paintings/matache-dobrescu.jpg){group="water"}
+
+
+![Piata Alba Iulia, 19x26cm](paintings/loom.jpg){group="misc"}
+
+![Dambovita, 19x26cm](paintings/dambovita.jpg){group="misc"}
+
+:::
+
+::::
+
 
 ## Landscape impressions in oil
 
@@ -79,10 +100,6 @@ toc-title: Explore the works
 ![Sunset, IOR, 24x18cm](paintings/ior-clouds.jpg){group="misc"}
 
 ::: {layout-ncol=2}
-
-![A memory from Boian, 30x30cm](paintings/boian-street.jpg){group="oil"}
-
-![Sunset at Arsenale, 30x30cm](paintings/venice-arsenale.jpg){group="oil"}
 
 ![Altar, Busteni, 30x30cm](paintings/busteni-altar.jpg){group="oil"}
 
@@ -105,6 +122,25 @@ toc-title: Explore the works
 ![Spring in Bergamo, 20x40cm](paintings/bergamo-valley-hq.JPG){group="oil"}
 
 ![Morining in Wyndham, 24x33cm](paintings/wyndham.jpg){group="oil"}
+
+
+:::: {.callout-note collapse="true"}
+
+## Archive
+
+::: {layout-ncol=2}
+![A memory from Boian, 30x30cm](paintings/boian-street.jpg){group="oil"}
+
+![Sunset at Arsenale, 30x30cm](paintings/venice-arsenale.jpg){group="oil"}
+
+:::
+
+::::
+
+
+
+
+
 
 ## Miscellanea
 
@@ -166,6 +202,15 @@ toc-title: Explore the works
 
 ![Earth's World 5, 30x20cm](paintings/earthsworld.jpg){group="misc"}
 
+![NMA reference, 20x15cm](paintings/nma-1.jpg){group="misc"}
+
+![NMA reference, 20x15cm](paintings/nma-5.jpg){group="misc"}
+
+![NMA reference, 20x15cm](paintings/nma-3.jpg){group="misc"}
+
+![NMA reference, 20x15cm](paintings/nma-2.jpg){group="misc"}
+
+
 :::
 
 ### Pets
@@ -180,15 +225,25 @@ toc-title: Explore the works
 
 ### Frigure and life drawing
 
+![Study after B.C. Liston reference, 20x15cm](paintings/figurative-liston.jpg){group="misc"}
+
 ::: {layout-ncol=2}
 
-![Study after B.C. Liston reference, 20x15cm](paintings/figurative-liston.jpg){group="misc"}
+![Life drawing, 21x30cm](paintings/14-10-fig1.jpg){group="misc"}
+
+![Life drawing, 21x30cm](paintings/14-10-fig3.jpg){group="misc"}
+
+![Life drawing, 21x30cm](paintings/14-10-fig2.jpg){group="misc"}
 
 ![Life drawing, 10min, 15x30cm](paintings/croquis-1.jpg){group="misc"}
 
-![Gestures 1, 20x30cm](paintings/gestures-0.jpg){group="misc"}
+![Gestures, 20x30cm](paintings/gest-2.jpg){group="misc"}
 
-![Gestures 2, 20x30cm](paintings/gestures-2.jpg){group="misc"}
+![Gestures, 20x30cm](paintings/gest-4.jpg){group="misc"}
+
+![Gestures, 20x30cm](paintings/gest-1.jpg){group="misc"}
+
+![Gestures, 20x30cm](paintings/gest-3.jpg){group="misc"}
 
 :::
 
@@ -196,13 +251,21 @@ toc-title: Explore the works
 
 ::: {layout-ncol=2}
 
-![Urban sketchers meetup, 20x30cm](paintings/meet-sketch-1.jpg){group="misc"}
+![Tea at Bernschultz, 20x30cm](paintings/bernschultz.jpg){group="misc"}
+
+![Wires, 20x15cm](paintings/wires.jpg){group="misc"}
+
+![Coffee at Loom 68, 20x30cm](paintings/usk-loom.jpg){group="misc"}
+
+![Train to Brasov, 20x30cm](paintings/usk-train.jpg){group="misc"}
 
 ![Coffee at Loom 68, 20x30cm](paintings/loom-1.jpg){group="misc"}
 
+![Coffee at Boiler 2, 20x30cm](paintings/boiler-2.jpg){group="misc"}
+
 ![Coffee at Boiler 1, 20x30cm](paintings/boiler-1.jpg){group="misc"}
 
-![Coffee at Boiler 2, 20x30cm](paintings/boiler-2.jpg){group="misc"}
+![Urban sketchers meetup, 20x30cm](paintings/qpub.jpg){group="misc"}
 
 :::
 
