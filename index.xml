@@ -9,7 +9,7 @@
 <link>https://blog.economic-cybernetics.com/</link>
 <atom:link href="https://blog.economic-cybernetics.com/index.xml" rel="self" type="application/rss+xml"/>
 <description>{Art, Math, Philosophy}</description>
-<generator>quarto-1.6.42</generator>
+<generator>quarto-1.8.27</generator>
 <lastBuildDate>Sun, 09 Apr 2023 21:00:00 GMT</lastBuildDate>
 <item>
   <title>10 Lessons in Humility</title>
@@ -104,7 +104,7 @@
 <section id="analysis-in-networkx" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-in-networkx">Analysis in NetworkX</h2>
 <p>Now we are armed with the knowledge and interpretation of this graph and can start with a blank slate, using the raw data, which is stored in a <strong>json</strong> format <code>{’source’: 476, ’target’: 87}</code>, later transformed in an <strong>edge list</strong> and finally a <strong>networkx</strong> <code>Graph()</code> object. Now we can visualize this object in python, using different layout algorithms, calculate statistics and starting exploring the dataset as if we knew nothing about it. The node labels are numbers in order to anonimize the data, without much loss of insight.</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
 background-color: null;
@@ -182,9 +182,9 @@ font-style: inherit;">=</span> nx.from_pandas_edgelist(df, <span class="st" styl
 background-color: null;
 font-style: inherit;">'n1'</span>, <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'n2'</span>)</span></code></pre></div>
+font-style: inherit;">'n2'</span>)</span></code></pre></div></div>
 <p>Classical measures of centrality like degree, average clustering, betweenness centrality, despite their simplicity and power they all have the downside of how complex of patterns can they represent or suggest. This is where iterative, algorithmic approaches like Scaled PageRank and HITS come into play. The first one can be interpreted as the probability of ending up in a node when traversing the graph by a random walk a <strong>sufficiently long</strong> time. Hits uses another approach with the concepts of Authority and Hubs. It is important to note that they both were developed for directed graphs in the context of web pages and hyperlinks pointing to them and they show their full power there. Nonetheless, they can still be used for undirected graphs, as I did here.</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">_ <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">_ <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> plt.hist(nx.pagerank(G).values(), bins<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -278,11 +278,8 @@ font-style: inherit;">if</span> val <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&gt;</span> <span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">0.005</span>]</span></code></pre></div>
+font-style: inherit;">0.005</span>]</span></code></pre></div></div>
 <p>First, I apply the algorithms and then look at the distribution of node “importance” in order to identify a good treshold for the visualization. The important nodes are then stored into <code>high_rank</code> and <code>high_hits</code> variables. The parameter <strong>alpha</strong> is essential for the PageRank not to get stuck into loops and distorting the distribution.</p>
-<div>
-
-</div>
 <div class="quarto-layout-panel" data-layout="[40, 40]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -305,7 +302,7 @@ font-style: inherit;">0.005</span>]</span></code></pre></div>
 </div>
 <p><em>The distribution of node importance according to PageRank and Hits algorithms. HITS needed a much larger number of iterations to converge and is much more <code>strict</code> in what it considers to be important nodes, most of them being concentrated around zero. For this particular network, PageRank scores seem a bit more sensible overall, but HITS differentiates better between importance.</em></p>
 <p>As a further warm-up, let’s calculate a few statistics on this graph, which interpretation we will discuss later. The two statistics which can vary greatly in conclusions by network type, in this case pretty much agree: the <strong>average clustering</strong> (0.49) and <strong>transitivity</strong> (0.45). The central and peripheral nodes will be displayed directly on the graph. The <strong>diameter</strong> of the network is 8, <strong>radius</strong> is 4 and the <strong>average shortest path</strong> between any node to other node is 3.26.</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">periphery <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">periphery <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> nx.periphery(G)</span>
 <span id="cb3-2">center <span class="op" style="color: #5E5E5E;
@@ -320,9 +317,9 @@ background-color: null;
 font-style: inherit;">print</span>(nx.average_shortest_path_length(G))</span>
 <span id="cb3-6"><span class="bu" style="color: null;
 background-color: null;
-font-style: inherit;">print</span>(nx.diameter(G))</span></code></pre></div>
+font-style: inherit;">print</span>(nx.diameter(G))</span></code></pre></div></div>
 <p>Now it is time to visualize the network and add the nodes which were calculated above according to criteria of importance. It is important to note that <strong>networkx</strong> is NOT primarily a visualization of network package: it uses the standard matplotlib, but it is good enough for small networks such as this one. In just 12 lines of code we get a publication-ready visualization. For more advanced use-cases <strong>graphviz</strong> and <strong>Gephi</strong>, <strong>igraph</strong> in R can be more suitable. In the next part, these repetitive operations will be wrapped up in a generic function which automates this a little bit painful process.</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">np.random.seed(<span class="dv" style="color: #AD0000;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">np.random.seed(<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3245</span>)</span>
 <span id="cb4-2">legend_elements <span class="op" style="color: #5E5E5E;
@@ -511,7 +508,7 @@ background-color: null;
 font-style: inherit;">"Centrality"</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Min Node Cut"</span>])</span>
-<span id="cb4-28">plt.show()</span></code></pre></div>
+<span id="cb4-28">plt.show()</span></code></pre></div></div>
 <p><img src="https://blog.economic-cybernetics.com/posts/2019-networks/img/python_facebook.png" class="img-fluid" alt="Python Social Network"> <em>The final result of applying classical algorithms turned out extremely close to the <code>ground truth</code>, i.e.&nbsp;the interpretation I gave in the beginning</em></p>
 <p>The network is <strong>reversed</strong>, but even cleaner than the one generated by lostcircles. We can see on the graph on the next page that the periphery is not that large as expected. Three, or even four important people who connect clusters are correctly identified either by <strong>centrality</strong> or PageRank algorithm. Moreover, it identifies very well connected people inside the clusters.</p>
 <p>For the minimal node cut there are multiple choices, but it seems that the algorithm “thinks” that the family is the most poorly connected cluster to the other ones, which, looking at the picture is absolutely reasonable, as we have to remove only one node to achieve a disconnection, the green one.</p>
@@ -519,9 +516,6 @@ font-style: inherit;">"Min Node Cut"</span>])</span>
 <p>A few comments on what the code does: first it sets up the environment, defining the size of the picture and deleting the axis, then it calculates the position of each node by the Fruchterman Reigold Algorithm. The first layer of grey nodes is added, together with all of the connections. Then the peripheral nodes calculated above are displayed in beige with the function <code>nx.draw_networkx_nodes</code>, which also requires the position, the Centrality, Minimum Cut and PageRank are added in turn. The finishing touch is the legend.</p>
 <p>The last two obvious things to try are calculating the Local Clustering Coefficient and seeing the correlation between Node degree and LCC. We see that the first follows a pretty symmetric distribution, with exception of the stack at zero, which is expected in such a network. It means that there are nodes which are highly clustered and some not at all, but the majority at around 0.5.</p>
 <p>The correlation with the Node Degree shows that as node degree increases, the expected LCC drops. This relationship is usually visualized at a log scale, but our network is not enough for this to be necessary and for the pattern to emerge. There is also an interesting boundary on the top of the point cloud. Remember how we calculated the average clustering above (0.49) and it agreed in large with the alternative method of transitivity, which is based on the concept on “triangle closure”. It means that networks, in which pairs of 2 out of 3 nodes are connected, tend to “produce” closures within those triplets.</p>
-<div>
-
-</div>
 <div class="quarto-layout-panel" data-layout="[40, 40]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -544,7 +538,7 @@ font-style: inherit;">"Min Node Cut"</span>])</span>
 </div>
 <p><em>Two classical measures of clustering</em></p>
 <p>Below is the code which uses list comprehensions and nx functions on the graphs in order to compute and plot the distributions of the degree and LCC.</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">_ <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">_ <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> plt.hist(<span class="bu" style="color: null;
 background-color: null;
@@ -626,7 +620,7 @@ font-style: inherit;">"Count"</span>)</span>
 <span id="cb5-18">plt.title(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Distribution of the Node Degree"</span>)</span>
-<span id="cb5-19">plt.show()</span></code></pre></div>
+<span id="cb5-19">plt.show()</span></code></pre></div></div>
 </section>
 <section id="research-citations-and-ontologies" class="level2">
 <h2 class="anchored" data-anchor-id="research-citations-and-ontologies">Research, Citations and Ontologies</h2>
