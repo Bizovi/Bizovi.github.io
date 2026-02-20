@@ -105,10 +105,6 @@ toc-title: Explore the works
 
 ![The hills of Piatra Neamt, 30x30cm](paintings/piatraneamt-hq.jpeg){group="oil"}
 
-![Sunlit park in Sevilla, 30x40cm](paintings/sevilla-park.jpg){group="oil"}
-
-![Azuga trail, 18x23cm](paintings/azuga-trail-hq.JPG){group="oil"}
-
 ![Montjuic Castle, 30x40cm](paintings/montjuic-castle.JPG){group="oil"}
 
 ![Toulon Cypresses, 15x20cm](paintings/toulon-cypresses.jpg){group="oil"}
@@ -118,8 +114,6 @@ toc-title: Explore the works
 ![Fall in Fagarasi, 15x20cm](paintings/fagarasi.jpg){group="misc"}
 
 :::
-
-![Spring in Bergamo, 20x40cm](paintings/bergamo-valley-hq.JPG){group="oil"}
 
 ![Morining in Wyndham, 24x33cm](paintings/wyndham.jpg){group="oil"}
 
@@ -133,7 +127,13 @@ toc-title: Explore the works
 
 ![Sunset at Arsenale, 30x30cm](paintings/venice-arsenale.jpg){group="oil"}
 
+![Sunlit park in Sevilla, 30x40cm](paintings/sevilla-park.jpg){group="oil"}
+
+![Azuga trail, 18x23cm](paintings/azuga-trail-hq.JPG){group="oil"}
+
 :::
+
+![Spring in Bergamo, 20x40cm](paintings/bergamo-valley-hq.JPG){group="oil"}
 
 ::::
 
@@ -194,21 +194,26 @@ toc-title: Explore the works
 
 ![Earth's World 1, 30x20cm](paintings/earthsworld-5.jpg){group="misc"}
 
-![Earth's World 2, 30x20cm](paintings/earthsworld-1.jpg){group="misc"}
-
-![Earth's World 3, 30x20cm](paintings/earthsworld-3.jpg){group="misc"}
-
-![Earth's World 4, 30x20cm](paintings/earthsworld-4.jpg){group="misc"}
+![NMA reference, 30x20cm](paintings/nma-ref-rajiv.jpg){group="misc"}
 
 ![Earth's World 5, 30x20cm](paintings/earthsworld.jpg){group="misc"}
 
-![NMA reference, 20x15cm](paintings/nma-1.jpg){group="misc"}
+<!-- ![Earth's World 2, 30x20cm](paintings/earthsworld-1.jpg){group="misc"}
 
-![NMA reference, 20x15cm](paintings/nma-5.jpg){group="misc"}
+![Earth's World 3, 30x20cm](paintings/earthsworld-3.jpg){group="misc"} 
 
-![NMA reference, 20x15cm](paintings/nma-3.jpg){group="misc"}
 
-![NMA reference, 20x15cm](paintings/nma-2.jpg){group="misc"}
+-->
+
+
+
+<!-- ![Earth's World 4, 30x20cm](paintings/earthsworld-4.jpg){group="misc"} -->
+
+<!-- ![NMA reference, 20x15cm](paintings/nma-1.jpg){group="misc"} -->
+
+<!-- ![NMA reference, 20x15cm](paintings/nma-3.jpg){group="misc"}
+
+![NMA reference, 20x15cm](paintings/nma-2.jpg){group="misc"} -->
 
 
 :::
@@ -251,23 +256,39 @@ toc-title: Explore the works
 
 ::: {layout-ncol=2}
 
-![Tea at Bernschultz, 20x30cm](paintings/bernschultz.jpg){group="misc"}
+![Tea at Bernschultz, 24x16cm](paintings/bernschultz.jpg){group="misc"}
 
 ![Wires, 20x15cm](paintings/wires.jpg){group="misc"}
+
+![Coffee at Loom 68, 20x30cm](paintings/loom-up-1.jpg){group="misc" width="95%"}
+
+![Coffee at Loom 68, 20x30cm](paintings/loom-up-2.jpg){group="misc"}
 
 ![Coffee at Loom 68, 20x30cm](paintings/usk-loom.jpg){group="misc"}
 
 ![Train to Brasov, 20x30cm](paintings/usk-train.jpg){group="misc"}
 
-![Coffee at Loom 68, 20x30cm](paintings/loom-1.jpg){group="misc"}
+![Coffee at Boiler, 20x30cm](paintings/boiler-2.jpg){group="misc"}
 
-![Coffee at Boiler 2, 20x30cm](paintings/boiler-2.jpg){group="misc"}
+![Coffee at Boiler, 20x30cm](paintings/boiler-1.jpg){group="misc"}
 
-![Coffee at Boiler 1, 20x30cm](paintings/boiler-1.jpg){group="misc"}
+
+:::
+
+
+:::: {.callout-note collapse="true"}
+
+## Archive
+
+::: {layout-ncol=2}
 
 ![Urban sketchers meetup, 20x30cm](paintings/qpub.jpg){group="misc"}
 
+![Coffee at Loom 68, 20x30cm](paintings/loom-1.jpg){group="misc"}
+
 :::
+
+::::
 
 
 ### Notans and composition studies
