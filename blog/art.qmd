@@ -36,7 +36,7 @@ toc-title: Explore the works
 
 ![Breaking the waves, Mangalia, 24x30cm](paintings/mangalia-boats-2.jpg){group="water"}
 
-![Dirt road, 24x34cm](paintings/dirt-road.jpg){group="water"}
+![Dirt road, 24x30cm](paintings/dirt-road.jpg){group="water"}
 
 ![Shade, Toulon, 24x30cm](paintings/toulon-umbrella.jpg){group="water"}
 
@@ -64,9 +64,10 @@ toc-title: Explore the works
 
 ![The duck spot, IOR, 19x24cm](paintings/ior-ducks.jpg){group="water"}
 
-![Overcast, IOR, 19x26cm](paintings/ior-reflections-4.jpg){group="water"}
 
-![Fall, IOR, 30x24cm](paintings/ior-fall.jpg){group="water"}
+![Piata Alba Iulia, 19x26cm](paintings/loom.jpg){group="misc"}
+
+![Fall, Brasov, 30x20cm](paintings/brasov-fall-2.jpg){group="water"}
 
 :::
 
@@ -83,10 +84,14 @@ toc-title: Explore the works
 
 ![View from the garage, Bucharest, 13x19cm](paintings/matache-dobrescu.jpg){group="water"}
 
-
-![Piata Alba Iulia, 19x26cm](paintings/loom.jpg){group="misc"}
-
 ![Dambovita, 19x26cm](paintings/dambovita.jpg){group="misc"}
+
+![Overcast, IOR, 19x26cm](paintings/ior-reflections-4.jpg){group="water"}
+
+![Fall, IOR, 24x30cm](paintings/ior-fall.jpg){group="water"}
+
+![Bridge over Vlatva, 24x30cm](paintings/praga-bridge.JPG){group="water"}
+
 
 :::
 
@@ -145,6 +150,54 @@ toc-title: Explore the works
 ## Miscellanea
 
 
+### Urban sketching
+
+::: {layout-ncol=2}
+
+![Coffee at Loom 68, 20x30cm](paintings/loom-sketch-couch.jpg){group="misc"}
+
+![Coffee at Beans & Dots, 20x30cm](paintings/beans-sketch.jpg){group="misc"}
+
+
+![Coffee at Loom 68, 20x30cm](paintings/loom-up-1.jpg){group="misc" width="95%"}
+
+![Coffee at Loom 68, 20x30cm](paintings/loom-up-2.jpg){group="misc"}
+
+
+![Tea at Bernschultz, 24x16cm](paintings/bernschultz.jpg){group="misc"}
+
+![Halloween at Boiler, 26x19cm](paintings/boiler-pumkins.jpg){group="misc"}
+
+
+![Coffee at Loom 68, 20x30cm](paintings/usk-loom.jpg){group="misc"}
+
+![Train to Brasov, 20x30cm](paintings/usk-train.jpg){group="misc"}
+
+
+![Carturesti, 20x30cm](paintings/carturesti.jpg){group="misc"}
+
+![Coffee at Boiler, 26x19cm](paintings/boiler-summer.jpg){group="misc"}
+
+:::
+
+
+:::: {.callout-note collapse="true"}
+
+## Archive
+
+::: {layout-ncol=2}
+
+![Urban sketchers meetup, 20x30cm](paintings/qpub.jpg){group="misc"}
+
+![Coffee at Loom 68, 20x30cm](paintings/loom-1.jpg){group="misc"}
+
+![Coffee at Boiler, 20x30cm](paintings/boiler-2.jpg){group="misc"}
+
+:::
+
+::::
+
+
 ### Pastel
 
 ::: {layout-ncol=2}
@@ -166,7 +219,7 @@ toc-title: Explore the works
 
 ::: {layout-ncol=2}
 
-![Still life, 24x16cm](paintings/still-life.jpg){group="misc"}
+![Still life, 20x30cm](paintings/still-life.jpg){group="misc"}
 
 ![Still life (sketchbook), 16x21cm](paintings/bell-pepper.jpg){group="water"}
 
@@ -252,43 +305,6 @@ toc-title: Explore the works
 
 :::
 
-### Urban sketching
-
-::: {layout-ncol=2}
-
-![Tea at Bernschultz, 24x16cm](paintings/bernschultz.jpg){group="misc"}
-
-![Wires, 20x15cm](paintings/wires.jpg){group="misc"}
-
-![Coffee at Loom 68, 20x30cm](paintings/loom-up-1.jpg){group="misc" width="95%"}
-
-![Coffee at Loom 68, 20x30cm](paintings/loom-up-2.jpg){group="misc"}
-
-![Coffee at Loom 68, 20x30cm](paintings/usk-loom.jpg){group="misc"}
-
-![Train to Brasov, 20x30cm](paintings/usk-train.jpg){group="misc"}
-
-![Coffee at Boiler, 20x30cm](paintings/boiler-2.jpg){group="misc"}
-
-![Coffee at Boiler, 20x30cm](paintings/boiler-1.jpg){group="misc"}
-
-
-:::
-
-
-:::: {.callout-note collapse="true"}
-
-## Archive
-
-::: {layout-ncol=2}
-
-![Urban sketchers meetup, 20x30cm](paintings/qpub.jpg){group="misc"}
-
-![Coffee at Loom 68, 20x30cm](paintings/loom-1.jpg){group="misc"}
-
-:::
-
-::::
 
 
 ### Notans and composition studies
