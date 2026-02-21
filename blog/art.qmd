@@ -64,38 +64,11 @@ toc-title: Explore the works
 
 ![The duck spot, IOR, 19x24cm](paintings/ior-ducks.jpg){group="water"}
 
+![Fall, Brasov, 20x30cm](paintings/brasov-fall-2.jpg){group="water"}
 
-![Piata Alba Iulia, 19x26cm](paintings/loom.jpg){group="misc"}
-
-![Fall, Brasov, 30x20cm](paintings/brasov-fall-2.jpg){group="water"}
-
-:::
-
-:::: {.callout-note collapse="true"}
-
-## Archive
-
-::: {layout-ncol=2}
-![Church, Piatra Neamt, 30x24cm](paintings/piatra-church-2.jpg){group="water"}
-
-![Movie night, IOR, 30x24cm](paintings/ior-nocturne.jpg){group="water"}
-
-![Before sunset, Bucharest, 24x30cm](paintings/bucharest-street.jpg){group="water"}
-
-![View from the garage, Bucharest, 13x19cm](paintings/matache-dobrescu.jpg){group="water"}
-
-![Dambovita, 19x26cm](paintings/dambovita.jpg){group="misc"}
-
-![Overcast, IOR, 19x26cm](paintings/ior-reflections-4.jpg){group="water"}
-
-![Fall, IOR, 24x30cm](paintings/ior-fall.jpg){group="water"}
-
-![Bridge over Vlatva, 24x30cm](paintings/praga-bridge.JPG){group="water"}
-
+![Parcul National, Bucharest, 19x26cm](paintings/parcul-national-arches.jpg){group="misc"}
 
 :::
-
-::::
 
 
 ## Landscape impressions in oil
@@ -123,30 +96,6 @@ toc-title: Explore the works
 ![Morining in Wyndham, 24x33cm](paintings/wyndham.jpg){group="oil"}
 
 
-:::: {.callout-note collapse="true"}
-
-## Archive
-
-::: {layout-ncol=2}
-![A memory from Boian, 30x30cm](paintings/boian-street.jpg){group="oil"}
-
-![Sunset at Arsenale, 30x30cm](paintings/venice-arsenale.jpg){group="oil"}
-
-![Sunlit park in Sevilla, 30x40cm](paintings/sevilla-park.jpg){group="oil"}
-
-![Azuga trail, 18x23cm](paintings/azuga-trail-hq.JPG){group="oil"}
-
-:::
-
-![Spring in Bergamo, 20x40cm](paintings/bergamo-valley-hq.JPG){group="oil"}
-
-::::
-
-
-
-
-
-
 ## Miscellanea
 
 
@@ -158,6 +107,9 @@ toc-title: Explore the works
 
 ![Coffee at Beans & Dots, 20x30cm](paintings/beans-sketch.jpg){group="misc"}
 
+![Piata Alba Iulia, 19x26cm](paintings/loom.jpg){group="misc"}
+
+![Dambovita, 19x26cm](paintings/dambovita.jpg){group="misc"}
 
 ![Coffee at Loom 68, 20x30cm](paintings/loom-up-1.jpg){group="misc" width="95%"}
 
@@ -181,37 +133,16 @@ toc-title: Explore the works
 :::
 
 
-:::: {.callout-note collapse="true"}
-
-## Archive
-
-::: {layout-ncol=2}
-
-![Urban sketchers meetup, 20x30cm](paintings/qpub.jpg){group="misc"}
-
-![Coffee at Loom 68, 20x30cm](paintings/loom-1.jpg){group="misc"}
-
-![Coffee at Boiler, 20x30cm](paintings/boiler-2.jpg){group="misc"}
-
-:::
-
-::::
-
-
 ### Pastel
 
 ::: {layout-ncol=2}
 ![Last days of summer, 20x30cm](paintings/sunlit-alley.jpg){group="drawing"}
 
-![The lone tree, 20x30cm](paintings/lone-tree.JPG){group="drawing"}
+![Coffee at Noi, 16x13cm](paintings/noi-coffee.jpg){group="misc"}
 
 ![Old town, 15x20cm](paintings/old-town-victoriei.jpg){group="misc"}
 
 ![Untitled, Bucharest, 20x30cm](paintings/dudesti.jpg){group="drawing"}
-
-![Sunlit Trees at Muncii, 20x15cm](paintings/muncii-trees.jpg){group="misc"}
-
-![Coffee break, 16x13cm](paintings/noi-coffee.jpg){group="misc"}
 
 :::
 
