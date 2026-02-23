@@ -21,14 +21,15 @@ toc-title: Explore the works
 
 ![In bloom, IOR, 30x24cm](paintings/ior-bush.jpg){group="water"}
 
-
 ![Walking home, Bucharest, 30x24cm](paintings/cec2.JPG){group="water"}
-
 
 ![Duality, Prague, 30x24cm](paintings/prague-castle.jpg){group="water"}
 
-
 ![At the office, Bucharest, 30x24cm](paintings/view-office-2.jpg){group="water"}
+
+![Fall, Brasov, 20x30cm](paintings/brasov-fall-2.jpg){group="water"}
+
+![Fall, IOR, 19x26cm](paintings/ior-fall-sunny.jpg){group="water"}
 
 ![Village museum, Negresti-Oas, 24x30cm](paintings/negresti-oas.JPG){group="water"}
 
@@ -42,7 +43,6 @@ toc-title: Explore the works
 
 ![Fall, Wyndham, 24x30cm](paintings/wyndham-fall.jpg){group="water"}
 
-
 :::
 
 
@@ -50,11 +50,13 @@ toc-title: Explore the works
 
 ### Plein-air paintings
 
+![Parcul National, Bucharest, 24x30cm](paintings/fall-parcul-national.jpg){group="water"}
+
 ::: {layout-ncol=2}
 
 ![Parcul National, Bucharest, 24x30cm](paintings/parcul-national.jpg){group="water"}
 
-![Parcul National, Bucharest, 24x30cm](paintings/fall-parcul-national.jpg){group="water"}
+![Ateneul Roman, Bucharest, 19x26cm](paintings/ateneu.jpg){group="water"}
 
 ![Hammock, Balotesti, 30x24cm](paintings/hammock.jpg){group="water"}
 
@@ -64,9 +66,7 @@ toc-title: Explore the works
 
 ![The duck spot, IOR, 19x24cm](paintings/ior-ducks.jpg){group="water"}
 
-![Fall, Brasov, 20x30cm](paintings/brasov-fall-2.jpg){group="water"}
-
-![Parcul National, Bucharest, 19x26cm](paintings/parcul-national-arches.jpg){group="misc"}
+![Parcul National, Bucharest, 19x26cm](paintings/parcul-national-arches.jpg){group="water"}
 
 :::
 
@@ -75,7 +75,7 @@ toc-title: Explore the works
 
 ![After the Storm, IOR, 30x30cm](paintings/ior-sunset-storm.jpg){group="oil"}
 
-![Sunset, IOR, 24x18cm](paintings/ior-clouds.jpg){group="misc"}
+![Sunset, IOR, 24x18cm](paintings/ior-clouds.jpg){group="oil"}
 
 ::: {layout-ncol=2}
 
@@ -89,17 +89,15 @@ toc-title: Explore the works
 
 ![Caucasus, 15x20cm](paintings/caucas.jpg){group="oil"}
 
-![Fall in Fagarasi, 15x20cm](paintings/fagarasi.jpg){group="misc"}
+![Fall in Fagarasi, 15x20cm](paintings/fagarasi.jpg){group="oil"}
 
 :::
 
 ![Morining in Wyndham, 24x33cm](paintings/wyndham.jpg){group="oil"}
 
 
-## Miscellanea
 
-
-### Urban sketching
+## Urban sketching
 
 ::: {layout-ncol=2}
 
@@ -126,23 +124,30 @@ toc-title: Explore the works
 ![Train to Brasov, 20x30cm](paintings/usk-train.jpg){group="misc"}
 
 
-![Carturesti, 20x30cm](paintings/carturesti.jpg){group="misc"}
+![Urban Sketchers, Bucharest, 19x26cm](paintings/hai-la-cafea.jpg){group="misc"}
 
 ![Coffee at Boiler, 26x19cm](paintings/boiler-summer.jpg){group="misc"}
+
+
+![Piata Alba-Iulia, Bucharest, 19x26cm](paintings/matache-dobrescu.jpg){group="misc"}
+
+![Carturesti, 20x30cm](paintings/carturesti.jpg){group="misc"}
 
 :::
 
 
+## Miscellanea
+
 ### Pastel
 
 ::: {layout-ncol=2}
-![Last days of summer, 20x30cm](paintings/sunlit-alley.jpg){group="drawing"}
+![Last days of summer, 20x30cm](paintings/sunlit-alley.jpg){group="misc"}
 
 ![Coffee at Noi, 16x13cm](paintings/noi-coffee.jpg){group="misc"}
 
 ![Old town, 15x20cm](paintings/old-town-victoriei.jpg){group="misc"}
 
-![Untitled, Bucharest, 20x30cm](paintings/dudesti.jpg){group="drawing"}
+![Untitled, Bucharest, 20x30cm](paintings/dudesti.jpg){group="misc"}
 
 :::
 
@@ -152,7 +157,7 @@ toc-title: Explore the works
 
 ![Still life, 20x30cm](paintings/still-life.jpg){group="misc"}
 
-![Still life (sketchbook), 16x21cm](paintings/bell-pepper.jpg){group="water"}
+![Still life (sketchbook), 16x21cm](paintings/bell-pepper.jpg){group="misc"}
 
 ![Bluestone Lane, NY, 24x12cm](paintings/bluestone-lane.jpg){width=67% group="misc"}
 
@@ -160,7 +165,7 @@ toc-title: Explore the works
 
 ![All dry, 40x30cm](paintings/study-vase.jpg){group="misc"}
 
-![Still Life after Ian Roberts, 40x40cm](paintings/still-life-jug.JPG){group="drawing"}
+![Still Life after Ian Roberts, 40x40cm](paintings/still-life-jug.JPG){group="misc"}
 
 
 :::
