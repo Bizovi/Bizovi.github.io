@@ -8,10 +8,14 @@ toc: true
 toc-title: Explore the works
 ---
 
+To me, painting is a form of meditation -- a way to let go, connect to something real, and be present. Each piece teaches me to see anew the places that have become so familiar, to sensitively observe the patterns of shape, color, and light effects. In turn, different painting materials (watercolor, oil, tempera, pastel) generate endless possibilities for visual expression. I hope this selection of paintings and drawings will inspire you to pay attention to the beauty of simple things in your own life.
 
 ## Light and shadow in watercolor
 
 ![Winter, Chisinau 24x30cm](paintings/chisinau-color.jpg){group="water"}
+
+Watercolor taught me about timing, letting water do its work, and trusting the process. Its directness, transparency, luminosity, colors bleeding into each other, and calligraphic mark-making make me go back to it time and again.
+
 
 ::: {layout-ncol=2}
 
@@ -19,31 +23,32 @@ toc-title: Explore the works
 
 ![The highline, NY, 30x40cm](paintings/high-line2.jpg){group="water"}
 
-![In bloom, IOR, 30x24cm](paintings/ior-bush.jpg){group="water"}
-
-![Walking home, Bucharest, 30x24cm](paintings/cec2.JPG){group="water"}
 
 ![Duality, Prague, 30x24cm](paintings/prague-castle.jpg){group="water"}
 
 ![At the office, Bucharest, 30x24cm](paintings/view-office-2.jpg){group="water"}
 
-![Fall, Brasov, 20x30cm](paintings/brasov-fall-2.jpg){group="water"}
-
-![Fall, IOR, 19x26cm](paintings/ior-fall-sunny.jpg){group="water"}
-
-![Village museum, Negresti-Oas, 24x30cm](paintings/negresti-oas.JPG){group="water"}
-
-![Storm, Mangalia, 24x30cm](paintings/mangalia-storm.jpg){group="water"}
-
-![Breaking the waves, Mangalia, 24x30cm](paintings/mangalia-boats-2.jpg){group="water"}
-
-![Dirt road, 24x30cm](paintings/dirt-road.jpg){group="water"}
 
 ![Shade, Toulon, 24x30cm](paintings/toulon-umbrella.jpg){group="water"}
 
-![Fall, Wyndham, 24x30cm](paintings/wyndham-fall.jpg){group="water"}
+![Dirt road, 24x30cm](paintings/dirt-road.jpg){group="water"}
+
+
+![Fall, Brasov, 20x30cm](paintings/brasov-fall-2.jpg){group="water"}
+
+![Fall, IOR, 13x19cm](paintings/ior-fall-sunny.jpg){group="water"}
+
+
+![In bloom, IOR, 30x24cm](paintings/ior-bush.jpg){group="water"}
+
+![Walking home, Bucharest, 30x24cm](paintings/cec2.JPG){group="water"}
 
 :::
+
+<!-- ![Breaking the waves, Mangalia, 24x30cm](paintings/mangalia-boats-2.jpg){group="water"} -->
+<!-- ![Fall, Wyndham, 24x30cm](paintings/wyndham-fall.jpg){group="water"} -->
+<!-- ![Village museum, Negresti-Oas, 24x30cm](paintings/negresti-oas.JPG){group="water"}
+![Storm, Mangalia, 24x30cm](paintings/mangalia-storm.jpg){group="water"} -->
 
 
 
@@ -52,28 +57,35 @@ toc-title: Explore the works
 
 ![Parcul National, Bucharest, 24x30cm](paintings/fall-parcul-national.jpg){group="water"}
 
+The stories of Barbizon School and Impressionists in France, The Macchiaioli in Italy, and Itineraries in Russia have inspired me to go paint outside. The study of nature in its immense complexity, subtlety, and constant change has been a humbling, but rewarding experience.
+
 ::: {layout-ncol=2}
 
-![Parcul National, Bucharest, 24x30cm](paintings/parcul-national.jpg){group="water"}
+![At the willows, IOR, 19x26cm](paintings/ior-island.jpg){group="water"}
 
 ![Ateneul Roman, Bucharest, 19x26cm](paintings/ateneu.jpg){group="water"}
+
 
 ![Hammock, Balotesti, 30x24cm](paintings/hammock.jpg){group="water"}
 
 ![Reflections, IOR, 30x24cm](paintings/ior-boat.jpg){group="water"}
 
-![At the willows, IOR, 19x26cm](paintings/ior-island.jpg){group="water"}
+
+![Parcul National, Bucharest, 24x30cm](paintings/parcul-national.jpg){group="water"}
 
 ![The duck spot, IOR, 19x24cm](paintings/ior-ducks.jpg){group="water"}
 
-![Parcul National, Bucharest, 19x26cm](paintings/parcul-national-arches.jpg){group="water"}
-
 :::
 
+<!-- ![Parcul National, Bucharest, 19x26cm](paintings/parcul-national-arches.jpg){group="water"} -->
+
+<!--  -->
 
 ## Landscape impressions in oil
 
 ![After the Storm, IOR, 30x30cm](paintings/ior-sunset-storm.jpg){group="oil"}
+
+In contrast with the fleeting nature of watercolor, oil reminds me of the materiality: the traces of brushstrokes, scratching, scraping, pushing and "sculpting" with paint. It trains the patience to see a picture emerge out of the fog and restraint to stop just before adding another detail.
 
 ![Sunset, IOR, 24x18cm](paintings/ior-clouds.jpg){group="oil"}
 
@@ -99,6 +111,8 @@ toc-title: Explore the works
 
 ## Urban sketching
 
+In urban sketchers, I found a community that draws for the sheer joy of it, no matter the subject or outcome. I believe constraints and limitations enhance creativity. So, showing up at a cafe with a few colored pencils, sepia chalks, or gouache tubes has lead me to explore chaotic lines and decorative shapes to suggest the moods of busy city life. 
+ 
 ::: {layout-ncol=2}
 
 ![Coffee at Loom 68, 20x30cm](paintings/loom-sketch-couch.jpg){group="misc"}
@@ -140,6 +154,8 @@ toc-title: Explore the works
 
 ### Pastel
 
+I love pastel for its pure color, the sensitivity of touch it requires, and the beauty of layering. It can be painterly, atmospheric, impressionistic or linear, graphical, expressive. While I enjoy watercolor's happy accidents, there is something equally appealing about the variety mark-making a stick full of pigment leaves on the paper. 
+
 ::: {layout-ncol=2}
 ![Last days of summer, 20x30cm](paintings/sunlit-alley.jpg){group="misc"}
 
@@ -152,6 +168,8 @@ toc-title: Explore the works
 :::
 
 ### Still life
+
+I am equally fascinated by the old masters (e.g. Fantin-Latour) and contemporary artists' (e.g. Diebenkorn) still life paintings. For me, it makes a perfect practice when I'm in no mood to go outside or want to take a break from landscapes and figues. Rather than carefully arranging the objects, I often like to paint a messy desk, some paper bags, and stuff at-hand in the kitchen.
 
 ::: {layout-ncol=2}
 
@@ -172,6 +190,8 @@ toc-title: Explore the works
 
 
 ### Portraits
+
+Perhaps, most artsy kids dabbled and struggled at some point in portrait drawing. My interest got sparked again by the outstanding works of Nicolai Fechin, Kathe Kollwitz, and Nicolas Uribe -- so I decided to learn, at least, the basics of portraiture. It gave me more confidence in urban sketching and motivated to pursue figure drawing.
 
 ::: {layout-ncol=2}
 
@@ -209,6 +229,8 @@ toc-title: Explore the works
 
 ### Pets
 
+My studio cats are uncooperative models and no oil painting is safe near them, but they're always fun to draw. Moreover, the neighborhood cats always end up on any photos I take near home.
+
 ::: {layout-ncol=2}
 
 ![Artemis by the window, 20x15cm](paintings/artemis.jpg){group="misc"}
@@ -218,6 +240,8 @@ toc-title: Explore the works
 :::
 
 ### Frigure and life drawing
+
+The human figure is one of the most difficult subjects, which is precisely why it taught me so much about drawing and painting. I mostly do quick sketches and gesture drawings in the rare life drawing sessions, but I hope to spend much more time on longer studies in the future.
 
 ![Study after B.C. Liston reference, 20x15cm](paintings/figurative-liston.jpg){group="misc"}
 
@@ -244,6 +268,9 @@ toc-title: Explore the works
 
 
 ### Notans and composition studies
+
+Last, but not least, my journey in painting started from the idea of notan and simplifying a complex subject into abstract shapes. This attention to composition and design has a big influence on all the work you have seen above, although in a more relaxed and spontaneous way.
+
 ::: {layout-ncol=2}
 
 ![Boatyard in Venice, 24x30cm](paintings/venice-boatyard.JPG){group="misc"}
