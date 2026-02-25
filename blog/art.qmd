@@ -34,7 +34,7 @@ Watercolor taught me about timing, letting water do its work, and trusting the p
 ![Dirt road, 24x30cm](paintings/dirt-road.jpg){group="water"}
 
 
-![Fall, Brasov, 20x30cm](paintings/brasov-fall-2.jpg){group="water"}
+![Fall, Brasov, 20x30cm](paintings/brasov-cc.jpg){group="water"}
 
 ![Fall, IOR, 13x19cm](paintings/ior-fall-sunny.jpg){group="water"}
 
@@ -63,7 +63,7 @@ The stories of Barbizon School and Impressionists in France, The Macchiaioli in 
 
 ![At the willows, IOR, 19x26cm](paintings/ior-island.jpg){group="water"}
 
-![Ateneul Roman, Bucharest, 19x26cm](paintings/ateneu.jpg){group="water"}
+![Ateneul Roman, Bucharest, 19x26cm](paintings/ateneu-cc.jpg){group="water"}
 
 
 ![Hammock, Balotesti, 30x24cm](paintings/hammock.jpg){group="water"}
@@ -275,7 +275,7 @@ Last, but not least, my journey in painting started from the idea of notan and s
 
 ![Boatyard in Venice, 24x30cm](paintings/venice-boatyard.JPG){group="misc"}
 
-![Fence in Predeal, 20x30cm](paintings/predeal.JPG){group="misc"}
+![Fence in Predeal, 20x29cm](paintings/predeal-cc.JPG){group="misc"}
 
 :::
 
