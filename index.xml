@@ -9,7 +9,7 @@
 <link>https://blog.economic-cybernetics.com/</link>
 <atom:link href="https://blog.economic-cybernetics.com/index.xml" rel="self" type="application/rss+xml"/>
 <description>{Art, Math, Philosophy}</description>
-<generator>quarto-1.8.27</generator>
+<generator>quarto-1.9.35</generator>
 <lastBuildDate>Sun, 09 Apr 2023 21:00:00 GMT</lastBuildDate>
 <item>
   <title>10 Lessons in Humility</title>
@@ -933,12 +933,12 @@ font-style: inherit;">"Distribution of the Node Degree"</span>)</span>
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-Landim2016" class="csl-entry">
-Landim, Claudio. 2016. <span>“Caratheodori Theorem.”</span> <a href="https://www.youtube.com/watch?v=ZNH4eDM7cJo" class="uri">https://www.youtube.com/watch?v=ZNH4eDM7cJo</a>.
+Landim, Claudio. 2016. <em>Caratheodori Theorem</em>. <a href="https://www.youtube.com/watch?v=ZNH4eDM7cJo" class="uri">Https://www.youtube.com/watch?v=ZNH4eDM7cJo</a>.
 </div>
 <div id="ref-Lawrence2012" class="csl-entry">
-Lawrence, Evans. 2012. <span>“Why Measure Theory for Probability?”</span> <a href="https://www.youtube.com/watch?v=rAYA2Mu51bw" class="uri">https://www.youtube.com/watch?v=rAYA2Mu51bw</a>.
+Lawrence, Evans. 2012. <em>Why Measure Theory for Probability?</em> <a href="https://www.youtube.com/watch?v=rAYA2Mu51bw" class="uri">Https://www.youtube.com/watch?v=rAYA2Mu51bw</a>.
 </div>
 <div id="ref-McElreath" class="csl-entry">
 McElreath, Richard. 2015. <em>Statistical Rethinking: A Bayesian Course with Examples in r and Stan</em>. Second. CRC.
@@ -950,10 +950,10 @@ Mihai, Bizovi. 2017. <span>“Stochastic Modeling and Bayesian Inference.”</sp
 Rhosental, Jeffrey S. 2006. <em>First Look at Rigorous Probability Theory</em>. Second. World Scientific.
 </div>
 <div id="ref-Ruxanda2011" class="csl-entry">
-Ruxanda, Gheorghe. 2011. <span>“Consideratii Privind Abordarea Stochastica in Domeniul Economic.”</span> <a href="http://doccent.ase.ro/media/20111108_Abordarea_Cantitativa_Stochastica.pdfs" class="uri">http://doccent.ase.ro/media/20111108_Abordarea_Cantitativa_Stochastica.pdfs</a>.
+Ruxanda, Gheorghe. 2011. <em>Consideratii Privind Abordarea Stochastica in Domeniul Economic</em>. <a href="http://doccent.ase.ro/media/20111108_Abordarea_Cantitativa_Stochastica.pdfs" class="uri">Http://doccent.ase.ro/media/20111108_Abordarea_Cantitativa_Stochastica.pdfs</a>.
 </div>
 <div id="ref-Ruxanda2017" class="csl-entry">
-———. 2017. <span>“Probability Theory and Stochastic Modeling.”</span> Lecture.
+Ruxanda, Gheorghe. 2017. <em>Probability Theory and Stochastic Modeling</em>. Lecture.
 </div>
 </div></section></div> ]]></description>
   <category>probability</category>
