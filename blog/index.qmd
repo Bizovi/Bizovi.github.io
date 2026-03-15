@@ -29,10 +29,10 @@ title-block-banner: true
 :::
 
 ::: {.column width="65%"}
-**Mihai Bizovi** | VP of Decision Science \@AdoreMe
+**Mihai Bizovi** | Decision Scientist & Painter
 ---
 
-**At my day job,** I'm a generalist -- navigating uncertainty and complexity to improve decision-making at scale.
+**At my last job,** I was the VP of Decision Science -- navigating uncertainty and complexity to improve decision-making at scale.
 
 **As a teacher,** I aspire to contribute to the understanding of AI's complex landscape; how to navigate it, develop valuable skills, and become more effective at problem-solving.
 

@@ -1,0 +1,231 @@
+---
+lightbox:
+  match: auto
+  effect: fade
+  desc-position: bottom
+  loop: false
+toc: true
+toc-title: Explore the works
+---
+
+
+## Urban sketching
+
+In urban sketchers, I found a community that draws for the sheer joy of it, no matter the subject or outcome. I believe constraints and limitations enhance creativity. So, showing up at a cafe with a few colored pencils, sepia chalks, or gouache tubes has lead me to explore chaotic lines and decorative shapes to suggest the moods of busy city life. 
+ 
+::: {layout-ncol=2}
+
+![Coffee at Loom 68, 20x30cm](paintings/loom-sketch-couch.jpg){group="misc"}
+
+![Coffee at Beans & Dots, 20x30cm](paintings/beans-sketch.jpg){group="misc"}
+
+![Piata Alba Iulia, 19x26cm](paintings/loom.jpg){group="misc"}
+
+![Dambovita, 19x26cm](paintings/dambovita.jpg){group="misc"}
+
+![Coffee at Loom 68, 20x30cm](paintings/loom-up-1.jpg){group="misc" width="95%"}
+
+![Coffee at Loom 68, 20x30cm](paintings/loom-up-2.jpg){group="misc"}
+
+
+![Tea at Bernschultz, 24x16cm](paintings/bernschultz.jpg){group="misc"}
+
+![Halloween at Boiler, 26x19cm](paintings/boiler-pumkins.jpg){group="misc"}
+
+
+![Coffee at Loom 68, 20x30cm](paintings/usk-loom.jpg){group="misc"}
+
+![Train to Brasov, 20x30cm](paintings/usk-train.jpg){group="misc"}
+
+
+![Urban Sketchers, Bucharest, 19x26cm](paintings/hai-la-cafea.jpg){group="misc"}
+
+![Coffee at Boiler, 26x19cm](paintings/boiler-summer.jpg){group="misc"}
+
+
+![Piata Alba-Iulia, Bucharest, 19x26cm](paintings/matache-dobrescu.jpg){group="misc"}
+
+![Carturesti, 20x30cm](paintings/carturesti.jpg){group="misc"}
+
+:::
+
+
+## Pastel
+
+I love pastel for its pure color, the sensitivity of touch it requires, and the beauty of layering. It can be painterly, atmospheric, impressionistic or linear, graphical, expressive. While I enjoy watercolor's happy accidents, there is something equally appealing about the variety mark-making a stick full of pigment leaves on the paper. 
+
+::: {layout-ncol=2}
+![Last days of summer, 20x30cm](paintings/sunlit-alley.jpg){group="misc"}
+
+![Coffee at Noi, 16x13cm](paintings/noi-coffee.jpg){group="misc"}
+
+![Old town, 15x20cm](paintings/old-town-victoriei.jpg){group="misc"}
+
+![Untitled, Bucharest, 20x30cm](paintings/dudesti.jpg){group="misc"}
+
+:::
+
+## Still life
+
+I am equally fascinated by the old masters (e.g. Fantin-Latour) and contemporary artists' (e.g. Diebenkorn) still life paintings. For me, it makes a perfect practice when I'm in no mood to go outside or want to take a break from landscapes and figues. Rather than carefully arranging the objects, I often like to paint a messy desk, some paper bags, and stuff at-hand in the kitchen.
+
+::: {layout-ncol=2}
+
+![Still life, 20x30cm](paintings/still-life.jpg){group="misc"}
+
+![Still life (sketchbook), 16x21cm](paintings/bell-pepper.jpg){group="misc"}
+
+![Bluestone Lane, NY, 24x12cm](paintings/bluestone-lane.jpg){width=67% group="misc"}
+
+![Paper bag, 24x18cm](paintings/paper-bag-3.jpg){group="misc"}
+
+![All dry, 40x30cm](paintings/study-vase.jpg){group="misc"}
+
+![Still Life after Ian Roberts, 40x40cm](paintings/still-life-jug.JPG){group="misc"}
+
+
+:::
+
+
+## Portraits
+
+Perhaps, most artsy kids dabbled and struggled at some point in portrait drawing. My interest got sparked again by the outstanding works of Nicolai Fechin, Kathe Kollwitz, and Nicolas Uribe -- so I decided to learn, at least, the basics of portraiture. It gave me more confidence in urban sketching and motivated to pursue figure drawing.
+
+::: {layout-ncol=2}
+
+![Study after McCurry, 30x20cm](paintings/mccurry.jpg){group="misc"}
+
+![AM hackathon illustration, 40x30cm](paintings/hackathon.jpg){group="misc"}
+
+![Eleonora, 20x15cm](paintings/grandma.jpg){group="misc"}
+
+![Earth's World 1, 30x20cm](paintings/earthsworld-5.jpg){group="misc"}
+
+![NMA reference, 30x20cm](paintings/nma-ref-rajiv.jpg){group="misc"}
+
+![Earth's World 5, 30x20cm](paintings/earthsworld.jpg){group="misc"}
+
+<!-- ![Earth's World 2, 30x20cm](paintings/earthsworld-1.jpg){group="misc"}
+
+![Earth's World 3, 30x20cm](paintings/earthsworld-3.jpg){group="misc"} 
+
+
+-->
+
+
+
+<!-- ![Earth's World 4, 30x20cm](paintings/earthsworld-4.jpg){group="misc"} -->
+
+<!-- ![NMA reference, 20x15cm](paintings/nma-1.jpg){group="misc"} -->
+
+<!-- ![NMA reference, 20x15cm](paintings/nma-3.jpg){group="misc"}
+
+![NMA reference, 20x15cm](paintings/nma-2.jpg){group="misc"} -->
+
+
+:::
+
+## Pets
+
+My studio cats are uncooperative models and no oil painting is safe near them, but they're always fun to draw. Moreover, the neighborhood cats always end up on any photos I take near home.
+
+::: {layout-ncol=2}
+
+![Artemis by the window, 20x15cm](paintings/artemis.jpg){group="misc"}
+
+![Artemis and Tigrisor, 15x20cm](paintings/artemis-tigrisor.jpg){group="misc"}
+
+:::
+
+## Figure and life drawing
+
+The human figure is one of the most difficult subjects, which is precisely why it taught me so much about drawing and painting. I mostly do quick sketches and gesture drawings in the rare life drawing sessions, but I hope to spend much more time on longer studies in the future.
+
+![Study after B.C. Liston reference, 20x15cm](paintings/figurative-liston.jpg){group="misc"}
+
+::: {layout-ncol=2}
+
+![Life drawing, 21x30cm](paintings/14-10-fig1.jpg){group="misc"}
+
+![Life drawing, 21x30cm](paintings/14-10-fig3.jpg){group="misc"}
+
+![Life drawing, 21x30cm](paintings/14-10-fig2.jpg){group="misc"}
+
+![Life drawing, 10min, 15x30cm](paintings/croquis-1.jpg){group="misc"}
+
+![Gestures, 20x30cm](paintings/gest-2.jpg){group="misc"}
+
+![Gestures, 20x30cm](paintings/gest-4.jpg){group="misc"}
+
+![Gestures, 20x30cm](paintings/gest-1.jpg){group="misc"}
+
+![Gestures, 20x30cm](paintings/gest-3.jpg){group="misc"}
+
+:::
+
+
+
+## Notans and composition studies
+
+Last, but not least, my journey in painting started from the idea of notan and simplifying a complex subject into abstract shapes. This attention to composition and design has a big influence on all the work you have seen above, although in a more relaxed and spontaneous way.
+
+::: {layout-ncol=2}
+
+![Boatyard in Venice, 24x30cm](paintings/venice-boatyard.JPG){group="misc"}
+
+![Fence in Predeal, 20x29cm](paintings/predeal-cc.JPG){group="misc"}
+
+:::
+
+## Photography
+
+![Before the rain, Rimini](paintings/sea-1.jpg){group="photo"}
+
+::: {layout-ncol=3}
+
+![Serenity, Rimini](paintings/sea-5.jpg){group="photo"}
+
+![Sunset, Rimini](paintings/sea-4.jpg){group="photo"}
+
+![Sheep, Busteni](paintings/sheep-1.jpg){group="photo"}
+
+
+![The pier, Rimini](paintings/sea-6.jpg){group="photo"}
+
+![Cliffs, Busteni](paintings/cliffs.jpg){group="photo"}
+
+![Rolling hills, Livigno](paintings/hills-4.jpg){group="photo"}
+
+
+![Sheep, Busteni](paintings/sheep-2.jpg){group="photo"}
+
+![Cliffs, Livigno](paintings/cliffs-2.jpg){group="photo"}
+
+![Wires, Livigno](paintings/wires-1.jpg){group="photo"}
+
+![Trail, Livigno](paintings/trail-1.jpg){group="photo"}
+
+![Trail, Livigno](paintings/trail-2.jpg){group="photo"}
+
+![Trail, Livigno](paintings/trail-3.jpg){group="photo"}
+
+
+![Rolling hills, Livigno](paintings/hills-1.jpg){group="photo"}
+
+![Rolling hills, Livigno](paintings/hills-2.jpg){group="photo"}
+
+![Rolling hills, Livigno](paintings/hills-3.jpg){group="photo"}
+
+
+
+![Untitled](paintings/abstract-1.jpg){group="photo"}
+
+![Untitled](paintings/abstract-2.jpg){group="photo"}
+
+![Untitled](paintings/abstract-5.jpg){group="photo"}
+
+
+
+:::
+
+![Clouds, Rimini](paintings/sea-2.jpg){group="photo"}

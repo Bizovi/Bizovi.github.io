@@ -15,8 +15,10 @@ website:
     right:
       - href: art.qmd
         text: "Paintings"
+      - href: sketches.qmd
+        text: "Sketches"
       - href: about.qmd
-        text: "About Me"
+        text: "Bio"
       - icon: bi-journal-bookmark
         href: https://course.economic-cybernetics.com/
         text: "Decision-Making"
