@@ -91,6 +91,11 @@ The stories of Barbizon School and Impressionists in France, The Macchiaioli in 
 
 ::: {layout-ncol=2}
 
+![Last snow in Cismigiu, 19x26cm](paintings/cismigiu-umbrellas.jpg){group="water"}
+
+![Spring, Cismigiu, 19x26cm](paintings/cismigiu-lawn.jpg){group="water"}
+
+
 ![At the willows, IOR, 19x26cm](paintings/ior-island.jpg){group="water"}
 
 ![Ateneul Roman, Bucharest, 19x26cm](paintings/ateneu-cc.jpg){group="water"}

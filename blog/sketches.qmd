@@ -19,9 +19,13 @@ In urban sketchers, I found a community that draws for the sheer joy of it, no m
 
 ![Coffee at Beans & Dots, 20x30cm](paintings/beans-sketch.jpg){group="misc"}
 
-![Piata Alba Iulia, 19x26cm](paintings/loom.jpg){group="misc"}
+![Cismigiu Casino, 19x26cm](paintings/cismigiu-casino.jpg){group="misc"}
+
+![Cismigiu, 19x26cm](paintings/cismigiu-tree-1.jpg){group="misc"}
 
 ![Dambovita, 19x26cm](paintings/dambovita.jpg){group="misc"}
+
+![Piata Alba Iulia, 19x26cm](paintings/loom.jpg){group="misc"}
 
 ![Coffee at Loom 68, 20x30cm](paintings/loom-up-1.jpg){group="misc" width="95%"}
 
@@ -47,6 +51,13 @@ In urban sketchers, I found a community that draws for the sheer joy of it, no m
 
 ![Carturesti, 20x30cm](paintings/carturesti.jpg){group="misc"}
 
+![Old trees, Brasov, 26x19cm](paintings/brasov-trees.jpg){group="misc"}
+
+![Sycamore, Cismigiu, 26x19cm](paintings/cismigiu-tree-3.jpg){group="misc"}
+
+![Tipografia, Brasov, 26x19cm](paintings/tipografia.jpg){group="misc"}
+
+![Cismigiu, 26x19cm](paintings/cismigiu-trees-2.jpg){group="misc"}
 :::
 
 
