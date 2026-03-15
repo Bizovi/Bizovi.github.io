@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://blog.economic-cybernetics.com/art.html</loc>
-    <lastmod>2026-03-14T23:24:55.014Z</lastmod>
+    <loc>https://blog.economic-cybernetics.com/sketches.html</loc>
+    <lastmod>2026-03-15T00:04:03.459Z</lastmod>
   </url>
   <url>
-    <loc>https://blog.economic-cybernetics.com/index.html</loc>
-    <lastmod>2026-03-14T23:16:41.808Z</lastmod>
+    <loc>https://blog.economic-cybernetics.com/about.html</loc>
+    <lastmod>2026-03-14T23:16:41.807Z</lastmod>
   </url>
   <url>
     <loc>https://blog.economic-cybernetics.com/posts/2023-rules/principles.html</loc>
     <lastmod>2023-04-30T11:47:02.992Z</lastmod>
   </url>
   <url>
-    <loc>https://blog.economic-cybernetics.com/about.html</loc>
-    <lastmod>2026-03-14T23:16:41.807Z</lastmod>
+    <loc>https://blog.economic-cybernetics.com/index.html</loc>
+    <lastmod>2026-03-15T00:07:57.261Z</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.economic-cybernetics.com/art.html</loc>
+    <lastmod>2026-03-15T00:03:14.017Z</lastmod>
   </url>
 </urlset>
