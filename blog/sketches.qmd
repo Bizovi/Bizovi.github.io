@@ -13,6 +13,8 @@ toc-title: Explore the works
 
 In urban sketchers, I found a community that draws for the sheer joy of it, no matter the subject or outcome. I believe constraints and limitations enhance creativity. So, showing up at a cafe with a few colored pencils, sepia chalks, or gouache tubes has lead me to explore chaotic lines and decorative shapes to suggest the moods of busy city life. 
  
+![Coffee at Loom 68, 20x60cm](paintings/coffee-loom-pano.jpg){group="misc"}
+
 ::: {layout-ncol=2}
 
 ![Coffee at Loom 68, 20x30cm](paintings/loom-sketch-couch.jpg){group="misc"}
@@ -27,14 +29,10 @@ In urban sketchers, I found a community that draws for the sheer joy of it, no m
 
 ![Piata Alba Iulia, 19x26cm](paintings/loom.jpg){group="misc"}
 
-![Coffee at Loom 68, 20x30cm](paintings/loom-up-1.jpg){group="misc" width="95%"}
-
-![Coffee at Loom 68, 20x30cm](paintings/loom-up-2.jpg){group="misc"}
-
 
 ![Tea at Bernschultz, 24x16cm](paintings/bernschultz.jpg){group="misc"}
 
-![Halloween at Boiler, 26x19cm](paintings/boiler-pumkins.jpg){group="misc"}
+![Tipografia, Brasov, 26x19cm](paintings/tipografia.jpg){group="misc"}
 
 
 ![Coffee at Loom 68, 20x30cm](paintings/usk-loom.jpg){group="misc"}
@@ -55,10 +53,40 @@ In urban sketchers, I found a community that draws for the sheer joy of it, no m
 
 ![Sycamore, Cismigiu, 26x19cm](paintings/cismigiu-tree-3.jpg){group="misc"}
 
-![Tipografia, Brasov, 26x19cm](paintings/tipografia.jpg){group="misc"}
+![Olden trees, Cismigiu, 19x13cm](paintings/moss-tree.jpg){group="misc"}
 
 ![Cismigiu, 26x19cm](paintings/cismigiu-trees-2.jpg){group="misc"}
+
+![Brasov Towers, 19x26cm](paintings/brasov-walls.jpg){group="misc"}
+
+![Cismigiu, 19x26cm](paintings/cismigiu-entrance.jpg){group="misc"}
+
+![Cismigiu, 19x26cm](paintings/cismigiu-winter.jpg){group="misc"}
+
+![Piata Alba Iulia, 19x26cm](paintings/pt-alba-winter.jpg){group="misc"}
+
+![Seaside at Venus, 15x20cm](paintings/venus-boat.jpg){group="misc"}
+
+![Ciocanul School, 15x20cm](paintings/scoala-ciocanul.jpg){group="misc"}
+
+![Halloween at Boiler, 26x19cm](paintings/boiler-pumkins.jpg){group="misc"}
+
+![Late Fall, Pt. Romana, 19x13cm](paintings/late-fall-romana.jpg){group="misc"}
+
+![Hai la Cafea, 19x13cm](paintings/coffee-at-hlc.jpg){group="misc"}
+
+![Coffee at Loom, 26x19cm](paintings/coffee-loom-pow.jpg){group="misc"}
+
+![Coffee at Boiler, 19x26cm](paintings/coffee-boiler-watercolor.jpg){group="misc"}
+
+![Coffee at Grain Trip, 19x26cm](paintings/coffee-grain-trip.jpg){group="misc"}
+
+
 :::
+
+![National Park, 20x60cm](paintings/nat-park-pano.jpg){group="misc"}
+
+![Coffee at Boiler, 20x60cm](paintings/muncii-pano.jpg){group="misc"}
 
 
 ## Pastel
