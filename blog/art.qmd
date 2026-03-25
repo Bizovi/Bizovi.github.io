@@ -34,10 +34,6 @@ Watercolor taught me about timing, letting water do its work, and trusting the p
 ![Dirt road, 24x30cm](paintings/dirt-road.jpg){group="water"}
 
 
-![Fall, Brasov, 20x30cm](paintings/brasov-cc.jpg){group="water"}
-
-![Fall, IOR, 13x19cm](paintings/ior-fall-sunny.jpg){group="water"}
-
 
 ![In bloom, IOR, 30x24cm](paintings/ior-bush.jpg){group="water"}
 
@@ -74,43 +70,15 @@ In contrast with the fleeting nature of watercolor, oil reminds me of the materi
 
 ![Fall in Fagarasi, 15x20cm](paintings/fagarasi.jpg){group="oil"}
 
-![Morining in Wyndham, 24x33cm](paintings/wyndham.jpg){group="oil"}
+:::
 
 ![Late fall, IOR, 30x40cm](paintings/ior-late-fall.jpg){group="oil"}
 
-:::
 
 
+<!-- ![Morining in Wyndham, 24x33cm](paintings/wyndham.jpg){group="oil"} -->
 
-
-### Plein-air paintings
-
-![Parcul National, Bucharest, 24x30cm](paintings/fall-parcul-national.jpg){group="water"}
-
-The stories of Barbizon School and Impressionists in France, The Macchiaioli in Italy, and Itineraries in Russia have inspired me to go paint outside. The study of nature in its immense complexity, subtlety, and constant change has been a humbling, but rewarding experience.
-
-::: {layout-ncol=2}
-
-![Last snow in Cismigiu, 19x26cm](paintings/cismigiu-umbrellas.jpg){group="water"}
-
-![Spring, Cismigiu, 19x26cm](paintings/cismigiu-lawn.jpg){group="water"}
-
-
-![At the willows, IOR, 19x26cm](paintings/ior-island.jpg){group="water"}
-
-![Ateneul Roman, Bucharest, 19x26cm](paintings/ateneu-cc.jpg){group="water"}
-
-
-![Hammock, Balotesti, 30x24cm](paintings/hammock.jpg){group="water"}
-
-![Reflections, IOR, 30x24cm](paintings/ior-boat.jpg){group="water"}
-
-
-![Parcul National, Bucharest, 24x30cm](paintings/parcul-national.jpg){group="water"}
-
-![The duck spot, IOR, 19x24cm](paintings/ior-ducks.jpg){group="water"}
-
-:::
+<!--  -->
 
 <!-- ![Parcul National, Bucharest, 19x26cm](paintings/parcul-national-arches.jpg){group="water"} -->
 

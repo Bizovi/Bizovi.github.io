@@ -9,6 +9,67 @@ toc-title: Explore the works
 ---
 
 
+## Plein-air paintings
+
+![Parcul National, Bucharest, 24x30cm](paintings/fall-parcul-national.jpg){group="water"}
+
+The stories of Barbizon School and Impressionists in France, The Macchiaioli in Italy, and Itineraries in Russia have inspired me to go paint outside. The study of nature in its immense complexity, subtlety, and constant change has been a humbling, but rewarding experience.
+
+::: {layout-ncol=2}
+
+![Last snow in Cismigiu, 19x26cm](paintings/cismigiu-umbrellas.jpg){group="water"}
+
+![Spring, Cismigiu, 19x26cm](paintings/cismigiu-lawn.jpg){group="water"}
+
+![Cismigiu Casino, 19x26cm](paintings/cismigiu-casino.jpg){group="misc"}
+
+![Cismigiu, 19x26cm](paintings/cismigiu-tree-1.jpg){group="misc"}
+
+![Cismigiu, 19x26cm](paintings/cismigiu-entrance.jpg){group="misc"}
+
+![Spring, Cismigiu, 20x30](paintings/cismigiu-spring.jpg){group="misc"}
+
+
+![At the willows, IOR, 19x26cm](paintings/ior-island.jpg){group="water"}
+
+![IOR, 20x25cm](paintings/ior-boats.jpg){group="misc"}
+
+
+![National Park, 20x30cm](paintings/nat-park-clouds.jpg){group="misc"}
+
+![National Park, 24x30cm](paintings/parcul-national.jpg){group="water"}
+
+
+![The duck spot, IOR, 19x24cm](paintings/ior-ducks.jpg){group="water"}
+
+![Piata Alba Iulia, 20x30cm](paintings/pt-alba-iulia-cloud.jpg){group="misc"}
+
+
+![Ateneul Roman, Bucharest, 19x26cm](paintings/ateneu-cc.jpg){group="water"}
+
+![Piata Muncii, 20x30cm](paintings/muncii-trees.jpg){group="misc"}
+
+
+![Fall, Brasov, 20x30cm](paintings/brasov-cc.jpg){group="water"}
+
+![Fall, IOR, 13x19cm](paintings/ior-fall-sunny.jpg){group="water"}
+
+![Old trees, Brasov, 26x19cm](paintings/brasov-trees.jpg){group="misc"}
+
+![Sycamore, Cismigiu, 26x19cm](paintings/cismigiu-tree-3.jpg){group="misc"}
+
+![Hammock, Balotesti, 30x24cm](paintings/hammock.jpg){group="water"}
+
+![Reflections, IOR, 30x24cm](paintings/ior-boat.jpg){group="water"}
+
+:::
+
+
+![National Park, 20x60cm](paintings/nat-park-pano.jpg){group="misc"}
+
+![Spring, IOR, 20x50cm](paintings/ior-spring-church.jpg){group="misc"}
+
+
 ## Urban sketching
 
 In urban sketchers, I found a community that draws for the sheer joy of it, no matter the subject or outcome. I believe constraints and limitations enhance creativity. So, showing up at a cafe with a few colored pencils, sepia chalks, or gouache tubes has lead me to explore chaotic lines and decorative shapes to suggest the moods of busy city life. 
@@ -21,9 +82,6 @@ In urban sketchers, I found a community that draws for the sheer joy of it, no m
 
 ![Coffee at Beans & Dots, 20x30cm](paintings/beans-sketch.jpg){group="misc"}
 
-![Cismigiu Casino, 19x26cm](paintings/cismigiu-casino.jpg){group="misc"}
-
-![Cismigiu, 19x26cm](paintings/cismigiu-tree-1.jpg){group="misc"}
 
 ![Dambovita, 19x26cm](paintings/dambovita.jpg){group="misc"}
 
@@ -42,51 +100,32 @@ In urban sketchers, I found a community that draws for the sheer joy of it, no m
 
 ![Urban Sketchers, Bucharest, 19x26cm](paintings/hai-la-cafea.jpg){group="misc"}
 
-![Coffee at Boiler, 26x19cm](paintings/boiler-summer.jpg){group="misc"}
-
-
-![Piata Alba-Iulia, Bucharest, 19x26cm](paintings/matache-dobrescu.jpg){group="misc"}
-
 ![Carturesti, 20x30cm](paintings/carturesti.jpg){group="misc"}
 
-![Old trees, Brasov, 26x19cm](paintings/brasov-trees.jpg){group="misc"}
-
-![Sycamore, Cismigiu, 26x19cm](paintings/cismigiu-tree-3.jpg){group="misc"}
-
-![Olden trees, Cismigiu, 19x13cm](paintings/moss-tree.jpg){group="misc"}
-
-![Cismigiu, 26x19cm](paintings/cismigiu-trees-2.jpg){group="misc"}
-
-![Brasov Towers, 19x26cm](paintings/brasov-walls.jpg){group="misc"}
-
-![Cismigiu, 19x26cm](paintings/cismigiu-entrance.jpg){group="misc"}
-
-![Cismigiu, 19x26cm](paintings/cismigiu-winter.jpg){group="misc"}
-
-![Piata Alba Iulia, 19x26cm](paintings/pt-alba-winter.jpg){group="misc"}
-
-![Seaside at Venus, 15x20cm](paintings/venus-boat.jpg){group="misc"}
-
-![Ciocanul School, 15x20cm](paintings/scoala-ciocanul.jpg){group="misc"}
-
-![Halloween at Boiler, 26x19cm](paintings/boiler-pumkins.jpg){group="misc"}
-
-![Late Fall, Pt. Romana, 19x13cm](paintings/late-fall-romana.jpg){group="misc"}
 
 ![Hai la Cafea, 19x13cm](paintings/coffee-at-hlc.jpg){group="misc"}
 
 ![Coffee at Loom, 26x19cm](paintings/coffee-loom-pow.jpg){group="misc"}
 
-![Coffee at Boiler, 19x26cm](paintings/coffee-boiler-watercolor.jpg){group="misc"}
-
-![Coffee at Grain Trip, 19x26cm](paintings/coffee-grain-trip.jpg){group="misc"}
-
-
 :::
 
-![National Park, 20x60cm](paintings/nat-park-pano.jpg){group="misc"}
-
 ![Coffee at Boiler, 20x60cm](paintings/muncii-pano.jpg){group="misc"}
+
+<!-- ![Coffee at Boiler, 26x19cm](paintings/boiler-summer.jpg){group="misc"}
+![Piata Alba-Iulia, Bucharest, 19x26cm](paintings/matache-dobrescu.jpg){group="misc"}
+
+ -->
+<!-- ![Coffee at Boiler, 19x26cm](paintings/coffee-boiler-watercolor.jpg){group="misc"}
+
+![Brasov Towers, 19x26cm](paintings/brasov-walls.jpg){group="misc"} -->
+
+<!-- ![Coffee at Grain Trip, 19x26cm](paintings/coffee-grain-trip.jpg){group="misc"}
+
+![Calea Dudesti, 20x30cm](paintings/dudesti.jpg){group="misc"} -->
+
+<!-- ![Halloween at Boiler, 26x19cm](paintings/boiler-pumkins.jpg){group="misc"}
+
+![Late Fall, Pt. Romana, 19x13cm](paintings/late-fall-romana.jpg){group="misc"} -->
 
 
 ## Pastel
@@ -96,11 +135,29 @@ I love pastel for its pure color, the sensitivity of touch it requires, and the 
 ::: {layout-ncol=2}
 ![Last days of summer, 20x30cm](paintings/sunlit-alley.jpg){group="misc"}
 
+![Daffodils, 20x30cm](paintings/daffodils.jpg){group="misc"}
+
 ![Coffee at Noi, 16x13cm](paintings/noi-coffee.jpg){group="misc"}
 
 ![Old town, 15x20cm](paintings/old-town-victoriei.jpg){group="misc"}
 
-![Untitled, Bucharest, 20x30cm](paintings/dudesti.jpg){group="misc"}
+:::
+
+## Gouache and casein
+
+::: {layout-ncol=2}
+
+![Seaside at Venus, 15x20cm](paintings/venus-boat.jpg){group="misc"}
+
+![Ciocanul School, 15x20cm](paintings/scoala-ciocanul.jpg){group="misc"}
+
+![Piata Alba Iulia, 19x26cm](paintings/pt-alba-winter.jpg){group="misc"}
+
+![Cismigiu, 19x26cm](paintings/cismigiu-winter.jpg){group="misc"}
+
+![Olden trees, Cismigiu, 19x13cm](paintings/moss-tree.jpg){group="misc"}
+
+![Cismigiu, 26x19cm](paintings/cismigiu-trees-2.jpg){group="misc"}
 
 :::
 
