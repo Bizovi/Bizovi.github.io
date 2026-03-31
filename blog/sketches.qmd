@@ -45,9 +45,9 @@ The stories of Barbizon School and Impressionists in France, The Macchiaioli in 
 ![Piata Alba Iulia, 20x30cm](paintings/pt-alba-iulia-cloud.jpg){group="misc"}
 
 
-![Ateneul Roman, Bucharest, 19x26cm](paintings/ateneu-cc.jpg){group="water"}
-
 ![Piata Muncii, 20x30cm](paintings/muncii-trees.jpg){group="misc"}
+
+![Piata Muncii, 20x30cm](paintings/muncii-trees-loose.jpg){group="misc"}
 
 
 ![Fall, Brasov, 20x30cm](paintings/brasov-cc.jpg){group="water"}
@@ -61,6 +61,11 @@ The stories of Barbizon School and Impressionists in France, The Macchiaioli in 
 ![Hammock, Balotesti, 30x24cm](paintings/hammock.jpg){group="water"}
 
 ![Reflections, IOR, 30x24cm](paintings/ior-boat.jpg){group="water"}
+
+
+![Spring, Tineretului, 20x30cm](paintings/tineretului-1.jpg){group="water"}
+
+![Spring, Tineretului, 20x30cm](paintings/tineretului-2.jpg){group="water"}
 
 :::
 
@@ -102,11 +107,6 @@ In urban sketchers, I found a community that draws for the sheer joy of it, no m
 
 ![Carturesti, 20x30cm](paintings/carturesti.jpg){group="misc"}
 
-
-![Hai la Cafea, 19x13cm](paintings/coffee-at-hlc.jpg){group="misc"}
-
-![Coffee at Loom, 26x19cm](paintings/coffee-loom-pow.jpg){group="misc"}
-
 :::
 
 ![Coffee at Boiler, 20x60cm](paintings/muncii-pano.jpg){group="misc"}
@@ -137,10 +137,11 @@ I love pastel for its pure color, the sensitivity of touch it requires, and the 
 
 ![Daffodils, 20x30cm](paintings/daffodils.jpg){group="misc"}
 
-![Coffee at Noi, 16x13cm](paintings/noi-coffee.jpg){group="misc"}
-
 ![Old town, 15x20cm](paintings/old-town-victoriei.jpg){group="misc"}
 
+![Coffee at Noi, 16x13cm](paintings/noi-coffee.jpg){group="misc"}
+
+<!--  -->
 :::
 
 ## Gouache and casein
@@ -175,10 +176,9 @@ I am equally fascinated by the old masters (e.g. Fantin-Latour) and contemporary
 
 ![Paper bag, 24x18cm](paintings/paper-bag-3.jpg){group="misc"}
 
-![All dry, 40x30cm](paintings/study-vase.jpg){group="misc"}
-
 ![Still Life after Ian Roberts, 40x40cm](paintings/still-life-jug.JPG){group="misc"}
 
+![Coffee break, 18x24cm](paintings/escargot.jpg){group="misc"}
 
 :::
 
@@ -253,9 +253,6 @@ The human figure is one of the most difficult subjects, which is precisely why i
 
 ![Gestures, 20x30cm](paintings/gest-4.jpg){group="misc"}
 
-![Gestures, 20x30cm](paintings/gest-1.jpg){group="misc"}
-
-![Gestures, 20x30cm](paintings/gest-3.jpg){group="misc"}
 
 :::
 
