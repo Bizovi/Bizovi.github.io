@@ -25,9 +25,19 @@ The stories of Barbizon School and Impressionists in France, The Macchiaioli in 
 
 ![Cismigiu, 19x26cm](paintings/cismigiu-tree-1.jpg){group="misc"}
 
+![In bloom, IOR, 24x30cm](paintings/ior-bloom-2.jpg){group="misc"}
+
+![In bloom, IOR, 24x30cm](paintings/ior-bloom-1.jpg){group="misc"}
+
+
 ![Cismigiu, 19x26cm](paintings/cismigiu-entrance.jpg){group="misc"}
 
 ![Spring, Cismigiu, 20x30](paintings/cismigiu-spring.jpg){group="misc"}
+
+![Late walks, IOR, 30x40cm](paintings/ior-sunset-tree.jpg){group="misc"}
+
+![Summer, IOR, 30x40cm](paintings/ior-dappled-light.JPG){group="misc"}
+
 
 
 ![At the willows, IOR, 19x26cm](paintings/ior-island.jpg){group="water"}
@@ -105,7 +115,7 @@ In urban sketchers, I found a community that draws for the sheer joy of it, no m
 
 ![Urban Sketchers, Bucharest, 19x26cm](paintings/hai-la-cafea.jpg){group="misc"}
 
-![Carturesti, 20x30cm](paintings/carturesti.jpg){group="misc"}
+![Casa sfatului, Brasov, 20x30cm](paintings/brasov-muzeu.jpg){group="misc"}
 
 :::
 
