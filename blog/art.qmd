@@ -34,12 +34,19 @@ Watercolor taught me about timing, letting water do its work, and trusting the p
 ![Dirt road, 24x30cm](paintings/dirt-road.jpg){group="water"}
 
 
-
 ![In bloom, IOR, 30x24cm](paintings/ior-bush.jpg){group="water"}
 
 ![Walking home, Bucharest, 30x24cm](paintings/cec2.JPG){group="water"}
 
+
+![Calea Dudesti, 30x40cm](paintings/dudesti-ac.jpg){group="misc"}
+
+![Cismigiu, 19x26cm](paintings/cismigiu-entrance.jpg){group="misc"}
+
+
 :::
+
+![Late walks, IOR, 30x40cm](paintings/ior-sunset-tree.jpg){group="misc"}
 
 <!-- ![Breaking the waves, Mangalia, 24x30cm](paintings/mangalia-boats-2.jpg){group="water"} -->
 <!-- ![Fall, Wyndham, 24x30cm](paintings/wyndham-fall.jpg){group="water"} -->
