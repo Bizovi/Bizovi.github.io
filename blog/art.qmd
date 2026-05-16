@@ -24,9 +24,9 @@ Watercolor taught me about timing, letting water do its work, and trusting the p
 ![The highline, NY, 30x40cm](paintings/high-line2.jpg){group="water"}
 
 
-![Duality, Prague, 30x24cm](paintings/prague-castle.jpg){group="water"}
-
 ![At the office, Bucharest, 30x24cm](paintings/view-office-2.jpg){group="water"}
+
+![In bloom, IOR, 30x24cm](paintings/ior-bush.jpg){group="water"}
 
 
 ![Shade, Toulon, 24x30cm](paintings/toulon-umbrella.jpg){group="water"}
@@ -34,25 +34,11 @@ Watercolor taught me about timing, letting water do its work, and trusting the p
 ![Dirt road, 24x30cm](paintings/dirt-road.jpg){group="water"}
 
 
-![In bloom, IOR, 30x24cm](paintings/ior-bush.jpg){group="water"}
-
-![Walking home, Bucharest, 30x24cm](paintings/cec2.JPG){group="water"}
-
-
-![Calea Dudesti, 30x40cm](paintings/dudesti-ac.jpg){group="misc"}
-
-![Cismigiu, 19x26cm](paintings/cismigiu-entrance.jpg){group="misc"}
-
-
 :::
 
+![Barentsburg, 30x40cm](paintings/industrial-north.jpg){group="oil"}
+
 ![Late walks, IOR, 30x40cm](paintings/ior-sunset-tree.jpg){group="misc"}
-
-<!-- ![Breaking the waves, Mangalia, 24x30cm](paintings/mangalia-boats-2.jpg){group="water"} -->
-<!-- ![Fall, Wyndham, 24x30cm](paintings/wyndham-fall.jpg){group="water"} -->
-<!-- ![Village museum, Negresti-Oas, 24x30cm](paintings/negresti-oas.JPG){group="water"}
-![Storm, Mangalia, 24x30cm](paintings/mangalia-storm.jpg){group="water"} -->
-
 
 
 ## Landscape impressions in oil
@@ -80,14 +66,3 @@ In contrast with the fleeting nature of watercolor, oil reminds me of the materi
 :::
 
 ![Late fall, IOR, 30x40cm](paintings/ior-late-fall.jpg){group="oil"}
-
-
-
-<!-- ![Morining in Wyndham, 24x33cm](paintings/wyndham.jpg){group="oil"} -->
-
-<!--  -->
-
-<!-- ![Parcul National, Bucharest, 19x26cm](paintings/parcul-national-arches.jpg){group="water"} -->
-
-<!--  -->
-

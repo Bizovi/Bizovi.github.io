@@ -25,15 +25,12 @@ The stories of Barbizon School and Impressionists in France, The Macchiaioli in 
 
 ![Cismigiu, 19x26cm](paintings/cismigiu-tree-1.jpg){group="misc"}
 
-![In bloom, IOR, 24x30cm](paintings/ior-bloom-2.jpg){group="misc"}
+![In bloom, IOR, 30x40cm](paintings/ior-cherry-oil.jpg){group="oil"}
 
-![In bloom, IOR, 24x30cm](paintings/ior-bloom-1.jpg){group="misc"}
-
+![In bloom, IOR, 24x30cm](paintings/ior-bloom-tempera.jpg){group="misc"}
 
 
 ![Spring, Cismigiu, 20x30](paintings/cismigiu-spring.jpg){group="misc"}
-
-![Summer, IOR, 30x40cm](paintings/ior-dappled-light.JPG){group="misc"}
 
 
 
@@ -46,8 +43,6 @@ The stories of Barbizon School and Impressionists in France, The Macchiaioli in 
 
 ![National Park, 24x30cm](paintings/parcul-national.jpg){group="water"}
 
-
-![The duck spot, IOR, 19x24cm](paintings/ior-ducks.jpg){group="water"}
 
 ![Piata Alba Iulia, 20x30cm](paintings/pt-alba-iulia-cloud.jpg){group="misc"}
 
@@ -74,6 +69,10 @@ The stories of Barbizon School and Impressionists in France, The Macchiaioli in 
 
 ![Spring, Tineretului, 20x30cm](paintings/tineretului-2.jpg){group="water"}
 
+![Calea Dudesti, 30x40cm](paintings/dudesti-ac.jpg){group="misc"}
+
+![Cismigiu, 19x26cm](paintings/cismigiu-entrance.jpg){group="misc"}
+
 :::
 
 
@@ -81,6 +80,8 @@ The stories of Barbizon School and Impressionists in France, The Macchiaioli in 
 
 ![Spring, IOR, 20x50cm](paintings/ior-spring-church.jpg){group="misc"}
 
+
+<!-- ![In bloom, IOR, 24x30cm](paintings/ior-bloom-1.jpg){group="misc"} -->
 
 ## Urban sketching
 
@@ -190,7 +191,7 @@ I am equally fascinated by the old masters (e.g. Fantin-Latour) and contemporary
 
 ![Coffee break, 18x24cm](paintings/escargot.jpg){group="misc"}
 
-![Magnolias, 30x20cm](paintings/magnolias.jpg){group="misc"}
+![In bloom, 30x20cm](paintings/cherry-blooms.jpg){group="misc"}
 
 ![In bloom, 30x20cm](paintings/merisor.jpg){group="misc"}
 
@@ -241,7 +242,7 @@ My studio cats are uncooperative models and no oil painting is safe near them, b
 
 ::: {layout-ncol=2}
 
-![Artemis by the window, 20x15cm](paintings/artemis.jpg){group="misc"}
+![Artemis at rest, 9x12cm](paintings/artemis-2.jpg){group="misc"}
 
 ![Artemis and Tigrisor, 15x20cm](paintings/artemis-tigrisor.jpg){group="misc"}
 
@@ -262,11 +263,6 @@ The human figure is one of the most difficult subjects, which is precisely why i
 ![Life drawing, 21x30cm](paintings/14-10-fig2.jpg){group="misc"}
 
 ![Life drawing, 10min, 15x30cm](paintings/croquis-1.jpg){group="misc"}
-
-![Gestures, 20x30cm](paintings/gest-2.jpg){group="misc"}
-
-![Gestures, 20x30cm](paintings/gest-4.jpg){group="misc"}
-
 
 :::
 
